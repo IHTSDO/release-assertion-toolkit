@@ -31,6 +31,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
+    concat('DEFINITION: id=',a.id, ': component is in current release file, but not in prior release file.')
 	from curr a
 	left join prev_textdefinition_f b
 		on a.id = b.id
@@ -57,6 +58,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
+    concat('DEFINITION: id=',a.id, ': component is in the prior release file, but not in the current release file.')
 	from prev_textdefinition_f a
 	left join curr b
 		on a.id = b.id
@@ -69,7 +71,7 @@
 		and a.term = b.term
 		and a.casesignificanceid = b.casesignificanceid
 	where b.id is null
-		or b.effectivetime is null
+  or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
 	or b.conceptid is null
