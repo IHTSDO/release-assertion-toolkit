@@ -81,13 +81,13 @@ public class WriteExcel {
 		cv.setAutosize(true);
 
 		// Write a few headers
-		addCaption(sheet, 0, row, "Test Name");
-		addCaption(sheet, 1, row, "Release");
-		addCaption(sheet, 2, row, "Status");
-		addCaption(sheet, 3, row, "Issue");
-		addCaption(sheet, 4, row, "File Name");
+		addCaption(sheet, 0, row, "Assertionuuid");
+		addCaption(sheet, 1, row, "Result");
+		addCaption(sheet, 2, row, "Count");
+		addCaption(sheet, 3, row, "Assertiontext");
+		//addCaption(sheet, 4, row, "File Name");
 		row++;
-
+		
 	}
 
 	public void addHeaderRow(String string) {

@@ -6,6 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>  
+  <groupId>org.ihtsdo.release.assertion</groupId>
   <artifactId>release-assertion-manifest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>release-assertion-manifest</name> 

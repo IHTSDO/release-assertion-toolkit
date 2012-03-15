@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>release-assertion-toolkit</artifactId>
-    <groupId>org.ihtsdo</groupId>
+    <groupId>org.ihtsdo.release.assertion</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
@@ -15,7 +15,7 @@
 	</scm>
 	
   <packaging>pom</packaging>
-  <groupId>org.ihtsdo</groupId>
+  <groupId>org.ihtsdo.release.assertion</groupId>
   <artifactId>release-assertion-runner</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>release-assertion-runner</name>
@@ -515,8 +515,8 @@
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts</executedSqlDirectory>
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url> -->		
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/test</url>			
+									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>	
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/test</url>	 -->			
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>true</breakOnFailure>
