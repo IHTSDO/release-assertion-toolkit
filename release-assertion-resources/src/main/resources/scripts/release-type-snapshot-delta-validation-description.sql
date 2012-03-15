@@ -1,12 +1,12 @@
 /******************************************************************************** 
 
 	PRIOR RELEASE FROM CURRENT RELEASE FULL FILE
-	release-type-snapshot-validation-concept-delta
+	release-type-SNAPSHOT-delta-validation-Description
 
   
 	Assertion:
-	The current data in the Concept snapshot file are the same as the data in 
-	the current delta file.  
+	The current data in the Description snapshot file are the same as the data 
+	in the current delta file.
 
 	The current full file is the same as the prior version of the same full 
 	file, except for the delta rows. Therefore, when the delta rows are excluded 
@@ -19,53 +19,69 @@
 ********************************************************************************/
 	use postqa;
 	
-	create or replace view ss as
+	create or replace view ds as
 	select * 
-	from curr_concept_s
+	from curr_description_s
 	where cast(effectivetime as datetime)= 
 	(select max(cast(effectivetime as datetime))
-	 from curr_concept_s);
+	 from curr_description_s);
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in snapshot file, but not in delta file.') 	
-	from ss a
-	left join curr_concept_d b
+		concat('DESCRIPTION: id=',a.id, ': Concept in snapshot file, but not in delta file.') 	
+	from ds a
+	left join curr_description_d b
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
 		and a.moduleid = b.moduleid
-		and a.definitionstatusid = b.definitionstatusid
+		and a.conceptid = b.conceptid
+		and a.languagecode = b.languagecode
+		and a.typeid = b.typeid
+		and a.term = b.term
+		and a.casesignificanceid = b.casesignificanceid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-	or b.definitionstatusid is null;
+	or b.conceptid is null
+	or b.languagecode is null
+	or b.typeid is null
+	or b.term is null
+	or b.casesignificanceid is null;
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in delta but not in snapshot file.') 	
-	from curr_concept_d a
-	left join ss b
+		concat('DESCRIPTION: id=',a.id, ': Concept in delta but not in snapshot file.') 	
+	from curr_description_d a
+	left join ds b
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
 		and a.moduleid = b.moduleid
-		and a.definitionstatusid = b.definitionstatusid
+		and a.conceptid = b.conceptid
+		and a.languagecode = b.languagecode
+		and a.typeid = b.typeid
+		and a.term = b.term
+		and a.casesignificanceid = b.casesignificanceid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-	or b.definitionstatusid is null;
+	or b.conceptid is null
+	or b.languagecode is null
+	or b.typeid is null
+	or b.term is null
+	or b.casesignificanceid is null;
 
 
-	drop view ss;
+	drop view ds;
 	 
 	 
 	 
