@@ -23,29 +23,27 @@
 		<script uuid="b46ec8df-1bfd-4825-be49-f09ed8a0076b" category="release-type-validation" text="The current Inferred Relationship full file contains all previously published data unchanged." sqlFile="release-type-full-validation-inferred-relationship.sql">
 			<keywords>inferred relationship release type validation current prior previous distribution normal form</keywords>
 		</script>
-		
 		<script uuid="433adc93-fdd5-462a-b1fa-11fb4045a9ec" category="release-type-validation" sqlFile="release-type-full-validation-definition.sql" text="The current Definition full file contains all previously published data unchanged."  >
 			<keywords>text definition release type validation</keywords>
 		</script>	
-
 		<script uuid="653ce147-780e-4b3d-8afe-bd8d116c8c17" category="release-type-validation" sqlFile="release-type-full-validation-association-refset.sql" text="The current Association refset full file contains all previously published data unchanged."  >
 			<keywords>historical association references refers resfet release type validation</keywords>
 		</script>	
-		
 		<script uuid="1f6b5876-7714-4362-a065-3906d059a122" category="release-type-validation" sqlFile="release-type-FULL-validation-AttributeValue-refset.sql" text="The current AttributeValue refset full file contains all previously published data unchanged."  >
 			<keywords>attribute value concept description inactivation refset full</keywords>
 		</script>	
-
 		<script uuid="673cf38a-a913-4e0e-be32-356ac433ede8" category="release-type-validation" sqlFile="release-type-FULL-validation-Simple-refset.sql" text="The current Simple refset full file contains all previously published data unchanged."  >
 			<keywords>VTM VMP simple</keywords>
 		</script>	
-
 		<script uuid="c19b9008-bbc9-4209-a3d7-896d414df565" category="release-type-validation" sqlFile="release-type-full-validation-simplemap-refset.sql" text="The current SimpleMap refset full file contains all previously published data unchanged."  >
 			<keywords>snomedid snomed rt ctv3 simple map</keywords>
 		</script>	
-
 		<script uuid="f0b4c712-781a-4ca5-872e-883cf1949f12" category="release-type-validation" sqlFile="release-type-full-validation-Language-refset.sql" text="The current Language refset full file contains all previously published data unchanged."  >
 			<keywords>US UK EN GB language</keywords>
+		</script>	
+
+		<script uuid="e2d4a6be-cd76-4e03-afe8-5c7783aaa2c7" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-concept.sql" text="The current data in the Concept snapshot file are the same as the data in the current delta file. "  >
+			<keywords>concept snapshot delta</keywords>
 		</script>	
 		
 		</useCase>
