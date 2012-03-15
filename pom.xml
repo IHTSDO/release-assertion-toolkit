@@ -19,11 +19,12 @@
   <description>Assertion Toolkit Testing</description>
   
   	<scm>
-		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit</connection>
-		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit</developerConnection>		
-		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit</url>
+		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk</connection>
+		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk</developerConnection>
+		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk</url>
 	</scm>
   	
+	
   	<properties>
    		 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    		 <svnusername>${relusername}</svnusername>
