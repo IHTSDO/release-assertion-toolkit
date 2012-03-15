@@ -118,8 +118,8 @@
 									<goal>import-releasefile-to-database</goal>
 								</goals>
 								<configuration>								
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>-->
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/test</url> 
 									<username>root</username>
 									<password>snomed11</password>							
 								
@@ -316,8 +316,8 @@
 									<goal>import-releasefile-to-database</goal>
 								</goals>
 								<configuration>								
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>
-									<!-- <url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>-->
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>-->
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/test</url>
 									<username>root</username>
 									<password>snomed11</password>								
 								
@@ -515,7 +515,8 @@
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts</executedSqlDirectory>
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>						
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url> -->		
+									<url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/test</url>			
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>true</breakOnFailure>
@@ -546,8 +547,8 @@
 									<goal>report-builder</goal>
 								</goals>
 								<configuration>								
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>
-									<!-- <url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>-->
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>-->
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/test</url>
 									<username>root</username>
 									<password>snomed11</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
