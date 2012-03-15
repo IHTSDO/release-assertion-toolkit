@@ -31,6 +31,14 @@
 		<script uuid="653ce147-780e-4b3d-8afe-bd8d116c8c17" category="release-type-validation" sqlFile="release-type-full-validation-association-refset.sql" text="The current Association refset full file contains all previously published data unchanged."  >
 			<keywords>historical association references refers resfet release type validation</keywords>
 		</script>	
-						
-	</useCase>
+		
+		<script uuid="1f6b5876-7714-4362-a065-3906d059a122" category="release-type-validation" sqlFile="release-type-FULL-validation-AttributeValue-refset.sql" text="The current AttributeValue refset full file contains all previously published data unchanged."  >
+			<keywords>attribute value concept description inactivation refset full</keywords>
+		</script>	
+
+		<script uuid="673cf38a-a913-4e0e-be32-356ac433ede8" category="release-type-validation" sqlFile="release-type-FULL-validation-Simple-refset.sql" text="The current Simple refset full file contains all previously published data unchanged."  >
+			<keywords>snomedid snomed rt ctv3 simple</keywords>
+		</script>	
+		
+		</useCase>
 </manifest>
