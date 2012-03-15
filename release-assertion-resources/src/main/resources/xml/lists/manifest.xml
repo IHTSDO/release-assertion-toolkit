@@ -3,13 +3,7 @@
 
 	<useCase group="rf2-scripts" id="29a7345a-94cb-42fd-95c3-8aa6e1e9b31a">
 		
-	<!-- rt added this as a template... 
-	
-		<script uuid="" category="release-type-validation" sqlFile="" text=""  >
-			<keywords></keywords>
-		</script>	
-		
-	-->
+
 
 		<script category="release-type-validation" text="The current Concept full file contains all previously published data unchanged." sqlFile="release-type-full-validation-concept.sql" uuid="84f5edda-1249-4d79-87da-e248e61f06a6">
 			<keywords></keywords>
@@ -47,8 +41,25 @@
 		</script>	
 
 		<script uuid="073832f4-6dc5-4781-9e56-9c3bc45d01bd" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-description.sql" text="The current data in the Description snapshot file are the same as the data in the current delta file."  >
+			<keywords>snapshot delta description</keywords>
+		</script>	
+
+		<script uuid="01ce3ac9-d168-4333-99d7-8d2f228f5ec9" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-stated-relationship.sql" text="The current data in the Stated Relationship snapshot file are the same as the data in the current delta file. "  >
+			<keywords>snapshot delta stated relationship</keywords>
+		</script>
+
+		<script uuid="177a7271-7986-433b-8506-fff39e6c1004" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-inferred-relationship.sql" text="The current data in the Inferred Relationship snapshot file are the same as the data in the current delta file. "  >
+			<keywords>snapshot delta inferred classified distribution normal form relationship</keywords>
+		</script>	
+
+	<!-- rt added this as a template... 
+	
+		<script uuid="" category="release-type-validation" sqlFile="" text=""  >
 			<keywords></keywords>
 		</script>	
+		
+	-->
+
 		
 		</useCase>
 </manifest>
