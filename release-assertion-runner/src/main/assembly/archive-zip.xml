@@ -1,0 +1,24 @@
+<assembly>
+  <id>folder</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>${project.build.directory}/generated-sources/executedScripts</directory>
+      <outputDirectory>executedScripts</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.build.directory}/generated-sources/manifest/xml/properties/</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
+  </fileSets>
+    <files>
+        <file>
+            <source>${project.build.directory}/generated-sources/manifest/xml/lists/runList.xml</source>
+            <outputDirectory>/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+    </files>
+</assembly>
