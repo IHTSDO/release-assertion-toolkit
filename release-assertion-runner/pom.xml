@@ -9,10 +9,11 @@
   </parent>
   
   	<scm>
-		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/release-assertion-runner</connection>
-		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/release-assertion-runner</developerConnection>
-		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/release-assertion-runner</url>
+		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</connection>
+		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</developerConnection>
+		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</url>
 	</scm>
+	
   <packaging>pom</packaging>
   <groupId>org.ihtsdo</groupId>
   <artifactId>release-assertion-runner</artifactId>
