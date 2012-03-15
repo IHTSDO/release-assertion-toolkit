@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<runList uuid="f3c4ef50-6249-11e1-b86c-0800200c9a66">
+	<script category="" text="Setup transitive closure table" sqlFile="create-trans-closure.sql" uuid="33e30650-6180-11e1-b86c-0800200c9a66">
+		<keywords></keywords>
+	</script>
+	<script category="concept" text="All concepts have an sctId" sqlFile="concept-sct-exists.sql" uuid="9ea65850-6182-11e1-b86c-0800200c9a66">
+		<keywords>sctid</keywords>
+	</script>
+	<script category="description" text="All descriptions have an sctId" sqlFile="description-sct-exists.sql" uuid="bb884470-6249-11e1-b86c-0800200c9a66">
+		<keywords>sctid</keywords>
+	</script>
+	<script category="concept/description" text="All descriptions have an associated concept sctId" sqlFile="description-contains-concept-sct-exists.sql" uuid="c0ae2b40-6249-11e1-b86c-0800200c9a66">
+		<keywords>sctid</keywords>
+	</script>
+	<script category="concept" text="Concept states that are created new in the current release, are the result	of changes to mutable values" sqlFile="new-concept-state-from-mutable.sql" uuid="bd8eae90-63c4-11e1-b86c-0800200c9a66">
+		<keywords>sctid</keywords>
+	</script>
+	<script category="concept" text="Each row in the concept file has a unique value int he id column" sqlFile="concept-unique-id.sql" uuid="d824b650-63c4-11e1-b86c-0800200c9a66">
+		<keywords>sctid</keywords>
+	</script>
+	
+	
+	
+
+	<script category="" text="Destroy transitive closure table" sqlFile="drop-trans-closure.sql" uuid="c4b7a590-6249-11e1-b86c-0800200c9a66">
+		<keywords></keywords>
+	</script>
+</runList>

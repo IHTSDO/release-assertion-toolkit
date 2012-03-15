@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+  <parent>
+    <artifactId>release-assertion-toolkit</artifactId>
+    <groupId>org.ihtsdo</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <packaging>pom</packaging>
+  <modelVersion>4.0.0</modelVersion>  
+  <artifactId>release-assertion-resources</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>release-assertion-resources</name> 
+  <description>Release QA Process Resources (SQL Script)</description>
+  <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-artifact</id>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/manifest.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+  
+</project>
