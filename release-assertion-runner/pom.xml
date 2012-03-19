@@ -17,7 +17,7 @@
   <packaging>pom</packaging>
   <groupId>org.ihtsdo.release.assertion</groupId>
   <artifactId>release-assertion-runner</artifactId>  
-  version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>release-assertion-runner</name>
   <url>http://maven.apache.org</url>
   
