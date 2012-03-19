@@ -16,8 +16,8 @@
 	
   <packaging>pom</packaging>
   <groupId>org.ihtsdo.release.assertion</groupId>
-  <artifactId>release-assertion-runner</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>release-assertion-runner</artifactId>  
+  version>0.0.1-SNAPSHOT</version>
   <name>release-assertion-runner</name>
   <url>http://maven.apache.org</url>
   
@@ -32,8 +32,7 @@
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
 		<project.manifest>${project.build.directory}/generated-sources/manifest</project.manifest>
 		<project.executedScripts>${project.build.directory}/generated-sources</project.executedScripts>
-		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>
-		
+		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>		
 	</properties>
   
   <distributionManagement>
@@ -106,7 +105,7 @@
 						</plugin>			
 						
 						<plugin>
-							<groupId>org.ihtsdo</groupId>
+							<groupId>org.ihtsdo.release.assertion</groupId>
 							<artifactId>release-database-setup</artifactId>
 						 	<version>${project.version}</version>					
 							<executions>
@@ -304,7 +303,7 @@
 						</plugin>			
 						
 						<plugin>
-							<groupId>org.ihtsdo</groupId>
+							<groupId>org.ihtsdo.release.assertion</groupId>
 							<artifactId>release-database-setup</artifactId>
 						 	<version>${project.version}</version>					
 							<executions>
@@ -488,7 +487,7 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.ihtsdo</groupId>
+											<groupId>org.ihtsdo.release.assertion</groupId>
 											<artifactId>release-assertion-resources</artifactId>
 											<version>0.0.1-SNAPSHOT</version>
 											<type>zip</type>
@@ -500,7 +499,7 @@
 						</executions>
 					</plugin>
  					<plugin>
-						<groupId>org.ihtsdo</groupId>
+						<groupId>org.ihtsdo.release.assertion</groupId>
 						<artifactId>release-assertion-manifest</artifactId>
 					 	<version>${project.version}</version>					
 						<executions>
@@ -535,7 +534,7 @@
 			  <build>
 					<plugins>
 						<plugin>
-							<groupId>org.ihtsdo</groupId>
+							<groupId>org.ihtsdo.release.assertion</groupId>
 							<artifactId>release-report-component</artifactId>
 						 	<version>${project.version}</version>					
 							<executions>
