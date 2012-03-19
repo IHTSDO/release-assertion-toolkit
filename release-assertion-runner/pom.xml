@@ -514,8 +514,8 @@
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts</executedSqlDirectory>
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>	
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/test</url>	 -->			
+									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>		
+									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/postqa</url> -->			
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>true</breakOnFailure>
@@ -536,26 +536,24 @@
 						<plugin>
 							<groupId>org.ihtsdo.release.assertion</groupId>
 							<artifactId>release-report-component</artifactId>
-						 	<version>${project.version}</version>					
+						 	<version>${project.version}</version>
 							<executions>
-							
 							<execution>
 								<id>run-report-builder</id>
 								<phase>process-resources</phase>
 								<goals>
 									<goal>report-builder</goal>
 								</goals>
-								<configuration>								
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>-->
-									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/test</url>
+								<configuration>
+									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
 									<reportName>Report.txt</reportName>	
-									<excelreportName>Report.xls</excelreportName>									
-								</configuration>			
-									
-							</execution>		
+									<excelreportName>Report.xls</excelreportName>
+								</configuration>
+							</execution>
 						</executions>
 					</plugin>
 					<plugin>
@@ -566,14 +564,14 @@
 							<target>1.6</target>
 						</configuration>
 					</plugin>
-				</plugins>						
+				</plugins>
 			</build>
 		</profile>
 		
 		<profile>
 			<id>archive-results</id>
 			  <build>
-				<plugins>			
+				<plugins>
 					<plugin>
 		                <groupId>org.apache.maven.plugins</groupId>
 		                <artifactId>maven-assembly-plugin</artifactId>
@@ -593,7 +591,7 @@
 		                    </execution>
 		                </executions>
 		            </plugin>
-				</plugins>						
+				</plugins>
 			</build>
 		</profile>
 	 </profiles>
