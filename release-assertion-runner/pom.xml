@@ -63,26 +63,37 @@
      	<type>zip</type>
 	</dependency>
 	<!-- Below dependency is used to load current release tables (currently limited to RF2)-->
+ 	 
  	<dependency>
 		<groupId>org.ihtsdo.termmed.test</groupId>
 		<artifactId>export-runner-pa</artifactId>
 		<version>2.6.0-trek-94-SNAPSHOT</version>
 		<type>zip</type>
+	</dependency>
+	
+	<!--
+	<dependency>
+		<groupId>org.ihtsdo.intl.release.process</groupId>
+		<artifactId>wb-release-process</artifactId>
+		<version>test.rel-1-SNAPSHOT</version>
+		<type>zip</type>
+		<classifier>daily</classifier>
 	</dependency>	
+	-->
 </dependencies>
   
+   
   
   <profiles>
 		<profile>
-			<id>Load-Previous-Release</id>
+			<id>load-previous-release</id>
 			  <build>
 					<plugins>			
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-dependency-plugin</artifactId>
 							<executions>
-												
-								<!-- This should get dependency from svn repository where previous release artifacts are present-->							
+								<!-- This should get dependency from svn repository where previous release artifacts are present-->
 								<execution>
 									<id>extract-dependencies-1</id>
 									<phase>generate-sources</phase>
@@ -102,12 +113,12 @@
 									</configuration>
 								</execution>
 							</executions>
-						</plugin>			
+						</plugin>
 						
 						<plugin>
 							<groupId>org.ihtsdo.release.assertion</groupId>
 							<artifactId>release-database-setup</artifactId>
-						 	<version>${project.version}</version>					
+						 	<version>${project.version}</version>
 							<executions>
 									
 							<execution>
@@ -116,76 +127,73 @@
 								<goals>
 									<goal>import-releasefile-to-database</goal>
 								</goals>
-								<configuration>								
+								<configuration>
 									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/test</url>-->
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/test</url> 
 									<username>root</username>
-									<password>snomed11</password>							
-								
-									<importConfig>										
+									<password>snomed11</password>
+									<importConfig>
 										<LoadFileParameter>
-											<loadDBTableName>prev_concept_f</loadDBTableName>									
+											<loadDBTableName>prev_concept_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Concept_Full_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 									
 										<LoadFileParameter>
-											<loadDBTableName>prev_concept_s</loadDBTableName>									
+											<loadDBTableName>prev_concept_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Concept_Snapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_concept_d</loadDBTableName>									
+											<loadDBTableName>prev_concept_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Concept_Delta_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>																			
-										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_description_f</loadDBTableName>									
+											<loadDBTableName>prev_description_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Description_Full-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_description_s</loadDBTableName>									
+											<loadDBTableName>prev_description_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Description_Snapshot-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_description_d</loadDBTableName>									
+											<loadDBTableName>prev_description_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Description_Delta-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>	
 										
 										<LoadFileParameter>
-											<loadDBTableName>prev_textdefinition_f</loadDBTableName>									
+											<loadDBTableName>prev_textdefinition_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_TextDefinition_Full-en_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_textdefinition_s</loadDBTableName>									
+											<loadDBTableName>prev_textdefinition_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_TextDefinition_Snapshot-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_textdefinition_d</loadDBTableName>									
+											<loadDBTableName>prev_textdefinition_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_TextDefinition_Delta-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 											
 										<LoadFileParameter>
-											<loadDBTableName>prev_relationship_f</loadDBTableName>									
+											<loadDBTableName>prev_relationship_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Relationship_Full_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_relationship_s</loadDBTableName>									
+											<loadDBTableName>prev_relationship_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Relationship_Snapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_relationship_d</loadDBTableName>									
+											<loadDBTableName>prev_relationship_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Relationship_Delta_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
-																				
 										<LoadFileParameter>
-											<loadDBTableName>prev_stated_relationship_f</loadDBTableName>									
+											<loadDBTableName>prev_stated_relationship_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_StatedRelationship_Full_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_stated_relationship_s</loadDBTableName>									
+											<loadDBTableName>prev_stated_relationship_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_StatedRelationship_Snapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_stated_relationship_d</loadDBTableName>									
+											<loadDBTableName>prev_stated_relationship_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_StatedRelationship_Delta_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										
@@ -272,7 +280,7 @@
 		</profile>		
 		
 		<profile>
-			<id>Load-Current-Release</id>
+			<id>load-current-release</id>
 			  <build>
 					<plugins>			
 						<plugin>
@@ -289,11 +297,18 @@
 									</goals>
 									<configuration>
 										<artifactItems>
-											<artifactItem>
+											<artifactItem>												
 												<groupId>org.ihtsdo.termmed.test</groupId>
 												<artifactId>export-runner-pa</artifactId>
 												<version>2.6.0-trek-94-SNAPSHOT</version>	
 												<type>zip</type>
+												
+												<!-- 
+												<groupId>org.ihtsdo.intl.release.process</groupId>
+												<artifactId>wb-release-process</artifactId>
+												<version>test.rel-1-SNAPSHOT</version>	
+												<type>zip</type>
+												 -->
 											</artifactItem>
 										</artifactItems>
 										<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
@@ -514,8 +529,8 @@
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts</executedSqlDirectory>
-									<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>		
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/postqa</url> -->			
+									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->		
+									<url>jdbc:mysql://mgr.servers.aceworkspace.net:3306/postqa</url> 			
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>true</breakOnFailure>
