@@ -45,9 +45,9 @@ where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-  or a.refsetid is null
-  or a.referencedcomponentid is null
-  or a.maptarget is null;
+  or b.refsetid is null
+  or b.referencedcomponentid is null
+  or b.maptarget is null;
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -68,9 +68,9 @@ where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-  or a.refsetid is null
-  or a.referencedcomponentid is null
-  or a.maptarget is null;
+  or b.refsetid is null
+  or b.referencedcomponentid is null
+  or b.maptarget is null;
 
 
 	drop view curr;

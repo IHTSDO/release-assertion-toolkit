@@ -5,7 +5,7 @@
 		
 
 
-		<script category="release-type-validation" text="The current Concept full file contains all previously published data unchanged." sqlFile="release-type-full-validation-concept.sql" uuid="84f5edda-1249-4d79-87da-e248e61f06a6">
+		<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type-validation" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged." >
 			<keywords></keywords>
 		</script>			
 		<script category="release-type-validation" text="The current Description full file contains all previously published data unchanged." sqlFile="release-type-full-validation-description.sql" uuid="492bacf0-7d88-45ba-ab26-974150ed9541">

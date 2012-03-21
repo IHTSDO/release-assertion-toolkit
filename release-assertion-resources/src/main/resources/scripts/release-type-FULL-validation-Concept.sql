@@ -34,7 +34,8 @@
 	from curr a
 	left join prev_concept_f b
 		on a.id = b.id
-	where b.id is null;
+	where b.id is null
+	or b.definitionstatusid is null;
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -45,7 +46,8 @@
 	from prev_concept_f a
 	left join curr b
 			on a.id = b.id
-	where b.id is null;
+	where b.id is null
+	or b.definitionstatusid is null;
 
 
 	drop view curr;
