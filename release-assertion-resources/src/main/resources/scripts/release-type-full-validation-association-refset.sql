@@ -41,7 +41,7 @@
     and a.refsetid = b.refsetid
     and a.referencedcomponentid = b.referencedcomponentid
     and a.targetcomponentid = b.targetcomponentid
-where b.id is null
+	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
@@ -64,7 +64,7 @@ where b.id is null
     and a.refsetid = b.refsetid
     and a.referencedcomponentid = b.referencedcomponentid
     and a.targetcomponentid = b.targetcomponentid        
-where b.id is null
+	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
