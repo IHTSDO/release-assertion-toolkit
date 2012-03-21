@@ -533,7 +533,7 @@
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
-									<breakOnFailure>true</breakOnFailure>
+									<breakOnFailure>false</breakOnFailure>
 								</configuration>
 							</execution>
 						</executions>
