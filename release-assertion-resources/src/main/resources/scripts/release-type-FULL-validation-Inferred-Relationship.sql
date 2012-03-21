@@ -42,12 +42,12 @@
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-	or a.sourceid is null
-	or a.destinationid is null
-	or a.relationshipgroup is null
-	or a.typeid is null
-	or a.characteristictypeid is null
-	or a.modifierid is null;
+	or b.sourceid is null
+	or b.destinationid is null
+	or b.relationshipgroup is null
+	or b.typeid is null
+	or b.characteristictypeid is null
+	or b.modifierid is null;
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -71,12 +71,12 @@
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-	or a.sourceid is null
-	or a.destinationid is null
-	or a.relationshipgroup is null
-	or a.typeid is null
-	or a.characteristictypeid is null
-	or a.modifierid is null;
+	or b.sourceid is null
+	or b.destinationid is null
+	or b.relationshipgroup is null
+	or b.typeid is null
+	or b.characteristictypeid is null
+	or b.modifierid is null;
 
 	drop view curr;
 
