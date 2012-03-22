@@ -534,6 +534,7 @@
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>false</breakOnFailure>
+									<databaseName>postqa</databaseName>
 								</configuration>
 							</execution>
 						</executions>

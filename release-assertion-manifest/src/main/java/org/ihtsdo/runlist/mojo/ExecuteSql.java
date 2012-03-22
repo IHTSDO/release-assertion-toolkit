@@ -99,6 +99,14 @@ public class ExecuteSql extends AbstractMojo
 	 */
 	private boolean breakOnFailure;
 
+	/**
+	 * dbConnection JDBC password
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private String databaseName;
+
 	private Connection con = null;
     private SqlFileParser sqlParser = null;
 	private StatementExecutor executor = null;
@@ -151,7 +159,7 @@ public class ExecuteSql extends AbstractMojo
 
 		createConnection(url, username, password);
 
-		sqlParser = new SqlFileParser(execProperties);
+		sqlParser = new SqlFileParser(execProperties, databaseName);
 		executor = new StatementExecutor(con, sqlParser, sqlDirectory);
 		
 		ExecutionLogger.initializeRun(sqlParser);

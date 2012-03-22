@@ -21,8 +21,14 @@ public class SqlFileParser {
 	String[] archiveContent = null;
 	private HashMap<String, String> variableMap = new HashMap<String, String>();
 	private String runId = "-1";
+	private String dbName;
 	
-	public SqlFileParser(File execProperties) throws JAXBException {
+	private final String useStatement = "use ";
+	
+
+	public SqlFileParser(File execProperties, String databaseName) throws JAXBException {
+		this.dbName = databaseName;
+		
 		JAXBContext jaxbContext = JAXBContext.newInstance(ExecProperties.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		ExecProperties properties = (ExecProperties) jaxbUnmarshaller.unmarshal(execProperties);
@@ -35,6 +41,7 @@ public class SqlFileParser {
 	public String parse(File sqlFile) throws IOException {
 		String line = null;
 		StringBuffer str = new StringBuffer();
+		str.append(useStatement + dbName + ";");
 		
 		// Put into single file
 		BufferedReader reader = new BufferedReader(new FileReader(sqlFile));
