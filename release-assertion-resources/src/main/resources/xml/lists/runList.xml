@@ -14,4 +14,8 @@
 	<script uuid="073832f4-6dc5-4781-9e56-9c3bc45d01bd" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-description.sql" text="The current data in the Description snapshot file are the same as the data in the current delta file." />
 	<script uuid="01ce3ac9-d168-4333-99d7-8d2f228f5ec9" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-stated-relationship.sql" text="The current data in the Stated Relationship snapshot file are the same as the data in the current delta file." />
 	<script uuid="177a7271-7986-433b-8506-fff39e6c1004" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-inferred-relationship.sql" text="The current data in the Inferred Relationship snapshot file are the same as the data in the current delta file." />
+	<script uuid="c837a6f8-f06a-4599-944c-eaa3a6d68c18" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-definition.sql" text="The current data in the Definition snapshot file are the same as the data in the current delta file." />
+	<!--
+	<script uuid="" category="release-type-validation" sqlFile="" text="" />
+	-->
 </runList>

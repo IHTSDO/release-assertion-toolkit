@@ -16,7 +16,7 @@
 
 	select * from curr_stated_relationship_f where id = 'a'
 ********************************************************************************/
-	use postqa;
+	
 
 	create or replace view curr as
 		select *

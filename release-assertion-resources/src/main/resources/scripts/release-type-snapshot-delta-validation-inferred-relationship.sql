@@ -12,7 +12,7 @@
 
 
 ********************************************************************************/
-	use postqa;
+	
 	
 	create or replace view snapshot as
 	select * 

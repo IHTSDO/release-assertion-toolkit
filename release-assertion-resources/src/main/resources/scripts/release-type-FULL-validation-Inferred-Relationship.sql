@@ -11,7 +11,7 @@
 	This test identifies rows in prior, not in current, and in current, not in 
 	prior.
 ********************************************************************************/
-	use postqa;
+	
 
 	create or replace view curr as
 		select *

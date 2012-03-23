@@ -1,25 +1,11 @@
 /******************************************************************************** 
-
-	PRIOR RELEASE FROM CURRENT RELEASE FULL FILE
 	release-type-SNAPSHOT-delta-validation-Description
 
-  
 	Assertion:
-	The current data in the Description snapshot file are the same as the data 
-	in the current delta file.
-
-	The current full file is the same as the prior version of the same full 
-	file, except for the delta rows. Therefore, when the delta rows are excluded 
-	from the current file, it should be identical to the prior version.
-
-	This test identifies rows in prior, not in current, and in current, not in 
-	prior.
-
-
+	The current data in the Definition snapshot file are the same as the data in 
+	the current delta file. 
 ********************************************************************************/
-	use postqa;
-	
-	create or replace view ds as
+	create or replace view des as
 	select * 
 	from curr_description_s
 	where cast(effectivetime as datetime)= 
@@ -31,8 +17,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESCRIPTION: id=',a.id, ': Concept in snapshot file, but not in delta file.') 	
-	from ds a
+		concat('DESCRIPTION: id=',a.id, ': Concept in snapshot file, but not in delta file.')
+	from  des a
 	left join curr_description_d b
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
@@ -60,7 +46,7 @@
 		'<ASSERTIONTEXT>',
 		concat('DESCRIPTION: id=',a.id, ': Concept in delta but not in snapshot file.') 	
 	from curr_description_d a
-	left join ds b
+	left join des b
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
@@ -81,7 +67,7 @@
 	or b.casesignificanceid is null;
 
 
-	drop view ds;
+	drop view des;
 	 
 	 
 	 

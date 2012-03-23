@@ -51,7 +51,20 @@
 		<script uuid="177a7271-7986-433b-8506-fff39e6c1004" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-inferred-relationship.sql" text="The current data in the Inferred Relationship snapshot file are the same as the data in the current delta file. "  >
 			<keywords>snapshot delta inferred classified distribution normal form relationship</keywords>
 		</script>	
-
+		<script uuid="c837a6f8-f06a-4599-944c-eaa3a6d68c18" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-definition.sql" text="The current data in the Definition snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>	
+	
+		<script uuid="b808204b-5608-4865-b334-50a6d113b36b" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-association-refset.sql" text="The current data in the Association refset snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>		
+	
+		<script uuid="602a3d22-b3b0-48cc-8ebb-949f96580834" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-attributevalue-refset.sql" text="The current data in the AttributeValue refset snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>
+		<script uuid="365b7d89-74d0-411e-93c6-4a3748736a3b" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simple-refset.sql" text="The current data in the Simple refset snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>			
 	<!-- rt added this as a template... 
 	
 		<script uuid="" category="release-type-validation" sqlFile="" text=""  >

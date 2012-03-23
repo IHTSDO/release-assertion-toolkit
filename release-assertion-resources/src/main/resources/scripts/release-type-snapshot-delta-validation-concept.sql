@@ -17,14 +17,15 @@
 
 
 ********************************************************************************/
-	use postqa;
 	
+	
+	/* selecting the latest components (i.e. the delta) from the snapshot */
 	create or replace view ss as
 	select * 
 	from curr_concept_s
 	where cast(effectivetime as datetime)= 
-	(select max(cast(effectivetime as datetime))
-	 from curr_concept_s);
+		(select max(cast(effectivetime as datetime))
+		 from curr_concept_s);
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
