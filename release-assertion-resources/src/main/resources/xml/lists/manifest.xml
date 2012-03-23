@@ -65,8 +65,15 @@
 		<script uuid="365b7d89-74d0-411e-93c6-4a3748736a3b" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simple-refset.sql" text="The current data in the Simple refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>			
+		<script uuid="959e11e7-9ff9-40b9-b833-387495e320d0" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simplemap-refset.sql" text="The current data in the SimpleMap refset snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>	
+
+
+
+
 	<!-- rt added this as a template... 
-	
+
 		<script uuid="" category="release-type-validation" sqlFile="" text=""  >
 			<keywords></keywords>
 		</script>	
@@ -76,3 +83,29 @@
 		
 		</useCase>
 </manifest>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
