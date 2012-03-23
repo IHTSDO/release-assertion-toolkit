@@ -68,8 +68,12 @@
 		<script uuid="959e11e7-9ff9-40b9-b833-387495e320d0" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simplemap-refset.sql" text="The current data in the SimpleMap refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>	
-
-
+		<script uuid="bd27d80a-42f1-4412-8111-fdf72fa32904" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-language-refset.sql" text="The current data in the Language refset snapshot file are the same as the data in the current delta file."  >
+			<keywords></keywords>
+		</script>	
+		<script uuid="4e49e735-d71d-44ed-bcea-82d60253d27f" category="release-type-validation" sqlFile="release-type-snapshot-validation-concept.sql" text="The current Concept snapshot file is the same as that in the previous release, except for the component that changed in the current release."  >
+			<keywords></keywords>
+		</script>	
 
 
 	<!-- rt added this as a template... 
