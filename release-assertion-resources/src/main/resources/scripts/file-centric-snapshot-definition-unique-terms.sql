@@ -1,19 +1,18 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-definition-unique-id
+	file-centric-snapshot-definition-unique-terms
 
 	Assertion:
-	ID is unique in the DEFINITION snapshot.
+	There are no duplicate Definition terms in the DEFINITION snapshot file.
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate ids */
+/* 	view of current snapshot made by finding duplicate terms in textdefinition file*/
 	create or replace view v_curr_snapshot as
-	select a.id
+	select  a.term 
 	from curr_textdefinition_s a	
-	group by a.id
-	having  count(a.id) > 1;
-	
+	group by BINARY  a.term
+	having count(a.term) > 1 ;
 
 	
 /* 	inserting exceptions in the result table */
@@ -22,8 +21,10 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in textdefinition release file.') 	
+		concat('CONCEPT: id=',a.term, ':There are no duplicate Definition terms in the DEFINITION snapshot file.') 	
 	from v_curr_snapshot a;
 
 
 	drop view v_curr_snapshot;
+
+	

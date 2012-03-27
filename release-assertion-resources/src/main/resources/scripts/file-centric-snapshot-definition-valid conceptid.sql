@@ -1,18 +1,19 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-definition-unique-id
+	file-centric-snapshot-definition-valid conceptid
 
 	Assertion:
-	ID is unique in the DEFINITION snapshot.
+	ConceptId value refers to valid concept identifier in DEFINITION snapshot.
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate ids */
+/* 	view of current snapshot made by finding invalid conceptid values  */
 	create or replace view v_curr_snapshot as
-	select a.id
-	from curr_textdefinition_s a	
-	group by a.id
-	having  count(a.id) > 1;
+	select a.conceptid
+	from curr_textdefinition_s a
+	left join curr_concept_s b
+	on a.conceptid = b.id
+	where b.id is null;
 	
 
 	
@@ -22,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in textdefinition release file.') 	
+		concat('CONCEPT: id=',a.conceptid, ':ConceptId value refers to valid concept identifier in DEFINITION snapshot.') 	
 	from v_curr_snapshot a;
 
 
