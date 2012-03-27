@@ -1,13 +1,13 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-description-unique-FSN
+	file-centric-snapshot-description-immutable
 
 	Assertion:
-	Active Fully Specified Name associated with active concepts is unique in DESCRIPTION snapshot.
+	There is a 1:1 relationship between the ‘id’ and the immutable values in DESCRIPTION snapshot.
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate active FSN associated with active concepts */
+/* 	view of current snapshot made by finding duplicate FSN */
 	create or replace view v_curr_snapshot as
 	select  a.term ,a.typeid 
 	from curr_description_s a , curr_concept_s b	
@@ -24,7 +24,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':Active Fully Specified Name is unique in DESCRIPTION snapshot.') 	
+		concat('CONCEPT: id=',a.term, ':There is a 1:1 relationship between the ‘id’ and the immutable values in DESCRIPTION snapshot.') 	
 	from v_curr_snapshot a;
 
 
