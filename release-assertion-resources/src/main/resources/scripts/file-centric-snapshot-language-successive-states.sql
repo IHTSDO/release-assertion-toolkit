@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	snapshot-language-successive-states
+	file-centric-snapshot-language-successive-states
 
 	Assertion:
 	All members inactivated in current release must have been active in the previous release.

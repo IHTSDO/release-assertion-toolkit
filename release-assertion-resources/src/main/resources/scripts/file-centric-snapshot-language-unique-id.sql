@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	snapshot-language-unique-id
+	file-centric-snapshot-language-unique-id
 
 	Assertion:
 	The current Language Refset snapshot file does not contain duplicate 

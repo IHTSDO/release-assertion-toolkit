@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	snapshot-language-unique-fsn
+	file-centric-snapshot-language-unique-fsn
 
 	Assertion:
 	Every concept's FSN exists exactly once in each language refset.

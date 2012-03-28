@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	snapshot-language-valid-descriptionid
+	file-centric-snapshot-language-valid-descriptionid
 
 	Assertion:
 	All members refer to a description that is referenced in either the 

@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	snapshot-language-unique-pt
+	file-centric-snapshot-language-unique-pt
 
 	Assertion:
 	Every concept's Preferred Term exists exactly once in each language refset.
