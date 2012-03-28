@@ -15,8 +15,8 @@
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Member Id is inactived in current release, yet was already inactive in previous release.') 
 	
-	from curr_langrefset_s a, prev_langrefset_s b
+	from curr_langrefset_s a
+	inner join prev_langrefset_s b on a.id = b.id 
 	where a.active = '0' and 
-	      b.active != '1' and 
-	      a.id = b.id and 
+	      b.active = '0' and 
 	      a.effectivetime = <CURRENT-RELEASE-DATE>
