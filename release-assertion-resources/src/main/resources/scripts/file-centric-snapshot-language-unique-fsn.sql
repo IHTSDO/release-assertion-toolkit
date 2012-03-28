@@ -10,7 +10,7 @@
 	
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		89,
+		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.conceptid, ': Concept Id's FSN doesn't exist in each language refset or exists more than once in a given language refset.') 

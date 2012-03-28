@@ -10,10 +10,10 @@
 	
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		89,
+		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Member Id is inactived in current release, yet was already inactive in previous release.') 
+		concat('MEMBER: id=',a.id, ': Member Id is inactived in current release, yet was already inactive in previous release.') 
 	
 	from curr_langrefset_s a
 	inner join prev_langrefset_s b on a.id = b.id 

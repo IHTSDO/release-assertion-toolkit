@@ -11,10 +11,10 @@
 	
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		89,
+		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Member Id refers to a description Id that is not found in either the description table nor the text definition table') 
+		concat('MEMBER: id=',a.id, ': Member Id refers to a description Id that is not found in either the description table nor the text definition table') 
 	
  		from curr_langrefset_s a
 		where referencedcomponentid not in (select id from curr_description_s) and
