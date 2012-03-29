@@ -9,10 +9,10 @@
 	
 /* 	view of current snapshot made by key values in SIMPLE MAP REFSET */
 	create or replace view v_curr_snapshot as
-	select a.id , a.refsetid , a.referencedcomponentid , a.valueid
+	select a.id , a.refsetid , a.referencedcomponentid 
 	from curr_simplemaprefset_s a 
-	group by a.id , a.refsetid , a.referencedcomponentid , a.valueid
-	having count(a.id) > 1 and count(a.refsetid) > 1 and count(a.referencedcomponentid ) > 1 and count(a.valueid) > 1;
+	group by a.id , a.refsetid , a.referencedcomponentid 
+	having count(a.id) > 1 and count(a.refsetid) > 1 and count(a.referencedcomponentid ) > 1;
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

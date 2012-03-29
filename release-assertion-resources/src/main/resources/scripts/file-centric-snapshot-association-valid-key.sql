@@ -12,7 +12,7 @@
 	select a.id , a.refsetid , a.referencedcomponentid , a.targetcomponentid
 	from curr_associationrefset_s a 
 	group by a.id , a.refsetid , a.referencedcomponentid , a.targetcomponentid
-	having count(id) > 1 and count(a.refsetid) > 1 and count(a.referencedcomponentid ) > 1 and count(targetcomponentid) > 1;
+	having count(a.id) > 1 and count(a.refsetid) > 1 and count(a.referencedcomponentid ) > 1 and count(a.targetcomponentid) > 1;
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -20,7 +20,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':Invalid keys in ASSOCIATION REFSET snapshot file.') 	
+		concat('CONCEPT: id=',a.id, ':Invalid keys in ASSOCIATION REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 	drop view v_curr_snapshot;
