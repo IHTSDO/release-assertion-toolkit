@@ -3,7 +3,7 @@
 	component-centric-snapshot-historical-association-refers-to-active
 
 	Assertion:
-	Active 'REFERS TO concept association' refset members refer to active concepts.
+	Active REFERS TO concept association refset members refer to active concepts.
 .
 
 ********************************************************************************/
@@ -12,7 +12,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('MEMBER: id=',a.id, ': Active Historical 'REFERS TO concept association' refset member concepts are active concepts..') 	
+		concat('MEMBER: id=',a.id, ': Active Historical REFERS TO concept association refset member concepts are active concepts.') 	
 	from curr_associationrefset_s a
 	inner join curr_concept_s b on a.referencedcomponentid = b.id
 	where a.active = '1'
