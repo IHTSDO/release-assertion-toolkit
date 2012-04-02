@@ -5,7 +5,7 @@
 		
 
 
-		<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type-validation" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged." >
+		<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged." >
 			<keywords></keywords>
 		</script>			
 		<script category="release-type-validation" text="The current Description full file contains all previously published data unchanged." sqlFile="release-type-full-validation-description.sql" uuid="492bacf0-7d88-45ba-ab26-974150ed9541">
@@ -17,167 +17,167 @@
 		<script uuid="b46ec8df-1bfd-4825-be49-f09ed8a0076b" category="release-type-validation" text="The current Inferred Relationship full file contains all previously published data unchanged." sqlFile="release-type-full-validation-inferred-relationship.sql">
 			<keywords>inferred relationship release type validation current prior previous distribution normal form</keywords>
 		</script>
-		<script uuid="433adc93-fdd5-462a-b1fa-11fb4045a9ec" category="release-type-validation" sqlFile="release-type-full-validation-definition.sql" text="The current Definition full file contains all previously published data unchanged."  >
+		<script uuid="433adc93-fdd5-462a-b1fa-11fb4045a9ec" category="release-type" sqlFile="release-type-full-validation-definition.sql" text="The current Definition full file contains all previously published data unchanged."  >
 			<keywords>text definition release type validation</keywords>
 		</script>	
-		<script uuid="653ce147-780e-4b3d-8afe-bd8d116c8c17" category="release-type-validation" sqlFile="release-type-full-validation-association-refset.sql" text="The current Association refset full file contains all previously published data unchanged."  >
+		<script uuid="653ce147-780e-4b3d-8afe-bd8d116c8c17" category="release-type" sqlFile="release-type-full-validation-association-refset.sql" text="The current Association refset full file contains all previously published data unchanged."  >
 			<keywords>historical association references refers resfet release type validation</keywords>
 		</script>	
-		<script uuid="1f6b5876-7714-4362-a065-3906d059a122" category="release-type-validation" sqlFile="release-type-full-validation-attributevalue-refset.sql" text="The current AttributeValue refset full file contains all previously published data unchanged."  >
+		<script uuid="1f6b5876-7714-4362-a065-3906d059a122" category="release-type" sqlFile="release-type-full-validation-attributevalue-refset.sql" text="The current AttributeValue refset full file contains all previously published data unchanged."  >
 			<keywords>attribute value concept description inactivation refset full</keywords>
 		</script>	
-		<script uuid="673cf38a-a913-4e0e-be32-356ac433ede8" category="release-type-validation" sqlFile="release-type-full-validation-simple-refset.sql" text="The current Simple refset full file contains all previously published data unchanged."  >
+		<script uuid="673cf38a-a913-4e0e-be32-356ac433ede8" category="release-type" sqlFile="release-type-full-validation-simple-refset.sql" text="The current Simple refset full file contains all previously published data unchanged."  >
 			<keywords>VTM VMP simple</keywords>
 		</script>	
-		<script uuid="c19b9008-bbc9-4209-a3d7-896d414df565" category="release-type-validation" sqlFile="release-type-full-validation-simplemap-refset.sql" text="The current SimpleMap refset full file contains all previously published data unchanged."  >
+		<script uuid="c19b9008-bbc9-4209-a3d7-896d414df565" category="release-type" sqlFile="release-type-full-validation-simplemap-refset.sql" text="The current SimpleMap refset full file contains all previously published data unchanged."  >
 			<keywords>snomedid snomed rt ctv3 simple map</keywords>
 		</script>	
-		<script uuid="f0b4c712-781a-4ca5-872e-883cf1949f12" category="release-type-validation" sqlFile="release-type-full-validation-Language-refset.sql" text="The current Language refset full file contains all previously published data unchanged."  >
+		<script uuid="f0b4c712-781a-4ca5-872e-883cf1949f12" category="release-type" sqlFile="release-type-full-validation-Language-refset.sql" text="The current Language refset full file contains all previously published data unchanged."  >
 			<keywords>US UK EN GB language</keywords>
 		</script>	
 
-		<script uuid="e2d4a6be-cd76-4e03-afe8-5c7783aaa2c7" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-concept.sql" text="The current data in the Concept snapshot file are the same as the data in the current delta file."  >
+		<script uuid="e2d4a6be-cd76-4e03-afe8-5c7783aaa2c7" category="release-type" sqlFile="release-type-snapshot-delta-validation-concept.sql" text="The current data in the Concept snapshot file are the same as the data in the current delta file."  >
 			<keywords>concept snapshot delta</keywords>
 		</script>	
 
-		<script uuid="073832f4-6dc5-4781-9e56-9c3bc45d01bd" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-description.sql" text="The current data in the Description snapshot file are the same as the data in the current delta file."  >
+		<script uuid="073832f4-6dc5-4781-9e56-9c3bc45d01bd" category="release-type" sqlFile="release-type-snapshot-delta-validation-description.sql" text="The current data in the Description snapshot file are the same as the data in the current delta file."  >
 			<keywords>snapshot delta description</keywords>
 		</script>	
 
-		<script uuid="01ce3ac9-d168-4333-99d7-8d2f228f5ec9" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-stated-relationship.sql" text="The current data in the Stated Relationship snapshot file are the same as the data in the current delta file. "  >
+		<script uuid="01ce3ac9-d168-4333-99d7-8d2f228f5ec9" category="release-type" sqlFile="release-type-snapshot-delta-validation-stated-relationship.sql" text="The current data in the Stated Relationship snapshot file are the same as the data in the current delta file. "  >
 			<keywords>snapshot delta stated relationship</keywords>
 		</script>
 
-		<script uuid="177a7271-7986-433b-8506-fff39e6c1004" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-inferred-relationship.sql" text="The current data in the Inferred Relationship snapshot file are the same as the data in the current delta file. "  >
+		<script uuid="177a7271-7986-433b-8506-fff39e6c1004" category="release-type" sqlFile="release-type-snapshot-delta-validation-inferred-relationship.sql" text="The current data in the Inferred Relationship snapshot file are the same as the data in the current delta file. "  >
 			<keywords>snapshot delta inferred classified distribution normal form relationship</keywords>
 		</script>	
-		<script uuid="c837a6f8-f06a-4599-944c-eaa3a6d68c18" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-definition.sql" text="The current data in the Definition snapshot file are the same as the data in the current delta file."  >
+		<script uuid="c837a6f8-f06a-4599-944c-eaa3a6d68c18" category="release-type" sqlFile="release-type-snapshot-delta-validation-definition.sql" text="The current data in the Definition snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>	
 	
-		<script uuid="b808204b-5608-4865-b334-50a6d113b36b" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-association-refset.sql" text="The current data in the Association refset snapshot file are the same as the data in the current delta file."  >
+		<script uuid="b808204b-5608-4865-b334-50a6d113b36b" category="release-type" sqlFile="release-type-snapshot-delta-validation-association-refset.sql" text="The current data in the Association refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>		
 	
-		<script uuid="602a3d22-b3b0-48cc-8ebb-949f96580834" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-attributevalue-refset.sql" text="The current data in the AttributeValue refset snapshot file are the same as the data in the current delta file."  >
+		<script uuid="602a3d22-b3b0-48cc-8ebb-949f96580834" category="release-type" sqlFile="release-type-snapshot-delta-validation-attributevalue-refset.sql" text="The current data in the AttributeValue refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>
-		<script uuid="365b7d89-74d0-411e-93c6-4a3748736a3b" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simple-refset.sql" text="The current data in the Simple refset snapshot file are the same as the data in the current delta file."  >
+		<script uuid="365b7d89-74d0-411e-93c6-4a3748736a3b" category="release-type" sqlFile="release-type-snapshot-delta-validation-simple-refset.sql" text="The current data in the Simple refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>			
-		<script uuid="959e11e7-9ff9-40b9-b833-387495e320d0" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-simplemap-refset.sql" text="The current data in the SimpleMap refset snapshot file are the same as the data in the current delta file."  >
+		<script uuid="959e11e7-9ff9-40b9-b833-387495e320d0" category="release-type" sqlFile="release-type-snapshot-delta-validation-simplemap-refset.sql" text="The current data in the SimpleMap refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>	
-		<script uuid="bd27d80a-42f1-4412-8111-fdf72fa32904" category="release-type-validation" sqlFile="release-type-snapshot-delta-validation-language-refset.sql" text="The current data in the Language refset snapshot file are the same as the data in the current delta file."  >
+		<script uuid="bd27d80a-42f1-4412-8111-fdf72fa32904" category="release-type" sqlFile="release-type-snapshot-delta-validation-language-refset.sql" text="The current data in the Language refset snapshot file are the same as the data in the current delta file."  >
 			<keywords></keywords>
 		</script>	
-		<script uuid="4e49e735-d71d-44ed-bcea-82d60253d27f" category="release-type-validation" sqlFile="release-type-snapshot-validation-concept.sql" text="The current Concept snapshot file is the same as that in the previous release, except for the component that changed in the current release."  >
+		<script uuid="4e49e735-d71d-44ed-bcea-82d60253d27f" category="release-type" sqlFile="release-type-snapshot-validation-concept.sql" text="The current Concept snapshot file is the same as that in the previous release, except for the component that changed in the current release."  >
 			<keywords></keywords>
 		</script>	
 		
-		<script uuid="309d0620-0a32-43a6-9d08-8e6bdefda3be" category="file-centric-validation" sqlFile="file-centric-snapshot-concept-unique-id.sql" text="ID is unique in CONCEPT snapshot."  >
+		<script uuid="309d0620-0a32-43a6-9d08-8e6bdefda3be" category="file-centric" sqlFile="file-centric-snapshot-concept-unique-id.sql" text="ID is unique in CONCEPT snapshot."  >
 			<keywords>ID is unique in CONCEPT snapshot.</keywords>
 		</script>
-		<script uuid="5f1a51a3-6200-4463-8799-d75998165278" category="file-centric-validation" sqlFile="file-centric-snapshot-concept-successive-states.sql" text="New inactive states follow active states in the CONCEPT snapshot."  >
+		<script uuid="5f1a51a3-6200-4463-8799-d75998165278" category="file-centric" sqlFile="file-centric-snapshot-concept-successive-states.sql" text="New inactive states follow active states in the CONCEPT snapshot."  >
 			<keywords>New inactive states follow active states in the CONCEPT snapshot.</keywords>
 		</script>
 		
-		<script uuid="3be8c763-a5bc-404b-af9f-a2cb681f6f3d" category="file-centric-validation" sqlFile="file-centric-snapshot-description-unique-id.sql" text="ID is unique in DESCRIPTION snapshot."  >
+		<script uuid="3be8c763-a5bc-404b-af9f-a2cb681f6f3d" category="file-centric" sqlFile="file-centric-snapshot-description-unique-id.sql" text="ID is unique in DESCRIPTION snapshot."  >
 			<keywords>ID is unique in DESCRIPTION snapshot.</keywords>
 		</script>
-		<script uuid="8ea2e5d9-5c35-4436-b67d-c5268b5da06c" category="file-centric-validation" sqlFile="file-centric-snapshot-description-unique-FSN.sql" text="Active Fully Specified Name is unique in DESCRIPTION snapshot."  >
+		<script uuid="8ea2e5d9-5c35-4436-b67d-c5268b5da06c" category="file-centric" sqlFile="file-centric-snapshot-description-unique-FSN.sql" text="Active Fully Specified Name is unique in DESCRIPTION snapshot."  >
 			<keywords>Active Fully Specified Name is unique in DESCRIPTION snapshot.</keywords>
 		</script>
-		<script uuid="2b193a88-8dab-4d19-b995-b556ed59398d" category="file-centric-validation" sqlFile="file-centric-snapshot-description-successive-states.sql" text="New inactive states follow active states in the DESCRIPTION snapshot."  >
+		<script uuid="2b193a88-8dab-4d19-b995-b556ed59398d" category="file-centric" sqlFile="file-centric-snapshot-description-successive-states.sql" text="New inactive states follow active states in the DESCRIPTION snapshot."  >
 			<keywords>New inactive states follow active states in the DESCRIPTION snapshot.</keywords>
 		</script>
-		<script uuid="1491f72c-cb00-42db-a97b-9c685f4e4cb0" category="file-centric-validation" sqlFile="file-centric-snapshot-description-valid-conceptid.sql" text="ConceptId value refers to valid concept identifier in DESCRIPTION snapshot."  >
+		<script uuid="1491f72c-cb00-42db-a97b-9c685f4e4cb0" category="file-centric" sqlFile="file-centric-snapshot-description-valid-conceptid.sql" text="ConceptId value refers to valid concept identifier in DESCRIPTION snapshot."  >
 			<keywords>ConceptId value refers to valid concept identifier in DESCRIPTION snapshot.</keywords>
 		</script>
-		<script uuid="48118153-d32a-4d1c-bfbc-23ed953e9991" category="file-centric-validation" sqlFile="file-centric-snapshot-description-immutable.sql" text="There is a 1:1 relationship between the id and the immutable values in DESCRIPTION snapshot."  >
+		<script uuid="48118153-d32a-4d1c-bfbc-23ed953e9991" category="file-centric" sqlFile="file-centric-snapshot-description-immutable.sql" text="There is a 1:1 relationship between the id and the immutable values in DESCRIPTION snapshot."  >
 			<keywords>There is a 1:1 relationship between the id and the immutable values in DESCRIPTION snapshot.</keywords>
 		</script>
 		
-		<script uuid="4ba823ce-8ae4-4b2e-beb5-e119b822cfe2" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-unique-id.sql" text="ID is unique in the DEFINITION snapshot."  >
+		<script uuid="4ba823ce-8ae4-4b2e-beb5-e119b822cfe2" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-id.sql" text="ID is unique in the DEFINITION snapshot."  >
 			<keywords>ID is unique in the DEFINITION snapshot.</keywords>
 		</script>
-		<script uuid="718cc822-73b5-42c2-9c01-f8df09a9bf8d" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-immutable.sql" text="There is a 1:1 relationship between the id and the immutable values in DEFINITION snapshot."  >
+		<script uuid="718cc822-73b5-42c2-9c01-f8df09a9bf8d" category="file-centric" sqlFile="file-centric-snapshot-definition-immutable.sql" text="There is a 1:1 relationship between the id and the immutable values in DEFINITION snapshot."  >
 			<keywords>There is a 1:1 relationship between the id and the immutable values in DEFINITION snapshot.</keywords>
 		</script>
-		<script uuid="e6082dc4-c6f4-48c6-afa3-233182336a5c" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-successive-states.sql" text="New inactive states follow active states in the DEFINITION snapshot file."  >
+		<script uuid="e6082dc4-c6f4-48c6-afa3-233182336a5c" category="file-centric" sqlFile="file-centric-snapshot-definition-successive-states.sql" text="New inactive states follow active states in the DEFINITION snapshot file."  >
 			<keywords>New inactive states follow active states in the DEFINITION snapshot file.</keywords>
 		</script>
-		<script uuid="5a83783e-3366-48bd-a50d-8f3a53812174" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-valid conceptid.sql" text="ConceptId value refers to valid concept identifier in the DEFINITION snapshot."  >
+		<script uuid="5a83783e-3366-48bd-a50d-8f3a53812174" category="file-centric" sqlFile="file-centric-snapshot-definition-valid conceptid.sql" text="ConceptId value refers to valid concept identifier in the DEFINITION snapshot."  >
 			<keywords>ConceptId value refers to valid concept identifier in the DEFINITION snapshot.</keywords>
 		</script>
-		<script uuid="de0c4d6c-6297-41be-9979-fb1c93717baa" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-cardinality.sql" text="There are zero definitions or there is one definition per concept in the DEFINITION snapshot."  >
+		<script uuid="de0c4d6c-6297-41be-9979-fb1c93717baa" category="file-centric" sqlFile="file-centric-snapshot-definition-cardinality.sql" text="There are zero definitions or there is one definition per concept in the DEFINITION snapshot."  >
 			<keywords>There are zero definitions or there is one definition per concept in the DEFINITION snapshot.</keywords>
 		</script>
 		
 		
-		<script uuid="b88b9f46-4c33-4d8e-b9ab-ddb87aef3068" category="file-centric-validation" sqlFile="file-centric-snapshot-association-successive-states.sql" text="New inactive states follow active states in the ASSOCIATION REFSET snapshot file."  >
+		<script uuid="b88b9f46-4c33-4d8e-b9ab-ddb87aef3068" category="file-centric" sqlFile="file-centric-snapshot-association-successive-states.sql" text="New inactive states follow active states in the ASSOCIATION REFSET snapshot file."  >
 			<keywords>New inactive states follow active states in the ASSOCIATION REFSET snapshot file.</keywords>
 		</script>
-		<script uuid="18a9f6b4-b66f-4af3-8c67-2a07b4655d27" category="file-centric-validation" sqlFile="file-centric-snapshot-association-unique-id.sql" text="ID is unique in the ASSOCIATION REFSET snapshot."  >
+		<script uuid="18a9f6b4-b66f-4af3-8c67-2a07b4655d27" category="file-centric" sqlFile="file-centric-snapshot-association-unique-id.sql" text="ID is unique in the ASSOCIATION REFSET snapshot."  >
 			<keywords>ID is unique in the ASSOCIATION REFSET snapshot.</keywords>
 		</script>
-		<script uuid="2ddc9a28-150d-47a4-9b0e-7dbff2efdd72" category="file-centric-validation" sqlFile="file-centric-snapshot-association-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the ASSOCIATION REFSET snapshot file."  >
+		<script uuid="2ddc9a28-150d-47a4-9b0e-7dbff2efdd72" category="file-centric" sqlFile="file-centric-snapshot-association-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the ASSOCIATION REFSET snapshot file."  >
 			<keywords>There is a 1:1 relationship between the id and the key values in the ASSOCIATION REFSET snapshot file.</keywords>
 		</script>
-		<script uuid="bec23e05-e977-4190-aa6a-137e5742f513" category="file-centric-validation" sqlFile="file-centric-snapshot-association-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the ASSOCIATION REFSET snapshot file."  >
+		<script uuid="bec23e05-e977-4190-aa6a-137e5742f513" category="file-centric" sqlFile="file-centric-snapshot-association-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the ASSOCIATION REFSET snapshot file."  >
 			<keywords>Referencedcomponentid refers to valid concepts in the ASSOCIATION REFSET snapshot file.</keywords>
 		</script>
-		<script uuid="35ec824d-b53d-4567-833e-8ce79774acae" category="file-centric-validation" sqlFile="file-centric-snapshot-association-valid-targetcomponentid.sql" text="TargetComponentId refers to valid concepts in the ASSOCIATION REFSET snapshot file."  >
+		<script uuid="35ec824d-b53d-4567-833e-8ce79774acae" category="file-centric" sqlFile="file-centric-snapshot-association-valid-targetcomponentid.sql" text="TargetComponentId refers to valid concepts in the ASSOCIATION REFSET snapshot file."  >
 			<keywords>TargetComponentId refers to valid concepts in the ASSOCIATION REFSET snapshot file.</keywords>
 		</script>
-		<script uuid="2aa0bea1-b1fa-4543-b277-b4392a6f864d" category="file-centric-validation" sqlFile="file-centric-snapshot-attribute-value-successive-states.sql" text="New inactive states follow active states in the ATTRIBUTEVALUE snapshot."  >
+		<script uuid="2aa0bea1-b1fa-4543-b277-b4392a6f864d" category="file-centric" sqlFile="file-centric-snapshot-attribute-value-successive-states.sql" text="New inactive states follow active states in the ATTRIBUTEVALUE snapshot."  >
 			<keywords>New inactive states follow active states in the ATTRIBUTEVALUE snapshot.</keywords>
 		</script>
-		<script uuid="e202807d-915d-4c8a-8f02-c6e4e6f969fc" category="file-centric-validation" sqlFile="file-centric-snapshot-attribute-value-unique-id.sql" text="ID is unique in the ATTRIBUTE VALUE snapshot."  >
+		<script uuid="e202807d-915d-4c8a-8f02-c6e4e6f969fc" category="file-centric" sqlFile="file-centric-snapshot-attribute-value-unique-id.sql" text="ID is unique in the ATTRIBUTE VALUE snapshot."  >
 			<keywords>ID is unique in the ATTRIBUTE VALUE snapshot.</keywords>
 		</script>
-		<script uuid="d5c80582-ad32-4f26-a729-a91fe04a06b2" category="file-centric-validation" sqlFile="file-centric-snapshot-attribute-value-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the ATTRIBUTEVALUE snapshot file."  >
+		<script uuid="d5c80582-ad32-4f26-a729-a91fe04a06b2" category="file-centric" sqlFile="file-centric-snapshot-attribute-value-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the ATTRIBUTEVALUE snapshot file."  >
 			<keywords>Referencedcomponentid refers to valid concepts in the ATTRIBUTEVALUE snapshot file.</keywords>
 		</script>
-		<script uuid="ddc754ab-0965-4ae2-b95d-6b0f8392e276" category="file-centric-validation" sqlFile="file-centric-snapshot-attribute-value-valid-valueid.sql" text="ValueId refers to valid concepts in the ATTRIBUTE VALUE snapshot."  >
+		<script uuid="ddc754ab-0965-4ae2-b95d-6b0f8392e276" category="file-centric" sqlFile="file-centric-snapshot-attribute-value-valid-valueid.sql" text="ValueId refers to valid concepts in the ATTRIBUTE VALUE snapshot."  >
 			<keywords>ValueId refers to valid concepts in the ATTRIBUTE VALUE snapshot.</keywords>
 		</script>
-		<script uuid="88315a11-4e71-49d2-977f-a5d5ac2a4dc4" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-map-successive-states.sql" text="New inactive states follow active states in the SIMPLE MAP REFSET snapshot."  >
+		<script uuid="88315a11-4e71-49d2-977f-a5d5ac2a4dc4" category="file-centric" sqlFile="file-centric-snapshot-simple-map-successive-states.sql" text="New inactive states follow active states in the SIMPLE MAP REFSET snapshot."  >
 			<keywords>New inactive states follow active states in the SIMPLE MAP REFSET snapshot.</keywords>
 		</script>
-		<script uuid="ad7ae768-d14a-4f15-a5cb-4c56b8b4fed6" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-map-unique-id.sql" text="ID is unique in the SIMPLEMAP REFSET snapshot."  >
+		<script uuid="ad7ae768-d14a-4f15-a5cb-4c56b8b4fed6" category="file-centric" sqlFile="file-centric-snapshot-simple-map-unique-id.sql" text="ID is unique in the SIMPLEMAP REFSET snapshot."  >
 			<keywords>ID is unique in the SIMPLEMAP REFSET snapshot.</keywords>
 		</script>
-		<script uuid="3cb10511-33b7-4eca-ba0e-93bcccf70d86" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-map-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the SIMPLE MAP REFSET snapshot."  >
+		<script uuid="3cb10511-33b7-4eca-ba0e-93bcccf70d86" category="file-centric" sqlFile="file-centric-snapshot-simple-map-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the SIMPLE MAP REFSET snapshot."  >
 			<keywords>There is a 1:1 relationship between the id and the key values in the SIMPLE MAP REFSET snapshot.</keywords>
 		</script>
-		<script uuid="9190473a-29f7-40fc-b879-9ae0d038b681" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-refset-successive-states.sql" text="New inactive states follow active states in the SIMPLE REFSET snapshot."  >
+		<script uuid="9190473a-29f7-40fc-b879-9ae0d038b681" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-successive-states.sql" text="New inactive states follow active states in the SIMPLE REFSET snapshot."  >
 			<keywords>New inactive states follow active states in the SIMPLE REFSET snapshot.</keywords>
 		</script>
-		<script uuid="1cd8b7f9-5730-4db9-b508-13575825b28f" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-refset-unique-id.sql" text="ID is unique in the SIMPLE REFSET snapshot."  >
+		<script uuid="1cd8b7f9-5730-4db9-b508-13575825b28f" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-unique-id.sql" text="ID is unique in the SIMPLE REFSET snapshot."  >
 			<keywords>ID is unique in the SIMPLE REFSET snapshot.</keywords>
 		</script>
-		<script uuid="c779d282-3c4d-4c16-a8a6-8d1a621b247d" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-refset-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the SIMPLE REFSET snapshot."  >
+		<script uuid="c779d282-3c4d-4c16-a8a6-8d1a621b247d" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the SIMPLE REFSET snapshot."  >
 			<keywords>There is a 1:1 relationship between the id and the key values in the SIMPLE REFSET snapshot.</keywords>
 		</script>
-		<script uuid="6a407415-8415-4870-a6ef-b5bc22f73c1f" category="file-centric-validation" sqlFile="file-centric-snapshot-simple-refset-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the SIMPLE REFSET snapshot."  >
+		<script uuid="6a407415-8415-4870-a6ef-b5bc22f73c1f" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the SIMPLE REFSET snapshot."  >
 			<keywords>Referencedcomponentid refers to valid concepts in the SIMPLE REFSET snapshot.</keywords>
 		</script>
 		
-		<script uuid="eff30fb0-7856-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-successive-states.sql" text="All members inactivated in current release must have been active in the previous release." />
-		<script uuid="f5d9ae70-7856-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-valid-descriptionid.sql" text="All members refer to a description that is referenced in either the description table or the text definition table." />
-		<script uuid="fc24db60-7856-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-unique-id.sql" text="The current Language Refset snapshot file does not contain duplicate Member Ids." />
-		<script uuid="ffe6c560-7856-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-unique-fsn.sql" text="Every concept's FSN exists exactly once in each language refset." />
-		<script uuid="03cf9850-7857-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-unique-pt.sql" text="Every concept's Preferred Term exists exactly once in each language refset." />
+		<script uuid="eff30fb0-7856-11e1-b0c4-0800200c9a66" category="file-centric" sqlFile="file-centric-snapshot-language-successive-states.sql" text="All members inactivated in current release must have been active in the previous release." />
+		<script uuid="f5d9ae70-7856-11e1-b0c4-0800200c9a66" category="file-centric" sqlFile="file-centric-snapshot-language-valid-descriptionid.sql" text="All members refer to a description that is referenced in either the description table or the text definition table." />
+		<script uuid="fc24db60-7856-11e1-b0c4-0800200c9a66" category="file-centric" sqlFile="file-centric-snapshot-language-unique-id.sql" text="The current Language Refset snapshot file does not contain duplicate Member Ids." />
+		<script uuid="ffe6c560-7856-11e1-b0c4-0800200c9a66" category="file-centric" sqlFile="file-centric-snapshot-language-unique-fsn.sql" text="Every concept's FSN exists exactly once in each language refset." />
+		<script uuid="03cf9850-7857-11e1-b0c4-0800200c9a66" category="file-centric" sqlFile="file-centric-snapshot-language-unique-pt.sql" text="Every concept's Preferred Term exists exactly once in each language refset." />
 
-		<script uuid="e46efcb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-refers-to-active.sql" text="Active 'REFERS TO concept association' refset members refer to active concepts." />
-		<script uuid="eb940ee0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-active-target.sql" text="Active historical association refset members have active concepts as targets." />
-		<script uuid="f2293d20-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-concept-primitive.sql" text="All Concepts having only one defining relationship have 'definitionstatus PRIMITIVE." />
-		<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
-		<script uuid="fdf6a1b0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-concept-inactive-definitionstatusid.sql" text="All inactive concepts have definition status of PRIMITIVE." />
+		<script uuid="e46efcb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-refers-to-active.sql" text="Active 'REFERS TO concept association' refset members refer to active concepts." />
+		<script uuid="eb940ee0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-target.sql" text="Active historical association refset members have active concepts as targets." />
+		<script uuid="f2293d20-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-primitive.sql" text="All Concepts having only one defining relationship have 'definitionstatus PRIMITIVE." />
+		<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
+		<script uuid="fdf6a1b0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-inactive-definitionstatusid.sql" text="All inactive concepts have definition status of PRIMITIVE." />
 
 		<!-- Invalid assertion as discussed with RT
-		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
+		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
 			<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
 		</script>
 		-->
@@ -186,7 +186,7 @@
 		
 	<!-- rt added this as a template... 
 
-		<script uuid="" category="release-type-validation" sqlFile="" text=""  >
+		<script uuid="" category="release-type" sqlFile="" text=""  >
 			<keywords></keywords>
 		</script>	
 		

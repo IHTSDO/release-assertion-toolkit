@@ -24,11 +24,11 @@ public class StatementExecutor {
 	}
 	 
 	public boolean execute(Script script) throws SQLException, IOException {
-		if (script.getSqlFile().length() == 0) {
+		if (script.getCategory().length() == 0 || script.getSqlFile().length() == 0) {
 			return false;
 		}
 		
-		File sqlFile = new File(sqlDirectory + File.separator +  script.getSqlFile());
+		File sqlFile = new File(sqlDirectory + File.separator + script.getCategory() + File.separator + script.getSqlFile());
 		
 		if (!sqlFile.exists()) {
 			return false;

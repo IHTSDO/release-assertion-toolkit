@@ -166,7 +166,12 @@ public class ExecuteSql extends AbstractMojo
 	}
 	
 	private void archiveExecutedFiles(String[] lines) throws IOException {
-		File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getSqlFile());
+		File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
+		if (!targetCategoryDir.exists()) {
+			targetCategoryDir.mkdir();
+		}
+		
+		File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(executedFile));
 		
 		for (int i = 0; i < lines.length; i++) {
