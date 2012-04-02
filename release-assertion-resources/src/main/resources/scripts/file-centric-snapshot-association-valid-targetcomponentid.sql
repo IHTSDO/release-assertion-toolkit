@@ -7,7 +7,7 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate identifiers */
+/* 	view of current snapshot made by finding invalid TargetComponentId */
 	create or replace view v_curr_snapshot as
 	select a.targetcomponentid
 	from curr_associationrefset_s a
