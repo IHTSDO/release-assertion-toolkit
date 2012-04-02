@@ -116,7 +116,9 @@ public class SqlFileParser {
 	}
 
 	public void initializeRunId(StatementExecutor executor, String sqlDirectory) throws Exception {
-		RunTableProcessor processor = new RunTableProcessor(sqlDirectory);	
+		String prepend = useStatement + dbName + ";";
+
+		RunTableProcessor processor = new RunTableProcessor(sqlDirectory, prepend);	
 		
 		runId  = processor.getRunId(this, executor);
 		String executionDate = processor.getExecutionDate();
