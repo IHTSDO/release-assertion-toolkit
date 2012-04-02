@@ -68,7 +68,7 @@
 	<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
 	<script uuid="fdf6a1b0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-inactive-definitionstatusid.sql" text="All inactive concepts have definition status of PRIMITIVE." />
 
-	<script uuid="2e4fd620-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-inactive-concepts.sql" text="Active 'All inferred relationships in which the source concept is inactive, are inactive relationships." />
+	<script uuid="2e4fd620-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-inactive-concepts.sql" text="All inferred relationships in which the source concept is inactive, are inactive relationships." />
 	<script uuid="32b41aa0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-inactive-modifier.sql" text="Inferred relationship modifier is always SOME." />
 	<script uuid="36f43550-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-isa-relgroup.sql" text="All inferred is-a relationships have relationship group of 0." />
 	<script uuid="3ab84230-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-one-isa.sql" text="All concepts have at least one inferred is-a relationship." />
