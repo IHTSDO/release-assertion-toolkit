@@ -67,7 +67,19 @@
 	<script uuid="f2293d20-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-primitive.sql" text="All Concepts having only one defining relationship have 'definitionstatus PRIMITIVE." />
 	<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
 	<script uuid="fdf6a1b0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-inactive-definitionstatusid.sql" text="All inactive concepts have definition status of PRIMITIVE." />
-	
+
+	<script uuid="2e4fd620-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-inactive-concepts.sql" text="Active 'All inferred relationships in which the source concept is inactive, are inactive relationships." />
+	<script uuid="32b41aa0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-inactive-modifier.sql" text="Inferred relationship modifier is always SOME." />
+	<script uuid="36f43550-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-isa-relgroup.sql" text="All inferred is-a relationships have relationship group of 0." />
+	<script uuid="3ab84230-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-one-isa.sql" text="All concepts have at least one inferred is-a relationship." />
+	<script uuid="411e9840-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-rel-groups.sql" text="Relationship groups contain at least 2 relationships." />
+	<script uuid="4572d730-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-inferred-unique-per-concept.sql" text="No Concept has 2 inferred relationships with the same type, destination and group." />
+	<script uuid="49487040-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-inactive-concepts.sql" text="All stated relationships in which the source concept is inactive, are inactive relationships." />
+	<script uuid="4d32c9d0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-inactive-modifier.sql" text="Stated relationship modifier is always SOME." />
+	<script uuid="50e809a0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-isa-relgroup.sql" text="All stated is-a relationships have relationship group of 0." />
+	<script uuid="5555c400-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-one-isa.sql" text="All concepts have at least one stated is-a relationship." />
+	<script uuid="59b574a0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-rel-groups.sql" text="Relationship groups contain at least 2 relationships." />
+	<script uuid="5d27df10-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-unique-per-concept.sql" text="No Concept has 2 stated relationships with the same type, destination and group." />
 
 	<!--
 	<script uuid="" category="release-type" sqlFile="" text="" />
