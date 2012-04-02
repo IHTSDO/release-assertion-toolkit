@@ -170,6 +170,12 @@
 		<script uuid="ffe6c560-7856-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-unique-fsn.sql" text="Every concept's FSN exists exactly once in each language refset." />
 		<script uuid="03cf9850-7857-11e1-b0c4-0800200c9a66" category="file-centric-validation" sqlFile="file-centric-snapshot-language-unique-pt.sql" text="Every concept's Preferred Term exists exactly once in each language refset." />
 
+		<script uuid="e46efcb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-refers-to-active.sql" text="Active 'REFERS TO concept association' refset members refer to active concepts." />
+		<script uuid="eb940ee0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-active-target.sql" text="Active historical association refset members have active concepts as targets." />
+		<script uuid="f2293d20-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-concept-primitive.sql" text="All Concepts having only one defining relationship have 'definitionstatus PRIMITIVE." />
+		<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
+		<script uuid="fdf6a1b0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-concept-inactive-definitionstatusid.sql" text="All inactive concepts have definition status of PRIMITIVE." />
+
 		<!-- Invalid assertion as discussed with RT
 		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
 			<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
