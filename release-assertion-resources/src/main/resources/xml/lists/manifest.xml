@@ -201,12 +201,32 @@
 		<script uuid="5555c400-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-one-isa.sql" text="All concepts have at least one stated is-a relationship." />
 		<script uuid="59b574a0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-rel-groups.sql" text="Relationship groups contain at least 2 relationships." />
 		<script uuid="5d27df10-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-unique-per-concept.sql" text="No Concept has 2 stated relationships with the same type, destination and group." />
+		
+<!--<script uuid="19423070-7118-45bd-98ba-6d0dc18bc619" category="component-centric" sqlFile="component-centric-snapshot-description-fsn-synonym-text.sql" text="For each active FSN there is a synonym that has the same text." />-->
+	<script uuid="57d910b4-b5c9-459e-8bae-ae0ea9035585" category="component-centric" sqlFile="component-centric-snapshot-description-trim.sql" text="No active Terms contain leading or trailing spaces." />
+	<script uuid="e95acdbd-0a20-4010-9e78-00e70491e800" category="component-centric" sqlFile="component-centric-snapshot-description-synonym-tag.sql" text="No synonyms have semantic tags." />
+	<script uuid="32369add-8d9f-48de-a129-29b32c79a9d7" category="component-centric" sqlFile="component-centric-snapshot-description-space-before-tag.sql" text="All FSNs have a space before the semantic tag." />
+	<script uuid="a4ed3a89-170e-4d9c-995a-716447c4fe64" category="component-centric" sqlFile="component-centric-snapshot-description-fsn-tag.sql" text="All active FSNs have a semantic tag." />
+	<script uuid="2d6c61e5-a04d-4115-be18-eeba2a44b835" category="component-centric" sqlFile="component-centric-snapshot-description-double-spaces.sql" text="No active Terms contain double spaces." />
+	<script uuid="5a605c09-db1e-453f-aa4a-064faab2d310" category="component-centric" sqlFile="component-centric-snapshot-description-closing-parens.sql" text="All FSNs end in closing parentheses." />
+	<script uuid="dd0d0406-7481-444a-9f04-b6fc7db49039" category="component-centric" sqlFile="component-centric-snapshot-description-fsn-uppercase.sql" text="The first letter of the FSN should be capitalized." />
+	<script uuid="2e0eb135-fd7d-4f24-83c1-0cba797ee766" category="component-centric" sqlFile="component-centric-snapshot-description-unique-term-in-concept.sql" text="For a given concept, all description terms are unique." />
+	
+	<script uuid="b4930ea7-4078-4599-979c-2dde18164f01" category="component-centric" sqlFile="component-centric-snapshot-definition-always-case-sensitive.sql" text="All definitions are case sensitive." />
+	<script uuid="73e46e72-6fdb-407b-9d50-d86a36a3a862" category="component-centric" sqlFile="component-centric-snapshot-definition-always-preferred.sql" text="All definitions are preferred." />
+	<script uuid="da3ae7c4-6144-4cd5-9530-2a7780c53c9a" category="component-centric" sqlFile="component-centric-snapshot-definition-trim.sql" text="No active Terms contain leading or trailing spaces." />
+	<script uuid="f7b7cefe-858d-4749-ab98-7106700feaee" category="component-centric" sqlFile="component-centric-snapshot-definition-double-spaces.sql" text="No active Terms contain double spaces." />
+	<script uuid="6138248d-8cc8-4bc2-8043-cd609fdd640c" category="component-centric" sqlFile="component-centric-snapshot-definition-uppercase.sql" text="The first letter of the Term should be capitalized." />
+	
+	<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
 
 		<!-- Invalid assertion as discussed with RT
 		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
 			<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
 		</script>
 		-->
+		
+		
 		
 		
 		
