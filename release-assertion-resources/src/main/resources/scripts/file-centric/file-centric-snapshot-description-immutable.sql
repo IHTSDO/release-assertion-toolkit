@@ -20,7 +20,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':There is a 1:1 relationship between the id and the immutable values in DESCRIPTION snapshot.') 	
+		concat('CONCEPT: id=',a.id, ':There is a 1:1 relationship between the id and the immutable values in DESCRIPTION snapshot.') 	
 	from v_curr_snapshot a;
 
 

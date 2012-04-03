@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.valueid, ':'Invalid ValueId in the ATTRIBUTE VALUE REFSET snapshot file.')
+		concat('CONCEPT: valueid=',a.valueid, ':'Invalid valueId in the ATTRIBUTE VALUE REFSET snapshot file.')
 	from v_curr_snapshot a;
 
 

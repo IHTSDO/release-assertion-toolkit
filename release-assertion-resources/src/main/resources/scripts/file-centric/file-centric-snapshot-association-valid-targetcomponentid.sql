@@ -11,7 +11,7 @@
 	create or replace view v_curr_snapshot as
 	select a.targetcomponentid
 	from curr_associationrefset_s a
-	right join curr_concept_s b
+	left join curr_concept_s b
 	on a.targetcomponentid = b.id
 	where b.id is null;
 	
@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.targetcomponentid, ':'Invalid TargetComponentId in the ASSOCIATION REFSET snapshot file.')
+		concat('CONCEPT: Targetcomponentid=',a.targetcomponentid, ':'Invalid TargetComponentId in the ASSOCIATION REFSET snapshot file.')
 	from v_curr_snapshot a;
 
 
