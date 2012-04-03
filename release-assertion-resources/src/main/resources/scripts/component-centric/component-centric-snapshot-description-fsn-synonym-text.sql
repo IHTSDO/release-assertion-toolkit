@@ -10,7 +10,7 @@
 /* 	view of current snapshot made by finding active FSN's and removing tags */
 
 
-	create table v_curr_snapshot as
+	create table v_curr_snapshot_1 as
 	select SUBSTRING_INDEX(term, '(', 1) as term , a.id , a.conceptid
 	from curr_description_s a , curr_concept_s b
 	where a.typeid in ('900000000000003001')
@@ -22,27 +22,11 @@
 	
 	create table v_curr_snapshot_2 as
 	select a.* 
-	from v_curr_snapshot a ,  curr_description_s b
+	from v_curr_snapshot_1 a ,  curr_description_s b
 	where b.typeid in ('900000000000013009')
 	and a.conceptid = b.conceptid
 	and a.term = b.term;
 	 
-	select *
-	from v_curr_snapshot a 
-	left join v_curr_snapshot_2 b
-	on a.id = b.id
-	where b.id is null;
-	
-
-select a.targetcomponentid
-	from curr_associationrefset_s a
-	left join curr_concept_s b
-	on a.targetcomponentid = b.id
-	where b.id is null;
-	
-
-	
-
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -50,10 +34,13 @@ select a.targetcomponentid
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Synonyms with semantic tag.') 	
-	from v_curr_snapshot a;
+		concat('CONCEPT: term=',a.term, ':Active FSN without correponding Synonyms.') 	
+	from v_curr_snapshot_1 a 
+	left join v_curr_snapshot_2 b
+	on a.id = b.id
+	where b.id is null;
 
 
-	drop table v_curr_snapshot;
-
+	drop table v_curr_snapshot_1;
+	drop table v_curr_snapshot_2;
 	
