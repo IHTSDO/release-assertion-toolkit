@@ -13,10 +13,10 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ': Concept Id's Preferred Term doesn't exist in each language refset or exists more than once in a given language refset.') 
+		concat('CONCEPT: id=',a.conceptid, ': Concept does not contain exactly one preferred term in a given language refset.') 
 	
 	from curr_description_s a 
 	INNER JOIN curr_langrefset_s b on a.id = b.referencedComponentid
-        where b.acceptabilityid = '900000000000548007' -- preferred
+        where b.acceptabilityid = '900000000000548007' 
         GROUP BY b.referencedcomponentid, b.refsetid
         having count(b.referencedcomponentid) != 1
