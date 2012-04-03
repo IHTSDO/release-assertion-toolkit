@@ -16,7 +16,6 @@
 	having count(a.term) > 1 and count(a.conceptid) > 1
 	order by a.term , a.conceptid;
 	
-	--select * from curr_description_s where conceptid in (157754004 , 269432007);
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

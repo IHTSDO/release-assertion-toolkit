@@ -9,7 +9,8 @@
 	
 /* 	view of current snapshot made by finding FSN's not ending with closing parantheses */
 	create or replace view v_curr_snapshot as
-	select * from curr_description_s a , curr_concept_s b
+	select a.term 
+	from curr_description_s a , curr_concept_s b
 	where a.typeid in ('900000000000003001')	
 	and a.conceptid = b.id
 	and b.active =1 
@@ -24,7 +25,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':Fully Specified Name not ending with closing parantheses.') 	
+		concat('CONCEPT: Term=',a.term, ':Fully Specified Name not ending with closing parantheses.') 	
 	from v_curr_snapshot a;
 
 
