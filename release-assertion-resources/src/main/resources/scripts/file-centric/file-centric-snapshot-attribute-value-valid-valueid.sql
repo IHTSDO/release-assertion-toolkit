@@ -15,7 +15,6 @@
 	on a.valueid = b.id
 	where b.id is null;
 	
-
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -23,8 +22,10 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: valueid=',a.valueid, ':'Invalid valueId in the ATTRIBUTE VALUE REFSET snapshot file.')
+		concat('ATT RF: id=',a.valueid, ':Invalid valueId.') 	
 	from v_curr_snapshot a;
+
+
 
 
 	drop view v_curr_snapshot;
