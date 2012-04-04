@@ -102,6 +102,8 @@
 	<script uuid="f7b7cefe-858d-4749-ab98-7106700feaee" category="component-centric" sqlFile="component-centric-snapshot-definition-double-spaces.sql" text="No active Terms contain double spaces." />
 	<script uuid="6138248d-8cc8-4bc2-8043-cd609fdd640c" category="component-centric" sqlFile="component-centric-snapshot-definition-uppercase.sql" text="The first letter of the Term should be capitalized." />
 	<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
+	<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-balanced parentheses.sql" text="Terms contains balanced parentheses." />
+	<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
 
 	<!--
 	<script uuid="" category="release-type" sqlFile="" text="" />
