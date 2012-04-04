@@ -81,9 +81,13 @@
 	<script uuid="5555c400-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-one-isa.sql" text="All concepts have at least one stated is-a relationship." />
 	<script uuid="59b574a0-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-rel-groups.sql" text="Relationship groups contain at least 2 relationships." />
 	<script uuid="5d27df10-7d08-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-stated-unique-per-concept.sql" text="No Concept has 2 stated relationships with the same type, destination and group." />
-	
-	
-	
+
+	<script uuid="d76f1430-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-inactive-members.sql" text="Members are inactive for inactive descriptions in the snapshot file." />
+	<script uuid="e658fb00-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-unique-term.sql" text="Terms in a language refset are unique for a given concept." />
+	<script uuid="f636b7b0-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-active-members.sql" text="Members are active for active descriptions in the snapshot file." />
+	<script uuid="00e87310-7e9b-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-unique-description.sql" text="There is one and only one active Definition per concept per dialect in the snapshot file." />
+		
+
 	<!--
 	<script uuid="19423070-7118-45bd-98ba-6d0dc18bc619" category="component-centric" sqlFile="component-centric-snapshot-description-fsn-synonym-text.sql" text="For each active FSN there is a synonym that has the same text." />
 	-->
