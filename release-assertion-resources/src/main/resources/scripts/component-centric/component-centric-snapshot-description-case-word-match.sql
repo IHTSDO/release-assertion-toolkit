@@ -19,7 +19,7 @@
 	and a.conceptid = b.id;
 	
 	create or replace view v_curr_snapshot_2 as
-	select a.conceptid , a.term , b.term ,  a.casesignificanceid , b.casesignificanceid
+	select a.conceptid , a.term ,  a.casesignificanceid 
 	from v_curr_snapshot_1 a , curr_description_s b , curr_concept_s c
 	where b.casesignificanceid = 900000000000020002
 	and b.active = 1
@@ -36,7 +36,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.conceptid, ':Terms not sharing case-sensitivity.') 	
-	from v_curr_snapshot a;
+	from v_curr_snapshot_2 a;
 
 
 	drop view v_curr_snapshot_1;

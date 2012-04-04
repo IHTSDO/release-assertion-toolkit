@@ -14,9 +14,8 @@
 	left join curr_concept_s b
 	on a.targetcomponentid = b.id
 	where b.id is null;
-	
-	
-/* 	inserting exceptions in the result table */
+
+/* 	inserting exceptions in the result table 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
@@ -24,6 +23,5 @@
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: Targetcomponentid=',a.targetcomponentid, ':'Invalid TargetComponentId in the ASSOCIATION REFSET.')
 	from v_curr_snapshot a;
-
-
+*/	
 	drop view v_curr_snapshot;

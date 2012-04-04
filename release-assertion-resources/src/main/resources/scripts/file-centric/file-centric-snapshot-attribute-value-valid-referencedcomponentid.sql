@@ -8,14 +8,14 @@
 ********************************************************************************/
 	
 /* 	view of current snapshot made by finding invalid referencedcomponentid */
-	create table v_curr_snapshot as
+	create table curr_snapshot as
 	select a.referencedcomponentid
 	from curr_attributevaluerefset_s a
 	left join curr_concept_s b
 	on a.referencedcomponentid = b.id
 	where b.id is null;
 		
-	delete from v_curr_snapshot 
+	delete from curr_snapshot 
 	where referencedcomponentid in(
 		select id
 		from curr_description_s);
@@ -27,7 +27,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.referencedcomponentid, ':Invalid Referencedcomponentid in ATTRIBUTEVALUE REFSET snapshot.') 	
-	from v_curr_snapshot a;
+	from curr_snapshot a;
 	
 	
-	drop table v_curr_snapshot;
+	drop table curr_snapshot;
