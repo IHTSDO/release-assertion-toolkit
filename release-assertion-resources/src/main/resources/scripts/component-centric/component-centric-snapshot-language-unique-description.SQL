@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-language-unique-description
+	component-centric-snapshot-language-unique-description
 
 	Assertion:
 	There is one and only one active Definition per concept per dialect in 

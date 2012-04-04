@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-language-active-members
+	component-centric-snapshot-language-active-members
 
 	Assertion:
 	Members are active for active descriptions in the snapshot file.

@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-language-inactive-members
+	component-centric-snapshot-language-inactive-members
 
 	Assertion:
 	Members are inactive for inactive descriptions in the snapshot file.

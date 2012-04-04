@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-language-unique-term
+	component-centric-snapshot-language-unique-term
 
 	Assertion:
 	Terms in a language refset are unique for a given concept.
