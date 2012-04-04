@@ -7,14 +7,14 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate identifiers */
+/* 	view of current snapshot made by finding invalid valueid identifiers */
 	create or replace view v_curr_snapshot as
 	select a.valueid
 	from curr_attributevaluerefset_s a
 	left join curr_concept_s b
 	on a.valueid = b.id
 	where b.id is null;
-	
+		
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

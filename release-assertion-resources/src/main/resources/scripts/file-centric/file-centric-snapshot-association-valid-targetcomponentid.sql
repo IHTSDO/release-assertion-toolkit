@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: Targetcomponentid=',a.targetcomponentid, ':'Invalid TargetComponentId in the ASSOCIATION REFSET snapshot file.')
+		concat('CONCEPT: Targetcomponentid=',a.targetcomponentid, ':'Invalid TargetComponentId in the ASSOCIATION REFSET.')
 	from v_curr_snapshot a;
 
 
