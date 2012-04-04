@@ -2,6 +2,8 @@ package org.ihtsdo.runlist.mojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.ihtsdo.sql.parser.SqlFileParser;
@@ -10,8 +12,15 @@ import org.ihtsdo.xml.elements.Script;
 public class ExecutionLogger {
 	private static Logger logger = Logger.getLogger(ExecuteSql.class);
     final private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private Set<String> observedUids = new HashSet<String>();
 
 	public long initializeScript(Script currentScript) {
+		if (observedUids.contains(currentScript.getUuid())) {
+			logger.error("Found duplicate UUID: " + currentScript.getUuid());
+		} else {
+			observedUids.add(currentScript.getUuid());
+		}
+		
 		StringBuffer str = new StringBuffer();
 		Date d = new Date();
 		String startDate = "'" + dateFormatter.format(d) + "'";
