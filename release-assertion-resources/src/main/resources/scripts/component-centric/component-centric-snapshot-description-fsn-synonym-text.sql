@@ -8,25 +8,30 @@
 ********************************************************************************/
 	
 /* 	view of current snapshot made by finding active FSN's and removing tags */
-
-
-	create table v_curr_snapshot_1 as
-	select SUBSTRING_INDEX(term, '(', 1) as term , a.id , a.conceptid
+	create or replace view v_curr_snapshot_1 as
+	select SUBSTRING_INDEX(term, '(', 1) as termwithouttag , a.id , a.conceptid , a.term
 	from curr_description_s a , curr_concept_s b
-	where a.typeid in ('900000000000003001')
+	where a.typeid ='900000000000003001'
 	and a.active = 1
 	and a.conceptid = b.id
 	and b.active = 1;
 	
 /* 	finding all the active FSN's match with corresponding synonym */	
 	
-	create table v_curr_snapshot_2 as
+	create or replace view v_curr_snapshot_2 as
 	select a.* 
 	from v_curr_snapshot_1 a ,  curr_description_s b
-	where b.typeid in ('900000000000013009')
+	where b.typeid ='900000000000013009'
 	and a.conceptid = b.conceptid
-	and a.term = b.term;
-	 
+	and a.termwithouttag = b.term;
+	
+/* 	finding the active FSN's doesn't have corresponding synonym */		
+	create or replace view v_curr_snapshot_3 as
+	select a.*  
+	from v_curr_snapshot_1 a 
+	left join v_curr_snapshot_2 b
+	on a.id = b.id
+	where b.id is null;
 	
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -34,13 +39,11 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Active FSN without correponding Synonyms.') 	
-	from v_curr_snapshot_1 a 
-	left join v_curr_snapshot_2 b
-	on a.id = b.id
-	where b.id is null;
+		concat('TEXTDEF: id=',a.id, ':Active FSN without correponding Synonyms.') 	
+	from v_curr_snapshot_3 a;
 
 
-	drop table v_curr_snapshot_1;
-	drop table v_curr_snapshot_2;
+	drop view v_curr_snapshot_1;
+	drop view v_curr_snapshot_2;
+	drop view v_curr_snapshot_3;
 	
