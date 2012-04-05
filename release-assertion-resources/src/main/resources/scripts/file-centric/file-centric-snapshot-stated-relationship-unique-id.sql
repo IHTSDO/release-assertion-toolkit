@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-language-stated-relationshipunique-id
+	file-centric-snapshot-stated-relationshipunique-id
 
 	Assertion:
 	The current Stated Relationship snapshot file does not contain duplicate 
@@ -14,7 +14,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('RELATIONSHIP: id=',id, ': Relationship Id is repeated in the language refset snapshot file.') 
+		concat('RELATIONSHIP: id=',id, ': Relationship Id is repeated in the Stated Relationship snapshot file.') 
 	
 	from curr_stated_relationship_s
 	group by id
