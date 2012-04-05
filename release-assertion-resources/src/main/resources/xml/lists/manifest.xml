@@ -214,7 +214,7 @@
 		<script uuid="6138248d-8cc8-4bc2-8043-cd609fdd640c" category="component-centric" sqlFile="component-centric-snapshot-definition-uppercase.sql" text="The first letter of the Term should be capitalized." />
 		<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
 		<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-balanced parentheses.sql" text="Terms contains balanced parentheses." />
-		<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
+		<script uuid="805ab37c-33fa-45aa-876b-f86365a828c8" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
 		<script uuid="d76f1430-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-inactive-members.sql" text="Members are inactive for inactive descriptions in the snapshot file." />
 		<script uuid="e658fb00-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-unique-term.sql" text="Terms in a language refset are unique for a given concept." />
 		<script uuid="f636b7b0-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-active-members.sql" text="Members are active for active descriptions in the snapshot file." />
@@ -227,7 +227,14 @@
 		<script uuid="a2e01ee0-7f25-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-ctv3-unique.sql" text="CTV3 simple map refset members are unique." />
 		<script uuid="bab42070-7f25-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-ctv3-ratio.sql" text="There is one CTV3 simple map refset members per concept." />
 		<script uuid="c0869af0-7f25-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-ctv3-active.sql" text="CTV3 simple map refset members are always active." />
-
+		<script uuid="d2abcd74-de24-4cbc-ab53-43f7abaa3028" category="component-centric" sqlFile="component-centric-snapshot-vtm-inactive.sql" text="Inactive VTM simple refset members refer to inactive components." />
+		<script uuid="9715b1dd-7de5-4f80-ad28-f97ab52b9359" category="component-centric" sqlFile="component-centric-snapshot-vtm-active.sql" text="Active VTM simple refset members refer to active components." />
+		<script uuid="e7ae783e-71cd-4f17-a8b6-455d65271c24" category="component-centric" sqlFile="component-centric-snapshot-vmp-inactive.sql" text="Inactive VMP simple refset members refer to inactive components." />
+		<script uuid="f5092a2b-8874-4290-ae96-a04bf568b1ab" category="component-centric" sqlFile="component-centric-snapshot-vmp-active.sql" text="Active VMP simple refset members refer to active components." />
+		<script uuid="38b88ff6-7ee3-40a5-b362-98a87e80526e" category="component-centric" sqlFile="component-centric-snapshot-nonhuman-inactive.sql" text="Inactive Non-human refset members refer to inactive components." />
+		<script uuid="8479317e-8459-4362-bee8-628b8220f1e4" category="component-centric" sqlFile="component-centric-snapshot-nonhuman-active.sql" text="Active Non-human refset members refer to active components." />
+		<script uuid="924f9068-5718-4733-8442-e1e95d0f53e7" category="component-centric" sqlFile="component-centric-snapshot-description-synonym-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
+	
 
 	<!-- Invalid assertion as discussed with RT
 		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
