@@ -1,17 +1,13 @@
 
 /*  
-	The current snapshot file is an accurate derivative of the current full file
+	The current delta file is an accurate derivative of the current full file
 */
 
-/* view of current snapshot, derived from current full */
-	create or replace view temp_view as
-	select a.*
-	from curr_concept_f a
-	where cast(a.effectivetime as datetime) = 
-		(select max(cast(z.effectivetime as datetime))
-		 from curr_concept_f z
-		 where a.effectivetime = a.effectivetime
-		 and z.id = a.id);
+/* view of current delta, derived from current full */
+create or replace view temp_view as
+select a.*
+from curr_concept_f a
+where a.effectivetime = '<CURRENT-RELEASE-DATE>';
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -19,8 +15,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in SNAPSHOT file, but not in FULL file.')
-	from curr_concept_s a
+		concat('CONCEPT: id=',a.id, ': Concept is in DELTA file, but not in FULL file.') 	
+	from curr_concept_d a
 	left join temp_view b 
 	on a.id = b.id
 	and a.effectivetime = b.effectivetime
@@ -39,9 +35,9 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in FULL file, but not in SNAPSHOT file.') 
+		concat('CONCEPT: id=',a.id, ': Concept is in FULL file, but not in DELTA file.') 
 	from temp_view a
-	left join curr_concept_s b 
+	left join curr_concept_d b 
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
@@ -52,12 +48,6 @@
 		or b.active is null
 		or b.moduleid is null
 		or b.definitionstatusid is null;
-	
-	commit;
-	drop view temp_view;
 
-
-
-
-
-
+commit;
+drop view temp_view;

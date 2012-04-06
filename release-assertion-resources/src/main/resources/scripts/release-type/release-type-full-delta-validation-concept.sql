@@ -1,17 +1,12 @@
 
 /*  
-	The current snapshot file is an accurate derivative of the current full file
+	The current full concept file consists of the previously published full file and the changes for the current release
 */
 
-/* view of current snapshot, derived from current full */
-	create or replace view temp_view as
-	select a.*
-	from curr_concept_f a
-	where cast(a.effectivetime as datetime) = 
-		(select max(cast(z.effectivetime as datetime))
-		 from curr_concept_f z
-		 where a.effectivetime = a.effectivetime
-		 and z.id = a.id);
+/* view of current delta, derived from current full */
+	create temporary table if not exists temp_table like prev_concept_f;
+	insert into temp_table select * from curr_concept_d;
+	insert into temp_table select *	from prev_concept_f;
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -19,9 +14,9 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in SNAPSHOT file, but not in FULL file.')
-	from curr_concept_s a
-	left join temp_view b 
+		concat('CONCEPT: id=',a.id, ': Concept is in current full file, but not in prior full file.') 	
+	from curr_concept_f a
+	left join temp_table b 
 	on a.id = b.id
 	and a.effectivetime = b.effectivetime
 	and a.active = b.active
@@ -39,9 +34,9 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept in FULL file, but not in SNAPSHOT file.') 
-	from temp_view a
-	left join curr_concept_s b 
+		concat('CONCEPT: id=',a.id, ': Concept is in prior full file, but not in current full file.')
+	from temp_table a
+	left join curr_concept_f b 
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
@@ -52,12 +47,6 @@
 		or b.active is null
 		or b.moduleid is null
 		or b.definitionstatusid is null;
-	
-	commit;
-	drop view temp_view;
 
-
-
-
-
-
+commit;
+/*drop view temp_table;*/
