@@ -10,9 +10,9 @@
 /* 	view of current snapshot of language refset referencedcomponentids of active members */
 
 	create or replace view v_curr_snapshot_active as
-	select referencedcomponentid
-	from curr_langrefset_s 
-	where active = '1';
+		select referencedcomponentid
+		from curr_langrefset_s 
+		where active = '1';
 
 
 
@@ -20,12 +20,12 @@
 /* 	view of current snapshot of language refset referencedcomponentids of inactive only members */
 
 	create or replace view v_curr_snapshot_inactive_only as
-	select referencedcomponentid
-	from curr_langrefset_s a
-	where a.referencedComponentId not in (
-		select referencedComponentId 
-		from v_curr_snapshot_active 
-	);	
+		select referencedcomponentid
+		from curr_langrefset_s a
+		where a.referencedComponentId not in (
+			select referencedComponentId 
+			from v_curr_snapshot_active 
+		);	
 
 	
 	

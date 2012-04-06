@@ -13,7 +13,10 @@
 		'<ASSERTIONTEXT>',
 		concat('Concept: id=',a.id, ': Concept does not have an inferred is-a relationship.') 	
 	from curr_concept_s a
-	left join curr_relationship_s b on b.sourceid = a.id
-	where 	a.active = '1'
-	having count(b.typeid = '116680003') = 0 and count(b.active = '1') = 0	
-		
+	where a.active = '1'
+	and a.id not in (
+	select distinct(sourceid)
+		from curr_relationship_s
+		where active = '1'
+		and typeid = '116680003'	
+	)		

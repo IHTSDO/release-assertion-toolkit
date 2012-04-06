@@ -11,10 +11,10 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.sourceid, ': Concept have two relationships with same typeid and same destinationid within a single relationship-group.') 	
+		concat('Concept: id=',a.sourceid, ': Concept have two stated relationships with same typeid and same destinationid within a single relationship-group.') 	
 	from curr_stated_relationship_s a
+	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'
-	and a.relationshipgroup > 0
+	and b.active = '1'
 	group by a.sourceid, a.typeid, a.destinationid, a.relationshipgroup
 	having count(*) > 1 
-		

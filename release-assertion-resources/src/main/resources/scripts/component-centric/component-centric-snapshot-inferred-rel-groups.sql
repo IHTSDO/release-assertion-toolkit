@@ -3,7 +3,7 @@
 	component-centric-snapshot-inferred-rel-groups
 
 	Assertion:
-	Relationship groups contain at least 2 relationships.
+	Relationship groups contain at least 2 inferred relationships.
 .
 
 ********************************************************************************/
@@ -12,9 +12,11 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Relationship: id=',a.id, ': Relationship is only active inferred relationship in a relationship group.') 	
+		concat('Concept: id=',b.id, ': Concept contains a relationship group with a single active inferred member.') 	
 	from curr_relationship_s a
-	where a.relationshipgroup != 0 and
-	a.active ='1'
+	inner join curr_concept_s b on b.id = a.sourceid
+	where a.relationshipgroup != 0 
+	and a.active ='1'
+	and b.active = '1'
 	group by a.sourceid, a.relationshipgroup
 	having count(*) = 1

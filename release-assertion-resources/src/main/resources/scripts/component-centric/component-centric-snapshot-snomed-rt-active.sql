@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-snomed-rt-active
+	component-centric-snapshot-snomed-rt-active
 
 	Assertion:
 	SNOMED RT identifier simple map refset refers to active components.

@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	file-centric-snapshot-ctv3-active
+	component-centric-snapshot-ctv3-active
 
 	Assertion:
 	CTV3 simple map refset members are always active.

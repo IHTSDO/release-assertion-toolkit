@@ -13,7 +13,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Description: id=',a.id, ': Description is inactive but members in language refset defining description are active.') 
+		concat('Member: id=',b.id, ': Refset member is active for an inactive description.') 
 	
 	from curr_description_s a
 	inner join curr_langrefset_s b

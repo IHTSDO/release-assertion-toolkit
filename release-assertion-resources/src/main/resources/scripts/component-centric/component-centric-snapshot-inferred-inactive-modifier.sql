@@ -13,5 +13,8 @@
 		'<ASSERTIONTEXT>',
 		concat('Relationship: id=',a.id, ': Inferred relationship has a non -SOME- modifier.') 	
 	from curr_relationship_s a
-	where a.modifierid != '900000000000451002'
+	inner join curr_concept_s b on a.sourceid = b.id
+	where a.active = '1'
+	and b.active = '1'
+	and a.modifierid != '900000000000451002'
 	
