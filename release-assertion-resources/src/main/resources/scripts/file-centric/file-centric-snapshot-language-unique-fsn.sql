@@ -23,7 +23,7 @@
 	and a.active = '1'
 	and a.typeid = '900000000000003001'
 	GROUP BY b.referencedcomponentid, b.refsetid
-	having count(b.referencedcomponentid) > 1
+	having count(b.referencedcomponentid) > 1;
 	
 	
 	
@@ -37,7 +37,7 @@
 	from curr_concept_s a 
 	inner join curr_description_s b on b.conceptid = a.id
 	where b.typeid = '900000000000003001'
-	having count(b.id) = 0
+	having count(b.id) = 0;
 		
 	
 	
@@ -47,14 +47,14 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',b.conceptid, ': Concept does not have an FSN in any refset.') 
+		concat('CONCEPT: id=',c.id, ': Concept does not have an FSN in any refset.') 
 	from curr_description_s a 
 	left join curr_langrefset_s b on a.id = b.referencedcomponentid 
 	inner join curr_concept_s c on a.conceptid = c.id
 	where b.id is null
 	and a.active = '1'	
 	and c.active = '1'
-	and a.typeid = '900000000000003001'
+	and a.typeid = '900000000000003001';
 		
 	
 	
@@ -72,5 +72,5 @@
 	and c.active = '1'
 	and b.typeid = '900000000000003001'
 	GROUP BY a.referencedcomponentid
-	having count(distinct(a.refsetid)) < (select count(distinct(refsetid)) from curr_langrefset_s)
+	having count(distinct(a.refsetid)) < (select count(distinct(refsetid)) from curr_langrefset_s);
 	

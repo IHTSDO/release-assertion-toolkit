@@ -21,7 +21,7 @@
 	where a.refsetid = '900000000000497000'
 	and b.active = '1'
 	and a.active = '1'
-	having count(a.id) > 1
+	having count(a.id) > 1;
 
 
 
@@ -41,5 +41,5 @@
 			from curr_simplemaprefset_s 
 			where refsetid = '900000000000497000'
 			and active = '1'
-		)
+		);
 		

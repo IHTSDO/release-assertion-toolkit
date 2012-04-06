@@ -15,7 +15,6 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('Concept: id=',a.id, ': Concept contains more than one definition for a given dialect.') 
-	select b.*
 		from curr_concept_s a
 		inner join curr_textdefinition_s b
 		on a.id = b.conceptid
@@ -37,8 +36,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.id, ': Concept does not contain a definition for a given dialect.') 
-	select * 
+		concat('Concept: id=',id, ': Concept does not contain a definition for a given dialect.') 
 		from curr_concept_s 
 		where active = '1'
 		and  id not in (
