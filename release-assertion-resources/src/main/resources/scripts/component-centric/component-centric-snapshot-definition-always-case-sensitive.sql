@@ -20,7 +20,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Definitions are not case sensitive.') 	
+		concat('TEXTDEF: id=',a.id, ':Definitions are not case sensitive.') 	
 	from v_curr_snapshot a;
 
 

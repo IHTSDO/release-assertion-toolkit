@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-active-inactive-term-match
 
 	Assertion:
-	No active term matches that of an inactive Description.
+	No active term associated with active concept matches that of an inactive Description.
 
 ********************************************************************************/
 	
@@ -31,7 +31,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESCRIPTION: term=',a.term, ':Active Term matches with Inactive Term.') 	
+		concat('DESC: term=',a.term, ':Active Term matches with Inactive Term.') 	
 	from v_curr_snapshot_2 a ;
 
 

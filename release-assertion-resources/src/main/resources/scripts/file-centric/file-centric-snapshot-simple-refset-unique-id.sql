@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in current SIMPLE REFSET snapshot file.') 	
+		concat('Simple RS: id=',a.id, ':Non unique id in current SIMPLE REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 

@@ -25,7 +25,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: Term=',a.term, ':Fully Specified Name not ending with closing parantheses.') 	
+		concat('DESC: Term=',a.term, ':Fully Specified Name not ending with closing parantheses.') 	
 	from v_curr_snapshot a;
 
 

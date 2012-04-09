@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-unique-term-in-concept
 
 	Assertion:
-	For a given concept, all description terms are unique.
+	For a given concept, all active description terms are unique.
 
 ********************************************************************************/
 	
@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: Term=', a.term, ':Non unique description terms.') 	
+		concat('DESC: Term=', a.term, ':Non unique description terms.') 	
 	from v_curr_snapshot a;
 
 

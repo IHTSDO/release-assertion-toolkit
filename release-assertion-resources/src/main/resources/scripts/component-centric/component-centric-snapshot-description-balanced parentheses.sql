@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-balanced parentheses
 
 	Assertion:
-	Terms contain balanced parentheses.
+	Active Terms of active concepts contain balanced parentheses.
 
 ********************************************************************************/
 	
@@ -24,7 +24,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: Term=',a.term, ':Terms without balanced parentheses.') 	
+		concat('DESC: Term=',a.term, ':Active Terms of active concept without balanced parentheses.') 	
 	from v_curr_snapshot a;
 
 

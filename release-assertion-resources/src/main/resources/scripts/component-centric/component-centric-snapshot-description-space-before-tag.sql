@@ -18,17 +18,14 @@
 	and a.term not like '%)' 
 	and a.term not like '% (%';
 	
-	/*
-	SELECT SUBSTRING(a.term,LOCATE('(',a.term) -1 ) as term
-	*/
-
+	
 /* inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Fully Specified Name has no space before the semantic tag.') 	
+		concat('DESC: term=',a.term, ':Fully Specified Name has no space before the semantic tag.')	
 	from v_curr_snapshot a
 	where a.term not like ' (%';
 

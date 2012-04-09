@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in current SIMPLEMAP REFSET snapshot file.') 	
+		concat('SM RS: id=',a.id, ':Non unique id in current SIMPLEMAP REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 

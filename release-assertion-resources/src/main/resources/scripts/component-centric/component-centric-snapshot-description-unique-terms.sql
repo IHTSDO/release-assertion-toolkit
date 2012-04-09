@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-unique-terms
 
 	Assertion:
-	Terms are unique in Description hierarchy.
+	Active Terms associated with active concepts are unique in Description hierarchy.
 
 ********************************************************************************/
 	

@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-case-word-match
 
 	Assertion:
-	Case-sensitive terms that share initial words also share caseSignificanceId value.
+	Case-sensitive active terms assciated with active concepts that share initial words also share caseSignificanceId value.
 
 ********************************************************************************/
 	
@@ -35,7 +35,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ':Terms not sharing case-sensitivity.') 	
+		concat('DESC: conceptid=',a.conceptid, ':Terms not sharing case-sensitivity.') 	
 	from v_curr_snapshot_2 a;
 
 

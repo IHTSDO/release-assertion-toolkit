@@ -26,7 +26,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Invalid inactive states in the SIMPLE MAP REFSET snapshot.') 	
+		concat('SM RS: id=',a.id, ':Invalid inactive states in the SIMPLE MAP REFSET snapshot.') 	
 	from v_curr_snapshot a;
 
 

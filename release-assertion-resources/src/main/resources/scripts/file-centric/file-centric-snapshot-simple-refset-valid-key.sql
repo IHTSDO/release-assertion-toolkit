@@ -20,7 +20,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Invalid keys in SIMPLE REFSET snapshot file.') 	
+		concat('Simple RS: id=',a.id, ':Invalid keys in SIMPLE REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 	drop view v_curr_snapshot;

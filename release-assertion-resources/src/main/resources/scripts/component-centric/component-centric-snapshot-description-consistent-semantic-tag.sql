@@ -31,7 +31,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ':Active FSN for a given concept with different semantic tag.') 	
+		concat('DESC: conceptid=',a.conceptid, ':Active FSN for a given concept with different semantic tag.') 	
 	from v_curr_snapshot a;
 
 

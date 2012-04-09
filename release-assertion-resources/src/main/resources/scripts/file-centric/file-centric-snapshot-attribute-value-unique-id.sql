@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in ATTRIBUTE VALUE snapshot file.') 	
+		concat('ATT RS: id=',a.id, ':Non unique id in ATTRIBUTE VALUE snapshot file.') 	
 	from v_curr_snapshot a;
 
 

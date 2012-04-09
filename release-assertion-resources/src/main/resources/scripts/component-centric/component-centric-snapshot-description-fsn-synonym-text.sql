@@ -39,7 +39,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('TEXTDEF: id=',a.id, ':Active FSN without correponding Synonyms.') 	
+		concat('DESC: id=',a.id, ':Active FSN without correponding Synonyms.') 	
 	from v_curr_snapshot_3 a;
 
 

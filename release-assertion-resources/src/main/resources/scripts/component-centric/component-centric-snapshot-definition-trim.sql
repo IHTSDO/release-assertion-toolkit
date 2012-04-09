@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':Active Terms with leading and trailing spaces.') 	
+		concat('TEXTDEF: id=',a.term, ':Active Terms with leading and trailing spaces.') 	
 	from v_curr_snapshot a;
 
 

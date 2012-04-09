@@ -3,7 +3,7 @@
 	component-centric-snapshot-description-fsn-uppercase
 
 	Assertion:
-	The first letter of the FSN should be capitalized.
+	The first letter of the active FSN associated with active concept should be capitalized.
 
 ********************************************************************************/
 	
@@ -29,7 +29,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESCRIPTION: id=',a.id, ':First letter of the FSN not capitalized.') 	
+		concat('DESC: id=',a.id, ':First letter of the active FSN of active concept not capitalized.') 	
 	from v_curr_snapshot a
 	where BINARY originalcase != uppercase;
 

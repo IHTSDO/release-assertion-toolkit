@@ -24,7 +24,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: Term=',a.term, ':Fully Specified Name without semantic tag.') 	
+		concat('DESC: Term=',a.term, ':Fully Specified Name without semantic tag.') 	
 	from v_curr_snapshot a;
 
 

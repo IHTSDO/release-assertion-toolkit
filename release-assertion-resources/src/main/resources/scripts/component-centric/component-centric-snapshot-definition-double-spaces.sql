@@ -3,7 +3,7 @@
 	file-centric-snapshot-definition-double-spaces
 
 	Assertion:
-	No active Terms contain double spaces.
+	No active Terms associated with active concept contain double spaces.
 
 ********************************************************************************/
 	
@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('TEXTDEFINITION : id=',a.id, ':Active Terms containing double spaces.') 	
+		concat('TEXTDEF : id=',a.id, ':Active Terms of active concept containing double spaces.') 	
 	from v_curr_snapshot a;
 
 
