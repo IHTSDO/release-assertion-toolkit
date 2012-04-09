@@ -10,7 +10,7 @@
 /* 	view of current snapshot made by finding duplicate identifiers */
 	create or replace view v_curr_snapshot as
 	select a.id
-	from curr_concept_s a	
+	from curr_concept_s a
 	group by a.id
 	having  count(a.id) > 1;
 	

@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ':ConceptId value refers to valid concept identifier in DEFINITION snapshot.') 	
+		concat('TEXTDEF: id=',a.conceptid, ':ConceptId value refers to valid concept identifier in DEFINITION snapshot.') 	
 	from v_curr_snapshot a;
 
 

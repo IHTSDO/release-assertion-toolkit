@@ -24,7 +24,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.term, ':Active Fully Specified Name is unique in DESCRIPTION snapshot.') 	
+		concat('DESC: id=',a.term, ':Active FSN is unique in DESCRIPTION snapshot.') 	
 	from v_curr_snapshot a;
 
 

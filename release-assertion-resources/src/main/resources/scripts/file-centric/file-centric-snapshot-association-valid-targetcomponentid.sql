@@ -21,7 +21,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('ASSOCIATION: Targetcomponentid=',a.targetcomponentid, ':Invalid TargetComponentId.') 	
+		concat('ASSOC RS: Targetcomponentid=',a.targetcomponentid, ':Invalid TargetComponentId.') 	
 	from v_curr_snapshot a;
 
 	drop view v_curr_snapshot;

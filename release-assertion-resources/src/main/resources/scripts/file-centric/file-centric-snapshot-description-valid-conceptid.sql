@@ -7,7 +7,7 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding duplicate identifiers */
+/* 	view of current snapshot made by valid identifiers */
 	create or replace view v_curr_snapshot as
 	select a.conceptid
 	from curr_description_s a
@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ':ConceptId value refers to valid concept identifier in DESCRIPTION snapshot.') 	
+		concat('TEXTDEF: id=',a.conceptid, ':ConceptId value refers to valid concept identifier in DESCRIPTION snapshot.') 	
 	from v_curr_snapshot a;
 
 

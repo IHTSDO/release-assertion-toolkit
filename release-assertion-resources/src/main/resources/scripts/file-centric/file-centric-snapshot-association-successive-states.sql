@@ -26,7 +26,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Invalid inactive states in the ASSOCIATION REFSET snapshot file.') 	
+		concat('ASSOC RS: id=',a.id, ':Invalid inactive states in the ASSOCIATION REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 

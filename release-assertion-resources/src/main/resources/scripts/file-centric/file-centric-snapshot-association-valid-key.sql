@@ -20,7 +20,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Invalid keys in ASSOCIATION REFSET snapshot file.') 	
+		concat('ASSOC RF: id=',a.id, ':Invalid keys in ASSOCIATION REFSET snapshot file.') 	
 	from v_curr_snapshot a;
 
 	drop view v_curr_snapshot;

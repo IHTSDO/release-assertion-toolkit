@@ -22,7 +22,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':Non unique id in textdefinition release file.') 	
+		concat('TEXTDEF: id=',a.id, ':Non unique id in textdefinition release file.') 	
 	from v_curr_snapshot a;
 
 

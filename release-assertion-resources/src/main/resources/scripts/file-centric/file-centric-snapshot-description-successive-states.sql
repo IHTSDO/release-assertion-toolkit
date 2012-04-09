@@ -26,7 +26,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':New inactive states follow active states in the DESCRIPTION snapshot.') 	
+		concat('DESC: id=',a.id, ':New inactive states follow active states in the DESCRIPTION snapshot.') 	
 	from v_curr_snapshot a;
 
 
