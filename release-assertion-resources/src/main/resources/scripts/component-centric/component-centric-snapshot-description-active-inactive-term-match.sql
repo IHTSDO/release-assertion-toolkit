@@ -7,18 +7,23 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding FSN's not ending with closing parantheses */
-	
+/* 	view of current snapshot made by finding active terms associated with active concepts */
 	create or replace view v_curr_snapshot_1 as
 	select distinct(term)  
-	from curr_description_d a
-	where a.active = 1;
+	from curr_description_s a , curr_concept_s b
+	where a.active = 1
+	and a.conceptid = b.id
+	and b.active = 1;
 	
+/* 	view of current snapshot made by matching active terms with inactive terms for active concepts */	
 	create or replace view v_curr_snapshot_2 as
-	select distinct(term) 
-	from curr_description_d a
-	where a.active = 0;
-
+	select * from v_curr_snapshot_1
+	where term in (
+	select distinct(term)  
+	from curr_description_s a , curr_concept_s b
+	where a.active = 0
+	and a.conceptid = b.id
+	and b.active = 1); 
 
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -26,9 +31,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Active Term matches with Inactive Term.') 	
-	from v_curr_snapshot_1 a , v_curr_snapshot_2 b
-	where a.term = b.term;
+		concat('DESCRIPTION: term=',a.term, ':Active Term matches with Inactive Term.') 	
+	from v_curr_snapshot_2 a ;
 
 
 	drop view v_curr_snapshot_1;

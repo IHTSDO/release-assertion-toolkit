@@ -7,7 +7,7 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding FSN's without semantic tags */
+/* 	view of current snapshot made by finding active synonyms with semantic tags */
 
 -- check if semantic is already gets build as resources
 
