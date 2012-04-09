@@ -484,6 +484,77 @@
 			</build>
 		</profile>		
 		
+		<profile>
+	   <id>build-resources</id>
+		 <build>
+		 <plugins>
+		  <plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-dependency-plugin</artifactId>
+		  <executions>
+		   <execution>
+			<id>extract-manifest</id>
+			<phase>generate-resources</phase>
+			<goals>
+			 <goal>unpack</goal>
+			</goals>
+			<configuration>
+			 <artifactItems>
+			  <artifactItem>
+			   <groupId>org.ihtsdo.release.assertion</groupId>
+			   <artifactId>release-assertion-resources</artifactId>
+			   <version>0.0.1-SNAPSHOT</version>
+			   <type>zip</type>
+			  </artifactItem>
+			 </artifactItems>
+			 <outputDirectory>${project.manifest}</outputDirectory>
+			</configuration>
+		   </execution>
+		  </executions>
+		 </plugin>
+		 
+		 <plugin>
+		  <groupId>org.ihtsdo.release.assertion</groupId>
+		  <artifactId>release-database-setup</artifactId>
+		   <version>${project.version}</version>
+		  <executions>
+		   <execution>
+		   <id>import-resouces-to-database</id>
+		   <phase>compile</phase>
+		   <goals>
+			<goal>import-releasefile-to-database</goal>
+		   </goals>
+		   <configuration>
+			<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+			<username>root</username>
+			<password>snomed11</password>
+			<importConfig>
+			<LoadFileParameter>
+				<loadDBTableName>res_semantictags</loadDBTableName>
+				<loadReleaseFileName>${project.manifest}/datafiles/semanticTags.txt</loadReleaseFileName>
+			</LoadFileParameter>
+			 
+			<LoadFileParameter>
+				<loadDBTableName>res_casesensitiveTerms</loadDBTableName>
+				<loadReleaseFileName>${project.manifest}/datafiles/cs_words.txt</loadReleaseFileName>
+			</LoadFileParameter>
+			</importConfig>
+		   </configuration>
+		  </execution>
+		 </executions>
+		</plugin>
+		<plugin>
+		 <groupId>org.apache.maven.plugins</groupId>
+		 <artifactId>maven-compiler-plugin</artifactId>
+		 <configuration>
+		  <source>1.6</source>
+		  <target>1.6</target>
+		 </configuration>
+		</plugin>
+	   </plugins>      
+	  </build>
+	  </profile>
+  
 		
 		<profile>
 			<id>execute-scripts</id>
