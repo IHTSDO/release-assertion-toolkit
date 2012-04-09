@@ -533,10 +533,17 @@
 				<loadDBTableName>res_semantictags</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/semanticTags.txt</loadReleaseFileName>
 			</LoadFileParameter>
-			 
 			<LoadFileParameter>
 				<loadDBTableName>res_casesensitiveTerms</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/cs_words.txt</loadReleaseFileName>
+			</LoadFileParameter>
+			<LoadFileParameter>
+				<loadDBTableName>res_gbterms</loadDBTableName>
+				<loadReleaseFileName>${project.manifest}/datafiles/gbTerms.txt</loadReleaseFileName>
+			</LoadFileParameter>
+			<LoadFileParameter>
+				<loadDBTableName>res_navigationconcepts</loadDBTableName>
+				<loadReleaseFileName>${project.manifest}/datafiles/navigationConcepts.txt</loadReleaseFileName>
 			</LoadFileParameter>
 			</importConfig>
 		   </configuration>
