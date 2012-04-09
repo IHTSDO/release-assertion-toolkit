@@ -32,7 +32,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.id, ': Concept does not have an associated SNOMED RT refset member.') 
+		concat('Concept: id=',id, ': Concept does not have an associated SNOMED RT refset member.') 
 	from curr_concept_s
 	where active = '1'
 	and id not in 
