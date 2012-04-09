@@ -1,3 +1,4 @@
+SemanticTag	ID
 SNOMED RT+CTV3	ee9ac5d2-a07c-3981-a57a-f7f26baf38d8
 assessment scale	9db11d3b-a3c9-3655-b785-435ca45d89ed
 attribute	445d932f-f552-3b4b-a323-3a06f1d26d98
