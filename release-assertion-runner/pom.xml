@@ -542,6 +542,10 @@
 				<loadReleaseFileName>${project.manifest}/datafiles/gbTerms.txt</loadReleaseFileName>
 			</LoadFileParameter>
 			<LoadFileParameter>
+				<loadDBTableName>res_usterms</loadDBTableName>
+				<loadReleaseFileName>${project.manifest}/datafiles/usTerms.txt</loadReleaseFileName>
+			</LoadFileParameter>
+			<LoadFileParameter>
 				<loadDBTableName>res_navigationconcepts</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/navigationConcepts.txt</loadReleaseFileName>
 			</LoadFileParameter>
