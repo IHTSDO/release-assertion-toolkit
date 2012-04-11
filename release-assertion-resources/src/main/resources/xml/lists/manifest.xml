@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <manifest>
 
 	<useCase group="rf2-scripts" id="29a7345a-94cb-42fd-95c3-8aa6e1e9b31a">
@@ -292,14 +292,18 @@
 		<script uuid="5a605c09-db1e-453f-aa4a-064faab2d310" category="component-centric" sqlFile="component-centric-snapshot-description-closing-parens.sql" text="All FSNs end in closing parentheses." />
 		<script uuid="dd0d0406-7481-444a-9f04-b6fc7db49039" category="component-centric" sqlFile="component-centric-snapshot-description-fsn-uppercase.sql" text="The first letter of the FSN should be capitalized." />
 		<script uuid="2e0eb135-fd7d-4f24-83c1-0cba797ee766" category="component-centric" sqlFile="component-centric-snapshot-description-unique-term-in-concept.sql" text="For a given concept, all description terms are unique." />
+		<script uuid="924f9068-5718-4733-8442-e1e95d0f53e7" category="component-centric" sqlFile="component-centric-snapshot-description-synonym-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
+		<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
+		<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-balanced parentheses.sql" text="Terms contains balanced parentheses." />
+		<script uuid="805ab37c-33fa-45aa-876b-f86365a828c8" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
+		<script uuid="22a95293-3acb-4671-95f8-1ff13ba3202c" category="component-centric" sqlFile="component-centric-snapshot-description-casesignificanceid" text="Case-sensitive terms have appropriate caseSignificanceId." />		
+		
 		<script uuid="b4930ea7-4078-4599-979c-2dde18164f01" category="component-centric" sqlFile="component-centric-snapshot-definition-always-case-sensitive.sql" text="All definitions are case sensitive." />
 		<script uuid="73e46e72-6fdb-407b-9d50-d86a36a3a862" category="component-centric" sqlFile="component-centric-snapshot-definition-always-preferred.sql" text="All definitions are preferred." />
 		<script uuid="da3ae7c4-6144-4cd5-9530-2a7780c53c9a" category="component-centric" sqlFile="component-centric-snapshot-definition-trim.sql" text="No active Terms contain leading or trailing spaces." />
 		<script uuid="f7b7cefe-858d-4749-ab98-7106700feaee" category="component-centric" sqlFile="component-centric-snapshot-definition-double-spaces.sql" text="No active Terms contain double spaces." />
 		<script uuid="6138248d-8cc8-4bc2-8043-cd609fdd640c" category="component-centric" sqlFile="component-centric-snapshot-definition-uppercase.sql" text="The first letter of the Term should be capitalized." />
-		<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
-		<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-balanced parentheses.sql" text="Terms contains balanced parentheses." />
-		<script uuid="805ab37c-33fa-45aa-876b-f86365a828c8" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
+		
 		<script uuid="d76f1430-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-inactive-members.sql" text="Members are inactive for inactive descriptions in the snapshot file." />
 		<script uuid="e658fb00-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-unique-term.sql" text="Terms in a language refset are unique for a given concept." />
 		<script uuid="f636b7b0-7e9a-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-active-members.sql" text="Members are active for active descriptions in the snapshot file." />
@@ -318,7 +322,7 @@
 		<script uuid="f5092a2b-8874-4290-ae96-a04bf568b1ab" category="component-centric" sqlFile="component-centric-snapshot-vmp-active.sql" text="Active VMP simple refset members refer to active components." />
 		<script uuid="38b88ff6-7ee3-40a5-b362-98a87e80526e" category="component-centric" sqlFile="component-centric-snapshot-nonhuman-inactive.sql" text="Inactive Non-human refset members refer to inactive components." />
 		<script uuid="8479317e-8459-4362-bee8-628b8220f1e4" category="component-centric" sqlFile="component-centric-snapshot-nonhuman-active.sql" text="Active Non-human refset members refer to active components." />
-		<script uuid="924f9068-5718-4733-8442-e1e95d0f53e7" category="component-centric" sqlFile="component-centric-snapshot-description-synonym-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
+		
 	
 
 	<!-- Invalid assertion as discussed with RT
