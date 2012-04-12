@@ -131,7 +131,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		
 		// Define the query we are going to execute
 		String statementText = "LOAD DATA LOCAL INFILE '" + fileName + "' " +
-		"INTO TABLE " + tablename + " IGNORE 1 LINES " ;		
+		"INTO TABLE " + tablename +  " FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\r\\n' IGNORE 1 LINES " ;
 		
 		statement.execute(statementText);
 		String enableKey ="ALTER TABLE " + tablename + " ENABLE KEYS";
