@@ -18,7 +18,7 @@
 	from curr_relationship_s a
 	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'
-	and b.active = '0'
+	and b.active = '0';
 
 
 	
@@ -32,7 +32,7 @@
 	from curr_relationship_s a
 	inner join curr_concept_s b on a.destinationid = b.id
 	where a.active = '1'
-	and b.active = '0'
+	and b.active = '0';
 		
 	
 	
@@ -46,6 +46,6 @@
 	from curr_relationship_s a
 	inner join curr_concept_s b on a.typeid = b.id
 	where a.active = '1'
-	and b.active = '0'
+	and b.active = '0';
 
 	

@@ -15,14 +15,12 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Historical association refset member associates inactive concept with a stated parent.') 
-	
-	select * 
-		from curr_associationrefset_s a, curr_stated_relationship_s b
-		where a.active = '1'
-		and b.active = '1'
-		and b.typeid = '116680003'
-		and a.referencedcomponentid = b.sourceid
-		and a.targetcomponentid = b.destinationid
+	from curr_associationrefset_s a, curr_stated_relationship_s b
+	where a.active = '1'
+	and b.active = '1'
+	and b.typeid = '116680003'
+	and a.referencedcomponentid = b.sourceid
+	and a.targetcomponentid = b.destinationid;
 		
 		
 		
@@ -34,11 +32,9 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Historical association refset member associates inactive concept with an inferred parent.') 
-	
-	select * 
-		from curr_associationrefset_s a, curr_inferred_relationship_s b
-		where a.active = '1'
-		and b.active = '1'
-		and b.typeid = '116680003'
-		and a.referencedcomponentid = b.sourceid
-		and a.targetcomponentid = b.destinationid		
+	from curr_associationrefset_s a, curr_inferred_relationship_s b
+	where a.active = '1'
+	and b.active = '1'
+	and b.typeid = '116680003'
+	and a.referencedcomponentid = b.sourceid
+	and a.targetcomponentid = b.destinationid;
