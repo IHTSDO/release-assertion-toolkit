@@ -160,6 +160,12 @@
 	
 	<script uuid="c9c9cab6-cef8-4249-8358-35716eaf07ab" category="report" sqlFile="report-qa.sql" text="Final Report Creation." />
 	
+	<script uuid="ba8918f0-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-us-def-proc.sql" text="Defines procedure that tests that terms that contain EN-US language-specific words are in the same US language refset." />
+	<script uuid="c3249e80-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-us-call-proc.sql" text="Calling procedure testing that terms that contain EN-US language-specific words are in the same US language refset." />
+	<script uuid="c81ee170-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-def-proc.sql" text="Defines procedure that tests that terms that contain EN-GB language-specific words are in the same GB language refset." />
+	<script uuid="cc9c5340-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-call-proc.sql" text="Calling procedure testing that terms that contain EN-GB language-specific words are in the same GB language refset." />
+	
+
 	<!--
 	<script uuid="" category="release-type" sqlFile="" text="" />
 	-->
