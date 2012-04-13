@@ -167,6 +167,7 @@
 	<script uuid="c3249e80-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-us-call-proc.sql" text="Calling procedure testing that terms that contain EN-US language-specific words are in the same US language refset." />
 	<script uuid="c81ee170-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-def-proc.sql" text="Defines procedure that tests that terms that contain EN-GB language-specific words are in the same GB language refset." />
 	<script uuid="cc9c5340-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-call-proc.sql" text="Calling procedure testing that terms that contain EN-GB language-specific words are in the same GB language refset." />
+	<script uuid="0a4bba70-85b7-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-navigation.sql" text="targetComponentId' does not refer to navigation concepts." />
 	
 
 	<!--
