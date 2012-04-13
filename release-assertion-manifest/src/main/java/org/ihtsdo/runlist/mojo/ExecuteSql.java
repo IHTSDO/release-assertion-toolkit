@@ -135,6 +135,9 @@ public class ExecuteSql extends AbstractMojo
 			    		logger.finalizeScript(startTime);
 		    	    } catch (Exception e ) {
 		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
+		    	    	
+		    	    	archiveExecutedFiles(sqlParser.getArchiveContent());
+		    	    	
 		    	    	if (breakOnFailure) {
 		    	    		throw new MojoExecutionException(errorMessage);
 		    	    	} else {
