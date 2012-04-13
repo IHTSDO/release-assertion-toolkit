@@ -15,5 +15,6 @@
 	from curr_associationrefset_s a
 	inner join curr_concept_s b on a.targetcomponentid = b.id
 	where a.active = '1'
-	and b.active != '1'
+	and b.active = '0' 
+	and a.effectivetime =  <CURRENT-RELEASE-DATE>
 		
