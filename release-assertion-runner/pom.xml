@@ -529,7 +529,7 @@
 			<username>root</username>
 			<password>snomed11</password>
 			<importConfig>
-			<LoadFileParameter>
+ 			<LoadFileParameter>
 				<loadDBTableName>res_semantictags</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/semanticTags.txt</loadReleaseFileName>
 			</LoadFileParameter>
@@ -538,11 +538,11 @@
 				<loadReleaseFileName>${project.manifest}/datafiles/cs_words.txt</loadReleaseFileName>
 			</LoadFileParameter>
 			<LoadFileParameter>
-				<loadDBTableName>res_gbterms</loadDBTableName>
+				<loadDBTableName>res_gbTerms</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/gbTerms.txt</loadReleaseFileName>
 			</LoadFileParameter>
 			<LoadFileParameter>
-				<loadDBTableName>res_usterms</loadDBTableName>
+				<loadDBTableName>res_usTerms</loadDBTableName>
 				<loadReleaseFileName>${project.manifest}/datafiles/usTerms.txt</loadReleaseFileName>
 			</LoadFileParameter>
 			<LoadFileParameter>
