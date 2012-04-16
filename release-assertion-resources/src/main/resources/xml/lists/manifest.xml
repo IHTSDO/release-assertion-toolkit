@@ -297,7 +297,8 @@
 		<script uuid="c2975dd5-3869-4bf7-ac75-53fd53b90144" category="component-centric" sqlFile="component-centric-snapshot-description-active-inactive-term-match.sql" text="No active term matches that of an inactive Description." />
 		<script uuid="50907ee7-ddf6-4cb5-ba8b-be150644430b" category="component-centric" sqlFile="component-centric-snapshot-description-balanced parentheses.sql" text="Terms contains balanced parentheses." />
 		<script uuid="805ab37c-33fa-45aa-876b-f86365a828c8" category="component-centric" sqlFile="component-centric-snapshot-description-case-word-match.sql" text="Case-sensitive terms that share initial words also share caseSignificanceId value." />
-		<script uuid="22a95293-3acb-4671-95f8-1ff13ba3202c" category="component-centric" sqlFile="component-centric-snapshot-description-casesignificanceid" text="Case-sensitive terms have appropriate caseSignificanceId." />		
+		<script uuid="22a95293-3acb-4671-95f8-1ff13ba3202c" category="component-centric" sqlFile="component-centric-snapshot-description-casesignificanceid.sql" text="Case-sensitive terms have appropriate caseSignificanceId." />		
+		<script uuid="6614ff12-fca2-42b7-a5da-ea26353979fe" category="component-centric" sqlFile="component-centric-snapshot-description-valid characters.sql" text="Active Terms of active concept consist of valid characters." />		
 		
 		<script uuid="b4930ea7-4078-4599-979c-2dde18164f01" category="component-centric" sqlFile="component-centric-snapshot-definition-always-case-sensitive.sql" text="All definitions are case sensitive." />
 		<script uuid="73e46e72-6fdb-407b-9d50-d86a36a3a862" category="component-centric" sqlFile="component-centric-snapshot-definition-always-preferred.sql" text="All definitions are preferred." />
@@ -328,14 +329,11 @@
 		<script uuid="c81ee170-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-def-proc.sql" text="Defines procedure that tests that terms that contain EN-GB language-specific words are in the same GB language refset." />
 		<script uuid="cc9c5340-84f0-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-language-lang-specific-words-gb-call-proc.sql" text="Calling procedure testing that terms that contain EN-GB language-specific words are in the same GB language refset." />
 		<script uuid="0a4bba70-85b7-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-navigation.sql" text="targetComponentId' does not refer to navigation concepts." />
-		
-
-
-	<!-- Invalid assertion as discussed with RT
-		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file."  >
-			<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
+		<script uuid="c82246b1-a137-40c5-8653-554c9ce82c6b" category="component-centric" sqlFile="component-centric-snapshot-description-unique-terms.sql" text="Terms are unique in Description hierarchy." />
+		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file.">
+		<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
 		</script>
-	-->
+	
 
 	<!-- rt added this as a template... 
 
