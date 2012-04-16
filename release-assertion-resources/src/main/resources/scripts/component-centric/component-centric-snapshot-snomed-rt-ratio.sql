@@ -21,6 +21,7 @@
 	where a.refsetid = '900000000000498005'
 	and b.active = '1'
 	and a.active = '1'
+	group by (a.id)
 	having count(a.id) > 1;
 
 
