@@ -3,7 +3,7 @@
 	component-centric-snapshot-historical-association-navigation
 
 	Assertion:
-	'targetComponentId' does not refer to navigation concepts.
+	targetComponentId does not refer to navigation concepts.
 
 ********************************************************************************/
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

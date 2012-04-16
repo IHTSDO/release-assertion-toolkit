@@ -32,7 +32,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Historical association refset member associates inactive concept with an inferred parent.') 
-	from curr_associationrefset_s a, curr_inferred_relationship_s b
+	from curr_associationrefset_s a, curr_relationship_s b
 	where a.active = '1'
 	and b.active = '1'
 	and b.typeid = '116680003'
