@@ -20,11 +20,11 @@
 	
 
 	create or replace view curr as
-		select *
-		from curr_langrefset_f
-		where cast(effectivetime as datetime) <
-			(select max(cast(effectivetime as datetime)) 
-			 from curr_langrefset_f);
+	select *
+	from curr_langrefset_f
+	where cast(effectivetime as datetime) <
+		(select max(cast(effectivetime as datetime)) 
+		 from curr_langrefset_f);
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select
@@ -34,20 +34,20 @@
     concat('LANGUAGE-REFSET: id=',a.id, ': refset member is in current release file, but not in prior release file.') 	        
 	from curr a
 	left join prev_langrefset_f b
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
     and a.moduleid = b.moduleid
     and a.refsetid = b.refsetid
     and a.referencedcomponentid = b.referencedcomponentid
     and a.acceptabilityid = b.acceptabilityid
-where b.id is null
+    where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-  or b.refsetid is null
-  or b.referencedcomponentid is null
-  or b.acceptabilityid is null;
+	or b.refsetid is null
+	or b.referencedcomponentid is null
+	or b.acceptabilityid is null;
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -57,20 +57,19 @@ where b.id is null
     concat('LANGUAGE-REFSET: id=',a.id, ': refset member is in prior release file, but not in current release file.') 	        
 	from prev_langrefset_f a
 	left join curr b
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
-		and a.moduleid = b.moduleid
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
+	and a.moduleid = b.moduleid
     and a.refsetid = b.refsetid
     and a.referencedcomponentid = b.referencedcomponentid
-    and a.acceptabilityid = b.acceptabilityid        
-where b.id is null
+    and a.acceptabilityid = b.acceptabilityid
+    where b.id is null
 	or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-  or b.refsetid is null
-  or b.referencedcomponentid is null
-  or b.acceptabilityid is null;
-
+	or b.refsetid is null
+	or b.referencedcomponentid is null
+	or b.acceptabilityid is null;
 
 	drop view curr;

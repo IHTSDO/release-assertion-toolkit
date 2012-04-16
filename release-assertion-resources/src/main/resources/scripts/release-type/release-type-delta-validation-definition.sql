@@ -4,29 +4,29 @@
 */
 
 /* view of current delta, derived from current full */
-create or replace view temp_view as
-select a.*
-from curr_textdefinition_f a
-where a.effectivetime = '<CURRENT-RELEASE-DATE>';
+	create or replace view temp_view as
+	select a.*
+	from curr_textdefinition_f a
+	where a.effectivetime = '<CURRENT-RELEASE-DATE>';
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		<RUNID>,
-		'<ASSERTIONUUID>',
-		'<ASSERTIONTEXT>',
-		concat('Definition: id=',a.id, ': Definition is in DELTA file, but not in FULL file.') 	
+	<RUNID>,
+	'<ASSERTIONUUID>',
+	'<ASSERTIONTEXT>',
+	concat('Definition: id=',a.id, ': Definition is in DELTA file, but not in FULL file.') 	
 	from curr_textdefinition_d a
 	left join temp_view b 
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
-		and a.moduleid = b.moduleid
-		and a.conceptid = b.conceptid
-		and a.languagecode = b.languagecode
-		and a.typeid = b.typeid
-		and a.term = b.term
-		and a.casesignificanceid = b.casesignificanceid
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
+	and a.moduleid = b.moduleid
+	and a.conceptid = b.conceptid
+	and a.languagecode = b.languagecode
+	and a.typeid = b.typeid
+	and a.term = b.term
+	and a.casesignificanceid = b.casesignificanceid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -40,21 +40,21 @@ where a.effectivetime = '<CURRENT-RELEASE-DATE>';
 /* in the full; not in the delta */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		<RUNID>,
-		'<ASSERTIONUUID>',
-		'<ASSERTIONTEXT>',
-		concat('Definition: id=',a.id, ': Definition is in FULL file, but not in DELTA file.') 
+	<RUNID>,
+	'<ASSERTIONUUID>',
+	'<ASSERTIONTEXT>',
+	concat('Definition: id=',a.id, ': Definition is in FULL file, but not in DELTA file.') 
 	from temp_view a
 	left join curr_textdefinition_d b 
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
-		and a.moduleid = b.moduleid
-		and a.conceptid = b.conceptid
-		and a.languagecode = b.languagecode
-		and a.typeid = b.typeid
-		and a.term = b.term
-		and a.casesignificanceid = b.casesignificanceid
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
+	and a.moduleid = b.moduleid
+	and a.conceptid = b.conceptid
+	and a.languagecode = b.languagecode
+	and a.typeid = b.typeid
+	and a.term = b.term
+	and a.casesignificanceid = b.casesignificanceid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null

@@ -5,28 +5,32 @@
 
 /* view of current delta, derived from current full */
 	create temporary table if not exists temp_table like prev_stated_relationship_f;
-	insert into temp_table select * from curr_stated_relationship_d;
-	insert into temp_table select *	from prev_stated_relationship_f;
+	
+	insert into temp_table 
+	select * from curr_stated_relationship_d;
+	
+	insert into temp_table 
+	select *	from prev_stated_relationship_f;
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		<RUNID>,
-		'<ASSERTIONUUID>',
-		'<ASSERTIONTEXT>',
-		concat('Stated relationship: id=',a.id, ': Stated relationship is in current full file, but not in prior full file.') 	
+	<RUNID>,
+	'<ASSERTIONUUID>',
+	'<ASSERTIONTEXT>',
+	concat('Stated relationship: id=',a.id, ': Stated relationship is in current full file, but not in prior full file.') 	
 	from curr_stated_relationship_f a
 	left join temp_table b 
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
-		and a.moduleid = b.moduleid
-		and a.sourceid = b.sourceid
-		and a.destinationid = b.destinationid
-		and a.relationshipgroup = b.relationshipgroup
-		and a.typeid = b.typeid
-		and a.characteristictypeid = b.characteristictypeid
-		and a.modifierid = b.modifierid	
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
+	and a.moduleid = b.moduleid
+	and a.sourceid = b.sourceid
+	and a.destinationid = b.destinationid
+	and a.relationshipgroup = b.relationshipgroup
+	and a.typeid = b.typeid
+	and a.characteristictypeid = b.characteristictypeid
+	and a.modifierid = b.modifierid	
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -41,22 +45,22 @@
 /* in the full; not in the delta */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		<RUNID>,
-		'<ASSERTIONUUID>',
-		'<ASSERTIONTEXT>',
-		concat('Stated relationship: id=',a.id, ': Stated relationship is in prior full file, but not in current full file.')
+	<RUNID>,
+	'<ASSERTIONUUID>',
+	'<ASSERTIONTEXT>',
+	concat('Stated relationship: id=',a.id, ': Stated relationship is in prior full file, but not in current full file.')
 	from temp_table a
 	left join curr_stated_relationship_f b 
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
-		and a.moduleid = b.moduleid
-		and a.sourceid = b.sourceid
-		and a.destinationid = b.destinationid
-		and a.relationshipgroup = b.relationshipgroup
-		and a.typeid = b.typeid
-		and a.characteristictypeid = b.characteristictypeid
-		and a.modifierid = b.modifierid	
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
+	and a.moduleid = b.moduleid
+	and a.sourceid = b.sourceid
+	and a.destinationid = b.destinationid
+	and a.relationshipgroup = b.relationshipgroup
+	and a.typeid = b.typeid
+	and a.characteristictypeid = b.characteristictypeid
+	and a.modifierid = b.modifierid	
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null

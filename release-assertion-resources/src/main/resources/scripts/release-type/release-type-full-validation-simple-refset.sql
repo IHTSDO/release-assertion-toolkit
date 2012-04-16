@@ -34,20 +34,20 @@
     concat('SIMPLE-REFSET: id=',a.id, ': refset member is in current release file, but not in prior release file.') 	        
 	from curr a
 	left join prev_simplerefset_f b
-		on a.id = b.id
-		and a.effectivetime = b.effectivetime
-		and a.active = b.active
+	on a.id = b.id
+	and a.effectivetime = b.effectivetime
+	and a.active = b.active
     and a.moduleid = b.moduleid
     and a.refsetid = b.refsetid
     and a.referencedcomponentid = b.referencedcomponentid
-where b.id is null
-	or b.effectivetime is null
-	or b.active is null
-	or b.moduleid is null
-  or b.refsetid is null
-  or b.referencedcomponentid is null;
-
-	insert into qa_result (runid, assertionuuid, assertiontext, details)
+    where b.id is null
+    or b.effectivetime is null
+    or b.active is null
+    or b.moduleid is null
+    or b.refsetid is null
+    or b.referencedcomponentid is null;
+    
+    insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
@@ -60,14 +60,12 @@ where b.id is null
 		and a.active = b.active
 		and a.moduleid = b.moduleid
     and a.refsetid = b.refsetid
-    and a.referencedcomponentid = b.referencedcomponentid     
-where b.id is null
-	or b.effectivetime is null
+    and a.referencedcomponentid = b.referencedcomponentid
+    where b.id is null
+    or b.effectivetime is null
 	or b.active is null
 	or b.moduleid is null
-  or b.refsetid is null
-  or b.referencedcomponentid is null;
-
-
-
+	or b.refsetid is null
+	or b.referencedcomponentid is null;
+	
 	drop view curr;
