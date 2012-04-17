@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-  
+	
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>release-assertion-toolkit</artifactId>
@@ -8,20 +7,18 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  	<scm>
+	<scm>
 		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</connection>
 		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</developerConnection>
 		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-runner</url>
 	</scm>
+	<packaging>pom</packaging>
+	<groupId>org.ihtsdo.release.assertion</groupId>
+	<artifactId>release-assertion-runner</artifactId>  
+	<version>0.0.1-SNAPSHOT</version>
+	<name>release-assertion-runner</name>
+	<url>http://maven.apache.org</url>
 	
-  <packaging>pom</packaging>
-  <groupId>org.ihtsdo.release.assertion</groupId>
-  <artifactId>release-assertion-runner</artifactId>  
-  <version>0.0.1-SNAPSHOT</version>
-  <name>release-assertion-runner</name>
-  <url>http://maven.apache.org</url>
-  
-    
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<drools.version>5.2.0.Final</drools.version>
@@ -32,7 +29,7 @@
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
 		<project.manifest>${project.build.directory}/generated-sources/manifest</project.manifest>
 		<project.executedScripts>${project.build.directory}/generated-sources</project.executedScripts>
-		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>		
+		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>
 	</properties>
   
   <distributionManagement>
@@ -58,19 +55,18 @@
 	<!-- Below dependency is used to load previous release tables (currently limited to RF2)-->
 	<dependency>
 		<groupId>org.ihtsdo</groupId>
-  		<artifactId>release-files-repository</artifactId>
-  		<version>2012-01-31</version>
-     	<type>zip</type>
+		<artifactId>release-files-repository</artifactId>
+		<version>2012-01-31</version>
+		<type>zip</type>
 	</dependency>
 	<!-- Below dependency is used to load current release tables (currently limited to RF2)-->
  	<dependency>
 		<groupId>org.ihtsdo.intl.release.process</groupId>
 		<artifactId>wb-release-process</artifactId>
-		<version>test.rel-1-SNAPSHOT</version>
+		<version>1.0-SNAPSHOT</version>
 		<type>zip</type>
 		<classifier>daily</classifier>
 	</dependency>
-	
 </dependencies>
   
    
@@ -79,7 +75,7 @@
 		<profile>
 			<id>load-previous-release</id>
 			  <build>
-					<plugins>			
+					<plugins>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-dependency-plugin</artifactId>
@@ -94,7 +90,7 @@
 									<configuration>
 										<artifactItems>
 											<artifactItem>
-												<groupId>org.ihtsdo</groupId>												
+												<groupId>org.ihtsdo</groupId>
 												<artifactId>release-files-repository</artifactId>
   												<version>2012-01-31</version>
 												<type>zip</type>
@@ -111,7 +107,6 @@
 							<artifactId>release-database-setup</artifactId>
 						 	<version>${project.version}</version>
 							<executions>
-									
 							<execution>
 								<id>import-prev-releasefiles-to-database</id>
 								<phase>compile</phase>
@@ -128,7 +123,6 @@
 											<loadDBTableName>prev_concept_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Concept_Full_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
-									
 										<LoadFileParameter>
 											<loadDBTableName>prev_concept_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Concept_Snapshot_INT_20120131.txt</loadReleaseFileName>
@@ -148,8 +142,7 @@
 										<LoadFileParameter>
 											<loadDBTableName>prev_description_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Description_Delta-en_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>	
-										
+										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_textdefinition_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_TextDefinition_Full-en_INT_20120131.txt</loadReleaseFileName>
@@ -162,7 +155,6 @@
 											<loadDBTableName>prev_textdefinition_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_TextDefinition_Delta-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
-											
 										<LoadFileParameter>
 											<loadDBTableName>prev_relationship_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Relationship_Full_INT_20120131.txt</loadReleaseFileName>
@@ -187,75 +179,71 @@
 											<loadDBTableName>prev_stated_relationship_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_StatedRelationship_Delta_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplerefset_f</loadDBTableName>									
+											<loadDBTableName>prev_simplerefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_Refset_SimpleFull_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplerefset_s</loadDBTableName>									
+											<loadDBTableName>prev_simplerefset_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_Refset_SimpleSnapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplerefset_d</loadDBTableName>									
+											<loadDBTableName>prev_simplerefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_Refset_SimpleDelta_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>											
+										</LoadFileParameter>
 										
 										<LoadFileParameter>
-											<loadDBTableName>prev_attributevaluerefset_f</loadDBTableName>									
+											<loadDBTableName>prev_attributevaluerefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_AttributeValueFull_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_attributevaluerefset_s</loadDBTableName>									
+											<loadDBTableName>prev_attributevaluerefset_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_AttributeValueSnapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_attributevaluerefset_d</loadDBTableName>									
+											<loadDBTableName>prev_attributevaluerefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_AttributeValueDelta_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>	
-										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_associationrefset_f</loadDBTableName>									
+											<loadDBTableName>prev_associationrefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_AssociationReferenceFull_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_associationrefset_s</loadDBTableName>									
+											<loadDBTableName>prev_associationrefset_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_AssociationReferenceSnapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_associationrefset_d</loadDBTableName>									
+											<loadDBTableName>prev_associationrefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_AssociationReferenceDelta_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplemaprefset_f</loadDBTableName>									
+											<loadDBTableName>prev_simplemaprefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_sRefset_SimpleMapFull_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplemaprefset_s</loadDBTableName>									
+											<loadDBTableName>prev_simplemaprefset_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_sRefset_SimpleMapSnapshot_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_simplemaprefset_d</loadDBTableName>									
+											<loadDBTableName>prev_simplemaprefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_sRefset_SimpleMapDelta_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>	
-										
+										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_langrefset_f</loadDBTableName>									
+											<loadDBTableName>prev_langrefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_LanguageFull-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_langrefset_s</loadDBTableName>									
+											<loadDBTableName>prev_langrefset_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_LanguageSnapshot-en_INT_20120131.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
-											<loadDBTableName>prev_langrefset_d</loadDBTableName>									
+											<loadDBTableName>prev_langrefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_LanguageDelta-en_INT_20120131.txt</loadReleaseFileName>
-										</LoadFileParameter>		
-									
-									</importConfig>		
+										</LoadFileParameter>
+									</importConfig>
 								</configuration>
-							</execution>							 		
+							</execution>
 						</executions>
 					</plugin>
 					<plugin>
@@ -266,14 +254,14 @@
 							<target>1.6</target>
 						</configuration>
 					</plugin>
-				</plugins>						
+				</plugins>
 			</build>
-		</profile>		
+		</profile>
 		
 		<profile>
 			<id>load-current-release</id>
 			  <build>
-					<plugins>			
+					<plugins>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-dependency-plugin</artifactId>
@@ -291,7 +279,7 @@
 											<artifactItem>
 												<groupId>org.ihtsdo.intl.release.process</groupId>
 												<artifactId>wb-release-process</artifactId>
-												<version>test.rel-1-SNAPSHOT</version>	
+												<version>1.0-SNAPSHOT</version>
 												<type>zip</type>
 											</artifactItem>
 										</artifactItems>
@@ -299,7 +287,7 @@
 									</configuration>
 								</execution>
 							</executions>
-						</plugin>			
+						</plugin>
 						
 						<plugin>
 							<groupId>org.ihtsdo.release.assertion</groupId>
@@ -314,12 +302,11 @@
 									<goal>import-releasefile-to-database</goal>
 								</goals>
 								<configuration>
-									<!-- <url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
+									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
-								
-									<importConfig>		
+									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>curr_concept_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/sct2_Concept_Delta_INT_20120731.txt</loadReleaseFileName>
@@ -334,7 +321,7 @@
 										</LoadFileParameter>
 										
 										<LoadFileParameter>
-											<loadDBTableName>curr_description_d</loadDBTableName>									
+											<loadDBTableName>curr_description_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/sct2_Description_Delta-en_INT_20120731.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										
@@ -346,7 +333,6 @@
 											<loadDBTableName>curr_description_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Snapshot/sct2_Description_Snapshot-en_INT_20120731.txt</loadReleaseFileName>
 										</LoadFileParameter>
-								
 										<LoadFileParameter>
 											<loadDBTableName>curr_relationship_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Full/sct2_Relationship_Full_INT_20120731.txt</loadReleaseFileName>
@@ -383,7 +369,6 @@
 											<loadDBTableName>curr_textdefinition_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/sct2_TextDefinition_Delta-en_INT_20120731.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
 											<loadDBTableName>curr_simplerefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Full/der2_Refset_SimpleFull_INT_20120731.txt</loadReleaseFileName>
@@ -396,7 +381,6 @@
 											<loadDBTableName>curr_simplerefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/der2_Refset_SimpleDelta_INT_20120731.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
 											<loadDBTableName>curr_attributevaluerefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Full/der2_cRefset_AttributeValueFull_INT_20120731.txt</loadReleaseFileName>
@@ -409,7 +393,6 @@
 											<loadDBTableName>curr_attributevaluerefset_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/der2_cRefset_AttributeValueDelta_INT_20120731.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
 											<loadDBTableName>curr_associationrefset_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Full/der2_cRefset_AssociationReferenceFull_INT_20120731.txt</loadReleaseFileName>
@@ -461,7 +444,7 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>		
+		</profile>
 		
 		<profile>
 	   <id>build-resources</id>
