@@ -1,22 +1,22 @@
 
 /******************************************************************************** 
-	component-centric-delta-language-lang-specific-words-us-call-proc
+	component-centric-delta-language-lang-specific-words-gb-call-proc
 
 	Assertion:
-	Calling procedure testing that terms that contain EN-US
-	language-specific words are in the same US language refset.
+	Calling procedure testing that terms that contain EN-GB 
+	language-specific words are in the same GB language refset.
 
 ********************************************************************************/
 
-	create or replace view v_curr_snapshot as
+	create or replace view v_curr_delta as
 	select a.id, a.term
 		from curr_description_d a 
 		inner join curr_langrefset_s b on a.id = b.referencedComponentId
 		and a.active = '1'
 		and b.active = '1'
-		and b.refsetid = '900000000000509007';		
+		and b.refsetid = '900000000000508004';		
 
-	
-	call  usTerm_procedure();
 
-	drop view v_curr_snapshot;
+	call  gbTerm_procedure();
+
+	drop view v_curr_delta;
