@@ -98,7 +98,7 @@
 	<script uuid="c779d282-3c4d-4c16-a8a6-8d1a621b247d" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-valid-key.sql" text="There is a 1:1 relationship between the id and the key values in the SIMPLE REFSET snapshot."  />
 	<script uuid="6a407415-8415-4870-a6ef-b5bc22f73c1f" category="file-centric" sqlFile="file-centric-snapshot-simple-refset-valid-referencedcomponentid.sql" text="Referencedcomponentid refers to valid concepts in the SIMPLE REFSET snapshot."  />
 
-	<script uuid="eb940ee0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-target.sql" text="Active historical association refset members have active concepts as targets." />
+	<script uuid="eb940ee0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-delta-historical-association-active-target.sql" text="Active historical association refset members have active concepts as targets." />
 	<script uuid="90bcb7f0-7f25-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-refers-to-parent.sql" text="No active Historical Association member associates an inactive concept with its parent." />
 	<script uuid="f7117eb0-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-historical-association-active-source-concept.sql" text="Active historical association refset members refer to inactive concepts." />
 	<script uuid="f2293d20-7cd6-11e1-b0c4-0800200c9a66" category="component-centric" sqlFile="component-centric-snapshot-concept-primitive.sql" text="All Concepts having only one defining relationship have definitionstatus PRIMITIVE." />
