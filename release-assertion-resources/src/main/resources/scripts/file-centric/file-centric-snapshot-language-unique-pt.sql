@@ -120,5 +120,6 @@
 	and c.active = '1'
 	and a.acceptabilityid = '900000000000548007'
 	and b.typeid = '900000000000013009'
+	group by b.id
 	having count(a.refsetid) < (select count(distinct(refsetid)) from curr_langrefset_s);
         
