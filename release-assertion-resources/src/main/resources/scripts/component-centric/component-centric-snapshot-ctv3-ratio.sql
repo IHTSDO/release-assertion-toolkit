@@ -19,8 +19,6 @@
 	from curr_simplemaprefset_s a
 	inner join curr_concept_s b on a.referencedcomponentid = b.id
 	where a.refsetid = '900000000000497000'
-	and b.active = '1'
-	and a.active = '1'
 	group by a.id
 	having count(a.id) > 1;
 
@@ -35,8 +33,7 @@
 	create or replace view v_act_ctv3 as
 		select referencedComponentid 
 		from curr_simplemaprefset_s 
-		where refsetid = '900000000000497000'
-		and active = '1';
+		where refsetid = '900000000000497000';
 			
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -47,7 +44,6 @@
 		concat('Concept: id=',id, ': Concept does not have an associated CTV3 refset member.') 
 	from curr_concept_s a
 	left join v_act_ctv3 b on a.id = b.referencedComponentId 
-	where a.active = '1'
-	and b.referencedComponentId is null;
+	where b.referencedComponentId is null;
 
 	drop view v_act_ctv3;
