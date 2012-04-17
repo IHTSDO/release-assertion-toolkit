@@ -59,14 +59,6 @@
 		<version>2012-01-31</version>
 		<type>zip</type>
 	</dependency>
-	<!-- Below dependency is used to load current release tables (currently limited to RF2)-->
- 	<dependency>
-		<groupId>org.ihtsdo.intl.release.process</groupId>
-		<artifactId>wb-release-process</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<type>zip</type>
-		<classifier>daily</classifier>
-	</dependency>
 </dependencies>
   
    
@@ -260,6 +252,16 @@
 		
 		<profile>
 			<id>load-current-release</id>
+		<!-- Below dependency is used to load current release tables (currently limited to RF2)-->
+			  <dependencies>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>daily</classifier>
+				</dependency>
+			  </dependencies>
 			  <build>
 					<plugins>
 						<plugin>
