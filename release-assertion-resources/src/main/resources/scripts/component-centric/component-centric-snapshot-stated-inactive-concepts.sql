@@ -14,7 +14,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Relationship: id=',a.id, ': Active stated relationship is associated with an inactive sourceid concept.') 	
+		concat('RELATIONSHIP: id=',a.id, ': Active stated relationship is associated with an inactive sourceid concept.') 	
+	
 	from curr_stated_relationship_s a
 	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'
@@ -28,7 +29,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Relationship: id=',a.id, ': Active stated relationship is associated with an inactive destinationid concept.') 	
+		concat('RELATIONSHIP: id=',a.id, ': Active stated relationship is associated with an inactive destinationid concept.') 	
+	
 	from curr_stated_relationship_s a
 	inner join curr_concept_s b on a.destinationid = b.id
 	where a.active = '1'
@@ -42,7 +44,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Relationship: id=',a.id, ': Active stated relationship is associated with an inactive typeid concept.') 	
+		concat('RELATIONSHIP: id=',a.id, ': Active stated relationship is associated with an inactive typeid concept.') 	
+	
 	from curr_stated_relationship_s a
 	inner join curr_concept_s b on a.typeid = b.id
 	where a.active = '1'

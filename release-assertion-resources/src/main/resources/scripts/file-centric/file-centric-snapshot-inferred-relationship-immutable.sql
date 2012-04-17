@@ -12,7 +12,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ':There is a 1-to-1 relationship between the id and the immutable values in Inferred Relationship snapshot.') 	
+		concat('CONCEPT: id=',b.id, ': Concept contains two or more version of the immutable values in Inferred Relationships.') 	
+
 	from curr_relationship_s a 
 	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'

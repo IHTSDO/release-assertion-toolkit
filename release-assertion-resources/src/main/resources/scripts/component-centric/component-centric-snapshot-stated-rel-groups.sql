@@ -12,7 +12,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',b.id, ': Concept contains a relationship group with a single active stated member.') 	
+		concat('RELATIONSHIP: id=',a.id, ': Relationship is in a relationship group with a single active inferred member.') 	
+	
 	from curr_stated_relationship_s a
 	inner join curr_concept_s b on b.id = a.sourceid
 	where a.relationshipgroup != 0 

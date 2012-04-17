@@ -13,8 +13,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Member: id=',a.id, ': SNOMED RT simple map refset member is not active.') 
+		concat('MEMBER: id=',a.id, ': SNOMED RT simple map refset member is not active.') 
 
 	from curr_simplemaprefset_s a
-		where a.refsetid = '900000000000498005'
-		and a.active != '1'
+	where a.refsetid = '900000000000498005'
+	and a.active != '1'

@@ -15,6 +15,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',c.id, ': Concept has FSN that is defined more than one time within a given refset.') 
+		
 	from curr_description_s a 
 	inner join curr_langrefset_s b on a.id = b.referencedcomponentid 
 	inner join curr_concept_s c on a.conceptid = c.id
@@ -49,6 +50,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Concept does not have an FSN defined.') 
+	
 	from curr_concept_s a 
 	left join v_curr_snapshot b on b.conceptid = a.id
 	where a.active = '1'
@@ -68,6 +70,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',c.id, ': Concept does not have an FSN in any refset.') 
+	
 	from curr_description_s a 
 	left join curr_langrefset_s b on a.id = b.referencedcomponentid 
 	inner join curr_concept_s c on a.conceptid = c.id
@@ -89,6 +92,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',c.id, ': Concept does not have an FSN in each possible refset.') 
+	
 	from curr_langrefset_s a
 	inner join curr_description_s b on b.id = a.referencedcomponentid 
 	inner join curr_concept_s c on b.conceptid = c.id

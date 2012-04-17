@@ -21,6 +21,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',c.id, ': Concept has Preferred Term that is defined more than one time within a given refset.') 
+
 	from curr_description_s a 
 	INNER JOIN curr_langrefset_s b on a.id = b.referencedComponentid
 	inner join curr_concept_s c on a.conceptid = c.id
@@ -52,7 +53,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-			concat('CONCEPT: id=',a.id, ': Concept does not have a Synonym.') 
+		concat('CONCEPT: id=',a.id, ': Concept does not have a Synonym.') 
+
 	from curr_concept_s a
 	left join active_synonym_view b on b.conceptid = a.id
 	where a.active = '1'
@@ -88,7 +90,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-			concat('CONCEPT: id=',a.id, ': Concept does not have a Preferred Term in any refset.') 
+		concat('CONCEPT: id=',a.id, ': Concept does not have a Preferred Term in any refset.') 
+
 	from curr_concept_s a
 	left join active_act_pref_con_view b on a.id = b.conceptid	
 	where a.active = '1'
@@ -112,6 +115,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',c.id, ': Concept does not have an Preferred Term in each possible refset.') 
+	
 	from curr_langrefset_s a
 	inner join curr_description_s b on b.id = a.referencedcomponentid 
 	inner join curr_concept_s c on b.conceptid = c.id

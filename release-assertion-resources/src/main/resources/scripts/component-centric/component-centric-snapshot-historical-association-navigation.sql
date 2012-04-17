@@ -12,6 +12,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('MEMBER: id=',a.id, ': Active Historical refset member maps to Target Component that is an active navigation concept.') 	
+	
 	from curr_associationrefset_s a
 	left join res_navigationconcepts b on a.targetcomponentid = b.referencedcomponentid
 	where a.active = '1'

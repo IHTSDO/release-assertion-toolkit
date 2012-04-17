@@ -11,7 +11,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Relationship: id=',a.id, ': Inferred relationship has a non -SOME- modifier.') 	
+		concat('RELATIONSHIP: id=',a.id, ': Inferred Relationship has a non -SOME- modifier.') 	
+	
 	from curr_relationship_s a
 	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'

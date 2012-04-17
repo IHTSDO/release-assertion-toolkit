@@ -13,8 +13,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Member: id=',a.id, ': CTV3 simple map refset member is not active.') 
+		concat('MEMBER: id=',a.id, ': CTV3 simple map refset member is not active.') 
 	
-		from curr_simplemaprefset_s a
-		where a.refsetid = '900000000000497000'
-		and a.active != '1'
+	from curr_simplemaprefset_s a
+	where a.refsetid = '900000000000497000'
+	and a.active != '1'

@@ -13,7 +13,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Member: id=',a.id, ': SNOMED RT member is not unique.') 
+		concat('MEMBER: id=',a.id, ': SNOMED RT member is not unique.') 
 	
 	from curr_simplemaprefset_s a
 	inner join curr_concept_s b on a.referencedcomponentid = b.id

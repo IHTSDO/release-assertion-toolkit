@@ -17,6 +17,6 @@
 	
 	from curr_langrefset_s a
 	inner join prev_langrefset_s b on a.id = b.id 
-	where a.active = '0' and 
-	      b.active = '0' and 
-	      a.effectivetime = <CURRENT-RELEASE-DATE>
+	where a.active = '0' 
+	and b.active = '0' 
+	and a.effectivetime = <CURRENT-RELEASE-DATE>

@@ -19,7 +19,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.id, ': Concept does not have a stated is-a relationship.') 	
+		concat('CONCEPT: id=',a.id, ': Concept does not have a stated is-a relationship.') 	
+	
 	from curr_concept_s a
 	left join v_act_stated_isa b on a.id = b.sourceid
 	where a.active = '1'

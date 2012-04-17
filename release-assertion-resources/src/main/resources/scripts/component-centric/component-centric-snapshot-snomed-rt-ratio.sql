@@ -14,7 +14,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.id, ': Concept has more than one associated SNOMED RT refset member.') 
+		concat('CONCEPT: id=',b.id, ': Concept has more than one associated SNOMED RT refset member.') 
 	
 	from curr_simplemaprefset_s a
 	inner join curr_concept_s b on a.referencedcomponentid = b.id
@@ -41,7 +41,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',id, ': Concept does not have an associated SNOMED RT refset member.') 
+		concat('CONCEPT: id=',a.id, ': Concept does not have an associated SNOMED RT refset member.') 
+	
 	from curr_concept_s a
 	left join v_act_srt b on a.id = b.referencedComponentId 
 	where b.referencedComponentId is null;

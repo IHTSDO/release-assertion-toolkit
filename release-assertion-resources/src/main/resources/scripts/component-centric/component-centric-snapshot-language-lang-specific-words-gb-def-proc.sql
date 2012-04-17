@@ -28,14 +28,23 @@
 				leave LOOP1; 
 			end if; 
 
+
+
+
+
+
 			insert into qa_result (runid, assertionuuid, assertiontext, details)
 			select 
 				<RUNID>,
 				'<ASSERTIONUUID>',
 				'<ASSERTIONTEXT>',
-				concat('CONCEPT: id=',a.id, ': Description is in GB Language refset and refers to a term that is in en-gb spelling.') 
+				concat('DESCRIPTION: id=',a.id, ': Description is in GB Language refset and refers to a term that is in en-gb spelling.') 
 			from v_curr_snapshot a 
 			where locate(gbTerm, a.term) >= 1;		
+
+
+
+
 
 		end loop LOOP1; 
 	end;

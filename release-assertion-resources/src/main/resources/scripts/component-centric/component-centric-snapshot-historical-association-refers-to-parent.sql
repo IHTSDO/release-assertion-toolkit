@@ -14,7 +14,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Historical association refset member associates inactive concept with a stated parent.') 
+		concat('MEMBER: id=',a.id, ': Historical association refset member associates inactive source concept with its stated parent.') 
+	
 	from curr_associationrefset_s a, curr_stated_relationship_s b
 	where a.active = '1'
 	and b.active = '1'
@@ -31,7 +32,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Historical association refset member associates inactive concept with an inferred parent.') 
+		concat('MEMBER: id=',a.id, ': Historical association refset member associates inactive source concept with its inferred parent.') 
+	
 	from curr_associationrefset_s a, curr_relationship_s b
 	where a.active = '1'
 	and b.active = '1'

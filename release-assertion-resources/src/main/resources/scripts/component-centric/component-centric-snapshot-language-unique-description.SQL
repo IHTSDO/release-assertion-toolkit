@@ -14,10 +14,10 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Concept: id=',a.id, ': Concept contains more than one definition for a given language.') 
+		concat('CONCEPT: id=',a.id, ': Concept contains more than one definition for a given language.') 
+	
 	from curr_concept_s a
-	inner join curr_textdefinition_s b
-	on a.id = b.conceptid
+	inner join curr_textdefinition_s b on a.id = b.conceptid
 	where a.active = '1' 
 	and b.active = '1'
 	and b.typeid = '900000000000550004'

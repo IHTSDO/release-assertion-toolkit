@@ -34,7 +34,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('Description: id=',a.id, ': Description is active but has no active members in language refset.') 
+		concat('DESCRIPTION: id=',a.id, ': Description is active but has no active members in language refset.') 
+	
 	from curr_description_s a
 	inner join curr_concept_s c on a.conceptid = c.id
 	inner join v_inact_only_langrs b on a.id = b.referencedComponentId

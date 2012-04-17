@@ -12,7 +12,8 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('RELATIONSHIP: id=',a.id, ':There is a a source id in the Stated Relationship snapshot file that does not exist in the Concept snapshot file.') 	
-		from curr_stated_relationship_s a 
-		left join curr_concept_s b on a.sourceid = b.id
-		where b.id is null
+		concat('RELATIONSHIP: id=',a.id, ': Stated Relationship contains a source id that does not exist in the Concept snapshot file.') 	
+	
+	from curr_stated_relationship_s a 
+	left join curr_concept_s b on a.sourceid = b.id
+	where b.id is null

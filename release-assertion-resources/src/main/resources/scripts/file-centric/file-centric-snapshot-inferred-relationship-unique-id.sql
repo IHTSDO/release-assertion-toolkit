@@ -15,7 +15,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('RELATIONSHIP : id=',id, ': Relationship Id is repeated in the Inferred Relationship snapshot file.') 
-	
+
 	from curr_relationship_s
 	group by id
 	having count(id) > 1
