@@ -14,11 +14,10 @@
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ':Concept has only one defining relationship but is not primitive.') 	
 	from curr_concept_s a 
-	inner join curr_relationship_s b
+	inner join curr_stated_relationship_s b
 	on a.id = b.sourceid
-	where b.characteristictypeid = '900000000000011006'
-	and a.active = '1'
+	where a.active = '1'
 	and b.active = '1'
 	and a.definitionstatusid != '900000000000074008'
-	having count(b.id) = 1
-	
+	group by b.sourceid
+	having count(*) = 1
