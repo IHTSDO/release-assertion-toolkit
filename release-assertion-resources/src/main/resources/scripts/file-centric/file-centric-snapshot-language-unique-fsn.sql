@@ -52,7 +52,7 @@
 		concat('CONCEPT: id=',a.id, ': Concept does not have an FSN defined.') 
 	
 	from curr_concept_s a 
-	left join v_curr_snapshot b on b.conceptid = a.id
+	left join v_curr_fsn sb on b.conceptid = a.id
 	where a.active = '1'
 	and b.conceptid is null;
 		
