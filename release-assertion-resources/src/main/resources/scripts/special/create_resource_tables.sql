@@ -8,15 +8,18 @@ create table res_navigationconcepts (
 	 ordernum	varchar(255),
  	linkedTo	varchar(255)
 );
+create index idx_navconcepts on res_navigationconcepts(referencedComponentId);
  
 create table res_gbterms (
 	term	varchar(255)
 );
-  
+create index idx_gbtermsTerm on res_gbterms(term);
+
 
 create table res_usterms (
 	term	varchar(255)
 );
+create index idx_ustermsTerm on res_usterms(term);
 
 
 create table res_semantictags(
