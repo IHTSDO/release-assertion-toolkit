@@ -8,7 +8,7 @@
 ********************************************************************************/
 	
 	
-	/* Concept has FSN that is defined 2+ times for a given refset */
+	/* TEST: Concept has FSN that is defined 2+ times for a given refset */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
@@ -27,7 +27,22 @@
 	
 	
 	
-	/* Concept does not have an FSN defined */
+	
+	
+	
+	
+	
+	/* TEST: Concept does not have an FSN defined */
+
+	/* Get all active FSNs */
+	create or replace view v_curr_fsns as
+	select conceptid
+		from curr_description_s  
+		where active = '1'
+		and typeid = '900000000000003001';
+
+
+		
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
@@ -35,13 +50,18 @@
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',a.id, ': Concept does not have an FSN defined.') 
 	from curr_concept_s a 
-	inner join curr_description_s b on b.conceptid = a.id
-	where b.typeid = '900000000000003001'
-	having count(b.id) = 0;
+	left join v_curr_snapshot b on b.conceptid = a.id
+	where a.active = '1'
+	and b.conceptid is null;
 		
 	
+	drop view v_curr_fsns;
 	
-	/* Concept does not have an FSN in any refset */
+	
+	
+	
+	
+	/* TEST: Concept does not have an FSN in any refset */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
@@ -55,10 +75,15 @@
 	and a.active = '1'	
 	and c.active = '1'
 	and a.typeid = '900000000000003001';
-		
 	
 	
-	/* Concept does not have an FSN in each possible refset */
+	
+	
+	
+	
+	
+	
+	/* TEST: Concept does not have an FSN in each possible refset */
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
