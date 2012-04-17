@@ -35,6 +35,8 @@
 	
 	
 	
+	
+	
 	/* TEST: Active Concept doesn't contain an active Synonym */
 	
 	/* View of all active synonyms */
@@ -50,7 +52,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-			concat('CONCEPT: id=',a.id, ': Concept does not have an Preferred Term in any refset.') 
+			concat('CONCEPT: id=',a.id, ': Concept does not have a Synonym.') 
 	from curr_concept_s a
 	left join active_synonym_view b on b.conceptid = a.id
 	where a.active = '1'
@@ -65,39 +67,37 @@
 	
 	
 	
-	/* TEST: All active Synonyms for active Concepts does not exist in the any language refset */
+	
+	
+	/* TEST: Concept does not contain an active Preferred Term in any language refset */
 
-	/* Create view of all active Synonyms for all active concepts */
-	create or replace view active_con_syn_view as
-		select a.id from curr_description_s a
-		inner join curr_concept_s b on b.id = a.conceptid
-		where a.typeid = '900000000000013009'
-		and a.active = '1'
-		and b.active = '1';
-
-
-	/* Create view of all active Preferred Terms in the language refset table */
-	create or replace view active_preferred_view as
-		select a.referencedcomponentid from curr_langrefset_s a
-		where a.acceptabilityid = '900000000000548007'
-		and a.active = '1';
-
+	/* Create view of all active Pref Terms */
+	
+	create or replace view active_act_pref_con_view as
+		select distinct(a.conceptid) from curr_description_s a
+			inner join curr_langrefset_s b on a.id = b.referencedcomponentid
+			where a.typeid = '900000000000013009'
+			and a.active = '1'
+			and b.acceptabilityid = '900000000000548007'
+			and b.active = '1';
 		
 		
-	/* Synonym does not contain a an active Preferred Term in the language refset */
+		
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-			concat('CONCEPT: id=',a.id, ': Concept does not have an Preferred Term in any refset.') 
-	from active_con_syn_view a
-	left join active_preferred_view b on b.referencedcomponentid = a.id
-	where  b.referencedcomponentid is null;
+			concat('CONCEPT: id=',a.id, ': Concept does not have a Preferred Term in any refset.') 
+	from curr_concept_s a
+	left join active_act_pref_con_view b on a.id = b.conceptid	
+	where a.active = '1'
+	and b.conceptid is null;
 
 
-	drop view active_preferred_view;
-	drop view active_con_syn_view;
+	drop view active_act_pref_con_view;
+		
+		
 		
 		
 		
@@ -119,7 +119,6 @@
 	and b.active = '1'
 	and c.active = '1'
 	and a.acceptabilityid = '900000000000548007'
-	GROUP BY a.referencedcomponentid
-	having count(distinct(a.refsetid)) < (select count(distinct(refsetid)) from curr_langrefset_s);
-	
+	and b.typeid = '900000000000013009'
+	having count(a.refsetid) < (select count(distinct(refsetid)) from curr_langrefset_s);
         
