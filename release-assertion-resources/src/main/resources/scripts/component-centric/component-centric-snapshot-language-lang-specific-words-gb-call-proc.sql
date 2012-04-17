@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	component-centric-snapshot-language-lang-specific-words-gb-call-proc
+	component-centric-delta-language-lang-specific-words-gb-call-proc
 
 	Assertion:
 	Calling procedure testing that terms that contain EN-GB 

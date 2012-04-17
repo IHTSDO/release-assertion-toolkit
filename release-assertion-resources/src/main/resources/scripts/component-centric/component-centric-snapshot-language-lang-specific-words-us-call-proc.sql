@@ -1,6 +1,6 @@
 
 /******************************************************************************** 
-	component-centric-snapshot-language-lang-specific-words-us-call-proc
+	component-centric-delta-language-lang-specific-words-us-call-proc
 
 	Assertion:
 	Calling procedure testing that terms that contain EN-US
