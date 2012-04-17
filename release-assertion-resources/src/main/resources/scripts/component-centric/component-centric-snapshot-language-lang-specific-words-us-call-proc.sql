@@ -10,7 +10,7 @@
 
 	create or replace view v_curr_snapshot as
 	select a.id, a.term
-		from curr_description_s a 
+		from curr_description_d a 
 		inner join curr_langrefset_s b on a.id = b.referencedComponentId
 		and a.active = '1'
 		and b.active = '1'
