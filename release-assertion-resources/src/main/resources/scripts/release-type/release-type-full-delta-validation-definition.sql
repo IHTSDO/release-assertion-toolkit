@@ -5,12 +5,8 @@
 
 /* view of current delta, derived from current full */
 	create temporary table if not exists temp_table like prev_textdefinition_f;
-	
-	insert into temp_table 
-	select * from curr_textdefinition_d;
-	
-	insert into temp_table 
-	select *	from prev_textdefinition_f;
+	insert into temp_table select * from curr_textdefinition_d;
+	insert into temp_table select * from prev_textdefinition_f;
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

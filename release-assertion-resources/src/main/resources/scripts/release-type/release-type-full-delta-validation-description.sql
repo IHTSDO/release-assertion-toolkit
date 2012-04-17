@@ -5,13 +5,9 @@
 
 /* view of current delta, derived from current full */
 	create temporary table if not exists temp_table like prev_description_f;
+	insert into temp_table select * from curr_description_d;
+	insert into temp_table select * from prev_description_f;
 	
-	insert into temp_table 
-	select * from curr_description_d;
-	
-	insert into temp_table 
-	select * from prev_description_f;
-
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -43,10 +39,10 @@
 /* in the full; not in the delta */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
-		<RUNID>,
-		'<ASSERTIONUUID>',
-		'<ASSERTIONTEXT>',
-		concat('Description: id=',a.id, ': Description is in prior full file, but not in current full file.')
+	<RUNID>,
+	'<ASSERTIONUUID>',
+	'<ASSERTIONTEXT>',
+	concat('Description: id=',a.id, ': Description is in prior full file, but not in current full file.')
 	from temp_table a
 	left join curr_description_f b 
 	on a.id = b.id
