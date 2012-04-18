@@ -15,7 +15,7 @@
 		where active = '1';
 
 
-
+ 
 
 
 /* 	view of current snapshot of language refset referencedcomponentids of inactive only members */
@@ -41,8 +41,6 @@
 	inner join v_inact_only_langrs b on a.id = b.referencedComponentId
 	where a.active = '1' 
 	and c.active = '1';
-
-
 
 	drop view v_act_langrs;
 	drop view v_inact_only_langrs;
