@@ -8,7 +8,7 @@
 ********************************************************************************/
 	/* Create view of all concepts containing an active stated is_a relationship */
 	create or replace view v_act_stated_isa as
-	select distinct(sourceid)
+	select sourceid
 		from curr_stated_relationship_s
 		where active = '1'
 		and typeid = '116680003';

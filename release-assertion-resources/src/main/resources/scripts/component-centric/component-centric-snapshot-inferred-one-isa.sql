@@ -8,7 +8,7 @@
 ********************************************************************************/
 	/* Create view of all concepts containing an active inferred is_a relationship */
 	create or replace view v_act_inferred_isa as
-	select distinct(sourceid)
+	select sourceid
 		from curr_relationship_s
 		where active = '1'
 		and typeid = '116680003';

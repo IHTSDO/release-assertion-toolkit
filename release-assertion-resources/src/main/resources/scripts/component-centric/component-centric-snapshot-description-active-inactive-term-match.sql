@@ -9,7 +9,7 @@
 	
 /* 	view of current snapshot made by finding active terms associated with active concepts */
 	create or replace view v_curr_snapshot_1 as
-	select distinct(term)  
+	select term  
 	from curr_description_s a , curr_concept_s b
 	where a.active = 1
 	and a.conceptid = b.id
