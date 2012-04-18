@@ -36,7 +36,7 @@
 	/* TEST: Concept does not have an FSN defined */
 
 	/* Get all active FSNs */
-	create or replace view v_curr_fsns as
+	create or replace view v_curr_fsn as
 	select conceptid
 		from curr_description_s  
 		where active = '1'
@@ -57,7 +57,7 @@
 	and b.conceptid is null;
 		
 	
-	drop view v_curr_fsns;
+	drop view v_curr_fsn;
 	
 	
 	
