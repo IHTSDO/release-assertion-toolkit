@@ -129,14 +129,14 @@ public class ExecuteSql extends AbstractMojo
 						long startTime = logger.initializeScript(currentScript);
 	
 			    		if (executor.execute(currentScript)) {
-		        			archiveExecutedFiles(sqlParser.getArchiveContent());
+		        			archiveExecutedFiles(executor.getArchiveContent());
 		        		}
 			    		
 			    		logger.finalizeScript(startTime);
 		    	    } catch (Exception e ) {
 		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
 		    	    	
-		    	    	archiveExecutedFiles(sqlParser.getArchiveContent());
+		    	    	archiveExecutedFiles(executor.getArchiveContent());
 		    	    	
 		    	    	if (breakOnFailure) {
 		    	    		throw new MojoExecutionException(errorMessage);
@@ -168,7 +168,7 @@ public class ExecuteSql extends AbstractMojo
 		ExecutionLogger.initializeRun(sqlParser);
 	}
 	
-	private void archiveExecutedFiles(String[] lines) throws IOException {
+	private void archiveExecutedFiles(String statement) throws IOException {
 		File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
 		if (!targetCategoryDir.exists()) {
 			targetCategoryDir.mkdir();
@@ -177,10 +177,8 @@ public class ExecuteSql extends AbstractMojo
 		File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile());
 		BufferedWriter writer = new BufferedWriter(new FileWriter(executedFile));
 		
-		for (int i = 0; i < lines.length; i++) {
-			writer.append(lines[i]);
-			writer.newLine();
-		}
+		writer.append(statement);
+		writer.newLine();
 		
 		writer.flush();
 		writer.close();

@@ -18,7 +18,6 @@ import org.ihtsdo.xml.elements.Property;
 @SuppressWarnings("restriction")
 public class SqlFileParser {
 	String currentReleaseDate;
-	String[] archiveContent = null;
 	private HashMap<String, String> variableMap = new HashMap<String, String>();
 	private String runId = "-1";
 	private String dbName;
@@ -54,16 +53,9 @@ public class SqlFileParser {
 		}
 		
 		if (lineCount > 0) {
-			String statement = parse(str.toString());
-			
-			// Prepare archived file
-			reader.close();
-			reader = new BufferedReader(new FileReader(sqlFile));
-			prepareArchiveContent(reader, lineCount);
-			
-			return statement;
-		}
-
+			return parse(str.toString());
+		} 
+		
 		return null;
 	}
 	
@@ -75,25 +67,7 @@ public class SqlFileParser {
 		
 		return null;
 	}
-
-	private void prepareArchiveContent(BufferedReader reader, int totalLines) 
-		throws IOException 
-	{
-		int lineCount = 0;
-		String line = null;
-		archiveContent = new String[totalLines];
-		
-		while ((line = reader.readLine()) != null) {
-			archiveContent[lineCount++] = replaceVariables(line);
-		}
-		
-		reader.close();
-	}
 	
-	public String[] getArchiveContent() {
-		return archiveContent;
-	}
-
 	public String[] identifyStatements(String statementString) {
 		String[] preProcessStatements = statementString.trim().split(";");
 		String[] statements = new String[preProcessStatements.length];

@@ -15,6 +15,7 @@ public class StatementExecutor {
 	private Connection con = null;
 	private SqlFileParser sqlParser;
 	private String sqlDirectory;
+	private String archiveContent;
 	
 	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory) throws Exception {
 		this.sqlDirectory = sqlDirectory;
@@ -37,10 +38,15 @@ public class StatementExecutor {
 		sqlParser.updateVariables("assertionText", script.getText());
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
 		
-		String statement = sqlParser.parse(sqlFile);
+		archiveContent = sqlParser.parse(sqlFile);
 
-		return execute(statement);
+		return execute(archiveContent);
 	}
+
+	public String getArchiveContent() {
+		return archiveContent;
+	}
+
 	
 	public ResultSet execute(String[] statements) throws SQLException {
 		// Assumes Pre-Parsed
