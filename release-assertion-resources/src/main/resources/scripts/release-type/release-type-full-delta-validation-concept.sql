@@ -1,6 +1,6 @@
 
 /*  
-	The current full concept file consists of the previously published full file and the changes for the current release
+	The current full concept file consists of the previously published full file aalbnd the changes for the current release
 */
 
 /* view of current delta, derived from current full */
@@ -49,4 +49,4 @@
 		or b.definitionstatusid is null;
 
 commit;
-drop view temp_table;
+drop table temp_table;
