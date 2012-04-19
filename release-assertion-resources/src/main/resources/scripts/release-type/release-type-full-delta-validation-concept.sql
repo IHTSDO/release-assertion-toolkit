@@ -49,4 +49,4 @@
 		or b.definitionstatusid is null;
 
 commit;
-/*drop view temp_table;*/
+drop view temp_table;
