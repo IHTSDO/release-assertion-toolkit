@@ -49,6 +49,7 @@ public class SqlFileParser {
 		int lineCount = 0;
 		while ((line = reader.readLine()) != null) {
 			str.append(line);
+			str.append("\r\n");
 			lineCount++;
 		}
 		
