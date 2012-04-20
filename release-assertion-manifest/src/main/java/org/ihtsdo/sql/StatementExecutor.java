@@ -17,6 +17,11 @@ public class StatementExecutor {
 	private String sqlDirectory;
 	private String archiveContent;
 	
+	public StatementExecutor(Connection con, String dbName) {
+		this.con = con;
+		this.sqlParser = new SqlFileParser(dbName);		
+	}
+
 	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory) throws Exception {
 		this.sqlDirectory = sqlDirectory;
 		this.con = con;
@@ -39,6 +44,16 @@ public class StatementExecutor {
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
 		
 		archiveContent = sqlParser.parse(sqlFile);
+
+		return execute(archiveContent);
+	}
+
+	public boolean execute(File script) throws SQLException, IOException {
+		if (!script.exists()) {
+			return false;
+		}
+
+		archiveContent = sqlParser.parse(script);
 
 		return execute(archiveContent);
 	}

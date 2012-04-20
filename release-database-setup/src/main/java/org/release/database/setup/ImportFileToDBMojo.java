@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.ihtsdo.sql.StatementExecutor;
+import org.ihtsdo.sql.parser.SqlFileParser;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -75,6 +77,14 @@ public class ImportFileToDBMojo extends AbstractMojo {
 	 */
 	private String password;
 	
+	/**
+	 * Script to drop tables, create tables, and create indices
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private File createTableScript;
+	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 			String importSuccess;
@@ -84,6 +94,10 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			
 			logger.info("File Import Started ...");
 			
+			// Drop & Create tables
+			dropAndCreateTables(createTableScript);
+			
+			// Load each resource file
 			for (int f = 0; f < importConfig.size(); f++) {
 				File loadReleaseFileName = importConfig.get(f).loadReleaseFileName;
 				String loadDBTableName = importConfig.get(f).loadDBTableName;
@@ -117,6 +131,19 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		}
 	}
 	
+	private void dropAndCreateTables(File script) throws SQLException, IOException {
+		logger.info("Create tables and indices. . . drop them first just in case already exist ...");
+
+		if (url.indexOf(File.pathSeparator) < 0) {
+			url = url.replace('/', '\\');
+		}
+
+		String dbName = url.substring(url.lastIndexOf(File.separatorChar) + 1);
+		StatementExecutor executor = new StatementExecutor(con, dbName);
+
+		executor.execute(script);
+	}
+
 	private void loadFileToDatabase(File filename , String tablename) throws SQLException, FileNotFoundException  {
 		String fileName = filename.toString().replace('\\', '/');
 							
@@ -125,9 +152,6 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		
 		String disableKey ="ALTER TABLE " + tablename + " DISABLE KEYS";
 		statement.execute(disableKey);
-		
-		String truncateTable ="TRUNCATE TABLE " + tablename ;
-		con.createStatement().execute(truncateTable);			
 		
 		// Define the query we are going to execute
 		String statementText = "LOAD DATA LOCAL INFILE '" + fileName + "' " +
@@ -146,8 +170,10 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		// create database connection 
 		Class.forName("com.mysql.jdbc.Driver");
 		
+		String fullUrl = url + "?allowMultiQueries=true";
+
 		if(con == null)
-			con = (com.mysql.jdbc.Connection)DriverManager.getConnection(url,username,password);
+			con = (com.mysql.jdbc.Connection)DriverManager.getConnection(fullUrl,username,password);
 
 	}
 	

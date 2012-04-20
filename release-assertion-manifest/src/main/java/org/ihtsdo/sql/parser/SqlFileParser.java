@@ -24,7 +24,10 @@ public class SqlFileParser {
 	
 	private final String useStatement = "use ";
 	
-
+	public SqlFileParser(String databaseName) {
+		this.dbName = databaseName;
+	}
+	
 	public SqlFileParser(File execProperties, String databaseName) throws JAXBException {
 		this.dbName = databaseName;
 		

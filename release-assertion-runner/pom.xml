@@ -492,6 +492,7 @@
 			<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 			<username>root</username>
 			<password>snomed11</password>
+			<createTableScript>${project.manifest}/scripts/special/create_resource_tables.sql</createTableScript>
 			<importConfig>
  			<LoadFileParameter>
 				<loadDBTableName>res_semantictags</loadDBTableName>
