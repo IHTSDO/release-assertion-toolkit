@@ -10,7 +10,7 @@
 /* 	view of current snapshot made by finding active FSN's and removing tags */
 	create or replace view v_curr_snapshot_1 as
 	select SUBSTRING_INDEX(term, '(', 1) as termwithouttag , a.id , a.conceptid , a.term
-	from curr_description_s a , curr_concept_s b
+	from curr_description_d a , curr_concept_s b
 	where a.typeid ='900000000000003001'
 	and a.active = 1
 	and a.conceptid = b.id
@@ -20,7 +20,7 @@
 	
 	create or replace view v_curr_snapshot_2 as
 	select a.* 
-	from v_curr_snapshot_1 a ,  curr_description_s b
+	from v_curr_snapshot_1 a ,  curr_description_d b
 	where b.typeid ='900000000000013009'
 	and a.conceptid = b.conceptid
 	and a.termwithouttag = b.term;
