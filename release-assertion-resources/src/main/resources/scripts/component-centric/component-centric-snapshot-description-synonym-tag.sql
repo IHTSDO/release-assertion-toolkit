@@ -9,10 +9,9 @@
 	
 /* 	view of current snapshot made by finding active synonyms with semantic tags */
 
--- check if semantic is already gets build as resources
 
 	create or replace view v_curr_snapshot as
-	select SUBSTRING(a.term,LOCATE('(',a.term)) as term 
+	select SUBSTRING(a.term,LOCATE('(',a.term)) as term  , b.id
 	from curr_description_s a , curr_concept_s b
 	where a.typeid in ('900000000000013009')
 	and a.active = 1
@@ -26,7 +25,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Synonyms with semantic tag.') 	
+		concat('DESC: ID=',a.id, ':Synonyms with semantic tag.') 	
 	from v_curr_snapshot a;
 
 
