@@ -81,7 +81,6 @@ public class ImportFileToDBMojo extends AbstractMojo {
 	 * Script to drop tables, create tables, and create indices
 	 * 
 	 * @parameter
-	 * @required
 	 */
 	private File createTableScript;
 	
@@ -95,7 +94,9 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			logger.info("File Import Started ...");
 			
 			// Drop & Create tables
-			dropAndCreateTables(createTableScript);
+			if (createTableScript != null) {
+				dropAndCreateTables(createTableScript);
+			}
 			
 			// Load each resource file
 			for (int f = 0; f < importConfig.size(); f++) {
