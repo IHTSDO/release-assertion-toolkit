@@ -126,13 +126,16 @@ public class ExecuteSql extends AbstractMojo
 				while (processor.hasNext()) {
 					try {
 						currentScript = processor.nextSqlFileName();
-						long startTime = logger.initializeScript(currentScript);
-	
-			    		if (executor.execute(currentScript)) {
-		        			archiveExecutedFiles(executor.getArchiveContent());
-		        		}
-			    		
-			    		logger.finalizeScript(startTime);
+						
+						if (currentScriptExists(logger)) {
+							long startTime = logger.initializeScript(currentScript);
+		
+				    		if (executor.execute(currentScript)) {
+			        			archiveExecutedFiles(executor.getArchiveContent());
+			        		}
+				    		
+				    		logger.finalizeScript(startTime);
+						}
 		    	    } catch (Exception e ) {
 		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
 		    	    	
@@ -155,6 +158,17 @@ public class ExecuteSql extends AbstractMojo
 	    
 	    logger.finalizeProcess(testingStartDate);
    }
+
+	private boolean currentScriptExists(ExecutionLogger logger) {
+		String fullScriptPath = sqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile();
+		File f = new File(fullScriptPath);
+
+		if (!f.exists()) {
+			logger.logError("Script \"" + fullScriptPath + "\" doesn't exist (UUID: " + currentScript.getUuid().toString() + ")");
+			return false;
+		}
+		return true;
+	}
 
 	private void initializeProcess() throws Exception {
 		File targetSqlDirectory = new File(executedSqlDirectory);
