@@ -16,7 +16,7 @@ public class ExecutionLogger {
 
 	public long initializeScript(Script currentScript) {
 		if (observedUids.contains(currentScript.getUuid())) {
-			logger.error("Found duplicate UUID: " + currentScript.getUuid());
+			logger.error("Found duplicate UUID: " + currentScript.getUuid() + " . . . about to run script anyway");
 		} else {
 			observedUids.add(currentScript.getUuid());
 		}
