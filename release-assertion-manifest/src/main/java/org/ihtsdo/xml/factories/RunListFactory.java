@@ -31,7 +31,6 @@ import org.ihtsdo.xml.elements.Script;
  * provided in this class.
  * 
  */
-@SuppressWarnings("restriction")
 @XmlRegistry
 public class RunListFactory {
 

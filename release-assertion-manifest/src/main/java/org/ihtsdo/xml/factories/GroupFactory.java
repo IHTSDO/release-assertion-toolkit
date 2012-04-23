@@ -28,7 +28,6 @@ import org.ihtsdo.xml.elements.GroupList;
  * provided in this class.
  * 
  */
-@SuppressWarnings("restriction")
 @XmlRegistry
 public class GroupFactory {
 

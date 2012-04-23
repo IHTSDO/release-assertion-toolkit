@@ -28,7 +28,6 @@ import org.ihtsdo.xml.elements.CategoryList;
  * provided in this class.
  * 
  */
-@SuppressWarnings("restriction")
 @XmlRegistry
 public class CategoryFactory {
 

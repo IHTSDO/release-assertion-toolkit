@@ -32,7 +32,6 @@ import org.ihtsdo.xml.elements.UseCase;
  * provided in this class.
  * 
  */
-@SuppressWarnings("restriction")
 @XmlRegistry
 public class ManifestFactory {
 

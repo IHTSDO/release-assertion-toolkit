@@ -15,7 +15,6 @@ import org.ihtsdo.sql.processors.RunTableProcessor;
 import org.ihtsdo.xml.elements.ExecProperties;
 import org.ihtsdo.xml.elements.Property;
 
-@SuppressWarnings("restriction")
 public class SqlFileParser {
 	String currentReleaseDate;
 	private HashMap<String, String> variableMap = new HashMap<String, String>();

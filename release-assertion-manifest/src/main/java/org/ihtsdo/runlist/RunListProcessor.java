@@ -9,7 +9,6 @@ import javax.xml.bind.Unmarshaller;
 import org.ihtsdo.xml.elements.RunList;
 import org.ihtsdo.xml.elements.Script;
 
-@SuppressWarnings("restriction")
 public class RunListProcessor {
 	private RunList runList = null;
 	private int totalScriptCountInRunList = 0;
