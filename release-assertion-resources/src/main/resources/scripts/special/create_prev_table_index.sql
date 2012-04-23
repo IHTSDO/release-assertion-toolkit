@@ -1,123 +1,33 @@
-use localpostqatest;
-
-create table prev_associationrefset_d(
-    id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   targetcomponentid VARCHAR(18)
-);
-
-create unique index idx_id on prev_associationrefset_d(id);
-create index idx_effectivetime on prev_associationrefset_d(effectivetime);
-create index idx_active on prev_associationrefset_d(active);
-create index idx_moduleid on prev_associationrefset_d(moduleid);
-create index idx_refsetid on prev_associationrefset_d(refsetid);
-create index idx_referencedcomponentid on prev_associationrefset_d(referencedcomponentid);
-create index idx_targetcomponentid on prev_associationrefset_d(targetcomponentid);
-
-
-
-create table prev_associationrefset_f(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   targetcomponentid VARCHAR(18)
-);
-
-create index idx_id on prev_associationrefset_f(id);
-create index idx_effectivetime on prev_associationrefset_f(effectivetime);
-create index idx_active on prev_associationrefset_f(active);
-create index idx_moduleid on prev_associationrefset_f(moduleid);
-create index idx_refsetid on prev_associationrefset_f(refsetid);
-create index idx_referencedcomponentid on prev_associationrefset_f(referencedcomponentid);
-create index idx_targetcomponentid on prev_associationrefset_f(targetcomponentid);
-
-
-
-create table prev_associationrefset_s(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   targetcomponentid VARCHAR(18)
-);
-
-create unique index idx_id on prev_associationrefset_s(id);
-create index idx_effectivetime on prev_associationrefset_s(effectivetime);
-create index idx_active on prev_associationrefset_s(active);
-create index idx_moduleid on prev_associationrefset_s(moduleid);
-create index idx_refsetid on prev_associationrefset_s(refsetid);
-create index idx_referencedcomponentid on prev_associationrefset_s(referencedcomponentid);
-create index idx_targetcomponentid on prev_associationrefset_s(targetcomponentid);
-
-
-
-create table prev_attributevaluerefset_d(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   valueid VARCHAR(18)
-);
-    
-create unique index idx_id on prev_attributevaluerefset_d(id);
-create index idx_effectivetime on prev_attributevaluerefset_d(effectivetime);
-create index idx_active on prev_attributevaluerefset_d(active);
-create index idx_moduleid on prev_attributevaluerefset_d(moduleid);
-create index idx_refsetid on prev_attributevaluerefset_d(refsetid);
-create index idx_referencedcomponentid on prev_attributevaluerefset_d(referencedcomponentid);
-create index idx_valueid on prev_attributevaluerefset_d(valueid);
-
-
-
-create table prev_attributevaluerefset_f(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   valueid VARCHAR(18)
-);
-
-create index idx_id on prev_attributevaluerefset_f(id);
-create index idx_effectivetime on prev_attributevaluerefset_f(effectivetime);
-create index idx_active on prev_attributevaluerefset_f(active);
-create index idx_moduleid on prev_attributevaluerefset_f(moduleid);
-create index idx_refsetid on prev_attributevaluerefset_f(refsetid);
-create index idx_referencedcomponentid on prev_attributevaluerefset_f(referencedcomponentid);
-create index idx_valueid on prev_attributevaluerefset_f(valueid);
-
-
-
-create table prev_attributevaluerefset_s(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   valueid VARCHAR(18)
-);
-
-create unique index idx_id on prev_attributevaluerefset_s(id);
-create index idx_effectivetime on prev_attributevaluerefset_s(effectivetime);
-create index idx_active on prev_attributevaluerefset_s(active);
-create index idx_moduleid on prev_attributevaluerefset_s(moduleid);
-create index idx_refsetid on prev_attributevaluerefset_s(refsetid);
-create index idx_referencedcomponentid on prev_attributevaluerefset_s(referencedcomponentid);
-create index idx_valueid on prev_attributevaluerefset_s(valueid);
-
+drop table prev_concept_f;
+drop table prev_concept_s;
+drop table prev_concept_d;
+drop table prev_description_f;
+drop table prev_description_s;
+drop table prev_description_d;
+drop table prev_relationship_s;
+drop table prev_relationship_d;
+drop table prev_relationship_f;
+drop table prev_stated_relationship_s;
+drop table prev_stated_relationship_d;
+drop table prev_stated_relationship_f;
+drop table prev_textdefinition_s;
+drop table prev_textdefinition_d;
+drop table prev_textdefinition_f;
+drop table prev_simplerefset_f;
+drop table prev_simplerefset_s;
+drop table prev_simplerefset_d;
+drop table prev_attributevaluerefset_s;
+drop table prev_attributevaluerefset_d;
+drop table prev_attributevaluerefset_f;
+drop table prev_associationrefset_s;
+drop table prev_associationrefset_d;
+drop table prev_associationrefset_f;
+drop table prev_simplemaprefset_s ;
+drop table prev_simplemaprefset_f;
+drop table prev_simplemaprefset_d;
+drop table prev_langrefset_d;
+drop table prev_langrefset_s;
+drop table prev_langrefset_f;
 
 
 create table prev_concept_d(
@@ -240,65 +150,7 @@ create index idx_casesignificanceid on prev_description_s(casesignificanceid);
 
 
 
-create table prev_langrefset_d(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   acceptabilityid VARCHAR(18)
-);
 
-create unique index idx_id on prev_langrefset_d(id);
-create index idx_effectivetime on prev_langrefset_d(effectivetime);
-create index idx_active on prev_langrefset_d(active);
-create index idx_moduleid on prev_langrefset_d(moduleid);
-create index idx_refsetid on prev_langrefset_d(refsetid);
-create index idx_referencedcomponentid on prev_langrefset_d(referencedcomponentid);
-create index idx_acceptabilityid on prev_langrefset_d(acceptabilityid);
-
-
-
-create table prev_langrefset_f(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   acceptabilityid VARCHAR(18)
-);
-
-create index idx_id on prev_langrefset_f(id);
-create index idx_effectivetime on prev_langrefset_f(effectivetime);
-create index idx_active on prev_langrefset_f(active);
-create index idx_moduleid on prev_langrefset_f(moduleid);
-create index idx_refsetid on prev_langrefset_f(refsetid);
-create index idx_referencedcomponentid on prev_langrefset_f(referencedcomponentid);
-create index idx_acceptabilityid on prev_langrefset_f(acceptabilityid);
-
-
-create table prev_langrefset_s(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   acceptabilityid VARCHAR(18)
-);
-
-create unique index idx_id on prev_langrefset_s(id);
-create index idx_effectivetime on prev_langrefset_s(effectivetime);
-create index idx_active on prev_langrefset_s(active);
-create index idx_moduleid on prev_langrefset_s(moduleid);
-create index idx_refsetid on prev_langrefset_s(refsetid);
-create index idx_referencedcomponentid on prev_langrefset_s(referencedcomponentid);
-create index idx_acceptabilityid on prev_langrefset_s(acceptabilityid);
-
-    
-    
     
 create table prev_relationship_d(
    id VARCHAR(18) not null,
@@ -350,7 +202,6 @@ create index idx_typeid on prev_relationship_f(typeid);
 create index idx_characteristictypeid on prev_relationship_f(characteristictypeid);
 create index idx_modifierid on prev_relationship_f(modifierid);
 
-
     
     
 create table prev_relationship_s(
@@ -376,127 +227,6 @@ create index idx_relationshipgroup on prev_relationship_s(relationshipgroup);
 create index idx_typeid on prev_relationship_s(typeid);
 create index idx_characteristictypeid on prev_relationship_s(characteristictypeid);
 create index idx_modifierid on prev_relationship_s(modifierid);
-
-
-    
-
-create table prev_simplemaprefset_d(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   maptarget VARCHAR(32)
-);
-
-create unique index idx_id on prev_simplemaprefset_d(id);
-create index idx_effectivetime on prev_simplemaprefset_d(effectivetime);
-create index idx_active on prev_simplemaprefset_d(active);
-create index idx_moduleid on prev_simplemaprefset_d(moduleid);
-create index idx_refsetid on prev_simplemaprefset_d(refsetid);
-create index idx_referencedcomponentid on prev_simplemaprefset_d(referencedcomponentid);
-create index idx_maptarget on prev_simplemaprefset_d(maptarget);
-
-
-
-
-
-create table prev_simplemaprefset_f(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   maptarget VARCHAR(32)
-);
-
-create index idx_id on prev_simplemaprefset_f(id);
-create index idx_effectivetime on prev_simplemaprefset_f(effectivetime);
-create index idx_active on prev_simplemaprefset_f(active);
-create index idx_moduleid on prev_simplemaprefset_f(moduleid);
-create index idx_refsetid on prev_simplemaprefset_f(refsetid);
-create index idx_referencedcomponentid on prev_simplemaprefset_f(referencedcomponentid);
-create index idx_maptarget on prev_simplemaprefset_f(maptarget);
-
-
-
-
-create table prev_simplemaprefset_s(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18),
-   maptarget VARCHAR(32)
-);
-
-create unique index idx_id on prev_simplemaprefset_s(id);
-create index idx_effectivetime on prev_simplemaprefset_s(effectivetime);
-create index idx_active on prev_simplemaprefset_s(active);
-create index idx_moduleid on prev_simplemaprefset_s(moduleid);
-create index idx_refsetid on prev_simplemaprefset_s(refsetid);
-create index idx_referencedcomponentid on prev_simplemaprefset_s(referencedcomponentid);
-create index idx_maptarget on prev_simplemaprefset_s(maptarget);
-
-
-
-
-create table prev_simplerefset_d(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18)
-);
-
-create unique index idx_id on prev_simplerefset_d(id);
-create index idx_effectivetime on prev_simplerefset_d(effectivetime);
-create index idx_active on prev_simplerefset_d(active);
-create index idx_moduleid on prev_simplerefset_d(moduleid);
-create index idx_refsetid on prev_simplerefset_d(refsetid);
-create index idx_referencedcomponentid on prev_simplerefset_d(referencedcomponentid);
-
-
-    
-
-create table prev_simplerefset_f(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18)
-);
-
-create index idx_id on prev_simplerefset_f(id);
-create index idx_effectivetime on prev_simplerefset_f(effectivetime);
-create index idx_active on prev_simplerefset_f(active);
-create index idx_moduleid on prev_simplerefset_f(moduleid);
-create index idx_refsetid on prev_simplerefset_f(refsetid);
-create index idx_referencedcomponentid on prev_simplerefset_f(referencedcomponentid);
-
-
-
-
-create table prev_simplerefset_s(
-   id VARCHAR(36) not null,
-   effectivetime CHAR(8),
-   active CHAR(1),
-   moduleid VARCHAR(18),
-   refsetid VARCHAR(18),
-   referencedcomponentid VARCHAR(18)
-);
-
-create unique index idx_id on prev_simplerefset_s(id);
-create index idx_effectivetime on prev_simplerefset_s(effectivetime);
-create index idx_active on prev_simplerefset_s(active);
-create index idx_moduleid on prev_simplerefset_s(moduleid);
-create index idx_refsetid on prev_simplerefset_s(refsetid);
-create index idx_referencedcomponentid on prev_simplerefset_s(referencedcomponentid);
 
 
 
@@ -647,4 +377,307 @@ create index idx_languagecode on prev_textdefinition_s(languagecode);
 create index idx_typeid on prev_textdefinition_s(typeid);
 create index idx_term on prev_textdefinition_s(term);
 create index idx_casesignificanceid on prev_textdefinition_s(casesignificanceid);    
+
+
+
+
+
+
+
+
+create table prev_associationrefset_d(
+    id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   targetcomponentid VARCHAR(18)
+);
+
+create unique index idx_id on prev_associationrefset_d(id);
+create index idx_effectivetime on prev_associationrefset_d(effectivetime);
+create index idx_active on prev_associationrefset_d(active);
+create index idx_moduleid on prev_associationrefset_d(moduleid);
+create index idx_refsetid on prev_associationrefset_d(refsetid);
+create index idx_referencedcomponentid on prev_associationrefset_d(referencedcomponentid);
+create index idx_targetcomponentid on prev_associationrefset_d(targetcomponentid);
+
+
+
+create table prev_associationrefset_f(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   targetcomponentid VARCHAR(18)
+);
+
+create index idx_id on prev_associationrefset_f(id);
+create index idx_effectivetime on prev_associationrefset_f(effectivetime);
+create index idx_active on prev_associationrefset_f(active);
+create index idx_moduleid on prev_associationrefset_f(moduleid);
+create index idx_refsetid on prev_associationrefset_f(refsetid);
+create index idx_referencedcomponentid on prev_associationrefset_f(referencedcomponentid);
+create index idx_targetcomponentid on prev_associationrefset_f(targetcomponentid);
+
+
+
+create table prev_associationrefset_s(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   targetcomponentid VARCHAR(18)
+);
+
+create unique index idx_id on prev_associationrefset_s(id);
+create index idx_effectivetime on prev_associationrefset_s(effectivetime);
+create index idx_active on prev_associationrefset_s(active);
+create index idx_moduleid on prev_associationrefset_s(moduleid);
+create index idx_refsetid on prev_associationrefset_s(refsetid);
+create index idx_referencedcomponentid on prev_associationrefset_s(referencedcomponentid);
+create index idx_targetcomponentid on prev_associationrefset_s(targetcomponentid);
+
+
+
+create table prev_attributevaluerefset_d(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   valueid VARCHAR(18)
+);
     
+create unique index idx_id on prev_attributevaluerefset_d(id);
+create index idx_effectivetime on prev_attributevaluerefset_d(effectivetime);
+create index idx_active on prev_attributevaluerefset_d(active);
+create index idx_moduleid on prev_attributevaluerefset_d(moduleid);
+create index idx_refsetid on prev_attributevaluerefset_d(refsetid);
+create index idx_referencedcomponentid on prev_attributevaluerefset_d(referencedcomponentid);
+create index idx_valueid on prev_attributevaluerefset_d(valueid);
+
+
+
+create table prev_attributevaluerefset_f(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   valueid VARCHAR(18)
+);
+
+create index idx_id on prev_attributevaluerefset_f(id);
+create index idx_effectivetime on prev_attributevaluerefset_f(effectivetime);
+create index idx_active on prev_attributevaluerefset_f(active);
+create index idx_moduleid on prev_attributevaluerefset_f(moduleid);
+create index idx_refsetid on prev_attributevaluerefset_f(refsetid);
+create index idx_referencedcomponentid on prev_attributevaluerefset_f(referencedcomponentid);
+create index idx_valueid on prev_attributevaluerefset_f(valueid);
+
+
+
+create table prev_attributevaluerefset_s(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   valueid VARCHAR(18)
+);
+
+create unique index idx_id on prev_attributevaluerefset_s(id);
+create index idx_effectivetime on prev_attributevaluerefset_s(effectivetime);
+create index idx_active on prev_attributevaluerefset_s(active);
+create index idx_moduleid on prev_attributevaluerefset_s(moduleid);
+create index idx_refsetid on prev_attributevaluerefset_s(refsetid);
+create index idx_referencedcomponentid on prev_attributevaluerefset_s(referencedcomponentid);
+create index idx_valueid on prev_attributevaluerefset_s(valueid);
+    
+
+create table prev_langrefset_d(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   acceptabilityid VARCHAR(18)
+);
+
+create unique index idx_id on prev_langrefset_d(id);
+create index idx_effectivetime on prev_langrefset_d(effectivetime);
+create index idx_active on prev_langrefset_d(active);
+create index idx_moduleid on prev_langrefset_d(moduleid);
+create index idx_refsetid on prev_langrefset_d(refsetid);
+create index idx_referencedcomponentid on prev_langrefset_d(referencedcomponentid);
+create index idx_acceptabilityid on prev_langrefset_d(acceptabilityid);
+
+
+
+create table prev_langrefset_f(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   acceptabilityid VARCHAR(18)
+);
+
+create index idx_id on prev_langrefset_f(id);
+create index idx_effectivetime on prev_langrefset_f(effectivetime);
+create index idx_active on prev_langrefset_f(active);
+create index idx_moduleid on prev_langrefset_f(moduleid);
+create index idx_refsetid on prev_langrefset_f(refsetid);
+create index idx_referencedcomponentid on prev_langrefset_f(referencedcomponentid);
+create index idx_acceptabilityid on prev_langrefset_f(acceptabilityid);
+
+
+create table prev_langrefset_s(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   acceptabilityid VARCHAR(18)
+);
+
+create unique index idx_id on prev_langrefset_s(id);
+create index idx_effectivetime on prev_langrefset_s(effectivetime);
+create index idx_active on prev_langrefset_s(active);
+create index idx_moduleid on prev_langrefset_s(moduleid);
+create index idx_refsetid on prev_langrefset_s(refsetid);
+create index idx_referencedcomponentid on prev_langrefset_s(referencedcomponentid);
+create index idx_acceptabilityid on prev_langrefset_s(acceptabilityid);
+
+        
+    
+
+create table prev_simplemaprefset_d(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   maptarget VARCHAR(32)
+);
+
+create unique index idx_id on prev_simplemaprefset_d(id);
+create index idx_effectivetime on prev_simplemaprefset_d(effectivetime);
+create index idx_active on prev_simplemaprefset_d(active);
+create index idx_moduleid on prev_simplemaprefset_d(moduleid);
+create index idx_refsetid on prev_simplemaprefset_d(refsetid);
+create index idx_referencedcomponentid on prev_simplemaprefset_d(referencedcomponentid);
+create index idx_maptarget on prev_simplemaprefset_d(maptarget);
+
+
+
+
+
+create table prev_simplemaprefset_f(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   maptarget VARCHAR(32)
+);
+
+create index idx_id on prev_simplemaprefset_f(id);
+create index idx_effectivetime on prev_simplemaprefset_f(effectivetime);
+create index idx_active on prev_simplemaprefset_f(active);
+create index idx_moduleid on prev_simplemaprefset_f(moduleid);
+create index idx_refsetid on prev_simplemaprefset_f(refsetid);
+create index idx_referencedcomponentid on prev_simplemaprefset_f(referencedcomponentid);
+create index idx_maptarget on prev_simplemaprefset_f(maptarget);
+
+
+
+
+create table prev_simplemaprefset_s(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18),
+   maptarget VARCHAR(32)
+);
+
+create unique index idx_id on prev_simplemaprefset_s(id);
+create index idx_effectivetime on prev_simplemaprefset_s(effectivetime);
+create index idx_active on prev_simplemaprefset_s(active);
+create index idx_moduleid on prev_simplemaprefset_s(moduleid);
+create index idx_refsetid on prev_simplemaprefset_s(refsetid);
+create index idx_referencedcomponentid on prev_simplemaprefset_s(referencedcomponentid);
+create index idx_maptarget on prev_simplemaprefset_s(maptarget);
+
+
+
+
+create table prev_simplerefset_d(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18)
+);
+
+create unique index idx_id on prev_simplerefset_d(id);
+create index idx_effectivetime on prev_simplerefset_d(effectivetime);
+create index idx_active on prev_simplerefset_d(active);
+create index idx_moduleid on prev_simplerefset_d(moduleid);
+create index idx_refsetid on prev_simplerefset_d(refsetid);
+create index idx_referencedcomponentid on prev_simplerefset_d(referencedcomponentid);
+
+
+    
+
+create table prev_simplerefset_f(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18)
+);
+
+create index idx_id on prev_simplerefset_f(id);
+create index idx_effectivetime on prev_simplerefset_f(effectivetime);
+create index idx_active on prev_simplerefset_f(active);
+create index idx_moduleid on prev_simplerefset_f(moduleid);
+create index idx_refsetid on prev_simplerefset_f(refsetid);
+create index idx_referencedcomponentid on prev_simplerefset_f(referencedcomponentid);
+
+
+
+
+create table prev_simplerefset_s(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   moduleid VARCHAR(18),
+   refsetid VARCHAR(18),
+   referencedcomponentid VARCHAR(18)
+);
+
+create unique index idx_id on prev_simplerefset_s(id);
+create index idx_effectivetime on prev_simplerefset_s(effectivetime);
+create index idx_active on prev_simplerefset_s(active);
+create index idx_moduleid on prev_simplerefset_s(moduleid);
+create index idx_refsetid on prev_simplerefset_s(refsetid);
+create index idx_referencedcomponentid on prev_simplerefset_s(referencedcomponentid);
