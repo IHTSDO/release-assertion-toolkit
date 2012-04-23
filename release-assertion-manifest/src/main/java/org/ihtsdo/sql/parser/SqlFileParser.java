@@ -43,6 +43,8 @@ public class SqlFileParser {
 		String line = null;
 		StringBuffer str = new StringBuffer();
 		str.append(useStatement + dbName + ";");
+		str.append("\r\n");
+		str.append("\r\n");
 		
 		// Put into single file
 		BufferedReader reader = new BufferedReader(new FileReader(sqlFile));
