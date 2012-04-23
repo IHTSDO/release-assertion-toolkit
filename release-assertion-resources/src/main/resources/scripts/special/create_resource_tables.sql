@@ -6,7 +6,8 @@
 
 create table if not exists qa_run (
 	effectivetime DATETIME,
-	runid BIGINT
+	runid BIGINT not null auto_increment,
+	primary key (runid)
 );
 
 create table if not exists qa_result (
