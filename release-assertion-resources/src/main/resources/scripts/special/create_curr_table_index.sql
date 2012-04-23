@@ -1,33 +1,33 @@
-drop table curr_concept_f;
-drop table curr_concept_s;
-drop table curr_concept_d;
-drop table curr_description_f;
-drop table curr_description_s;
-drop table curr_description_d;
-drop table curr_relationship_s;
-drop table curr_relationship_d;
-drop table curr_relationship_f;
-drop table curr_stated_relationship_s;
-drop table curr_stated_relationship_d;
-drop table curr_stated_relationship_f;
-drop table curr_textdefinition_s;
-drop table curr_textdefinition_d;
-drop table curr_textdefinition_f;
-drop table curr_simplerefset_f;
-drop table curr_simplerefset_s;
-drop table curr_simplerefset_d;
-drop table curr_attributevaluerefset_s;
-drop table curr_attributevaluerefset_d;
-drop table curr_attributevaluerefset_f;
-drop table curr_associationrefset_s;
-drop table curr_associationrefset_d;
-drop table curr_associationrefset_f;
-drop table curr_simplemaprefset_s ;
-drop table curr_simplemaprefset_f;
-drop table curr_simplemaprefset_d;
-drop table curr_langrefset_d;
-drop table curr_langrefset_s;
-drop table curr_langrefset_f;
+drop table if exists curr_concept_f;
+drop table if exists curr_concept_s;
+drop table if exists curr_concept_d;
+drop table if exists curr_description_f;
+drop table if exists curr_description_s;
+drop table if exists curr_description_d;
+drop table if exists curr_relationship_s;
+drop table if exists curr_relationship_d;
+drop table if exists curr_relationship_f;
+drop table if exists curr_stated_relationship_s;
+drop table if exists curr_stated_relationship_d;
+drop table if exists curr_stated_relationship_f;
+drop table if exists curr_textdefinition_s;
+drop table if exists curr_textdefinition_d;
+drop table if exists curr_textdefinition_f;
+drop table if exists curr_simplerefset_f;
+drop table if exists curr_simplerefset_s;
+drop table if exists curr_simplerefset_d;
+drop table if exists curr_attributevaluerefset_s;
+drop table if exists curr_attributevaluerefset_d;
+drop table if exists curr_attributevaluerefset_f;
+drop table if exists curr_associationrefset_s;
+drop table if exists curr_associationrefset_d;
+drop table if exists curr_associationrefset_f;
+drop table if exists curr_simplemaprefset_s ;
+drop table if exists curr_simplemaprefset_f;
+drop table if exists curr_simplemaprefset_d;
+drop table if exists curr_langrefset_d;
+drop table if exists curr_langrefset_s;
+drop table if exists curr_langrefset_f;
 
 
 create table curr_concept_d(
@@ -88,7 +88,7 @@ create table curr_description_d(
    term VARCHAR(255),
    casesignificanceid VARCHAR(18)
 );
-    
+
 create unique index idx_id on curr_description_d(id);
 create index idx_effectivetime on curr_description_d(effectivetime);
 create index idx_active on curr_description_d(active);
@@ -98,7 +98,6 @@ create index idx_languagecode on curr_description_d(languagecode);
 create index idx_typeid on curr_description_d(typeid);
 create index idx_term on curr_description_d(term);
 create index idx_casesignificanceid on curr_description_d(casesignificanceid);
-
 
 
 create table curr_description_f(
