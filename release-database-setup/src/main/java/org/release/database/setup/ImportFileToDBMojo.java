@@ -1,6 +1,5 @@
 package org.release.database.setup;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,13 +9,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.ihtsdo.sql.StatementExecutor;
-import org.ihtsdo.sql.parser.SqlFileParser;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;

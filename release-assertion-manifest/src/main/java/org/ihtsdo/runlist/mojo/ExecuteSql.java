@@ -174,8 +174,8 @@ public class ExecuteSql extends AbstractMojo
 
 		createConnection(url, username, password);
 
-		sqlParser = new SqlFileParser(execProperties, databaseName);
-		executor = new StatementExecutor(con, sqlParser, sqlDirectory, executedSqlDirectory);
+		sqlParser = new SqlFileParser(execProperties);
+		executor = new StatementExecutor(con, sqlParser, sqlDirectory, databaseName, executedSqlDirectory);
 		
 		ExecutionLogger.initializeRun(sqlParser);
 	}

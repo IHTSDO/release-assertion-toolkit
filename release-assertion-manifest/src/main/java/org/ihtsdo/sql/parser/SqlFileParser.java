@@ -19,17 +19,11 @@ public class SqlFileParser {
 	String currentReleaseDate;
 	private HashMap<String, String> variableMap = new HashMap<String, String>();
 	private String runId = "-1";
-	private String dbName;
 	
-	private final String useStatement = "use ";
-	
-	public SqlFileParser(String databaseName) {
-		this.dbName = databaseName;
+	public SqlFileParser() {
 	}
-	
-	public SqlFileParser(File execProperties, String databaseName) throws JAXBException {
-		this.dbName = databaseName;
-		
+
+	public SqlFileParser(File execProperties) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(ExecProperties.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		ExecProperties properties = (ExecProperties) jaxbUnmarshaller.unmarshal(execProperties);
@@ -42,10 +36,7 @@ public class SqlFileParser {
 	public String parse(File sqlFile) throws IOException {
 		String line = null;
 		StringBuffer str = new StringBuffer();
-		str.append(useStatement + dbName + ";");
-		str.append("\r\n");
-		str.append("\r\n");
-		
+
 		// Put into single file
 		BufferedReader reader = new BufferedReader(new FileReader(sqlFile));
 		
@@ -95,9 +86,7 @@ public class SqlFileParser {
 	}
 
 	public void initializeRunId(StatementExecutor executor, String sqlDirectory) throws Exception {
-		String prepend = useStatement + dbName + ";";
-
-		RunTableProcessor processor = new RunTableProcessor(sqlDirectory, prepend);	
+		RunTableProcessor processor = new RunTableProcessor(sqlDirectory);	
 		
 		runId  = processor.getRunId(this, executor);
 		String executionDate = processor.getExecutionDate();

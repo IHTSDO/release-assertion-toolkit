@@ -20,18 +20,24 @@ public class StatementExecutor {
 	private String currentScriptContent;
 	private String executedSqlDirectory;
 	private Script currentScript;
+	private String useStatement;
+	private final String prependUseStatement = "use ";
 
 	public StatementExecutor(Connection con, String dbName, String executedSqlDirectory) {
 		this.con = con;
-		this.sqlParser = new SqlFileParser(dbName);
+		this.sqlParser = new SqlFileParser();
 		this.executedSqlDirectory = executedSqlDirectory;
+		
+		initUseStatement(dbName);
 	}
 
-	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory, String executedSqlDirectory) throws Exception {
+	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory, String dbName, String executedSqlDirectory) throws Exception {
 		this.sqlDirectory = sqlDirectory;
 		this.con = con;
 		this.sqlParser = parser;
 		this.executedSqlDirectory = executedSqlDirectory;
+		
+		initUseStatement(dbName);
 		sqlParser.initializeRunId(this, sqlDirectory);
 	}
 	 
@@ -103,7 +109,7 @@ public class StatementExecutor {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {
 			Statement st = con.createStatement();
-			st.execute(statement);
+			st.execute(useStatement + statement);
 			st.close();
 			
 			return true;
@@ -122,12 +128,21 @@ public class StatementExecutor {
 			File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile());
 			BufferedWriter writer = new BufferedWriter(new FileWriter(executedFile));
 	
-			writer.append(currentScriptContent);
+			writer.append(useStatement + currentScriptContent);
 			writer.newLine();
 	
 			writer.flush();
 			writer.close();
 		}
+	}
+
+	private void initUseStatement(String dbName) {
+		StringBuffer str = new StringBuffer();
+		str.append(prependUseStatement + dbName + ";");
+		str.append("\r\n");
+		str.append("\r\n");
+		
+		useStatement = str.toString();
 	}
 }
 

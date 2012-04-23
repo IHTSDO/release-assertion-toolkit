@@ -17,10 +17,9 @@ public class RunTableProcessor {
 	final private String runTableSqlFileName = "initialize-run-id-table.sql";
 	private File runTableSql;
 	private String date;
-	private String useStatement;
-    
-	public RunTableProcessor(String sqlDirectory, String useStatement) {
-		this.useStatement = useStatement;
+	
+
+	public RunTableProcessor(String sqlDirectory) {
 		Date d = new Date();
 		date = "'" + dateFormatter.format(d) + "'";
 		
@@ -46,7 +45,6 @@ public class RunTableProcessor {
 	private String getStatement() throws IOException {
 		String line = null;
 		StringBuffer str = new StringBuffer();
-		str.append(useStatement);
 
 		BufferedReader reader = new BufferedReader(new FileReader(runTableSql));
 		while ((line = reader.readLine()) != null) {
