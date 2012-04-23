@@ -1,6 +1,8 @@
 package org.ihtsdo.sql;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,17 +17,21 @@ public class StatementExecutor {
 	private Connection con = null;
 	private SqlFileParser sqlParser;
 	private String sqlDirectory;
-	private String archiveContent;
-	
-	public StatementExecutor(Connection con, String dbName) {
+	private String currentScriptContent;
+	private String executedSqlDirectory;
+	private Script currentScript;
+
+	public StatementExecutor(Connection con, String dbName, String executedSqlDirectory) {
 		this.con = con;
-		this.sqlParser = new SqlFileParser(dbName);		
+		this.sqlParser = new SqlFileParser(dbName);
+		this.executedSqlDirectory = executedSqlDirectory;
 	}
 
-	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory) throws Exception {
+	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory, String executedSqlDirectory) throws Exception {
 		this.sqlDirectory = sqlDirectory;
 		this.con = con;
 		this.sqlParser = parser;
+		this.executedSqlDirectory = executedSqlDirectory;
 		sqlParser.initializeRunId(this, sqlDirectory);
 	}
 	 
@@ -42,10 +48,14 @@ public class StatementExecutor {
 
 		sqlParser.updateVariables("assertionText", script.getText());
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
-		
-		archiveContent = sqlParser.parse(sqlFile);
 
-		return execute(archiveContent);
+		currentScriptContent = sqlParser.parse(sqlFile);
+		currentScript = script;
+
+		boolean successfulExec = execute(currentScriptContent);
+		archiveExecutedFiles();
+		
+		return successfulExec;
 	}
 
 	public boolean execute(File script) throws SQLException, IOException {
@@ -53,31 +63,43 @@ public class StatementExecutor {
 			return false;
 		}
 
-		archiveContent = sqlParser.parse(script);
+		currentScript = new Script();
+		currentScript.setCategory("special");
+		currentScript.setSqlFile(script.getName());
 
-		return execute(archiveContent);
+		currentScriptContent = sqlParser.parse(script);
+		
+		boolean successfulExec = execute(currentScriptContent);
+		archiveExecutedFiles();
+		
+		return successfulExec;
 	}
 
-	public String getArchiveContent() {
-		return archiveContent;
-	}
-
-	
-	public ResultSet execute(String[] statements) throws SQLException {
+	public ResultSet execute(String[] statements, String scriptName) throws SQLException, IOException {
 		// Assumes Pre-Parsed
+		currentScript = new Script();
+		currentScript.setCategory("special");
+		currentScript.setSqlFile(scriptName);
+
+		StringBuffer currentScript = new StringBuffer();
 		Statement st = con.createStatement();
 		if (statements != null && statements.length > 0) {
 			for (int i = 0; i < statements.length; i++) {
 				st.execute(statements[i]);
+				currentScript.append(statements[i]);
+				currentScript.append("\r\n");
 			}
-		
+
+			currentScriptContent = currentScript.toString();
+			archiveExecutedFiles();
+
 			return st.getResultSet();
 		}
 		
 		return null;
 	}
 
-	public boolean execute(String statement) throws SQLException {
+	private boolean execute(String statement) throws SQLException {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {
 			Statement st = con.createStatement();
@@ -90,5 +112,22 @@ public class StatementExecutor {
 		return false;
 	}
 
+	public void archiveExecutedFiles() throws IOException {
+		if (currentScript != null) {
+			File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
+			if (!targetCategoryDir.exists()) {
+				targetCategoryDir.mkdirs();
+			}
+	
+			File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile());
+			BufferedWriter writer = new BufferedWriter(new FileWriter(executedFile));
+	
+			writer.append(currentScriptContent);
+			writer.newLine();
+	
+			writer.flush();
+			writer.close();
+		}
+	}
 }
 

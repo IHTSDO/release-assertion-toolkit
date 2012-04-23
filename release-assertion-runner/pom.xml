@@ -110,6 +110,7 @@
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 									<username>root</username>
 									<password>snomed11</password>
+									<executedSqlDirectory>${project.executedScripts}/executedScripts/load-previous-release</executedSqlDirectory>
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>prev_concept_f</loadDBTableName>
@@ -308,6 +309,7 @@
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
+									<executedSqlDirectory>${project.executedScripts}/executedScripts/load-current-release</executedSqlDirectory>
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>curr_concept_d</loadDBTableName>
@@ -493,6 +495,7 @@
 			<username>root</username>
 			<password>snomed11</password>
 			<createTableScript>${project.manifest}/scripts/special/create_resource_tables.sql</createTableScript>
+			<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 			<importConfig>
  			<LoadFileParameter>
 				<loadDBTableName>res_semantictags</loadDBTableName>
@@ -575,7 +578,7 @@
 									<runlistFile>${project.manifest}/xml/lists/runList.xml</runlistFile>
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
-									<executedSqlDirectory>${project.executedScripts}/executedScripts</executedSqlDirectory>
+									<executedSqlDirectory>${project.executedScripts}/executedScripts/execute-scripts</executedSqlDirectory>
 									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>

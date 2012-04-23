@@ -31,7 +31,7 @@ public class RunTableProcessor {
 		String initRunIdStatement = getStatement();
 		
 		String[] statements = parser.identifyStatements(initRunIdStatement);
-		ResultSet results = executor.execute(statements);
+		ResultSet results = executor.execute(statements, runTableSqlFileName);
 		String s = null;
 		
 		if (results == null || !results.next()) {

@@ -54,6 +54,12 @@ public class ImportFileToDBMojo extends AbstractMojo {
 	private ArrayList<LoadFileParameter> importConfig;
 
 	/**
+     * Location of the sql files
+     * @parameter executedSqlDirectory = null
+     */
+    private String executedSqlDirectory;
+
+	/**
 	 * dbConnection JDBC URL
 	 * 
 	 * @parameter
@@ -140,7 +146,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		}
 
 		String dbName = url.substring(url.lastIndexOf(File.separatorChar) + 1);
-		StatementExecutor executor = new StatementExecutor(con, dbName);
+		StatementExecutor executor = new StatementExecutor(con, dbName, executedSqlDirectory);
 
 		executor.execute(script);
 	}

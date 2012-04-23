@@ -1,9 +1,6 @@
 package org.ihtsdo.runlist.mojo;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -131,20 +128,21 @@ public class ExecuteSql extends AbstractMojo
 							long startTime = logger.initializeScript(currentScript);
 		
 				    		if (executor.execute(currentScript)) {
-			        			archiveExecutedFiles(executor.getArchiveContent());
+					    		logger.finalizeScript(startTime);
+			        		} else {
+			        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
 			        		}
 				    		
-				    		logger.finalizeScript(startTime);
 						}
 		    	    } catch (Exception e ) {
-		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
+		    			executor.archiveExecutedFiles();
 		    	    	
-		    	    	archiveExecutedFiles(executor.getArchiveContent());
+		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
 		    	    	
 		    	    	if (breakOnFailure) {
 		    	    		throw new MojoExecutionException(errorMessage);
 		    	    	} else {
-		    	    		logger.logError(errorMessage);
+		    	    		logger.logError("Jave error in executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ") with JavaErrorMsg: " + errorMessage);
 		    	    	}
 					}
 	        	}
@@ -152,7 +150,7 @@ public class ExecuteSql extends AbstractMojo
 	        	closeConnection();
 	        }
 	    } catch (Exception e) {
-	    	logger.logError(e.getMessage());
+	    	logger.logError("Error processing RunList with error message:" + e.getMessage());
         	throw new MojoExecutionException(e.getMessage());
 	    }
 	    
@@ -177,27 +175,11 @@ public class ExecuteSql extends AbstractMojo
 		createConnection(url, username, password);
 
 		sqlParser = new SqlFileParser(execProperties, databaseName);
-		executor = new StatementExecutor(con, sqlParser, sqlDirectory);
+		executor = new StatementExecutor(con, sqlParser, sqlDirectory, executedSqlDirectory);
 		
 		ExecutionLogger.initializeRun(sqlParser);
 	}
 	
-	private void archiveExecutedFiles(String statement) throws IOException {
-		File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
-		if (!targetCategoryDir.exists()) {
-			targetCategoryDir.mkdir();
-		}
-		
-		File executedFile = new File(executedSqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile());
-		BufferedWriter writer = new BufferedWriter(new FileWriter(executedFile));
-		
-		writer.append(statement);
-		writer.newLine();
-		
-		writer.flush();
-		writer.close();
-	}
-
 	private void createConnection(String url, String username, String password) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		url = url + "?allowMultiQueries=true";
