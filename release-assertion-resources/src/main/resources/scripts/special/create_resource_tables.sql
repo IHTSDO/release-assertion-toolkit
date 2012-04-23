@@ -1,6 +1,7 @@
 /* 
 	For each execution table:
 		Create only if table does not already exist
+	For qa_run only:  Must initialize the table with first runid
 */
 
 
@@ -9,6 +10,9 @@ create table if not exists qa_run (
 	runid BIGINT not null auto_increment,
 	primary key (runid)
 );
+
+insert into qa_run
+values('2002-01-01', 1);
 
 create table if not exists qa_result (
 	runid BIGINT,
