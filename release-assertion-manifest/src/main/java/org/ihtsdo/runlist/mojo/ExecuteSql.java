@@ -115,19 +115,19 @@ public class ExecuteSql extends AbstractMojo
 		Date testingStartDate = logger.initializeProcess();
 		
 		try {
-	    	RunListProcessor processor = new RunListProcessor(runlistFile);
+	    	RunListProcessor processor = new RunListProcessor(sqlDirectory, runlistFile);
 	    	
 	    	if (processor.containsScripts()) {
 	    		initializeProcess();
 				
 				while (processor.hasNext()) {
 					try {
-						currentScript = processor.nextSqlFileName();
+						currentScript = processor.getNextScript();
 						
-						if (currentScriptExists(logger)) {
+						if (currentScriptExists(processor, logger)) {
 							long startTime = logger.initializeScript(currentScript);
 		
-				    		if (executor.execute(currentScript)) {
+				    		if (executor.execute(currentScript, processor.getScriptFile(currentScript))) {
 					    		logger.finalizeScript(startTime);
 			        		} else {
 			        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
@@ -157,12 +157,16 @@ public class ExecuteSql extends AbstractMojo
 	    logger.finalizeProcess(testingStartDate);
    }
 
-	private boolean currentScriptExists(ExecutionLogger logger) {
-		String fullScriptPath = sqlDirectory + File.separator + currentScript.getCategory() + File.separator + currentScript.getSqlFile();
-		File f = new File(fullScriptPath);
+
+	private boolean currentScriptExists(RunListProcessor processor, ExecutionLogger logger) {
+		if (currentScript.getCategory().length() == 0 || currentScript.getSqlFile().length() == 0) {
+			return false;
+		}
+
+		File f = processor.getScriptFile(currentScript);
 
 		if (!f.exists()) {
-			logger.logError("Script \"" + fullScriptPath + "\" doesn't exist (UUID: " + currentScript.getUuid().toString() + ")");
+			logger.logError("Script \"" + f.getAbsolutePath() + "\" doesn't exist (UUID: " + currentScript.getUuid().toString() + ")");
 			return false;
 		}
 		return true;

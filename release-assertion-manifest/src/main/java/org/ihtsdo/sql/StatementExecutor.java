@@ -16,7 +16,6 @@ public class StatementExecutor {
 
 	private Connection con = null;
 	private SqlFileParser sqlParser;
-	private String sqlDirectory;
 	private String currentScriptContent;
 	private String executedSqlDirectory;
 	private Script currentScript;
@@ -32,7 +31,6 @@ public class StatementExecutor {
 	}
 
 	public StatementExecutor(Connection con, SqlFileParser parser, String sqlDirectory, String dbName, String executedSqlDirectory) throws Exception {
-		this.sqlDirectory = sqlDirectory;
 		this.con = con;
 		this.sqlParser = parser;
 		this.executedSqlDirectory = executedSqlDirectory;
@@ -40,18 +38,8 @@ public class StatementExecutor {
 		initUseStatement(dbName);
 		sqlParser.initializeRunId(this, sqlDirectory);
 	}
-	 
-	public boolean execute(Script script) throws SQLException, IOException {
-		if (script.getCategory().length() == 0 || script.getSqlFile().length() == 0) {
-			return false;
-		}
-		
-		File sqlFile = new File(sqlDirectory + File.separator + script.getCategory() + File.separator + script.getSqlFile());
-		
-		if (!sqlFile.exists()) {
-			return false;
-		}
 
+	public boolean execute(Script script, File sqlFile) throws SQLException, IOException {
 		sqlParser.updateVariables("assertionText", script.getText());
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
 

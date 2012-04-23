@@ -9,17 +9,22 @@ import javax.xml.bind.Unmarshaller;
 import org.ihtsdo.xml.elements.RunList;
 import org.ihtsdo.xml.elements.Script;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RunListProcessor {
 	private RunList runList = null;
-	private int totalScriptCountInRunList = 0;
+	private int totalScriptCountInRunList;
 	private int scriptsExecuted = 0;
+	private Map<String, String> nameToPathMap = new HashMap<String, String>();
 
-	public RunListProcessor(File runlistFile) throws JAXBException {
+	public RunListProcessor(String sqlDirectory, File runlistFile) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(RunList.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		runList = (RunList) jaxbUnmarshaller.unmarshal(runlistFile);
 
-		totalScriptCountInRunList += runList.getScript().size();
+		totalScriptCountInRunList = runList.getScript().size();
+		mapNameToPath(sqlDirectory);
 	}
 
 	public boolean containsScripts() {
@@ -27,7 +32,9 @@ public class RunListProcessor {
 			return false;
 		} else if (totalScriptCountInRunList == 0) {
 			return false;
-		} 
+		} else if (nameToPathMap.size() == 0) {
+			return false;
+		}
 			
 		return true;
 	}
@@ -36,10 +43,40 @@ public class RunListProcessor {
 		return scriptsExecuted < totalScriptCountInRunList;
 	}
 
-	public Script nextSqlFileName() {
+	public Script getNextScript() {
 		Script script = runList.getScript().get(scriptsExecuted);
 		scriptsExecuted++;
 		
 		return script;
 	}
+
+	private void mapNameToPath(String sqlDirectory) {
+		mapNameToPath(new File(sqlDirectory));
+	}
+
+	private void mapNameToPath(File potentialCSFile) {
+		if (potentialCSFile.isDirectory()) {
+			if (!potentialCSFile.isHidden() && !potentialCSFile.getName().startsWith(".")) {
+				File[] children = potentialCSFile.listFiles();
+
+				for (int i = 0; i < children.length; i++) {
+					mapNameToPath(children[i]);
+				}
+			}
+		} else {
+			if (!potentialCSFile.isHidden() &&
+				!potentialCSFile.getName().startsWith(".") &&
+				potentialCSFile.getName().endsWith(".sql")) {
+				nameToPathMap.put(potentialCSFile.getName(), potentialCSFile.getAbsolutePath());
+			}
+		}
+	}
+
+	public File getScriptFile(Script script) {
+		String path = nameToPathMap.get(script.getSqlFile());
+
+		return new File(path);
+	}
+
+
 }
