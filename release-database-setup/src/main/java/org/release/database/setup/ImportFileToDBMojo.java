@@ -91,14 +91,14 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			createConnection();
 			logger.info("Database Connection Created...");
 			
-			logger.info("File Import Started ...");
-			
 			// Drop & Create tables
 			if (createTableScript != null) {
 				dropAndCreateTables(createTableScript);
 			}
 			
 			// Load each resource file
+			logger.info("File Import Started ...");
+			
 			for (int f = 0; f < importConfig.size(); f++) {
 				File loadReleaseFileName = importConfig.get(f).loadReleaseFileName;
 				String loadDBTableName = importConfig.get(f).loadDBTableName;
@@ -133,7 +133,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 	}
 	
 	private void dropAndCreateTables(File script) throws SQLException, IOException {
-		logger.info("Create tables and indices. . . drop them first just in case already exist ...");
+		logger.info("Create execution tables, resource tables, and resource indices. . . drop them first just in case already exist ...");
 
 		if (url.indexOf(File.pathSeparator) < 0) {
 			url = url.replace('/', '\\');

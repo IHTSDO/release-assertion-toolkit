@@ -1,10 +1,44 @@
 /* 
-	For each table:
+	For each execution table:
+		Create only if table does not already exist
+*/
+
+
+create table if not exists qa_run (
+	effectivetime DATETIME,
+	runid BIGINT
+);
+
+create table if not exists qa_result (
+	runid BIGINT,
+	assertionuuid CHAR(36),
+	assertiontext VARCHAR(255),
+	details VARCHAR(255)
+);
+
+
+create table if not exists qa_report (
+	runid BIGINT,
+	assertionuuid CHAR(36),
+	assertiontext VARCHAR(255),
+	result CHAR(1),
+	count BIGINT
+);
+
+
+
+
+
+
+
+
+
+/* 
+	For each resource table:
 		1) Drop table if exists
 		2) Create table
 		3) Create Indices (if necessary)
 */
-
 
 
 drop table if exists res_navigationconcepts;
