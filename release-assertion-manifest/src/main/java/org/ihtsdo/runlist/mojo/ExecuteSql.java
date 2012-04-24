@@ -167,7 +167,7 @@ public class ExecuteSql extends AbstractMojo
 
 		File f = processor.getScriptFile(currentScript, logger);
 
-		if (!f.exists()) {
+		if (f != null && !f.exists()) {
 			logger.logError("Script \"" + f.getAbsolutePath() + "\" doesn't exist (UUID: " + currentScript.getUuid().toString() + ")");
 			return null;
 		}
