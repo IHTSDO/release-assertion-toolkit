@@ -115,39 +115,35 @@ public class ExecuteSql extends AbstractMojo
 		Date testingStartDate = logger.initializeProcess();
 		
 		try {
-	    	RunListProcessor processor = new RunListProcessor(sqlDirectory, runlistFile);
-	    	
-	    	if (processor.containsScripts()) {
-	    		initializeProcess();
-				
-				while (processor.hasNext()) {
-					try {
-						File scriptFile = getScriptFile(processor, logger);
-						
-						if (scriptFile != null) {
-							long startTime = logger.initializeScript(currentScript);
-		
-				    		if (executor.execute(currentScript, scriptFile)) {
-					    		logger.finalizeScript(startTime);
-			        		} else {
-			        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
-			        		}
-						}
-		    	    } catch (Exception e ) {
-		    			executor.archiveExecutedFiles();
-		    	    	
-		    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
-		    	    	
-		    	    	if (breakOnFailure) {
-		    	    		throw new MojoExecutionException(errorMessage);
-		    	    	} else {
-		    	    		logger.logError("Java error in executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ") with JavaErrorMsg: " + errorMessage);
-		    	    	}
+	    	RunListProcessor processor = initializeExecuteProcess(logger);
+			
+			while (processor.hasNext()) {
+				try {
+					File scriptFile = getScriptFile(processor, logger);
+					
+					if (scriptFile != null) {
+						long startTime = logger.initializeScript(currentScript);
+	
+			    		if (executor.execute(currentScript, scriptFile)) {
+				    		logger.finalizeScript(startTime);
+		        		} else {
+		        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
+		        		}
 					}
-	        	}
-
-	        	closeConnection();
+	    	    } catch (Exception e ) {
+	    			executor.archiveExecutedFiles();
+	    	    	
+	    	    	String errorMessage = "For file: " + currentScript.getSqlFile() + " have error: " + e.getMessage();
+	    	    	
+	    	    	if (breakOnFailure) {
+	    	    		throw new MojoExecutionException(errorMessage);
+	    	    	} else {
+	    	    		logger.logError("Java error in executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ") with JavaErrorMsg: " + errorMessage);
+	    	    	}
+				}
 	        }
+
+        	closeConnection();
 	    } catch (Exception e) {
 	    	logger.logError("Error processing RunList with error message:" + e.getMessage());
         	throw new MojoExecutionException(e.getMessage());
@@ -175,7 +171,7 @@ public class ExecuteSql extends AbstractMojo
 		return f;
 	}
 
-	private void initializeProcess() throws Exception {
+	private RunListProcessor initializeExecuteProcess(ExecutionLogger logger) throws Exception {
 		File targetSqlDirectory = new File(executedSqlDirectory);
 		targetSqlDirectory.mkdir();
 
@@ -184,7 +180,11 @@ public class ExecuteSql extends AbstractMojo
 		sqlParser = new SqlFileParser(execProperties);
 		executor = new StatementExecutor(con, sqlParser, sqlDirectory, databaseName, executedSqlDirectory);
 		
-		ExecutionLogger.initializeRun(sqlParser);
+		RunListProcessor processor = new RunListProcessor(sqlDirectory, runlistFile, logger);
+		
+		logger.initializeRun(sqlParser);
+		
+    	return processor;
 	}
 	
 	private void createConnection(String url, String username, String password) throws ClassNotFoundException, SQLException {

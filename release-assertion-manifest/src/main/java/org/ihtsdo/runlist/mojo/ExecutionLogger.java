@@ -84,13 +84,17 @@ public class ExecutionLogger {
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
 	}
 
-	public static void initializeRun(SqlFileParser sqlParser) {
+	public void initializeRun(SqlFileParser sqlParser) {
 		String runId = sqlParser.getRunId();
 		logger.info("Successful initialization, starting to process runList... with RunId #" + runId);
 	}
 
 	public void logError(String msg) {
 		logger.error(msg);
+	}
+
+	public void logInfo(String msg) {
+		logger.info(msg);
 	}
 
 

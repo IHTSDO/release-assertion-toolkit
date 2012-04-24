@@ -14,32 +14,26 @@ import org.ihtsdo.xml.elements.Script;
 
 public class RunListProcessor {
 	private RunList runList = null;
-	private int totalScriptCountInRunList;
+	private int totalScriptCountInRunList = 0;
 	private int scriptsExecuted = 0;
-	private String sqlDirectory;
 	private Map<String, String> nameToPathMap = new HashMap<String, String>();
 
-	public RunListProcessor(String sqlDirectory, File runlistFile) throws JAXBException {
-		this.sqlDirectory = sqlDirectory;
-		
+	public RunListProcessor(String sqlDirectory, File runlistFile, ExecutionLogger logger) throws JAXBException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(RunList.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		runList = (RunList) jaxbUnmarshaller.unmarshal(runlistFile);
 
-		totalScriptCountInRunList = runList.getScript().size();
-		mapNameToPath();
-	}
-
-	public boolean containsScripts() {
-		if (runList == null) {
-			return false;
-		} else if (totalScriptCountInRunList == 0) {
-			return false;
-		} else if (nameToPathMap.size() == 0) {
-			return false;
-		}
+		logger.logInfo("Inspecting sqlDirectory: " + sqlDirectory + " for defined scripts");
+		
+		if (runList != null) {
+			totalScriptCountInRunList = runList.getScript().size();
+			int mapsFound = mapNameToPath(sqlDirectory);
 			
-		return true;
+			if (mapsFound == 0) {
+				totalScriptCountInRunList = 0;
+				logger.logError("SqlDirectory: " + sqlDirectory + " does not contain any sql scripts");
+			}
+		}
 	}
 	
 	public boolean hasNext() {
@@ -53,8 +47,10 @@ public class RunListProcessor {
 		return script;
 	}
 
-	private void mapNameToPath() {
+	private int mapNameToPath(String sqlDirectory) {
 		mapNameToPath(new File(sqlDirectory));
+		
+		return nameToPathMap.size();
 	}
 
 	private void mapNameToPath(File potentialCSFile) {
@@ -77,7 +73,7 @@ public class RunListProcessor {
 
 	public File getScriptFile(Script script, ExecutionLogger logger) {
 		if (!nameToPathMap.containsKey(script.getSqlFile().toLowerCase())) {
-			logger.logError("Script \"" + script.getSqlFile() + "\" was never identified by RunListProcessor during recursive inspection at sqlDirectory: " + sqlDirectory);
+			logger.logError("Script \"" + script.getSqlFile() + "\" was never identified by RunListProcessor during recursive inspection");
 			return null;
 		}
 		
