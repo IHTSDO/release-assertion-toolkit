@@ -11,8 +11,7 @@ create table if not exists qa_run (
 	primary key (runid)
 );
 
-insert into qa_run
-values('2002-01-01', 1);
+
 
 create table if not exists qa_result (
 	runid BIGINT,
@@ -59,18 +58,14 @@ create table res_navigationconcepts (
  	linkedTo	varchar(255)
 );
 create index idx_navconcepts on res_navigationconcepts(referencedComponentId);
- 
 
- 
- 
+
 drop table if exists res_gbterms;
- 
+
 create table res_gbterms (
 	term	varchar(255)
 );
 create index idx_gbtermsTerm on res_gbterms(term);
-
-
 
 
 drop table if exists res_usterms;
@@ -81,22 +76,19 @@ create table res_usterms (
 create index idx_ustermsTerm on res_usterms(term);
 
 
-
-
 drop table if exists res_semantictags;
 
 create table res_semantictags(
    semantictag VARCHAR(255) not null,      
    id VARCHAR(36) not null      
 );
-    
 
-    
+
 drop table if exists res_casesensitiveTerms;
-    
+
 create table res_casesensitiveTerms(
    casesensitiveTerm VARCHAR(255) not null
 );
 create index idx_casesensitiveTerm on res_casesensitiveTerms(casesensitiveTerm);
 
-     
+insert IGNORE into qa_run values('2002-01-01', 1);     
