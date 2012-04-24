@@ -17,7 +17,7 @@
 
 	create or replace view v_curr_snapshot_2 as
 	SELECT a.conceptid
-	from curr_description_s a , v_curr_snapshot b
+	from curr_description_s a , v_curr_snapshot_1 b
 	where a.typeid in ('900000000000003001')
 	and a.conceptid = b.conceptid
 	and b.tag !=  SUBSTRING(a.term, LOCATE('(', a.term))
@@ -32,10 +32,9 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('DESC: conceptid=',a.conceptid, ':Active FSN for a given concept with different semantic tag.') 	
-	from v_curr_snapshot a;
+	from v_curr_snapshot_2 a;
 
 
 	drop view v_curr_snapshot_1;
 	drop view v_curr_snapshot_2;
 
-	
