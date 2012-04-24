@@ -103,23 +103,38 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			// Load each resource file
 			logger.info("File Import Started ...");
 			
+			
 			for (int f = 0; f < importConfig.size(); f++) {
-				File loadReleaseFileName = importConfig.get(f).loadReleaseFileName;
-				String loadDBTableName = importConfig.get(f).loadDBTableName;
+				try{
+					File loadReleaseFileName = importConfig.get(f).loadReleaseFileName;
+					String loadDBTableName = importConfig.get(f).loadDBTableName;
+					
+					logger.info(loadReleaseFileName + " & " + loadDBTableName);
+					
+					loadFileToDatabase(loadReleaseFileName , loadDBTableName);
+					int fileCount = checkFileCount(loadReleaseFileName);
+					importSuccess = checkImportCount(loadDBTableName , fileCount);
+					
+					if(importSuccess.equals("true")){					
+						logger.info("File is imported successfully into table.");
+					}else{
+						logger.error("File is not imported successfully into table " + loadDBTableName);
+					}
 				
-				logger.info(loadReleaseFileName + " & " + loadDBTableName);
-				
-				loadFileToDatabase(loadReleaseFileName , loadDBTableName);
-				int fileCount = checkFileCount(loadReleaseFileName);
-				importSuccess = checkImportCount(loadDBTableName , fileCount);
-				
-				if(importSuccess.equals("true")){					
-					logger.info("File is imported successfully into table.");
-				}else{
-					logger.error("File is not imported successfully into table " + loadDBTableName);
+				}catch(SQLException sq){ 
+					System.out.println(sq.getMessage());
+					logger.info(sq.getMessage());
+					continue;
+				}catch(FileNotFoundException fn){
+					System.out.println(fn.getMessage());
+					logger.info(fn.getMessage());
+					continue;
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+					logger.info(e.getMessage());
+					continue;
 				}
 			}
-			
 			logger.info("File Import Finished...");
 			
 			closeConnection();
