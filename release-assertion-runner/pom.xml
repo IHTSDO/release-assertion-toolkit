@@ -332,11 +332,11 @@
 							<loadReleaseFileName>${project.manifest}/datafiles/cs_words.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_gbTerms</loadDBTableName>
+							<loadDBTableName>res_gbterms</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/gbTerms.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_usTerms</loadDBTableName>
+							<loadDBTableName>res_usterms</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/usTerms.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
