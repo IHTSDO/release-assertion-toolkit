@@ -76,7 +76,7 @@ public class RunListProcessor {
 	}
 
 	public File getScriptFile(Script script, ExecutionLogger logger) {
-		if (!nameToPathMap.containsKey(script.getSqlFile())) {
+		if (!nameToPathMap.containsKey(script.getSqlFile().toLowerCase())) {
 			logger.logError("Script \"" + script.getSqlFile() + "\" was never identified by RunListProcessor during recursive inspection at sqlDirectory: " + sqlDirectory);
 			return null;
 		}
