@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.ihtsdo.runlist.mojo.ExecutionLogger;
 import org.ihtsdo.xml.elements.RunList;
 import org.ihtsdo.xml.elements.Script;
 
@@ -67,16 +68,20 @@ public class RunListProcessor {
 			if (!potentialCSFile.isHidden() &&
 				!potentialCSFile.getName().startsWith(".") &&
 				potentialCSFile.getName().endsWith(".sql")) {
-				nameToPathMap.put(potentialCSFile.getName(), potentialCSFile.getAbsolutePath());
+				nameToPathMap.put(potentialCSFile.getName().toLowerCase(), potentialCSFile.getAbsolutePath().toLowerCase());
 			}
 		}
 	}
 
-	public File getScriptFile(Script script) {
-		String path = nameToPathMap.get(script.getSqlFile());
+	public File getScriptFile(Script script, ExecutionLogger logger) {
+		String path = nameToPathMap.get(script.getSqlFile().toLowerCase());
 
-		return new File(path);
+		if (path == null) {
+			logger.logError("Script \"" + script.getSqlFile() + "\" doesn't exist at path: " + path);
+			return null;
+		} else {
+			return new File(path);
+		}
 	}
-
 
 }

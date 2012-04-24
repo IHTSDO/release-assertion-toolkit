@@ -122,17 +122,16 @@ public class ExecuteSql extends AbstractMojo
 				
 				while (processor.hasNext()) {
 					try {
-						currentScript = processor.getNextScript();
+						File scriptFile = getScriptFile(processor, logger);
 						
-						if (currentScriptExists(processor, logger)) {
+						if (scriptFile != null) {
 							long startTime = logger.initializeScript(currentScript);
 		
-				    		if (executor.execute(currentScript, processor.getScriptFile(currentScript))) {
+				    		if (executor.execute(currentScript, scriptFile)) {
 					    		logger.finalizeScript(startTime);
 			        		} else {
 			        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
 			        		}
-				    		
 						}
 		    	    } catch (Exception e ) {
 		    			executor.archiveExecutedFiles();
@@ -158,18 +157,22 @@ public class ExecuteSql extends AbstractMojo
    }
 
 
-	private boolean currentScriptExists(RunListProcessor processor, ExecutionLogger logger) {
+	private File getScriptFile(RunListProcessor processor, ExecutionLogger logger) {
+		currentScript = processor.getNextScript();
+
 		if (currentScript.getCategory().length() == 0 || currentScript.getSqlFile().length() == 0) {
-			return false;
+			logger.logError("Script definition for \"" + currentScript.getUuid() + "\" is invalid");
+			return null;
 		}
 
-		File f = processor.getScriptFile(currentScript);
+		File f = processor.getScriptFile(currentScript, logger);
 
 		if (!f.exists()) {
 			logger.logError("Script \"" + f.getAbsolutePath() + "\" doesn't exist (UUID: " + currentScript.getUuid().toString() + ")");
-			return false;
+			return null;
 		}
-		return true;
+		
+		return f;
 	}
 
 	private void initializeProcess() throws Exception {
