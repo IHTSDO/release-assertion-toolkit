@@ -12,7 +12,7 @@
 	create or replace view v_limcons as
 	   select referencedcomponentid from curr_attributevaluerefset_s 
 	   where active = '1'
-	   and valueid = '900000000000486000'
+	   and valueid = '900000000000486000';
 
 
 
@@ -27,5 +27,5 @@
 	left join v_limcons c on c.referencedcomponentid = a.referencedcomponentid 
 	where a.active = '1'
 	and b.active = '0' 
-	and c.referencedcomponentid is null
+	and c.referencedcomponentid is null;
 		
