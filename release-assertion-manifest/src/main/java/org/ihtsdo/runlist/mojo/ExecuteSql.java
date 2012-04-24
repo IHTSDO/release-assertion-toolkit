@@ -141,7 +141,7 @@ public class ExecuteSql extends AbstractMojo
 		    	    	if (breakOnFailure) {
 		    	    		throw new MojoExecutionException(errorMessage);
 		    	    	} else {
-		    	    		logger.logError("Jave error in executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ") with JavaErrorMsg: " + errorMessage);
+		    	    		logger.logError("Java error in executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ") with JavaErrorMsg: " + errorMessage);
 		    	    	}
 					}
 	        	}
