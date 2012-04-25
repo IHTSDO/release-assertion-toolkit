@@ -3,6 +3,8 @@
 	The current full stated relationship file consists of the previously published full file and the changes for the current release
 */
 
+drop temporary table if exists temp_table;
+
 /* view of current delta, derived from current full */
 	create temporary table if not exists temp_table like prev_stated_relationship_f;
 	

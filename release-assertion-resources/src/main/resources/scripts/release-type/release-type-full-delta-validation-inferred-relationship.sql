@@ -3,6 +3,8 @@
 	The current full inferred relationship file consists of the previously published full file and the changes for the current release
 */
 
+drop temporary table if exists temp_table;
+
 /* view of current delta, derived from current full */
 	create table if not exists temp_table (
     id varchar(18),

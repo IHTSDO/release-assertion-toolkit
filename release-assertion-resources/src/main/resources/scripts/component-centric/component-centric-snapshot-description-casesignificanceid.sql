@@ -9,6 +9,10 @@
 	
 /* 	view of current snapshot made by finding all the noncasesitive term for active concepts */
 	
+	drop table if exists t_curr_snapshot_1;
+	drop table if exists t_curr_snapshot_2;
+
+	
 	create table t_curr_snapshot_1 as
 	select a.*
 	from  curr_description_d a , curr_concept_s b 

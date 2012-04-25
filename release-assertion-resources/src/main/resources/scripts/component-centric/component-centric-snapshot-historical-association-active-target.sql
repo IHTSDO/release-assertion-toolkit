@@ -28,4 +28,6 @@
 	where a.active = '1'
 	and b.active = '0' 
 	and c.referencedcomponentid is null;
+	
+	drop view v_limcons;
 		

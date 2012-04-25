@@ -3,6 +3,8 @@
 	The current full language refset file consists of the previously published full file and the changes for the current release
 */
 
+drop temporary table if exists temp_table;
+
 /* view of current delta, derived from current full */
 	create temporary table if not exists temp_table like prev_langrefset_f;
 	
