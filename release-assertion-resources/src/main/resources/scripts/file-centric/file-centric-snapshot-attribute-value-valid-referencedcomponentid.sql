@@ -6,17 +6,17 @@
 	Referencedcomponentid refers to valid concepts in the ATTRIBUTEVALUE snapshot file.
 
 ********************************************************************************/
-	drop table if exists curr_snapshot;
+	drop table if exists t_curr_snapshot;
 	
 /* 	view of current snapshot made by finding invalid referencedcomponentid */
-	create table curr_snapshot as
+	create table t_curr_snapshot as
 	select a.referencedcomponentid
 	from curr_attributevaluerefset_s a
 	left join curr_concept_s b
 	on a.referencedcomponentid = b.id
 	where b.id is null;
 		
-	delete from curr_snapshot 
+	delete from t_curr_snapshot 
 	where referencedcomponentid in(
 		select id
 		from curr_description_s);
@@ -28,7 +28,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('ATT RS: id=',a.referencedcomponentid, ':Invalid Referencedcomponentid in ATTRIBUTEVALUE REFSET snapshot.') 	
-	from curr_snapshot a;
+	from t_curr_snapshot a;
 	
 	
-	drop table if exists curr_snapshot;
+	drop table if exists t_curr_snapshot;
