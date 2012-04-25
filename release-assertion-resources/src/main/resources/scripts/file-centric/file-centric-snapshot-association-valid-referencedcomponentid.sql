@@ -6,7 +6,8 @@
 	Referencedcomponentid refers to valid concepts in the ASSOCIATION REFSET snapshot file.
 
 ********************************************************************************/
-	
+	drop table if exists v_curr_snapshot;
+		
 /* 	view of current snapshot made by finding invalid referencedcomponentid */
 	create table v_curr_snapshot as
 	select a.referencedcomponentid
@@ -31,4 +32,4 @@
 	from v_curr_snapshot a;
 
 
-	drop table v_curr_snapshot;
+	drop table if exists v_curr_snapshot;

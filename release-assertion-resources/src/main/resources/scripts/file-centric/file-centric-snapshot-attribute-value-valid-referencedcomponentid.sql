@@ -6,6 +6,7 @@
 	Referencedcomponentid refers to valid concepts in the ATTRIBUTEVALUE snapshot file.
 
 ********************************************************************************/
+	drop table if exists curr_snapshot;
 	
 /* 	view of current snapshot made by finding invalid referencedcomponentid */
 	create table curr_snapshot as
@@ -30,4 +31,4 @@
 	from curr_snapshot a;
 	
 	
-	drop table curr_snapshot;
+	drop table if exists curr_snapshot;
