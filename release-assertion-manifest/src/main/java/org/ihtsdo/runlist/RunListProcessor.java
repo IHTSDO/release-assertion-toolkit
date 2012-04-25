@@ -66,7 +66,7 @@ public class RunListProcessor {
 			if (!potentialCSFile.isHidden() &&
 				!potentialCSFile.getName().startsWith(".") &&
 				potentialCSFile.getName().toLowerCase().endsWith(".sql")) {
-				nameToPathMap.put(potentialCSFile.getName().toLowerCase(), potentialCSFile.getAbsolutePath().toLowerCase());
+				nameToPathMap.put(potentialCSFile.getName().toLowerCase(), potentialCSFile.getAbsolutePath());
 			}
 		}
 	}
