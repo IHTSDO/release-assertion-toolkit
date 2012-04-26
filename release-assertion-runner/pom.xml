@@ -135,6 +135,7 @@
 								<password>snomed11</password>
 								<createTableScript>${project.manifest}/scripts/special/create_prev_table_index.sql</createTableScript>
 								<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
+								<queryTimeOut>900</queryTimeOut>
 								<importConfig>
 									<LoadFileParameter>
 										<loadDBTableName>prev_concept_f</loadDBTableName>
@@ -322,6 +323,7 @@
 					<password>snomed11</password>
 					<createTableScript>${project.manifest}/scripts/special/create_resource_tables.sql</createTableScript>
 					<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
+					<queryTimeOut>900</queryTimeOut>
 					<importConfig>
 			 			<LoadFileParameter>
 							<loadDBTableName>res_semantictags</loadDBTableName>
@@ -359,6 +361,7 @@
 		   </plugins>      
 		  </build>
 		  </profile>
+
 		<profile>
 			<id>load-current-release</id>
 			<!-- Below dependency is used to load previous release tables (currently limited to RF2)-->
@@ -439,6 +442,7 @@
 									<password>snomed11</password>
 									<createTableScript>${project.manifest}/scripts/special/create_curr_table_index.sql</createTableScript>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
+									<queryTimeOut>900</queryTimeOut>
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>curr_concept_d</loadDBTableName>
@@ -626,6 +630,7 @@
 									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
 									<sqlDirectory>${project.manifest}/scripts</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/execute-scripts</executedSqlDirectory>
+									<queryTimeOut>900</queryTimeOut>
 									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
