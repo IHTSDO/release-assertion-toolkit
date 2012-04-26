@@ -8,12 +8,16 @@ import java.io.LineNumberReader;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.ihtsdo.runlist.mojo.ExecutionLogger;
 import org.ihtsdo.sql.StatementExecutor;
 
 import com.mysql.jdbc.Connection;
@@ -88,9 +92,20 @@ public class ImportFileToDBMojo extends AbstractMojo {
 	 */
 	private File createTableScript;
 	
+	
+	/**
+	 * queryTimeOut 
+	 * 
+	 * @parameter
+	 *
+	 */
+	private String queryTimeOut;
+	
+	ImportLogger importlogger = new ImportLogger();
+	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
-			String importSuccess;
+			Date processDate = importlogger.initializeProcess();
 			
 			createConnection();
 			logger.info("Database Connection Created...");
@@ -103,20 +118,19 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			// Load each resource file
 			logger.info("File Import Started ...");
 			
-			
 			for (int f = 0; f < importConfig.size(); f++) {
 				try{
 					File loadReleaseFileName = importConfig.get(f).loadReleaseFileName;
 					String loadDBTableName = importConfig.get(f).loadDBTableName;
 					
-					logger.info(loadReleaseFileName + " & " + loadDBTableName);
+					logger.info("Loading File: " +loadReleaseFileName);
 					
 					loadFileToDatabase(loadReleaseFileName , loadDBTableName);
 					int fileCount = checkFileCount(loadReleaseFileName);
-					importSuccess = checkImportCount(loadDBTableName , fileCount);
+					String importSuccess = checkImportCount(loadDBTableName , fileCount);
 					
 					if(importSuccess.equals("true")){					
-						logger.info("File is imported successfully into table.");
+						logger.info("File is imported successfully into table : " + loadDBTableName);
 					}else{
 						logger.error("File is not imported successfully into table " + loadDBTableName);
 					}
@@ -139,6 +153,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 			
 			closeConnection();
 			logger.info("Database Connection Closed...");
+			importlogger.finalizeProcess(processDate);
 			
 		}catch(SQLException sq){ 
 			System.out.println(sq.getMessage());
@@ -151,6 +166,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		}
 	}
 	
+	
 	private void dropAndCreateTables(File script) throws SQLException, IOException {
 		logger.info("Create execution tables, resource tables, and resource indices. . . drop them first just in case already exist ...");
 
@@ -161,7 +177,13 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		String dbName = url.substring(url.lastIndexOf(File.separatorChar) + 1);
 		StatementExecutor executor = new StatementExecutor(con, dbName, executedSqlDirectory);
 
-		executor.execute(script);
+		// Checking queryTimeOut
+		if (queryTimeOut != null) {			
+			executor.execute(script , queryTimeOut);			
+		}else{
+			executor.execute(script);
+		}
+		
 	}
 
 	private void loadFileToDatabase(File filename , String tablename) throws SQLException, FileNotFoundException  {
@@ -172,12 +194,20 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		
 		String disableKey ="ALTER TABLE " + tablename + " DISABLE KEYS";
 		statement.execute(disableKey);
+	
+		// Setting queryTimeOut
+		if (queryTimeOut != null) {			
+			statement.setQueryTimeout(Integer.parseInt(queryTimeOut));
+		}
 		
 		// Define the query we are going to execute
-		String statementText = "LOAD DATA LOCAL INFILE '" + fileName + "' " +
+		String statementText = "LOAD DATA CONCURRENT LOCAL INFILE '" + fileName + "' " +
 		"INTO TABLE " + tablename +  " FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\r\\n' IGNORE 1 LINES " ;
 		
+		long startTime = importlogger.startTime();
 		statement.execute(statementText);
+		importlogger.endTime(startTime);
+		
 		String enableKey ="ALTER TABLE " + tablename + " ENABLE KEYS";
 		statement.execute(enableKey);
 		statement.execute("SET UNIQUE_CHECKS=1; ");

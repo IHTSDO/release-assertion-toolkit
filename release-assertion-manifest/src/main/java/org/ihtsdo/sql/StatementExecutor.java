@@ -51,6 +51,24 @@ public class StatementExecutor {
 		
 		return successfulExec;
 	}
+	
+	public boolean execute(Script script, File sqlFile, String queryTimeOut) throws SQLException, IOException {
+		sqlParser.updateVariables("assertionText", script.getText());
+		sqlParser.updateVariables("assertionUuid", script.getUuid());
+
+		currentScriptContent = sqlParser.parse(sqlFile);
+		currentScript = script;
+		boolean successfulExec;
+		
+		if(queryTimeOut != null){
+			successfulExec = execute(currentScriptContent, queryTimeOut);
+		}else {
+			successfulExec = execute(currentScriptContent);
+		}
+		archiveExecutedFiles();
+		
+		return successfulExec;
+	}
 
 	public boolean execute(File script) throws SQLException, IOException {
 		if (!script.exists()) {
@@ -64,6 +82,30 @@ public class StatementExecutor {
 		currentScriptContent = sqlParser.parse(script);
 		
 		boolean successfulExec = execute(currentScriptContent);
+		archiveExecutedFiles();
+		
+		return successfulExec;
+	}
+	
+	
+	public boolean execute(File script, String queryTimeOut) throws SQLException, IOException {
+		if (!script.exists()) {
+			return false;
+		}
+
+		currentScript = new Script();
+		currentScript.setCategory("special");
+		currentScript.setSqlFile(script.getName());
+
+		currentScriptContent = sqlParser.parse(script);
+		boolean successfulExec;
+		
+		// Checking queryTimeOut
+		if (queryTimeOut != null) {		
+			successfulExec = execute(currentScriptContent, queryTimeOut);
+		}else{
+			successfulExec = execute(currentScriptContent);
+		}
 		archiveExecutedFiles();
 		
 		return successfulExec;
@@ -93,6 +135,25 @@ public class StatementExecutor {
 		return null;
 	}
 
+	private boolean execute(String statement, String queryTimeOut) throws SQLException {
+		// Assumes Pre-Parsed
+		if (statement != null && statement.length() > 0) {
+			Statement st = con.createStatement();
+			
+			// Setting queryTimeOut
+			if (queryTimeOut != null) {			
+				st.setQueryTimeout(Integer.parseInt(queryTimeOut));
+			}
+			
+			st.execute(useStatement + statement);
+			st.close();
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
 	private boolean execute(String statement) throws SQLException {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {

@@ -103,6 +103,14 @@ public class ExecuteSql extends AbstractMojo
 	 * @required
 	 */
 	private String databaseName;
+	
+	/**
+	 * queryTimeOut 
+	 * 
+	 * @parameter
+	 *
+	 */
+	private String queryTimeOut;
 
 	private Connection con = null;
     private SqlFileParser sqlParser = null;
@@ -123,8 +131,13 @@ public class ExecuteSql extends AbstractMojo
 					
 					if (scriptFile != null) {
 						long startTime = logger.initializeScript(currentScript);
-	
-			    		if (executor.execute(currentScript, scriptFile)) {
+						
+						// Checking queryTimeOut
+						if (queryTimeOut != null) {			
+							if (executor.execute(currentScript , scriptFile, queryTimeOut)){
+								logger.finalizeScript(startTime);
+							}
+						} else if (executor.execute(currentScript, scriptFile)) {
 				    		logger.finalizeScript(startTime);
 		        		} else {
 		        			logger.logError("Error executing script: " + currentScript.getSqlFile() + " (UUID: " + currentScript.getUuid().toString() + ")");
