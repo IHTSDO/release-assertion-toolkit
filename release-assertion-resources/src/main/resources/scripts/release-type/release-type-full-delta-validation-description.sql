@@ -3,12 +3,33 @@
 	The current full description file consists of the previously published full file and the changes for the current release
 */
 
-drop temporary table if exists temp_table;
-
-/* view of current delta, derived from current full */
-	create temporary table if not exists temp_table like prev_description_f;
+/*	The current full based on the current delta and the prior full */
+	drop temporary table if exists temp_table;
+    create temporary table if not exists temp_table(
+       id VARCHAR(18),
+       effectivetime CHAR(8),
+       active CHAR(1),
+       moduleid VARCHAR(18),
+       conceptid VARCHAR(18),
+       languagecode VARCHAR(2),
+       typeid VARCHAR(18),
+       term VARCHAR(255),
+       casesignificanceid VARCHAR(18),
+		index idx_id (id),
+	    index idx_effectivetime (effectivetime),
+	    index idx_active (active),
+	    index idx_moduleid (moduleid),
+	    index idx_conceptid (conceptid),
+	    index idx_languagecode (languagecode),
+	    index idx_typeid (typeid),
+	    index idx_term (term),
+	    index idx_casesignificanceid (casesignificanceid)
+    );
+    
 	insert into temp_table select * from curr_description_d;
+	commit;
 	insert into temp_table select * from prev_description_f;
+	commit;
 	
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -28,6 +49,8 @@ drop temporary table if exists temp_table;
 	and a.typeid = b.typeid
 	and a.term = b.term
 	and a.casesignificanceid = b.casesignificanceid
+	join res_concepts_edited c
+	on c.conceptid = a.conceptid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -56,6 +79,8 @@ drop temporary table if exists temp_table;
 	and a.typeid = b.typeid
 	and a.term = b.term
 	and a.casesignificanceid = b.casesignificanceid
+	join res_concepts_edited c
+	on c.conceptid = b.conceptid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -67,4 +92,4 @@ drop temporary table if exists temp_table;
 	or b.casesignificanceid is null;
 
 	commit;
-	drop table temp_table;
+	drop temporary table temp_table;

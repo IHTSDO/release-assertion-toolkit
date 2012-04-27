@@ -6,11 +6,7 @@
 	create or replace view temp_view as
 	select a.*
 	from curr_relationship_f a
-	where cast(a.effectivetime as datetime) = 
-		(select max(cast(z.effectivetime as datetime))
-		 from curr_relationship_f z
-		 where a.effectivetime = a.effectivetime
-		 and z.id = a.id);
+	where effectivetime = '<CURRENT-RELEASE-DATE>';
 
 /* in the snapshot; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

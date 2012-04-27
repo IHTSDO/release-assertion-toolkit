@@ -71,5 +71,7 @@
 	or b.refsetid is null
 	or b.referencedcomponentid is null
 	or b.acceptabilityid is null;
+	
+	commit;
 
 	drop view curr;

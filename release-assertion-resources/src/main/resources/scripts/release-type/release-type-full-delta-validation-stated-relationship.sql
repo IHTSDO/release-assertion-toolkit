@@ -3,17 +3,17 @@
 	The current full stated relationship file consists of the previously published full file and the changes for the current release
 */
 
-drop temporary table if exists temp_table;
-
 /* view of current delta, derived from current full */
+	drop temporary table if exists temp_table;
 	create temporary table if not exists temp_table like prev_stated_relationship_f;
 	
 	insert into temp_table 
 	select * from curr_stated_relationship_d;
+	commit;
 	
 	insert into temp_table 
-	select *	from prev_stated_relationship_f;
-
+	select * from prev_stated_relationship_f;
+	commit;
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
@@ -32,7 +32,7 @@ drop temporary table if exists temp_table;
 	and a.relationshipgroup = b.relationshipgroup
 	and a.typeid = b.typeid
 	and a.characteristictypeid = b.characteristictypeid
-	and a.modifierid = b.modifierid	
+	and a.modifierid = b.modifierid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -62,7 +62,7 @@ drop temporary table if exists temp_table;
 	and a.relationshipgroup = b.relationshipgroup
 	and a.typeid = b.typeid
 	and a.characteristictypeid = b.characteristictypeid
-	and a.modifierid = b.modifierid	
+	and a.modifierid = b.modifierid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -74,5 +74,4 @@ drop temporary table if exists temp_table;
 	or b.characteristictypeid is null
 	or b.modifierid is null;
 
-commit;
-drop table temp_table;
+drop temporary table temp_table;

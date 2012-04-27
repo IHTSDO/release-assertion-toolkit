@@ -3,16 +3,15 @@
 	The current full language refset file consists of the previously published full file and the changes for the current release
 */
 
-drop temporary table if exists temp_table;
-
 /* view of current delta, derived from current full */
+	drop temporary table if exists temp_table;
 	create temporary table if not exists temp_table like prev_langrefset_f;
 	
-	insert into temp_table 
-	select * from curr_langrefset_d;
+	insert into temp_table select * from curr_langrefset_d;
+	commit;
 	
-	insert into temp_table 
-	select *	from prev_langrefset_f;
+	insert into temp_table select *	from prev_langrefset_f;
+	commit;
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -62,5 +61,5 @@ drop temporary table if exists temp_table;
   	or b.referencedcomponentid is null
   	or b.acceptabilityid is null;
 
-commit;
-drop table temp_table;
+	commit;
+	drop temporary table if exists temp_table;
