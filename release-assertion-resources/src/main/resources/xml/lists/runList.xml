@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <runList uuid="f3c4ef50-6249-11e1-b86c-0800200c9a66">
+	<script uuid="87dca0d6-4080-4b28-bcfa-e58c08e8170f" category="resource" sqlFile="res-table-edited-concept.txt" text="Build a table of all concepts edited in the current release cycle."/>
 	<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type-validation" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged."></script>
 	<script uuid="492bacf0-7d88-45ba-ab26-974150ed9541" category="release-type-validation" sqlFile="release-type-full-validation-description.sql" text="The current Description full file contains all previously published data unchanged."></script>
 	<script uuid="fd8ed390-94e9-4fd9-9e20-902a24273dca" category="release-type-validation" sqlFile="release-type-full-validation-stated-relationship.sql" text="The current Stated Relationship full file contains all previously published data unchanged."></script>

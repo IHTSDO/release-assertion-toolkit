@@ -3,6 +3,8 @@
 
 	<useCase group="rf2-scripts" id="29a7345a-94cb-42fd-95c3-8aa6e1e9b31a">
 		
+		<!-- build resource table -->
+		<script uuid="87dca0d6-4080-4b28-bcfa-e58c08e8170f" category="resource" sqlFile="res-table-edited-concept.txt" text="Build a table of all concepts edited in the current release cycle."/>
 
 		<!-- release-type-full-validation -->
 		<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type-validation" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged." >
