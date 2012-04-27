@@ -14,7 +14,7 @@
 		declare no_more_rows boolean default false; 
 		declare gbTerm VARCHAR(255); 
 		declare term_cursor cursor for 
-		select term from res_gbTerms; 
+		select term from res_gbterms; 
 
 		declare continue handler for not found set no_more_rows := true; 
 
