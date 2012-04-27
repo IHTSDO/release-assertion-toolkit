@@ -49,8 +49,6 @@
 	and a.typeid = b.typeid
 	and a.term = b.term
 	and a.casesignificanceid = b.casesignificanceid
-	join res_concepts_edited c
-	on c.conceptid = a.conceptid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
@@ -79,8 +77,6 @@
 	and a.typeid = b.typeid
 	and a.term = b.term
 	and a.casesignificanceid = b.casesignificanceid
-	join res_concepts_edited c
-	on c.conceptid = b.conceptid
 	where b.id is null
 	or b.effectivetime is null
 	or b.active is null
