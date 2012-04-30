@@ -150,6 +150,7 @@ public class StatementExecutor {
 				
 				// Checking queryTimeOut
 				if (queryTimeOut != null) {		
+					st.setQueryTimeout(Integer.parseInt(queryTimeOut));
 					successfulExec = st.execute(statements[i]);
 				} else {
 					successfulExec = st.execute(statements[i]);
