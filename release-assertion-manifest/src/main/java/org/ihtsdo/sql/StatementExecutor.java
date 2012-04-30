@@ -114,65 +114,73 @@ public class StatementExecutor {
 
 	public ResultSet execute(String[] statements, String scriptName) throws SQLException, IOException {
 		// Assumes Pre-Parsed
+		StringBuffer currentScriptStr = new StringBuffer();
 		currentScript = new Script();
 		currentScript.setCategory("special");
 		currentScript.setSqlFile(scriptName);
-
-		StringBuffer currentScript = new StringBuffer();
-		Statement st = con.createStatement();
+		boolean successfulExec = false;
+		
 		if (statements != null && statements.length > 0) {
 			for (int i = 0; i < statements.length; i++) {
-				st.execute(statements[i]);
-				currentScript.append(statements[i]);
-				currentScript.append("\r\n");
+				successfulExec = execute(statements[i]);
+				
+				currentScriptStr.append(statements[i]);
+				currentScriptStr.append("\r\n");
+	
+				// If unsuccessful execution on any of the statements in the array, stop instantly
+				if (successfulExec == false) {
+					break;					
+				}
 			}
 
-			currentScriptContent = currentScript.toString();
+			currentScriptContent = currentScriptStr.toString();
 			archiveExecutedFiles();
-
-			return getResultSet();
 		}
-		
-		return null;
+
+		if (successfulExec) {		
+			return getResultSet();
+		} else {
+			return null;
+		}
 	}
 
 
 	public ResultSet execute(String[] statements, String scriptName, String queryTimeOut) throws SQLException, IOException {
 		// Assumes Pre-Parsed
+		StringBuffer currentScriptStr = new StringBuffer();
 		currentScript = new Script();
 		currentScript.setCategory("special");
 		currentScript.setSqlFile(scriptName);
+		boolean successfulExec = false;
 
-		StringBuffer currentScript = new StringBuffer();
-		Statement st = con.createStatement();
 		if (statements != null && statements.length > 0) {
 			for (int i = 0; i < statements.length; i++) {
-				boolean successfulExec;
 				
 				// Checking queryTimeOut
 				if (queryTimeOut != null) {		
-					st.setQueryTimeout(Integer.parseInt(queryTimeOut));
-					successfulExec = st.execute(statements[i]);
+					successfulExec = execute(statements[i], queryTimeOut);
 				} else {
-					successfulExec = st.execute(statements[i]);
+					successfulExec = execute(statements[i]);
 				}
+				
+				currentScriptStr.append(statements[i]);
+				currentScriptStr.append("\r\n");
 				
 				// If unsuccessful execution on any of the statements in the array, stop instantly
 				if (successfulExec == false) {
-					return null;					
+					break;					
 				}
-				
-				currentScript.append(statements[i]);
-				currentScript.append("\r\n");
 			}
 
 			currentScriptContent = currentScript.toString();
 			archiveExecutedFiles();
-
-			return getResultSet();
 		}
 		
-		return null;
+		if (successfulExec) {		
+			return getResultSet();
+		} else {
+			return null;
+		}
 	}
 
 	private boolean execute(String statement, String queryTimeOut) throws SQLException {
