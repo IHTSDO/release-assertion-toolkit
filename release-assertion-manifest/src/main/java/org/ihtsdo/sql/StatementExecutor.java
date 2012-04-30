@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.ihtsdo.runlist.mojo.ExecutionLogger;
 import org.ihtsdo.sql.parser.SqlFileParser;
 import org.ihtsdo.xml.elements.Script;
 
@@ -22,6 +23,7 @@ public class StatementExecutor {
 	private String useStatement;
 	private final String prependUseStatement = "use ";
 	private ResultSet results = null;
+	private int statementCounter = 0;
 
 	public StatementExecutor(Connection con, String dbName, String executedSqlDirectory) {
 		this.con = con;
@@ -93,24 +95,32 @@ public class StatementExecutor {
 		currentScript.setSqlFile(scriptName);
 		boolean successfulExec = false;
 
-		if (statements != null && statements.length > 0) {
-			for (int i = 0; i < statements.length; i++) {
-				
-				// Checking queryTimeOut
-				successfulExec = execute(statements[i], queryTimeOut);
-				
-				currentScriptStr.append(statements[i]);
-				currentScriptStr.append("\r\n");
-				
-				// If unsuccessful execution on any of the statements in the array, stop instantly
-				if (successfulExec == false) {
-					break;					
+		try {
+			if (statements != null && statements.length > 0) {
+				for (statementCounter = 0; statementCounter < statements.length; statementCounter++) {
+					// Checking queryTimeOut
+					successfulExec = execute(statements[statementCounter], queryTimeOut);
+					
+					currentScriptStr.append(statements[statementCounter]);
+					currentScriptStr.append("\r\n");
+					
+					// If unsuccessful execution on any of the statements in the array, stop instantly
+					if (successfulExec == false) {
+						break;					
+					}
 				}
 			}
-
-			currentScriptContent = currentScript.toString();
-			archiveExecutedFiles();
-		}
+		} catch (Exception e) {
+			ExecutionLogger logger = new ExecutionLogger();
+			logger.logError("Failed in executing script: " + scriptName + " at statement #" + statementCounter);
+			for (int i = 0; i < statements.length; i++) {
+				logger.logError("Statement #" + statementCounter + " is: " + statements[i]);
+			}
+		}		
+		
+		statementCounter = 0;
+		currentScriptContent = currentScriptStr.toString();
+		archiveExecutedFiles();
 		
 		if (successfulExec) {		
 			return getResultSet();
@@ -129,9 +139,16 @@ public class StatementExecutor {
 				st.setQueryTimeout(Integer.parseInt(queryTimeOut));
 			}
 			
-			st.execute(useStatement + statement);
+			if (statementCounter == 0) {
+				st.execute(useStatement);
+			}
+			st.execute(statement);
+			
 			results  = st.getResultSet();
-			st.close();
+			
+			if (results == null) {
+				st.close();
+			}
 			
 			return true;
 		}
@@ -149,6 +166,7 @@ public class StatementExecutor {
 	}
 
 	public ResultSet getResultSet() {
+		// Callers of getResultSet, if result is not null, are responsible for closing statement
 		ResultSet retVal = results;
 		results = null;
 		
