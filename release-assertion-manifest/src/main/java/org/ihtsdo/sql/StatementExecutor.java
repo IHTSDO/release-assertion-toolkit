@@ -21,6 +21,7 @@ public class StatementExecutor {
 	private Script currentScript;
 	private String useStatement;
 	private final String prependUseStatement = "use ";
+	private ResultSet results = null;
 
 	public StatementExecutor(Connection con, String dbName, String executedSqlDirectory) {
 		this.con = con;
@@ -129,7 +130,7 @@ public class StatementExecutor {
 			currentScriptContent = currentScript.toString();
 			archiveExecutedFiles();
 
-			return st.getResultSet();
+			return getResultSet();
 		}
 		
 		return null;
@@ -168,7 +169,7 @@ public class StatementExecutor {
 			currentScriptContent = currentScript.toString();
 			archiveExecutedFiles();
 
-			return st.getResultSet();
+			return getResultSet();
 		}
 		
 		return null;
@@ -185,6 +186,7 @@ public class StatementExecutor {
 			}
 			
 			st.execute(useStatement + statement);
+			results  = st.getResultSet();
 			st.close();
 			
 			return true;
@@ -198,6 +200,7 @@ public class StatementExecutor {
 		if (statement != null && statement.length() > 0) {
 			Statement st = con.createStatement();
 			st.execute(useStatement + statement);
+			results = st.getResultSet();
 			st.close();
 			
 			return true;
@@ -224,6 +227,13 @@ public class StatementExecutor {
 		}
 	}
 
+	public ResultSet getResultSet() {
+		ResultSet retVal = results;
+		results = null;
+		
+		return retVal;
+	}
+	
 	private void initUseStatement(String dbName) {
 		StringBuffer str = new StringBuffer();
 		str.append(prependUseStatement + dbName + ";");
