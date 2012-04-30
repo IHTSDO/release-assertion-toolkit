@@ -177,13 +177,7 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		String dbName = url.substring(url.lastIndexOf(File.separatorChar) + 1);
 		StatementExecutor executor = new StatementExecutor(con, dbName, executedSqlDirectory);
 
-		// Checking queryTimeOut
-		if (queryTimeOut != null) {			
-			executor.execute(script , queryTimeOut);			
-		}else{
-			executor.execute(script);
-		}
-		
+		executor.execute(script, queryTimeOut);			
 	}
 
 	private void loadFileToDatabase(File filename , String tablename) throws SQLException, FileNotFoundException  {
