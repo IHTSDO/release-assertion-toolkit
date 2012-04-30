@@ -61,10 +61,10 @@ public class StatementExecutor {
 
 		sqlParser.updateVariables("assertionText", script.getText());
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
-		currentScriptContent = sqlParser.parse(sqlFile);
+		currentScriptContent = finalizeScript(sqlParser.parse(sqlFile));
 		currentScript = script;
 
-		boolean successfulExec = execute(currentScriptContent, queryTimeOut);
+		boolean successfulExec = executeStatement(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
@@ -79,9 +79,9 @@ public class StatementExecutor {
 		currentScript.setCategory("special");
 		currentScript.setSqlFile(script.getName());
 
-		currentScriptContent = sqlParser.parse(script);
-		
-		boolean successfulExec = execute(currentScriptContent, queryTimeOut);
+		currentScriptContent = finalizeScript(sqlParser.parse(script));
+
+		boolean successfulExec = executeStatement(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
@@ -99,9 +99,16 @@ public class StatementExecutor {
 			if (statements != null && statements.length > 0) {
 				for (statementCounter = 0; statementCounter < statements.length; statementCounter++) {
 					// Checking queryTimeOut
-					successfulExec = execute(statements[statementCounter], queryTimeOut);
+					if ((statementCounter + 1) < statements.length) {
+						successfulExec = executeStatement(statements[statementCounter], queryTimeOut);
+						currentScriptStr.append(statements[statementCounter]);
+					} else {
+						// Final statement
+						String finalStatement = finalizeScript(statements[statementCounter]);
+						successfulExec = executeStatement(finalStatement, queryTimeOut);
+						currentScriptStr.append(finalStatement);
+					}
 					
-					currentScriptStr.append(statements[statementCounter]);
 					currentScriptStr.append("\r\n");
 					
 					// If unsuccessful execution on any of the statements in the array, stop instantly
@@ -129,7 +136,7 @@ public class StatementExecutor {
 		}
 	}
 
-	private boolean execute(String statement, String queryTimeOut) throws SQLException {
+	private boolean executeStatement(String statement, String queryTimeOut) throws SQLException {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {
 			Statement st = con.createStatement();
@@ -171,6 +178,10 @@ public class StatementExecutor {
 		results = null;
 		
 		return retVal;
+	}
+
+	private String finalizeScript(String statement) {
+		return statement + "\r\ncommit;\r\n";
 	}
 
 	public void archiveExecutedFiles() throws IOException {
