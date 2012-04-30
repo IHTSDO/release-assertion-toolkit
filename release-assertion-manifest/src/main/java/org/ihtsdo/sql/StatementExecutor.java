@@ -41,16 +41,7 @@ public class StatementExecutor {
 	}
 
 	public boolean execute(Script script, File sqlFile) throws SQLException, IOException {
-		sqlParser.updateVariables("assertionText", script.getText());
-		sqlParser.updateVariables("assertionUuid", script.getUuid());
-
-		currentScriptContent = sqlParser.parse(sqlFile);
-		currentScript = script;
-
-		boolean successfulExec = execute(currentScriptContent);
-		archiveExecutedFiles();
-		
-		return successfulExec;
+		return execute(script, sqlFile, null);
 	}
 	
 	public boolean execute(Script script, File sqlFile, String queryTimeOut) throws SQLException, IOException {
@@ -72,20 +63,7 @@ public class StatementExecutor {
 	}
 
 	public boolean execute(File script) throws SQLException, IOException {
-		if (!script.exists()) {
-			return false;
-		}
-
-		currentScript = new Script();
-		currentScript.setCategory("special");
-		currentScript.setSqlFile(script.getName());
-
-		currentScriptContent = sqlParser.parse(script);
-		
-		boolean successfulExec = execute(currentScriptContent);
-		archiveExecutedFiles();
-		
-		return successfulExec;
+		return execute(script, null);
 	}
 	
 	
@@ -113,35 +91,7 @@ public class StatementExecutor {
 	}
 
 	public ResultSet execute(String[] statements, String scriptName) throws SQLException, IOException {
-		// Assumes Pre-Parsed
-		StringBuffer currentScriptStr = new StringBuffer();
-		currentScript = new Script();
-		currentScript.setCategory("special");
-		currentScript.setSqlFile(scriptName);
-		boolean successfulExec = false;
-		
-		if (statements != null && statements.length > 0) {
-			for (int i = 0; i < statements.length; i++) {
-				successfulExec = execute(statements[i]);
-				
-				currentScriptStr.append(statements[i]);
-				currentScriptStr.append("\r\n");
-	
-				// If unsuccessful execution on any of the statements in the array, stop instantly
-				if (successfulExec == false) {
-					break;					
-				}
-			}
-
-			currentScriptContent = currentScriptStr.toString();
-			archiveExecutedFiles();
-		}
-
-		if (successfulExec) {		
-			return getResultSet();
-		} else {
-			return null;
-		}
+		return execute(statements, scriptName, null);
 	}
 
 
@@ -183,6 +133,10 @@ public class StatementExecutor {
 		}
 	}
 
+	private boolean execute(String statement) throws SQLException {
+		return execute(statement, null);
+	}
+
 	private boolean execute(String statement, String queryTimeOut) throws SQLException {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {
@@ -203,20 +157,6 @@ public class StatementExecutor {
 		return false;
 	}
 	
-	private boolean execute(String statement) throws SQLException {
-		// Assumes Pre-Parsed
-		if (statement != null && statement.length() > 0) {
-			Statement st = con.createStatement();
-			st.execute(useStatement + statement);
-			results = st.getResultSet();
-			st.close();
-			
-			return true;
-		}
-		
-		return false;
-	}
-
 	public void archiveExecutedFiles() throws IOException {
 		if (currentScript != null) {
 			File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
