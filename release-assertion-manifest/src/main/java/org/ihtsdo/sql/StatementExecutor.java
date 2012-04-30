@@ -52,11 +52,7 @@ public class StatementExecutor {
 		currentScript = script;
 		boolean successfulExec;
 		
-		if(queryTimeOut != null){
-			successfulExec = execute(currentScriptContent, queryTimeOut);
-		}else {
-			successfulExec = execute(currentScriptContent);
-		}
+		successfulExec = execute(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
@@ -80,11 +76,7 @@ public class StatementExecutor {
 		boolean successfulExec;
 		
 		// Checking queryTimeOut
-		if (queryTimeOut != null) {		
-			successfulExec = execute(currentScriptContent, queryTimeOut);
-		}else{
-			successfulExec = execute(currentScriptContent);
-		}
+		successfulExec = execute(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
@@ -107,11 +99,7 @@ public class StatementExecutor {
 			for (int i = 0; i < statements.length; i++) {
 				
 				// Checking queryTimeOut
-				if (queryTimeOut != null) {		
-					successfulExec = execute(statements[i], queryTimeOut);
-				} else {
-					successfulExec = execute(statements[i]);
-				}
+				successfulExec = execute(statements[i], queryTimeOut);
 				
 				currentScriptStr.append(statements[i]);
 				currentScriptStr.append("\r\n");
@@ -131,10 +119,6 @@ public class StatementExecutor {
 		} else {
 			return null;
 		}
-	}
-
-	private boolean execute(String statement) throws SQLException {
-		return execute(statement, null);
 	}
 
 	private boolean execute(String statement, String queryTimeOut) throws SQLException {
