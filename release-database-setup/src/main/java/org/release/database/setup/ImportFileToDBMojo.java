@@ -200,6 +200,10 @@ public class ImportFileToDBMojo extends AbstractMojo {
 		
 		long startTime = importlogger.startTime();
 		statement.execute(statementText);
+
+		String commitText = "commit";
+		statement.execute(commitText);
+
 		importlogger.endTime(startTime);
 		
 		String enableKey ="ALTER TABLE " + tablename + " ENABLE KEYS";
