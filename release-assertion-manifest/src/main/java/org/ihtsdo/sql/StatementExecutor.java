@@ -181,7 +181,11 @@ public class StatementExecutor {
 	}
 
 	private String finalizeScript(String statement) {
-		return statement + "\r\ncommit;\r\n";
+		if (statement.trim().endsWith(";")) {
+			return statement.trim() + "\r\ncommit;\r\n";
+		} else {
+			return statement.trim() + ";\r\ncommit;\r\n";
+		}
 	}
 
 	public void archiveExecutedFiles() throws IOException {
