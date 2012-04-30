@@ -135,6 +135,44 @@ public class StatementExecutor {
 		return null;
 	}
 
+
+	public ResultSet execute(String[] statements, String scriptName, String queryTimeOut) throws SQLException, IOException {
+		// Assumes Pre-Parsed
+		currentScript = new Script();
+		currentScript.setCategory("special");
+		currentScript.setSqlFile(scriptName);
+
+		StringBuffer currentScript = new StringBuffer();
+		Statement st = con.createStatement();
+		if (statements != null && statements.length > 0) {
+			for (int i = 0; i < statements.length; i++) {
+				boolean successfulExec;
+				
+				// Checking queryTimeOut
+				if (queryTimeOut != null) {		
+					successfulExec = st.execute(statements[i]);
+				} else {
+					successfulExec = st.execute(statements[i]);
+				}
+				
+				// If unsuccessful execution on any of the statements in the array, stop instantly
+				if (successfulExec == false) {
+					return null;					
+				}
+				
+				currentScript.append(statements[i]);
+				currentScript.append("\r\n");
+			}
+
+			currentScriptContent = currentScript.toString();
+			archiveExecutedFiles();
+
+			return st.getResultSet();
+		}
+		
+		return null;
+	}
+
 	private boolean execute(String statement, String queryTimeOut) throws SQLException {
 		// Assumes Pre-Parsed
 		if (statement != null && statement.length() > 0) {
