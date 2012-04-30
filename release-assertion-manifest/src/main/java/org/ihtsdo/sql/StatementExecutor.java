@@ -44,25 +44,30 @@ public class StatementExecutor {
 		return execute(script, sqlFile, null);
 	}
 	
+	public boolean execute(File script) throws SQLException, IOException {
+		return execute(script, null);
+	}
+
+	public ResultSet execute(String[] statements, String scriptName) throws SQLException, IOException {
+		return execute(statements, scriptName, null);
+	}
+
 	public boolean execute(Script script, File sqlFile, String queryTimeOut) throws SQLException, IOException {
+		if (!sqlFile.exists()) {
+			return false;
+		}
+
 		sqlParser.updateVariables("assertionText", script.getText());
 		sqlParser.updateVariables("assertionUuid", script.getUuid());
-
 		currentScriptContent = sqlParser.parse(sqlFile);
 		currentScript = script;
-		boolean successfulExec;
-		
-		successfulExec = execute(currentScriptContent, queryTimeOut);
+
+		boolean successfulExec = execute(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
 	}
 
-	public boolean execute(File script) throws SQLException, IOException {
-		return execute(script, null);
-	}
-	
-	
 	public boolean execute(File script, String queryTimeOut) throws SQLException, IOException {
 		if (!script.exists()) {
 			return false;
@@ -73,19 +78,12 @@ public class StatementExecutor {
 		currentScript.setSqlFile(script.getName());
 
 		currentScriptContent = sqlParser.parse(script);
-		boolean successfulExec;
 		
-		// Checking queryTimeOut
-		successfulExec = execute(currentScriptContent, queryTimeOut);
+		boolean successfulExec = execute(currentScriptContent, queryTimeOut);
 		archiveExecutedFiles();
 		
 		return successfulExec;
 	}
-
-	public ResultSet execute(String[] statements, String scriptName) throws SQLException, IOException {
-		return execute(statements, scriptName, null);
-	}
-
 
 	public ResultSet execute(String[] statements, String scriptName, String queryTimeOut) throws SQLException, IOException {
 		// Assumes Pre-Parsed
@@ -127,7 +125,7 @@ public class StatementExecutor {
 			Statement st = con.createStatement();
 			
 			// Setting queryTimeOut
-			if (queryTimeOut != null) {			
+			if (queryTimeOut != null && isInteger(queryTimeOut)) {			
 				st.setQueryTimeout(Integer.parseInt(queryTimeOut));
 			}
 			
@@ -141,6 +139,22 @@ public class StatementExecutor {
 		return false;
 	}
 	
+	private boolean isInteger(String queryTimeOut) {
+		try {
+			Integer.parseInt(queryTimeOut);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	public ResultSet getResultSet() {
+		ResultSet retVal = results;
+		results = null;
+		
+		return retVal;
+	}
+
 	public void archiveExecutedFiles() throws IOException {
 		if (currentScript != null) {
 			File targetCategoryDir = new File(executedSqlDirectory + File.separator + currentScript.getCategory());
@@ -157,13 +171,6 @@ public class StatementExecutor {
 			writer.flush();
 			writer.close();
 		}
-	}
-
-	public ResultSet getResultSet() {
-		ResultSet retVal = results;
-		results = null;
-		
-		return retVal;
 	}
 	
 	private void initUseStatement(String dbName) {
