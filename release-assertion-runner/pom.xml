@@ -133,7 +133,7 @@
 								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 								<username>root</username>
 								<password>snomed11</password>
-								<createTableScript>${project.manifest}/scripts/special/create_prev_table_index.sql</createTableScript>
+								<createTableScript>${project.manifest}/scripts/special/create-prev-table-index.sql</createTableScript>
 								<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 								<queryTimeOut>900</queryTimeOut>
 								<importConfig>
@@ -321,7 +321,7 @@
 					<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 					<username>root</username>
 					<password>snomed11</password>
-					<createTableScript>${project.manifest}/scripts/special/create_resource_tables.sql</createTableScript>
+					<createTableScript>${project.manifest}/scripts/special/create-resource-tables.sql</createTableScript>
 					<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 					<queryTimeOut>900</queryTimeOut>
 					<importConfig>
@@ -440,7 +440,7 @@
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
-									<createTableScript>${project.manifest}/scripts/special/create_curr_table_index.sql</createTableScript>
+									<createTableScript>${project.manifest}/scripts/special/create-curr-table-index.sql</createTableScript>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
 									<importConfig>
