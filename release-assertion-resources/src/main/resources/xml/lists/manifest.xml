@@ -333,10 +333,8 @@
 		<script uuid="c82246b1-a137-40c5-8653-554c9ce82c6b" category="component-centric-validation" sqlFile="component-centric-snapshot-description-unique-terms.sql" text="Terms are unique in Description hierarchy." />
 		<script uuid="5c0186f3-0b72-4685-8aad-eff15a7f8880" category="component-centric-validation" sqlFile="component-centric-snapshot-description-consistent-semantic-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
 		<script uuid="f14d521f-2472-4871-9c4e-356f0f075a3a" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-code-unique.sql" text="CTV3 codes are unique in the CTV3 simple map refset"  />
-		
-		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file.">
-		<keywords>There are no duplicate Definition terms in the DEFINITION snapshot file.</keywords>
-		</script>
+		<script uuid="3b2c1824-8445-410e-8ae2-d943be01c33f" category="file-centric-validation" sqlFile="file-centric-snapshot-definition-unique-terms.sql" text="There are no duplicate Definition terms in the DEFINITION snapshot file." />
+  	<script uuid="5e80ea3e-c4dd-4ae3-8b75-f0567e42b962" category="component-centric-validation" sqlFile="component-centric-snapshot-snomed-rt-code-unique.sql" text="SNOMED RT codes are unique in the SNOMED RT simple map refset"  />
 
 
 	<!-- rt added this as a template... 

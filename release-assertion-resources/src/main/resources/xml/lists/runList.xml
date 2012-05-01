@@ -173,6 +173,7 @@
 	<script uuid="0a4bba70-85b7-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-navigation.sql" text="targetComponentId does not refer to navigation concepts." />
 	<script uuid="5c0186f3-0b72-4685-8aad-eff15a7f8880" category="component-centric-validation" sqlFile="component-centric-snapshot-description-consistent-semantic-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
 	<script uuid="f14d521f-2472-4871-9c4e-356f0f075a3a" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-code-unique.sql" text="CTV3 codes are unique in the CTV3 simple map refset"  />
+	<script uuid="5e80ea3e-c4dd-4ae3-8b75-f0567e42b962" category="component-centric-validation" sqlFile="component-centric-snapshot-snomed-rt-code-unique.sql" text="SNOMED RT codes are unique in the SNOMED RT simple map refset"  />
 	<!--
 	<script uuid="" category="release-type-validation" sqlFile="" text="" />
 	-->
