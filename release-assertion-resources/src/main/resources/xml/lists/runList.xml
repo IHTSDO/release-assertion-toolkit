@@ -131,7 +131,7 @@
 	<script uuid="83638340-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-snomed-rt-unique.sql" text="SNOMED RT identifier simple map refset members are unique." />
 	<script uuid="9cc8fa40-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-icdo-active.sql" text="Active ICD-O simple map refset refers to active components." />
 	<script uuid="a2e01ee0-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-unique.sql" text="CTV3 simple map refset members are unique." />
-	<script uuid="bab42070-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-ratio.sql" text="There is one CTV3 simple map refset members per concept." />
+	<script uuid="bab42070-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-ratio.sql" text="There is one and only one CTV3 simple map refset member per concept." />
 	<script uuid="c0869af0-7f25-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-active.sql" text="CTV3 simple map refset members are always active." />
 
 
