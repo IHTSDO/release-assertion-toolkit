@@ -687,6 +687,82 @@
 		</profile>
 		
 		<profile>
+			<id>cs-db-file-import</id>
+			<build>
+				 <plugins>
+					  <plugin>
+					  <groupId>org.apache.maven.plugins</groupId>
+					  <artifactId>maven-dependency-plugin</artifactId>
+					  <executions>
+						   <execution>
+							<id>extract-manifest</id>
+							<phase>generate-sources</phase>
+							<goals>
+							 <goal>unpack</goal>
+							</goals>
+							<configuration>
+							 <artifactItems>
+							  <artifactItem>
+								<groupId>org.ihtsdo.release.assertion</groupId>
+								<artifactId>release-assertion-resources</artifactId>
+								<version>0.0.1-SNAPSHOT</version>
+								<type>zip</type>
+							  </artifactItem>
+							 </artifactItems>
+							 <outputDirectory>${project.manifest}</outputDirectory>
+							</configuration>
+						   </execution>
+					  </executions>
+				 </plugin>
+
+				 <plugin>
+					 <groupId>org.ihtsdo.release.assertion</groupId>
+					 <artifactId>release-database-setup</artifactId>
+					 <version>${project.version}</version>
+					 <executions>
+						<execution>
+						<id>import-resouces-to-database</id>
+						<phase>compile</phase>
+					    	<goals>
+							<goal>import-releasefile-to-database</goal>
+					    	</goals>
+						<configuration>
+						<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+						<username>root</username>
+						<password>snomed11</password>
+						<createTableScript>${project.manifest}/scripts/special/create-cs-db-files-table.sql</createTableScript>
+						<executedSqlDirectory>${project.executedScripts}/executedScripts/cs-db-file-import</executedSqlDirectory>
+						<queryTimeOut>900</queryTimeOut>
+						<importConfig>
+							<LoadFileParameter>
+								<loadDBTableName>cs_attributes</loadDBTableName>
+								<loadReleaseFileName>results/attributes.txt</loadReleaseFileName>
+							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_descriptions</loadDBTableName>
+								<loadReleaseFileName>results/descriptions.txt</loadReleaseFileName>
+							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_relationships</loadDBTableName>
+								<loadReleaseFileName>results/relationships.txt</loadReleaseFileName>
+							</LoadFileParameter>
+						</importConfig>
+						</configuration>
+					</execution>
+				 </executions>
+				</plugin>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+				  <source>1.6</source>
+				  <target>1.6</target>
+				</configuration>
+				</plugin>
+			   </plugins>      
+			  </build>
+		  </profile>
+		<profile>
 			<id>archive-results</id>
 			  <build>
 				<plugins>
