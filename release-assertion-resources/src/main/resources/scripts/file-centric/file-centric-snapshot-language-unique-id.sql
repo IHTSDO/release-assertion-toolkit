@@ -15,7 +15,6 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('MEMBER: id=',id, ': Member Id is repeated in the language refset snapshot file.') 
-	
 	from curr_langrefset_s
 	group by id
-	having count(id) > 1
+	having count(id) > 1;

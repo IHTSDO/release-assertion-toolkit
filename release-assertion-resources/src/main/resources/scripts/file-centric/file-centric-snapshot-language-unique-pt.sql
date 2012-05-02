@@ -6,84 +6,82 @@
 	Every active concept has one and only one active preferred term.
 
 ********************************************************************************/
-	/* testing for multiple perferred terms */
+/* 	testing for multiple perferred terms */
+/* 	temp table: active sysonyms of active concepts edited in the current release cycle */ 	
+	create temporary table if not exists description_tmp as
+	select c.*
+	from res_concepts_edited a
+	join curr_concept_s b 
+		on a.conceptid = b.id
+	join curr_description_s c
+		on b.id = c.conceptid
+		and b.active = c.active
+		and c.typeid = '900000000000013009' /* synonym */
+	where b.active = 1;		
+
+/*  descriptions in the temp table having duplicate preferred language refset members */	
 	select  	
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.id, ': Concept has multiple active preferred terms.') 
-	from curr_concept_s a 
-		join curr_description_s b
-			on a.id = b.conceptid
-			and a.active = b.active
-			and b.typeid = '900000000000013009' /* synonym */
-		join curr_langrefset_s c
-			on b.id = c.referencedcomponentid
-			and b.active = c.active
-			and c.acceptabilityid = '900000000000548007' /* preferred */
+		concat('CONCEPT: id=',a.conceptid, ': Concept has multiple active preferred terms.') 
+	from description_tmp a
+	join curr_langrefset_s b
+		on a.id = b.referencedcomponentid
+		and b.acceptabilityid = '900000000000548007' /* preferred */
 	where a.active = '1'
-	group by c.refsetid, c.referencedcomponentid
-	having (count(c.refsetid) > 1 and count(c.referencedcomponentid) >1);
+	group by b.refsetid, b.referencedcomponentid
+	having (count(b.refsetid) > 1 and count(b.referencedcomponentid) >1);
 
+/* 	testing for the absence of preferred terms
+	make a list of active preferred terms for the active concepts that changed
+	in the current release cycle */
+	create temporary table if not exists tmp_pt as		 
+	select a.id, a.conceptid, b.refsetid
+	from description_tmp a
+	join curr_langrefset_s b
+		on a.id = b.referencedcomponentid
+	where b.active = 1
+	and b.acceptabilityid = '900000000000548007'; /* preferred */
 
-	/* testing for the absence of preferred terms */
+/*  make a list of active concepts that have been edited this release cycle */
+	create temporary table if not exists tmp_edited_concept as
+	select a.*
+	from res_concepts_edited a
+	join curr_concept_s b 
+		on a.conceptid = b.id
+	where b.active = 1;	
 
-	/* active syonyms of active concepts */
-	create or replace view v_condesc as
-	select a.id as conceptid, b.id as descriptionid, a.active 
-	from (curr_concept_s a 
-		join curr_description_s b
-			on a.id = b.conceptid
-			and a.active = b.active
-			and b.typeid = '900000000000013009') /* synonym */
-	where a.active = '1';
-
-	/* view of GB language refset */
-	create or replace view v_refset_gb as
-	select a.referencedcomponentid as descriptionid, b.conceptid
-	from curr_langrefset_s a join curr_description_s b
-	on a.referencedcomponentid = b.id
-	and a.active = b.active
-	and a.acceptabilityid = '900000000000548007'
-	and a.refsetid = '900000000000508004'
-	and b.typeid = '900000000000013009'
-	where b.active = '1';
-
-	/* view of US language refset */
-	create or replace view v_refset_us as
-	select a.referencedcomponentid as descriptionid, b.conceptid
-	from curr_langrefset_s a join curr_description_s b
-	on a.referencedcomponentid = b.id
-	and a.active = b.active
-	and a.acceptabilityid = '900000000000548007'
-	and a.refsetid = '900000000000509007'
-	and b.typeid = '900000000000013009'
-	where b.active = '1';
-
-	/* active concepts for which there are no GB refset preferred members */
+/*  identify concepts that have been edited this cycle, for which there is no 
+	US preferred term */
 	select  	
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ': Concept has no en-GB preferred term.') 
-	from v_condesc a left join  v_refset_gb b
-	on a.conceptid = b.conceptid
-	where b.conceptid is null;
+		concat('CONCEPT: id=',a.conceptid, ': Concept has no active preferred term.') 
+	from tmp_edited_concept a
+	left join tmp_pt b
+		on a.conceptid = b.conceptid
+	where b.conceptid is null
+	and b.refsetid = '900000000000509007'; /* US lang refset */
 
-	/* active concepts for which there are no US refset preferred members */
+/*  identify concepts that have been edited this cycle, for which there is no 
+	GB preferred term */
 	select  	
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: id=',a.conceptid, ': Concept has no en-US preferred term') 
-	from v_condesc a left join  v_refset_us b
-	on a.conceptid = b.conceptid
-	where b.conceptid is null;	
+		concat('CONCEPT: id=',a.conceptid, ': Concept has no active preferred term.') 
+	from tmp_edited_concept a
+	left join tmp_pt b
+		on a.conceptid = b.conceptid
+	where b.conceptid is null
+	and b.refsetid = '900000000000508004'; /* GB lang refset */
 
 
-	drop view if exists v_condesc;
-	drop view if exists v_refset_gb;
-	drop view if exists v_refset_us;
+	drop temporary table if exists description_tmp;
+	drop temporary table if exists tmp_pt;
+	drop temporary table if exists tmp_edited_concept;
 	
 	commit;
 	
