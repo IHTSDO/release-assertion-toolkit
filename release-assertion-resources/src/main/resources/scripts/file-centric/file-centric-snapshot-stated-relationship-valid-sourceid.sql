@@ -13,7 +13,6 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('RELATIONSHIP: id=',a.id, ': Stated Relationship contains a source id that does not exist in the Concept snapshot file.') 	
-	
-	from curr_stated_relationship_s a 
+	from curr_stated_relationship_d a 
 	left join curr_concept_s b on a.sourceid = b.id
-	where b.id is null
+	where b.id is null;

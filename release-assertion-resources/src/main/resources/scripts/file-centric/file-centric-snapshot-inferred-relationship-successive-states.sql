@@ -14,9 +14,8 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('RELATIONSHIP: id=',a.id, ': Inferred Relationship Id is inactived in current release, yet was already inactive in previous release.') 
-	
-	from curr_relationship_s a
+	from curr_relationship_d a
 	inner join prev_relationship_s b on a.id = b.id 
 	where a.active = '0' 
 	and b.active = '0' 
-	and a.effectivetime = <CURRENT-RELEASE-DATE>
+	and a.effectivetime = '<CURRENT-RELEASE-DATE>';

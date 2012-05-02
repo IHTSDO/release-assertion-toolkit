@@ -13,10 +13,9 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('RELATIONSHIP: id=',a.id, ': Stated Relationship Id is inactived in current release, yet was already inactive in previous release.') 
-	
-	from curr_stated_relationship_s a
+		concat('RELATIONSHIP: id=',a.id, ': Stated Relationship is inactived in current release but was inactive in previous release.') 
+	from curr_stated_relationship_d a
 	inner join prev_stated_relationship_s b on a.id = b.id 
 	where a.active = '0' 
 	and b.active = '0' 
-	and a.effectivetime = <CURRENT-RELEASE-DATE>
+	and a.effectivetime = '<CURRENT-RELEASE-DATE>';

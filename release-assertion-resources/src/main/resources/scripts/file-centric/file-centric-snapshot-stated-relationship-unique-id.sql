@@ -18,4 +18,4 @@
 	
 	from curr_stated_relationship_s
 	group by id
-	having count(id) > 1
+	having count(id) > 1;
