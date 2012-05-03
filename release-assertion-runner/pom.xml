@@ -735,7 +735,7 @@
 						<queryTimeOut>900</queryTimeOut>
 						<importConfig>
 							<LoadFileParameter>
-								<loadDBTableName>cs_attributes</loadDBTableName>
+								<loadDBTableName>cs_concepts</loadDBTableName>
 								<loadReleaseFileName>results/attributes.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
