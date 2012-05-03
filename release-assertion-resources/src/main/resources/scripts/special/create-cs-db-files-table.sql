@@ -1,9 +1,9 @@
-drop table if exists cs_attributes;
+drop table if exists cs_concepts;
 drop table if exists cs_descriptions;
 drop table if exists cs_relationships;
 
 
-create table cs_attributes(
+create table cs_concepts(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
