@@ -12,11 +12,7 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('RELATIONSHIP: id=',a.id, ': Inferred is-a relationship exists in a non-zero relationship group.') 	
-	
 	from curr_relationship_s a
-	inner join curr_concept_s b on a.sourceid = b.id
-	where a.active = '1'
-	and b.active = '1'
-	and a.relationshipgroup > 0
-	and typeid = '116680003'	
+	where a.relationshipgroup > 0
+	and a.typeid = '116680003';	
 	

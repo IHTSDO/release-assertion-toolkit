@@ -12,10 +12,10 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('CONCEPT: id=',b.id, ': Concept have two inferred relationships with same typeid and same destinationid within a single relationship-group.') 	
-	
 	from curr_relationship_s a
-	inner join curr_concept_s b on a.sourceid = b.id
 	where a.active = '1'
-	and b.active = '1'
 	group by a.sourceid, a.typeid, a.destinationid, a.relationshipgroup
-	having count(*) > 1 
+	having count(*) > 1;
+
+	
+	

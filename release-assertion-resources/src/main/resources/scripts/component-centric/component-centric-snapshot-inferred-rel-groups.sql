@@ -13,11 +13,8 @@
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
 		concat('RELATIONSHIP: id=',a.id, ': Relationship is in a relationship group with a single active inferred member.') 	
-	
 	from curr_relationship_s a
-	inner join curr_concept_s b on b.id = a.sourceid
 	where a.relationshipgroup != 0 
 	and a.active ='1'
-	and b.active = '1'
 	group by a.sourceid, a.relationshipgroup
-	having count(*) = 1
+	having count(*) = 1;
