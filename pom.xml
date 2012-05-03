@@ -59,6 +59,8 @@
 	    <module>release-database-setup</module>
 	  	<module>release-report-component</module>
 	    <module>release-assertion-runner</module>
+    	<module>release-cs-xml-text-transformation</module>
+    	<module>release-cs-econcept-xml-transformation</module>
 	</modules>
 	  
 </project>
