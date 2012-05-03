@@ -746,6 +746,18 @@
 								<loadDBTableName>cs_relationships</loadDBTableName>
 								<loadReleaseFileName>results/relationships.txt</loadReleaseFileName>
 							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_gblangrefset</loadDBTableName>
+								<loadReleaseFileName>results/Great Britain English language reference set.txt</loadReleaseFileName>
+							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_uslangrefset</loadDBTableName>
+								<loadReleaseFileName>results/United States of America English language reference set.txt</loadReleaseFileName>
+							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_referTorefset</loadDBTableName>
+								<loadReleaseFileName>results/REFERS TO concept association reference set.txt</loadReleaseFileName>
+							</LoadFileParameter>
 						</importConfig>
 						</configuration>
 					</execution>
