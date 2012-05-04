@@ -88,6 +88,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 	private final UUID workflowHistoryRefset = UUID.fromString("0b6f0e24-5fe2-3869-9342-c18008f53283");
 	private final UUID commitHistoryRefset = UUID.fromString("ea34d82a-a645-337b-88f4-77740dd683b9");
 	private final UUID conceptInConflictRefset = UUID.fromString("a9ac8e53-e904-3c72-aef0-b546f0977ed8");
+	private final UUID adjudicationRefset = UUID.fromString("dfe2c9dd-2da8-3980-879c-518c1a38907f");
 
 	private final UUID isCaseSensitive = UUID.fromString("0def37bc-7e1b-384b-a6a3-3e3ceee9c52e");
 	private final UUID isNotCaseSensitive = UUID.fromString("17915e0d-ed38-3488-a35c-cda966db306a");
@@ -446,7 +447,8 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 				if (!refsetId.equals(workflowHistoryRefset) &&
 					!refsetId.equals(commitHistoryRefset) &&
-					!refsetId.equals(conceptInConflictRefset)) {
+					!refsetId.equals(conceptInConflictRefset) &&
+					!refsetId.equals(adjudicationRefset)) {
 					if (member.getRevisionList() != null) {
 						latestTime = 0;
 						for (TkRevision rev : member.getRevisionList()) {
