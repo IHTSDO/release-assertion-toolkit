@@ -113,3 +113,82 @@ create table cs_referTorefset(
    type VARCHAR(36),
    value VARCHAR(36) 
 );
+
+create table cs_nonHumanrefset(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   refsetId VARCHAR(36),
+   refsetName	VARCHAR(255),
+   concept	VARCHAR(18),
+   refCompId	VARCHAR(18),
+   refCompType	VARCHAR(36),
+   refset_uuid	VARCHAR(36),
+   concept_uuid	VARCHAR(36),
+   refCompId_uuid VARCHAR(36) ,
+   author VARCHAR(36),
+   path VARCHAR(36),
+   commitTime VARCHAR(18),
+   type VARCHAR(36),
+   value VARCHAR(36) 
+);
+
+
+create table cs_vtmrefset(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   refsetId VARCHAR(36),
+   refsetName	VARCHAR(255),
+   concept	VARCHAR(18),
+   refCompId	VARCHAR(18),
+   refCompType	VARCHAR(36),
+   refset_uuid	VARCHAR(36),
+   concept_uuid	VARCHAR(36),
+   refCompId_uuid VARCHAR(36) ,
+   author VARCHAR(36),
+   path VARCHAR(36),
+   commitTime VARCHAR(18),
+   type VARCHAR(36),
+   value VARCHAR(36) 
+);
+
+create table cs_vmprefset(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   refsetId VARCHAR(36),
+   refsetName	VARCHAR(255),
+   concept	VARCHAR(18),
+   refCompId	VARCHAR(18),
+   refCompType	VARCHAR(36),
+   refset_uuid	VARCHAR(36),
+   concept_uuid	VARCHAR(36),
+   refCompId_uuid VARCHAR(36) ,
+   author VARCHAR(36),
+   path VARCHAR(36),
+   commitTime VARCHAR(18),
+   type VARCHAR(36),
+   value VARCHAR(36) 
+);
+
+
+create table cs_icdOrefset(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   refsetId VARCHAR(36),
+   refsetName	VARCHAR(255),
+   concept	VARCHAR(18),
+   refCompId	VARCHAR(18),
+   refCompType	VARCHAR(36),
+   refset_uuid	VARCHAR(36),
+   concept_uuid	VARCHAR(36),
+   refCompId_uuid VARCHAR(36) ,
+   author VARCHAR(36),
+   path VARCHAR(36),
+   commitTime VARCHAR(18),
+   type VARCHAR(36),
+   value VARCHAR(36) 
+);
+
