@@ -1,11 +1,14 @@
 package org.release.cs.xml.text.transformation;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+
+import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -20,53 +23,38 @@ import org.xml.sax.SAXException;
 
 public class CSXmlParser extends AbstractMojo {
 	
-	/*
-	public static void main(String[] args) {
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		try {
-			SAXParser saxParser = factory.newSAXParser();
-			
-			CSXmlElementHandler handler = new CSXmlElementHandler();
-			
-			saxParser.parse("src//main//resources//TestFile.xml", handler);
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
+	private static Logger logger = Logger.getLogger(CSXmlParser.class);
 	
 	/**
-	 * xmlFilePath
+	 * changesetFileName
 	 * 
 	 * @parameter
 	 * @required
 	 */
-	private String xmlFilePath;
+	private String changesetFileName;
+	
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		// TODO Auto-generated method stub
+	
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser saxParser = factory.newSAXParser();
 			
+			if (changesetFileName.indexOf(File.pathSeparator) < 0) {
+				changesetFileName = changesetFileName.replace('/', '\\');
+			}
+			
+			changesetFileName = changesetFileName + "/changeset.xml";
 			CSXmlElementHandler handler = new CSXmlElementHandler();
+			logger.info("outputFileName:- " + changesetFileName);
 			
-			//saxParser.parse("src//main//resources//TestFile.xml", handler);
-			saxParser.parse(xmlFilePath, handler);			
-			
+			saxParser.parse(changesetFileName, handler);
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-			System.out.println("===ParserConfigurationException==" + e.getMessage());
+			logger.error("===ParserConfigurationException==" + e.getMessage());
 		} catch (SAXException e) {
-			e.printStackTrace();
-			System.out.println("===SAXException==" + e.getMessage());
+			logger.error("===SAXException==" + e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("===IOException==" + e.getMessage());
+			logger.error("===IOException==" + e.getMessage());
 		}
 	}
 }
