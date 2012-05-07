@@ -4,6 +4,11 @@ drop table if exists cs_relationships;
 drop table if exists cs_gblangrefset;
 drop table if exists cs_uslangrefset;
 drop table if exists cs_referTorefset;
+drop table if exists cs_nonhumanrefset;
+drop table if exists cs_vtmrefset;
+drop table if exists cs_vmprefset;
+drop table if exists cs_icdOrefset;
+drop table if exists cs_degreesynonymy;
 
 create table cs_concepts(
    id VARCHAR(36) not null,
@@ -114,7 +119,7 @@ create table cs_referTorefset(
    value VARCHAR(36) 
 );
 
-create table cs_nonHumanrefset(
+create table cs_nonhumanrefset(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
@@ -191,4 +196,24 @@ create table cs_icdOrefset(
    type VARCHAR(36),
    value VARCHAR(36) 
 );
+
+create table cs_degreesynonymy(
+   id VARCHAR(36) not null,
+   effectivetime CHAR(8),
+   active CHAR(1),
+   refsetId VARCHAR(36),
+   refsetName	VARCHAR(255),
+   concept	VARCHAR(18),
+   refCompId	VARCHAR(18),
+   refCompType	VARCHAR(36),
+   refset_uuid	VARCHAR(36),
+   concept_uuid	VARCHAR(36),
+   refCompId_uuid VARCHAR(36) ,
+   author VARCHAR(36),
+   path VARCHAR(36),
+   commitTime VARCHAR(18),
+   type VARCHAR(36),
+   value VARCHAR(36) 
+);
+
 
