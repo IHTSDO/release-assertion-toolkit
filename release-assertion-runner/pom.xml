@@ -136,15 +136,9 @@
 								<goal>import-releasefile-to-database</goal>
 							</goals>
 							<configuration>
-								<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-								<!--
 								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 								<username>root</username>
 								<password>snomed11</password>
-								-->
-								<url>jdbc:mysql://localhost:3306/relprocdb</url>
-								<username>jesse</username>
-								<password>jesse</password>
 								<createTableScript>${project.manifest}/scripts/special/create-prev-table-index.sql</createTableScript>
 								<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 								<queryTimeOut>900</queryTimeOut>
@@ -330,13 +324,9 @@
 						<goal>import-releasefile-to-database</goal>
 				    </goals>
 			   		<configuration>
-<!--					<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+					<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 					<username>root</username>
 					<password>snomed11</password>
--->
-					<url>jdbc:mysql://localhost:3306/relprocdb</url>
-					<username>jesse</username>
-					<password>jesse</password>
 					<createTableScript>${project.manifest}/scripts/special/create-resource-tables.sql</createTableScript>
 					<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 					<queryTimeOut>900</queryTimeOut>
@@ -453,15 +443,9 @@
 									<goal>import-releasefile-to-database</goal>
 								</goals>
 								<configuration>
-									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-									<!-- 
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
-									 -->
-									<url>jdbc:mysql://localhost:3306/relprocdb</url>
-									<username>jesse</username>
-									<password>jesse</password>
 									<createTableScript>${project.manifest}/scripts/special/create-curr-table-index.sql</createTableScript>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
@@ -654,18 +638,11 @@
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/execute-scripts</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
 									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-<!--
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>false</breakOnFailure>
 									<databaseName>postqa</databaseName>
--->
-									<url>jdbc:mysql://localhost:3306/relprocdb</url>
-									<username>jesse</username>
-									<password>jesse</password>
-									<breakOnFailure>false</breakOnFailure>
-									<databaseName>relprocdb</databaseName>
 								</configuration>
 							</execution>
 						</executions>
@@ -693,14 +670,9 @@
 								</goals>
 								<configuration>
 									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-<!--
 									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
 									<username>root</username>
 									<password>snomed11</password>
--->
-									<url>jdbc:mysql://localhost:3306/relprocdb</url>
-									<username>jesse</username>
-									<password>jesse</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
 									<reportName>Report.txt</reportName>	
 									<excelreportName>Report.xls</excelreportName>
@@ -882,6 +854,7 @@
 		       </execution>  
 		      </executions>
 	   		</plugin>
+
 	 		<plugin>
 			<groupId>org.ihtsdo.release.assertion</groupId>
 			<artifactId>release-cs-econcept-xml-transformation</artifactId>
@@ -901,7 +874,6 @@
 			 	</execution>
 			 </executions>
 			</plugin>
-			
 			
 			<plugin>
 			 <groupId>org.ihtsdo.release.assertion</groupId>
@@ -933,9 +905,9 @@
 							<goal>import-releasefile-to-database</goal>
 					    	</goals>
 						<configuration>
-						<url>jdbc:mysql://localhost:3306/relprocdb</url>
-						<username>jesse</username>
-						<password>jesse</password>
+						<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+						<username>root</username>
+						<password>snomed11</password>
 						<createTableScript>${project.manifest}/scripts/special/create-cs-db-files-table.sql</createTableScript>
 						<executedSqlDirectory>${project.executedScripts}/executedScripts/cs-db-file-import</executedSqlDirectory>
 						<queryTimeOut>900</queryTimeOut>
@@ -968,7 +940,7 @@
 								<loadDBTableName>cs_nonHumanrefset</loadDBTableName>
 								<loadReleaseFileName>${project.textTransformation}/componentTables/Non-human simple reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
-								<LoadFileParameter>
+							<LoadFileParameter>
 								<loadDBTableName>cs_vtmrefset</loadDBTableName>
 								<loadReleaseFileName>${project.textTransformation}/componentTables/Virtual therapeutic moiety simple reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
