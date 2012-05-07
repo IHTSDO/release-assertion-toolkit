@@ -304,7 +304,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 					}
 				}
 
-				if (componentChangedDuringRelease(latestTime, commitTime, conceptStartStr,
+				if (componentChangedWithChangeSet(latestTime, commitTime, conceptStartStr,
 												  conceptStartStringWritten, transformedInCommit,
 												  transformedInChangeset))
 				{
@@ -315,7 +315,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 										commitTime);
 				}
 			} else {
-				if (componentChangedDuringRelease(eAttr.getTime(), commitTime, conceptStartStr,
+				if (componentChangedWithChangeSet(eAttr.getTime(), commitTime, conceptStartStr,
 												  conceptStartStringWritten, transformedInCommit,
 												  transformedInChangeset))
 				{
@@ -348,7 +348,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 						}
 					}
 
-					if (componentChangedDuringRelease(latestTime, commitTime, conceptStartStr,
+					if (componentChangedWithChangeSet(latestTime, commitTime, conceptStartStr,
 													  conceptStartStringWritten, transformedInCommit,
 													  transformedInChangeset))
 					{
@@ -358,7 +358,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 													 eConcept.getPrimordialUuid(), commitTime);
 					}
 				} else {
-					if (componentChangedDuringRelease(ed.getTime(), commitTime, conceptStartStr,
+					if (componentChangedWithChangeSet(ed.getTime(), commitTime, conceptStartStr,
 													  conceptStartStringWritten, transformedInCommit,
 													  transformedInChangeset))
 					{
@@ -392,7 +392,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 						}
 					}
 
-					if (componentChangedDuringRelease(latestTime, commitTime, conceptStartStr,
+					if (componentChangedWithChangeSet(latestTime, commitTime, conceptStartStr,
 													  conceptStartStringWritten, transformedInCommit,
 													  transformedInChangeset))
 					{
@@ -402,7 +402,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 													  er.getC1Uuid(), er.getC2Uuid(), commitTime);
 					}
 				} else {
-					if (componentChangedDuringRelease(er.getTime(), commitTime, conceptStartStr,
+					if (componentChangedWithChangeSet(er.getTime(), commitTime, conceptStartStr,
 													  conceptStartStringWritten, transformedInCommit,
 													  transformedInChangeset))
 					{
@@ -451,7 +451,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 							}
 						}
 
-						if (componentChangedDuringRelease(latestTime, commitTime, conceptStartStr,
+						if (componentChangedWithChangeSet(latestTime, commitTime, conceptStartStr,
 														  conceptStartStringWritten, transformedInCommit,
 														  transformedInChangeset))
 						{
@@ -460,7 +460,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 												   refCompIdTypeMap.get(refCompId), commitTime, latestRev);
 						}
 					} else {
-						if (componentChangedDuringRelease(member.getTime(), commitTime, conceptStartStr,
+						if (componentChangedWithChangeSet(member.getTime(), commitTime, conceptStartStr,
 														  conceptStartStringWritten, transformedInCommit,
 														  transformedInChangeset))
 						{
@@ -566,12 +566,13 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		addSapAndClose(path, author, commitTime, "description");
 	}
 
-	private boolean componentChangedDuringRelease(long effectiveTime, long commitTime, String conceptStartStr,
+	private boolean componentChangedWithChangeSet(long effectiveTime, long commitTime, String conceptStartStr,
 												  boolean conceptStartStringWritten, boolean transformedInCommit,
 												  boolean transformedInChangeset)
 		throws IOException
 	{
-		if (effectiveTime > currentEditCycleTime.getTime()) {
+		if (effectiveTime > currentEditCycleTime.getTime() &&
+			commitTime == effectiveTime) {
 			if (!transformedInChangeset && !conceptStartStringWritten) {
 				writer.append("\t<changeset name='" + changeset.getName() + "'>");
 				writer.newLine();
@@ -993,10 +994,6 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		try {
 			I_GetConceptData con = Terms.get().getConcept(conUid);
 
-			if (conUid.equals(UUID.fromString("eb9a5e42-3cba-356d-b623-3ed472e20b30"))) {
-				int a = 5;
-			}
-			
 //			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
 //			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]), prefTerm);
