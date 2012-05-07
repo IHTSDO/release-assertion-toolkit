@@ -6,7 +6,10 @@
 	create or replace view temp_view as
 	select a.*
 	from curr_relationship_f a
-	where effectivetime = '<CURRENT-RELEASE-DATE>';
+	where effectivetime = 
+		(select max(x.effectivetime)
+		 from curr_relationship_f x
+		 where a.id = x.id);
 
 /* in the snapshot; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -37,6 +40,8 @@
 	or b.typeid is null
 	or b.characteristictypeid is null
 	or b.modifierid is null;
+
+	commit;
 
 /* in the full; not in the snapshot */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
