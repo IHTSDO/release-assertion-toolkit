@@ -887,6 +887,7 @@
 					<goal>xml-text-builder</goal>
 			    </goals>
 				<configuration>
+					 <outputPath>${project.textTransformation}/componentTables</outputPath>
 			         <changesetFileName>${project.textTransformation}</changesetFileName>
 				</configuration>
 		 		</execution>

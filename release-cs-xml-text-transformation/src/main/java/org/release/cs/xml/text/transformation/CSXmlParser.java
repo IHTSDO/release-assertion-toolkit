@@ -33,7 +33,14 @@ public class CSXmlParser extends AbstractMojo {
 	 */
 	private String changesetFileName;
 	
-	
+	/**
+	 * changesetFileName
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private String outputPath;
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 	
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -45,7 +52,7 @@ public class CSXmlParser extends AbstractMojo {
 			}
 			
 			changesetFileName = changesetFileName + "/changeset.xml";
-			CSXmlElementHandler handler = new CSXmlElementHandler();
+			CSXmlElementHandler handler = new CSXmlElementHandler(outputPath);
 			logger.info("outputFileName:- " + changesetFileName);
 			
 			saxParser.parse(changesetFileName, handler);

@@ -24,17 +24,24 @@ public class CSXmlElementHandler extends DefaultHandler {
 	private HashMap<String, BufferedWriter> refsetWriters;
 	private String currentRefsetId;
 	private boolean isRefsetName;
+	private String outputPath;
 
 	private static Logger logger = Logger.getLogger(CSXmlElementHandler.class);
 
 
+	public CSXmlElementHandler(String outputPath) {
+		this.outputPath = outputPath;
+		File outputDir = new File(outputPath);
+		outputDir.mkdirs();
+	}
+
 	public void startDocument() throws SAXException {
 		try {	
-			attrWriter = new BufferedWriter(new FileWriter(new File("target/generated-resources/concepts.txt")));
+			attrWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "concepts.txt")));
 			addConceptHeader();
-			descWriter = new BufferedWriter(new FileWriter(new File("target/generated-resources/descriptions.txt")));
+			descWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "descriptions.txt")));
 			addDescHeader();
-			relWriter = new BufferedWriter(new FileWriter(new File("target/generated-resources/relationships.txt")));
+			relWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "relationships.txt")));
 			addRelationshipHeader();
 			refsetWriters = new HashMap<String, BufferedWriter>();
 		} catch (Exception e) {
@@ -126,7 +133,7 @@ public class CSXmlElementHandler extends DefaultHandler {
 	    		if (!refsetWriters.containsKey(currentRefsetId)) {
 	    			try {
 	    				logger.info("Refset : " + str);
-	    				BufferedWriter refsetWriter = new BufferedWriter(new FileWriter(new File("target/generated-resources/" +str + ".txt")));
+	    				BufferedWriter refsetWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + str + ".txt")));
 						refsetWriters.put(currentRefsetId, refsetWriter);
 						addRefsetHeader(refsetWriter);
 					} catch (IOException e) {
