@@ -7,9 +7,9 @@
 	select a.*
 	from curr_relationship_f a
 	where effectivetime = 
-		(select max(x.effectivetime)
-		 from curr_relationship_f x
-		 where a.id = x.id);
+		(select max(cast(z.effectivetime as datetime))
+		 from curr_relationship_f z
+		 where a.id = z.id);
 
 /* in the snapshot; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

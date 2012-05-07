@@ -10,8 +10,7 @@
 	where cast(a.effectivetime as datetime) = 
 		(select max(cast(z.effectivetime as datetime))
 		 from curr_simplemaprefset_f z
-		 where a.effectivetime = a.effectivetime
-		 and z.id = a.id);
+		 where z.id = a.id);
 
 /* in the delta; not in the full */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
