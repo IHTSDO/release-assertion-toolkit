@@ -40,6 +40,8 @@ import org.ihtsdo.etypes.EConcept;
 import org.ihtsdo.helper.time.TimeHelper;
 import org.ihtsdo.tk.api.PathBI;
 import org.ihtsdo.tk.api.Precedence;
+import org.ihtsdo.tk.api.description.DescriptionVersionBI;
+import org.ihtsdo.tk.binding.snomed.SnomedMetadataRf1;
 import org.ihtsdo.tk.binding.snomed.SnomedMetadataRf2;
 import org.ihtsdo.tk.binding.snomed.SnomedMetadataRfx;
 import org.ihtsdo.tk.dto.concept.component.TkRevision;
@@ -90,7 +92,12 @@ public class EConceptXMLTransformer extends AbstractMojo {
 	private final UUID isFullyDefined = UUID.fromString("6d9cd46e-8a8f-310a-a298-3e55dcf7a986");
 	private final UUID isPrimitive = UUID.fromString("e1a12059-3b01-3296-9532-d10e49d0afc3");
 
-	private final UUID activeStatus = UUID.fromString("d12702ee-c37f-385f-a070-61d56d4d0f1f");
+	private final UUID activeStatusRf2 = UUID.fromString("d12702ee-c37f-385f-a070-61d56d4d0f1f");
+	private final UUID conceptNotCurrentStatusRf2 = UUID.fromString("6cc3df26-661e-33cd-a93d-1c9e797c90e3");
+	private final UUID limitedStatusRf2 = UUID.fromString("0d1278d5-3718-36de-91fd-7c6c8d2d2521");
+	private final UUID activeStatusRf1 = UUID.fromString("32dc7b19-95cc-365e-99c9-5095124ebe72");
+	private final UUID currentStatusRf1 = UUID.fromString("2faa9261-8fb2-11db-b606-0800200c9a66");
+	private static Set<Integer> activeStatusNids  = new HashSet<Integer>();
 
 	private final UUID snomedCTRootUUID = UUID.fromString("ee9ac5d2-a07c-3981-a57a-f7f26baf38d8");
 	private I_GetConceptData snomedCTRoot = null;
@@ -133,9 +140,6 @@ public class EConceptXMLTransformer extends AbstractMojo {
 			// Get time from string date
 			currentEditCycleTime = df.parse(currentEditCycleDate);
 
-//			Terms.openDefaultFactory(new File(envHome), true, new Long(80000));
-//			createAceConfig();
-//
             I_TermFactory tf = Terms.get();
 
             if (tf == null) {
@@ -146,6 +150,12 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 			createAceConfig();
 
+			activeStatusNids  .add(Terms.get().uuidToNative(activeStatusRf2));
+			activeStatusNids.add(Terms.get().uuidToNative(activeStatusRf1));
+			activeStatusNids.add(Terms.get().uuidToNative(currentStatusRf1));
+			activeStatusNids.add(Terms.get().uuidToNative(conceptNotCurrentStatusRf2));
+			activeStatusNids.add(Terms.get().uuidToNative(limitedStatusRf2));
+			
 			// helper fields
 			snomedIdNid = ArchitectonicAuxiliary.Concept.SNOMED_INT_ID.localize().getNid();
 
@@ -760,8 +770,16 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		return TimeHelper.getShortFileDateFormat().format(effectiveTime);
 	}
 
-	private String identifyStatus(UUID status) {
-		if (status.equals(activeStatus)) {
+	private String identifyStatus(UUID statusUid) throws IOException {
+		int statusNid = 0;
+		
+		try {
+			statusNid = Terms.get().uuidToNative(statusUid);
+		} catch (Exception e) {
+			throw new IOException("identifyStatus() unable to transform UUID into sctId for: " + statusUid);
+		}
+
+		if (activeStatusNids.contains(statusNid)) {
 			return "1";
 		} else {
 			return "0";
@@ -970,32 +988,54 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		}
 	}
 
-	private static String getPrefTerm(UUID uid) throws IOException {
-		long latestTime = 0;
-		String prefTerm = "Not Identified";
+	private static String getPrefTerm(UUID conUid) throws IOException {
+		String prefTerm = null;
 
 		try {
-			I_GetConceptData con = Terms.get().getConcept(uid);
-			int descTypeNid = ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid();
-			int rf2DescTypeNid = Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]);
+			I_GetConceptData con = Terms.get().getConcept(conUid);
 
-			Collection<? extends I_DescriptionVersioned> descs = con.getDescriptions();
-
-			for (I_DescriptionVersioned<?> desc : descs) {
-				if ((desc.getTypeNid() == descTypeNid || desc.getTypeNid() == rf2DescTypeNid) &&
-					(desc.getLang().equals("en") || desc.getLang().equals("en-us")))
-				{
-					if (desc.getTime() > latestTime) {
-						latestTime = desc.getTime();
-						prefTerm = desc.getText();
-					}
-				}
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.FULLY_SPECIFIED_NAME_RF2.getUuids()[0]), prefTerm);
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]), prefTerm);
+			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.FULLY_SPECIFIED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
+			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf1.SYNOMYM_DESCRIPTION_TYPE_RF1.getUuids()[0]), prefTerm);
+			
+			if (prefTerm == null) {
+				prefTerm = "CouldNotIdentifyDescriptionRefset";
 			}
 		} catch (TerminologyException e) {
 			e.printStackTrace();
 		}
-
+		
 		return prefTerm;
+	}
+
+	private static String findDesc(I_GetConceptData con, int descTypeNid, String prefTerm) throws TerminologyException, IOException {
+		String retPrefTerm = null;
+		long latestTime = 0;
+
+		if (prefTerm == null) {
+			Collection<? extends I_DescriptionVersioned> descs = con.getDescriptions();
+
+			for (I_DescriptionVersioned<?> desc : descs) {
+				if (desc.getTypeNid() == descTypeNid) {
+					for (DescriptionVersionBI<?> dVersion : desc.getVersions()) {
+						if ((dVersion.getLang().equals("en") || dVersion.getLang().equals("en-us")) &&
+							(activeStatusNids.contains(dVersion.getStatusNid()))) {
+							if (dVersion.getTime() > latestTime) {
+								latestTime = dVersion.getTime();
+								retPrefTerm = dVersion.getText();
+							}
+						}
+					}
+				}
+			}
+
+			return retPrefTerm;
+		} else {
+			return prefTerm;
+		}
 	}
 
 	private String cleanTerm(String term) {
