@@ -9,7 +9,8 @@
 	
 /* 	view of current snapshot made by finding active FSN's and removing tags */
 	create or replace view v_curr_snapshot_1 as
-	select SUBSTRING_INDEX(term, '(', 1) as termwithouttag , a.id , a.conceptid , a.term
+	select replace(a.term, concat('(',substring_index(a.term, '(', -1)), '') as termwithouttag,
+	a.id , a.conceptid , a.term 
 	from curr_description_d a , curr_concept_s b
 	where a.typeid ='900000000000003001'
 	and a.active = 1
