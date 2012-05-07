@@ -502,7 +502,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		addPreceedingValues("refsetMember", memberId, effectiveTime, status);
 
 		addSctId("refsetId", refsetUid);
-		addString("refsetName", getPrefTerm(refsetUid));
+		addString("refsetName", getRefsetName(refsetUid));
 		addSctId("concept", conceptUid);
 		addSctId("refCompId", refCompUid);
 		addString("refCompType", refCompType);
@@ -876,7 +876,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		UUID primUid = eConcept.getPrimordialUuid();
 		String initialText = new String();
 		String snomedId = new String();
-		initialText = getPrefTerm(primUid);
+		initialText = getDescTerm(primUid);
 		initialText = cleanTerm(initialText);
 		snomedId = getSnomedId(primUid);
 
@@ -988,21 +988,45 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		}
 	}
 
-	private static String getPrefTerm(UUID conUid) throws IOException {
+	private static String getRefsetName(UUID conUid) throws IOException {
+		String prefTerm = null;
+		try {
+			I_GetConceptData con = Terms.get().getConcept(conUid);
+
+			if (conUid.equals(UUID.fromString("eb9a5e42-3cba-356d-b623-3ed472e20b30"))) {
+				int a = 5;
+			}
+			
+//			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
+//			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]), prefTerm);
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf1.SYNOMYM_DESCRIPTION_TYPE_RF1.getUuids()[0]), prefTerm);
+
+			if (prefTerm == null) {
+				prefTerm = "CouldNotIdentifyDescription";
+			}
+		} catch (TerminologyException e) {
+			e.printStackTrace();
+		}
+		
+		return prefTerm;
+	}
+	
+	private static String getDescTerm(UUID conUid) throws IOException {
 		String prefTerm = null;
 
 		try {
 			I_GetConceptData con = Terms.get().getConcept(conUid);
 
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.FULLY_SPECIFIED_NAME_RF2.getUuids()[0]), prefTerm);
-			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
+//			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]), prefTerm);
 			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.FULLY_SPECIFIED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
-			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
+//			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf1.SYNOMYM_DESCRIPTION_TYPE_RF1.getUuids()[0]), prefTerm);
 			
 			if (prefTerm == null) {
-				prefTerm = "CouldNotIdentifyDescriptionRefset";
+				prefTerm = "CouldNotIdentifyDescription";
 			}
 		} catch (TerminologyException e) {
 			e.printStackTrace();

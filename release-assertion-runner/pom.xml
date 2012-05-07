@@ -914,39 +914,39 @@
 						<importConfig>
 							<LoadFileParameter>
 								<loadDBTableName>cs_concepts</loadDBTableName>
-								<loadReleaseFileName>results/concepts.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/concepts.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
 								<loadDBTableName>cs_descriptions</loadDBTableName>
-								<loadReleaseFileName>results/descriptions.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/descriptions.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
 								<loadDBTableName>cs_relationships</loadDBTableName>
-								<loadReleaseFileName>results/relationships.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/relationships.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
 								<loadDBTableName>cs_gblangrefset</loadDBTableName>
-								<loadReleaseFileName>results/Great Britain English language reference set.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/Great Britain English language reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
 								<loadDBTableName>cs_uslangrefset</loadDBTableName>
-								<loadReleaseFileName>results/United States of America English language reference set.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/United States of America English language reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
 								<loadDBTableName>cs_referTorefset</loadDBTableName>
-								<loadReleaseFileName>results/REFERS TO concept association reference set.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/REFERS TO concept association reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
-								<loadDBTableName>cs_referTorefset</loadDBTableName>
-								<loadReleaseFileName>${project.changesetTransformation}/REFERS TO concept association reference set.txt</loadReleaseFileName>
-							</LoadFileParameter>
-								<LoadFileParameter>
 								<loadDBTableName>cs_nonHumanrefset</loadDBTableName>
-								<loadReleaseFileName>${project.changesetTransformation}/Non-human simple reference set.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/Non-human simple reference set.txt</loadReleaseFileName>
 							</LoadFileParameter>
-								<LoadFileParameter>
+							<LoadFileParameter>
 								<loadDBTableName>cs_vtmrefset</loadDBTableName>
-								<loadReleaseFileName>${project.changesetTransformation}/Virtual therapeutic moiety simple reference set.txt</loadReleaseFileName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/Virtual therapeutic moiety simple reference set.txt</loadReleaseFileName>
+							</LoadFileParameter>
+							<LoadFileParameter>
+								<loadDBTableName>cs_degreesynonymy</loadDBTableName>
+								<loadReleaseFileName>${project.textTransformation}/componentTables/Degree of Synonymy Refset (RF2).txt</loadReleaseFileName>
 							</LoadFileParameter>
 						</importConfig>
 					</configuration>
