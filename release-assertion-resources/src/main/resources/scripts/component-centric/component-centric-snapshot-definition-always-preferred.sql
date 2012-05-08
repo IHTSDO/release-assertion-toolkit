@@ -9,7 +9,7 @@
 	
 /* 	view of current snapshot made by finding Non preferred definition */
 	create or replace view v_curr_snapshot as
-	select a.term 
+	select distinct a.term, a.conceptid
 	from curr_textdefinition_s a , curr_langrefset_s b 
 	where a.id = b.referencedcomponentid
 	and b.acceptabilityid != '900000000000548007'; 
@@ -23,7 +23,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('CONCEPT: term=',a.term, ':Non preferred definition.') 	
+		concat('CONCEPT: Concept=',a.conceptid, ': concept has definition not "preferred".') 	
 	from v_curr_snapshot a;
 
 
