@@ -5,28 +5,37 @@
 	Assertion:
 	For a given concept, all active description terms are unique.
 
+	Implementation is limited to active descriptions of active concepts edited 
+	in the current prospective release.
 ********************************************************************************/
-	
-/* 	view of current snapshot made by finding FSN's without semantic tags */
-	create or replace view v_curr_snapshot as
-	select a.*
-	from curr_description_s a 
-	where a.active = 1
-	group by BINARY a.term , a.conceptid
-	having count(a.term) > 1 and count(a.conceptid) > 1
-	order by a.term , a.conceptid;
-	
-	
-/* 	inserting exceptions in the result table */
+/*	list of active descriptions of active concepts edited in the current 
+	prospective release 
+*/	
+	drop temporary table if exists tmp_active_desc;
+	create temporary table if not exists tmp_active_desc as
+	select c.conceptid, c.term
+	from res_concepts_edited a
+		join curr_concept_s b
+			on a.conceptid = b.id
+			and b.active = 1
+		join curr_description_s c
+			on c.conceptid = a.conceptid
+			and c.active = 1;
+	commit;
+
+/*  violators have the same term twice within a concept */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESC: Term=', a.term, ':Non unique description terms.') 	
-	from v_curr_snapshot a;
-
-
-	drop view v_curr_snapshot;
-
+		concat('DESC: Id=', conceptid, ': non-unique term within concept.') 
+	from tmp_active_desc
+	group by conceptid,  binary term
+	having count(conceptid) > 1
+	and binary count(term) > 1;
+	commit;
 	
+	drop temporary table if exists tmp_active_desc;
+	
+			
