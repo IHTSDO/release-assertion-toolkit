@@ -122,7 +122,7 @@
 	<script uuid="5d27df10-7d08-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-stated-unique-per-concept.sql" text="No Concept has 2 stated relationships with the same type, destination and group." />
 
 	<script uuid="d76f1430-7e9a-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-language-inactive-members.sql" text="Members are inactive for inactive descriptions in the snapshot file." />
-	<script uuid="e658fb00-7e9a-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-language-unique-term.sql" text="Terms in a language refset are unique for a given concept." />
+	<script uuid="e658fb00-7e9a-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-language-unique-term.sql" text="Descriptions in a language refset are unique for a given concept." />
 	<script uuid="f636b7b0-7e9a-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-language-active-members.sql" text="Members are active for active descriptions in the snapshot file." />
 	<script uuid="00e87310-7e9b-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-language-unique-description.sql" text="There is one and only one active Definition per concept per dialect in the snapshot file." />
 		
