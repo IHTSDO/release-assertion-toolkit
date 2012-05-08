@@ -6,7 +6,7 @@
 	create or replace view temp_view as
 	select a.*
 	from curr_relationship_f a
-	where effectivetime = 
+	where cast(a.effectivetime as datetime) = 
 		(select max(cast(z.effectivetime as datetime))
 		 from curr_relationship_f z
 		 where a.id = z.id);
