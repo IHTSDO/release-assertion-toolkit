@@ -1,5 +1,3 @@
-use postqa;
-
 /******************************************************************************** 
 	component-centric-snapshot-description-unique-terms
 
