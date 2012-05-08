@@ -1,34 +1,46 @@
-
 /******************************************************************************** 
-	file-centric-snapshot-description-synonym-tag
+	component-centric-snapshot-description-unique-terms
 
 	Assertion:
 	No active synonyms associated with active concepts have semantic tags.
 
 ********************************************************************************/
-	
-/* 	view of current snapshot made by finding active synonyms with semantic tags */
 
+/* 	a list of concepts and their semantic tags, for active concepts edited this release */
+	drop temporary table if exists tmp_hierarchy;
+	create temporary table if not exists tmp_hierarchy as
+	select a.conceptid, concat('(',substring_index(a.term, '(', -1)) as semantictag
+	from curr_description_s a
+		join res_concepts_edited b
+			on a.conceptid = b.conceptid
+		join curr_concept_s c
+			on 	c.id = b.conceptid
+			and c.active = 1
+	where a.typeid = '900000000000003001' /* fully specified name */
+	and a.active = 1;
+	commit;	 
 
-	create or replace view v_curr_snapshot as
-	select SUBSTRING(a.term,LOCATE('(',a.term)) as term  , b.id
-	from curr_description_s a , curr_concept_s b
-	where a.typeid in ('900000000000013009')
-	and a.active = 1
-	and a.conceptid = b.id
-	and b.active = 1;
-	
-	
-/* 	inserting exceptions in the result table */
+/* 	a list of descriptions and their hierarchies */
+	drop temporary table if exists tmp_description; 
+	create temporary table if not exists tmp_description 
+	select a.id, a.term, b.semantictag as semantictag
+	from curr_description_s a
+		join tmp_hierarchy b
+			on a.conceptid = b.conceptid
+	where a.active = 1
+	and a.typeid = '900000000000013009'; /* synonym */
+	commit;
+
+/* 	violators are the ones where the term contains the semantic tag */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESC: ID=',a.id, ':Synonyms with semantic tag.') 	
-	from v_curr_snapshot a;
-
-
-	drop view v_curr_snapshot;
-
+		concat('DESC: id=',a.id, ':Synonym contains semantic tag.')  
+	from tmp_description a
+	where instr(a.term, a.semantictag) > 0;
+	commit;
 	
+	drop temporary table if exists tmp_hierarchy;
+	drop temporary table if exists tmp_description;
