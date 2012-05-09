@@ -1,6 +1,6 @@
-drop table if exists cs_concepts;
-drop table if exists cs_descriptions;
-drop table if exists cs_relationships;
+drop table if exists cs_concept;
+drop table if exists cs_description;
+drop table if exists cs_relationship;
 drop table if exists cs_gblangrefset;
 drop table if exists cs_uslangrefset;
 drop table if exists cs_referTorefset;
@@ -10,7 +10,7 @@ drop table if exists cs_vmprefset;
 drop table if exists cs_icdOrefset;
 drop table if exists cs_degreesynonymy;
 
-create table cs_concepts(
+create table cs_concept(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
@@ -18,12 +18,12 @@ create table cs_concepts(
    concept_uuid VARCHAR(36),
    isDefined_uuid VARCHAR(36),
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18)
 );
 
 
-create table cs_descriptions(
+create table cs_description(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
@@ -37,12 +37,12 @@ create table cs_descriptions(
    type_uuid VARCHAR(36),
    isCaseSig_uuid VARCHAR(36),
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18)
 );
 
 
-create table cs_relationships(
+create table cs_relationship(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
@@ -58,7 +58,7 @@ create table cs_relationships(
    type_uuid VARCHAR(36),
    characteristic_uuid VARCHAR(36),
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18)
 );
 
@@ -75,7 +75,7 @@ create table cs_gblangrefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -94,7 +94,7 @@ create table cs_uslangrefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -113,7 +113,7 @@ create table cs_referTorefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -132,7 +132,7 @@ create table cs_nonhumanrefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -152,7 +152,7 @@ create table cs_vtmrefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -171,14 +171,14 @@ create table cs_vmprefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
 );
 
 
-create table cs_icdOrefset(
+create table cs_icdorefset(
    id VARCHAR(36) not null,
    effectivetime CHAR(8),
    active CHAR(1),
@@ -191,7 +191,7 @@ create table cs_icdOrefset(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
@@ -210,7 +210,7 @@ create table cs_degreesynonymy(
    concept_uuid	VARCHAR(36),
    refCompId_uuid VARCHAR(36) ,
    author VARCHAR(36),
-   path VARCHAR(36),
+   path VARCHAR(255),
    commitTime VARCHAR(18),
    type VARCHAR(36),
    value VARCHAR(36) 
