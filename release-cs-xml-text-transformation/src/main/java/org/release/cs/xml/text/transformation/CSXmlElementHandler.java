@@ -13,7 +13,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class CSXmlElementHandler extends DefaultHandler {
-	private BufferedWriter attrWriter;
+	private BufferedWriter conWriter;
 	private BufferedWriter descWriter;
 	private BufferedWriter relWriter;
 	private BufferedWriter writer;	
@@ -37,7 +37,7 @@ public class CSXmlElementHandler extends DefaultHandler {
 
 	public void startDocument() throws SAXException {
 		try {	
-			attrWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "concepts.txt")));
+			conWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "concepts.txt")));
 			addConceptHeader();
 			descWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "descriptions.txt")));
 			addDescHeader();
@@ -51,7 +51,7 @@ public class CSXmlElementHandler extends DefaultHandler {
 
 	public void endDocument() throws SAXException {
 		try {
-	    	attrWriter.close();
+			conWriter.close();
 	    	descWriter.close();
 	    	relWriter.close();
 	    	
@@ -72,7 +72,7 @@ public class CSXmlElementHandler extends DefaultHandler {
 		} else if (qName.equalsIgnoreCase("relationship")) {
     		writer = relWriter;
 		} else if (qName.equalsIgnoreCase("attribute")) {
-    		writer = attrWriter;
+    		writer = conWriter;
 		} else if (qName.equalsIgnoreCase("refsetMember")) {
 			writerIsRefset = true;
 			refsetStrBuffer = new StringBuffer();
@@ -229,17 +229,17 @@ public class CSXmlElementHandler extends DefaultHandler {
 	}
 
 	private void addConceptHeader() throws IOException {
-		attrWriter.append("id\t");
-		attrWriter.append("effectiveTime\t");
-		attrWriter.append("active\t");
-		attrWriter.append("definitionStatusId\t");
-		attrWriter.append("concept-uuid\t");
-		attrWriter.append("isDefined-uuid\t");
-		attrWriter.append("author\t");
-		attrWriter.append("path\t");
-		attrWriter.append("commitTime");
-		attrWriter.newLine();
-		attrWriter.flush();
+		conWriter.append("id\t");
+		conWriter.append("effectiveTime\t");
+		conWriter.append("active\t");
+		conWriter.append("definitionStatusId\t");
+		conWriter.append("concept-uuid\t");
+		conWriter.append("isDefined-uuid\t");
+		conWriter.append("author\t");
+		conWriter.append("path\t");
+		conWriter.append("commitTime");
+		conWriter.newLine();
+		conWriter.flush();
 	}
 
 }
