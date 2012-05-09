@@ -36,6 +36,13 @@
 		<project.releaseTimeInDatabase>2012.07.30 23:00:00</project.releaseTimeInDatabase>
 		<project.PathName>SCT ID PROD 2012 All release candidate path</project.PathName>
 		<project.releasePath>342cc1ef-d852-58f7-912f-668dffd4765c</project.releasePath>
+		<project.endpointURL>http://mgr.servers.aceworkspace.net:50002/axis2/services/id_generator</project.endpointURL>
+		<project.ws.username>termmed</project.ws.username>
+		<project.ws.password>termmed</project.ws.password>
+		<project.ws.executionId>Changeset Utility</project.ws.executionId>
+		<project.ws.sctModuleId>SCT Component</project.ws.sctModuleId>
+		<project.ws.namespaceId>0</project.ws.namespaceId>
+		
 	</properties>
   
   <distributionManagement>
@@ -762,7 +769,7 @@
 				  </executions>
 			 	</plugin>
 
-				 <plugin>
+			  <plugin>
 		      <groupId>org.ihtsdo</groupId>
 		      <artifactId>wb-mojo</artifactId>
 		      <version>${org.ihtsdo.wb-toolkit.version}</version>
@@ -870,6 +877,14 @@
 				         <changeSetDir>${project.build.directory}/generated-resources/profiles</changeSetDir>
 				         <outputFileName>${project.changesetTransformation}/changeset.xml</outputFileName>
 				         <database>${project.build.directory}/generated-resources/berkeley-db</database>
+						 <endpointURL>${project.endpointURL}</endpointURL>
+				      	 <username>${project.ws.username}</username>
+						 <password>${project.ws.password}</password>
+						 <releaseDate>${project.releaseDate}</releaseDate>
+						 <executionId>${project.ws.executionId}</executionId>
+						 <sctModuleId>${project.ws.sctModuleId}</sctModuleId>
+						 <namespaceId>${project.ws.namespaceId}</namespaceId>
+						 <currentEditCycleDate>23/01/2012</currentEditCycleDate>					 
 					</configuration>
 			 	</execution>
 			 </executions>
@@ -913,15 +928,15 @@
 						<queryTimeOut>900</queryTimeOut>
 						<importConfig>
 							<LoadFileParameter>
-								<loadDBTableName>cs_concepts</loadDBTableName>
+								<loadDBTableName>cs_concept</loadDBTableName>
 								<loadReleaseFileName>${project.textTransformation}/componentTables/concepts.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
-								<loadDBTableName>cs_descriptions</loadDBTableName>
+								<loadDBTableName>cs_description</loadDBTableName>
 								<loadReleaseFileName>${project.textTransformation}/componentTables/descriptions.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
-								<loadDBTableName>cs_relationships</loadDBTableName>
+								<loadDBTableName>cs_relationship</loadDBTableName>
 								<loadReleaseFileName>${project.textTransformation}/componentTables/relationships.txt</loadReleaseFileName>
 							</LoadFileParameter>
 							<LoadFileParameter>
