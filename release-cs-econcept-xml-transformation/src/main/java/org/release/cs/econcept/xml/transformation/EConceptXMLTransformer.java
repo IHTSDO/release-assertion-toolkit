@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -38,6 +39,7 @@ import org.ihtsdo.db.bdb.BdbTermFactory;
 import org.ihtsdo.db.bdb.computer.kindof.LineageHelper;
 import org.ihtsdo.etypes.EConcept;
 import org.ihtsdo.helper.time.TimeHelper;
+import org.ihtsdo.idgeneration.IdAssignmentImpl;
 import org.ihtsdo.tk.api.PathBI;
 import org.ihtsdo.tk.api.Precedence;
 import org.ihtsdo.tk.api.description.DescriptionVersionBI;
@@ -65,6 +67,7 @@ import org.ihtsdo.tk.dto.concept.component.refset.str.TkRefsetStrMember;
 import org.ihtsdo.tk.dto.concept.component.relationship.TkRelationship;
 import org.ihtsdo.tk.dto.concept.component.relationship.TkRelationshipRevision;
 
+
 /**
  * @author Jesse Efron
  *
@@ -75,41 +78,20 @@ import org.ihtsdo.tk.dto.concept.component.relationship.TkRelationshipRevision;
 public class EConceptXMLTransformer extends AbstractMojo {
 	private static int snomedIdNid;
 	private BufferedWriter writer = null;
-	protected long myTime = 1263758387001L;
 	private Long nextCommit = null;
 	private File changeset;
+	
 	private boolean initialized = false;
 	private DataInputStream dataStream;
 	private final String wfPropertySuffix = "-transform";
-
-	private final UUID workflowHistoryRefset = UUID.fromString("0b6f0e24-5fe2-3869-9342-c18008f53283");
-	private final UUID commitHistoryRefset = UUID.fromString("ea34d82a-a645-337b-88f4-77740dd683b9");
-	private final UUID conceptInConflictRefset = UUID.fromString("a9ac8e53-e904-3c72-aef0-b546f0977ed8");
-	private final UUID adjudicationRefset = UUID.fromString("dfe2c9dd-2da8-3980-879c-518c1a38907f");
-
-	private final UUID isCaseSensitive = UUID.fromString("0def37bc-7e1b-384b-a6a3-3e3ceee9c52e");
-	private final UUID isNotCaseSensitive = UUID.fromString("17915e0d-ed38-3488-a35c-cda966db306a");
-	private final UUID isFullyDefined = UUID.fromString("6d9cd46e-8a8f-310a-a298-3e55dcf7a986");
-	private final UUID isPrimitive = UUID.fromString("e1a12059-3b01-3296-9532-d10e49d0afc3");
-
-	private final UUID activeStatusRf2 = UUID.fromString("d12702ee-c37f-385f-a070-61d56d4d0f1f");
-	private final UUID conceptNotCurrentStatusRf2 = UUID.fromString("6cc3df26-661e-33cd-a93d-1c9e797c90e3");
-	private final UUID limitedStatusRf2 = UUID.fromString("0d1278d5-3718-36de-91fd-7c6c8d2d2521");
-	private final UUID activeStatusRf1 = UUID.fromString("32dc7b19-95cc-365e-99c9-5095124ebe72");
-	private final UUID currentStatusRf1 = UUID.fromString("2faa9261-8fb2-11db-b606-0800200c9a66");
 	private static Set<Integer> activeStatusNids  = new HashSet<Integer>();
-
-	private final UUID snomedCTRootUUID = UUID.fromString("ee9ac5d2-a07c-3981-a57a-f7f26baf38d8");
 	private I_GetConceptData snomedCTRoot = null;
-
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	private HashMap<UUID, String> uuidToSctIdMap = new HashMap<UUID, String>();
 	private HashMap<UUID, String> pathUuidMap = new HashMap<UUID, String>();
 	private Date currentEditCycleTime = null;
-	private final String currentEditCycleDate = "23/01/2012";
-	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-	private final String relModifierId = "900000000000451002";
-
+	
+	private static Logger logger = Logger.getLogger(EConceptXMLTransformer.class);
 
 	/**
 	 * queryTimeOut
@@ -133,11 +115,84 @@ public class EConceptXMLTransformer extends AbstractMojo {
 	 *
 	 */
 	private String	outputFileName;
+	
+	
+	/**
+	 * endpointURL
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	endpointURL;
+	
+	
+	/**
+	 * username
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	username;
+	
+	
+	
+	/**
+	 * password
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	password;
+	
+	
+	
+	/**
+	 * releaseDate
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	releaseDate;
+	
+	
+	/**
+	 * executionId
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	executionId;
+	
+	/**
+	 * sctModuleId
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	sctModuleId;
+	
+	/**
+	 * namespaceId
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	namespaceId;
+	
+	/**
+	 * currentEditCycleDate
+	 *
+	 * @parameter
+	 *
+	 */
+	private static String	currentEditCycleDate;
+	
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 
 			// Get time from string date
+			logger.info("=====currentEditCycleDate=======" + currentEditCycleDate);
 			currentEditCycleTime = df.parse(currentEditCycleDate);
 
             I_TermFactory tf = Terms.get();
@@ -146,15 +201,15 @@ public class EConceptXMLTransformer extends AbstractMojo {
             	Bdb.setup(database);
             }
 
-			snomedCTRoot = Terms.get().getConcept(snomedCTRootUUID);
+			snomedCTRoot = Terms.get().getConcept(Constants.snomedCTRootUUID);
 
 			createAceConfig();
 
-			activeStatusNids  .add(Terms.get().uuidToNative(activeStatusRf2));
-			activeStatusNids.add(Terms.get().uuidToNative(activeStatusRf1));
-			activeStatusNids.add(Terms.get().uuidToNative(currentStatusRf1));
-			activeStatusNids.add(Terms.get().uuidToNative(conceptNotCurrentStatusRf2));
-			activeStatusNids.add(Terms.get().uuidToNative(limitedStatusRf2));
+			activeStatusNids  .add(Terms.get().uuidToNative(Constants.activeStatusRf2));
+			activeStatusNids.add(Terms.get().uuidToNative(Constants.activeStatusRf1));
+			activeStatusNids.add(Terms.get().uuidToNative(Constants.currentStatusRf1));
+			activeStatusNids.add(Terms.get().uuidToNative(Constants.conceptNotCurrentStatusRf2));
+			activeStatusNids.add(Terms.get().uuidToNative(Constants.limitedStatusRf2));
 			
 			// helper fields
 			snomedIdNid = ArchitectonicAuxiliary.Concept.SNOMED_INT_ID.localize().getNid();
@@ -181,8 +236,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 				while (!eofReached && (commitTime = nextCommitTime()) != Long.MAX_VALUE) {
 					try {
-						// Must read from stream regardless if time is after release
-						// time
+						// Must read from stream regardless if time is after release time
 						// in order to update commitTime for next read
 						eConcept = new EConcept(dataStream);
 
@@ -228,7 +282,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 							writer.append("\t</changeset>");
 							writer.newLine();
 						} else {
-							System.out.println("No value in CS: " + cs.getName());
+							logger.info("No value in CS: " + cs.getName());
 						}
 						writer.flush();
 
@@ -286,7 +340,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 	private boolean transformEConcept(EConcept eConcept, String conceptStartStr, long commitTime,
 									  boolean transformedInCommit, boolean transformedInChangeset)
-		throws IOException
+		throws IOException, TerminologyException
 	{
 		Map<UUID, ArrayList<TkRefsetAbstractMember<?>>> refsetMembers = new HashMap<UUID, ArrayList<TkRefsetAbstractMember<?>>>();
 		Map<UUID, String> refCompIdTypeMap = new HashMap<UUID, String>();
@@ -310,7 +364,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 				{
 					conceptStartStringWritten = true;
 
-					transformAttributes((TkConceptAttributesRevision) latestRev,
+					transformConcept((TkConceptAttributesRevision) latestRev,
 										eAttr.getPrimordialComponentUuid(),
 										commitTime);
 				}
@@ -320,7 +374,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 												  transformedInChangeset))
 				{
 					conceptStartStringWritten = true;
-					transformNewConceptAttributes(eAttr, commitTime);
+					transformNewConcept(eAttr, commitTime);
 				}
 			}
 
@@ -340,6 +394,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		if ((eConcept.getDescriptions() != null)) {
 			for (TkDescription ed : eConcept.getDescriptions()) {
 				latestTime = 0;
+				
 				if (ed.getRevisionList() != null) {
 					for (TkDescriptionRevision rev : ed.getRevisionList()) {
 						if (rev.getTime() > latestTime) {
@@ -349,24 +404,20 @@ public class EConceptXMLTransformer extends AbstractMojo {
 					}
 
 					if (componentChangedWithChangeSet(latestTime, commitTime, conceptStartStr,
-													  conceptStartStringWritten, transformedInCommit,
-													  transformedInChangeset))
-					{
+					  conceptStartStringWritten, transformedInCommit,transformedInChangeset)){
 						conceptStartStringWritten = true;
-						transformDescriptionRevision((TkDescriptionRevision) latestRev,
+						transformDescription((TkDescriptionRevision) latestRev,
 													 ed.getPrimordialComponentUuid(),
 													 eConcept.getPrimordialUuid(), commitTime);
 					}
 				} else {
 					if (componentChangedWithChangeSet(ed.getTime(), commitTime, conceptStartStr,
-													  conceptStartStringWritten, transformedInCommit,
-													  transformedInChangeset))
-					{
+						conceptStartStringWritten, transformedInCommit,transformedInChangeset)) {
 						conceptStartStringWritten = true;
 						transformNewDescription(ed, commitTime);
 					}
 				}
-
+			
 				List<TkRefsetAbstractMember<?>> descriptionRefsetMembers = ed.getAnnotations();
 				if (descriptionRefsetMembers != null) {
 					ArrayList<TkRefsetAbstractMember<?>> descMembers = new ArrayList<TkRefsetAbstractMember<?>>();
@@ -381,6 +432,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		// Relationships currently don't have revisions
 		if ((eConcept.getRelationships() != null)) {
 			for (TkRelationship er : eConcept.getRelationships()) {
+			
 				if (er.getRevisionList() != null) {
 					// Currently null for inactivations etc, but leaving in for
 					// future use
@@ -397,7 +449,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 													  transformedInChangeset))
 					{
 						conceptStartStringWritten = true;
-						transformRelationshipRevision((TkRelationshipRevision) latestRev,
+						transformRelationship((TkRelationshipRevision) latestRev,
 													  er.getPrimordialComponentUuid(),
 													  er.getC1Uuid(), er.getC2Uuid(), commitTime);
 					}
@@ -407,10 +459,10 @@ public class EConceptXMLTransformer extends AbstractMojo {
 													  transformedInChangeset))
 					{
 						conceptStartStringWritten = true;
-						transformRelationship(er, commitTime);
+						transformNewRelationship(er, commitTime);
 					}
 				}
-
+			
 				List<TkRefsetAbstractMember<?>> relationshipRefsetMembers = er.getAnnotations();
 				if (relationshipRefsetMembers != null) {
 					ArrayList<TkRefsetAbstractMember<?>> relMembers = new ArrayList<TkRefsetAbstractMember<?>>();
@@ -438,10 +490,10 @@ public class EConceptXMLTransformer extends AbstractMojo {
 			for (TkRefsetAbstractMember<?> member : members) {
 				UUID refsetId = member.getRefsetUuid();
 
-				if (!refsetId.equals(workflowHistoryRefset) &&
-					!refsetId.equals(commitHistoryRefset) &&
-					!refsetId.equals(conceptInConflictRefset) &&
-					!refsetId.equals(adjudicationRefset)) {
+				if (!refsetId.equals(Constants.workflowHistoryRefset) &&
+					!refsetId.equals(Constants.commitHistoryRefset) &&
+					!refsetId.equals(Constants.conceptInConflictRefset) &&
+					!refsetId.equals(Constants.adjudicationRefset)) {
 					if (member.getRevisionList() != null) {
 						latestTime = 0;
 						for (TkRevision rev : member.getRevisionList()) {
@@ -517,36 +569,101 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		writer.newLine();
 	}
 
-	private void transformRelationshipRevision(TkRelationshipRevision latestRev, UUID relId, UUID source,
-											   UUID target, long commitTime) throws IOException
-	{
-		UUID type = latestRev.getTypeUuid();
-		UUID characteristic = latestRev.getCharacteristicUuid();
-		UUID refinability = latestRev.getRefinabilityUuid();
-		int roleGroup = latestRev.getRelGroup();
-
-		UUID path = latestRev.getPathUuid();
-		UUID status = latestRev.getStatusUuid();
-		UUID author = latestRev.getAuthorUuid();
-		long effectiveTime = latestRev.getTime();
-
-		addPreceedingValues("relationship", relId, effectiveTime, status);
-		addRelationship(source, target, type, characteristic, refinability, roleGroup, relId);
-		addSapAndClose(path, author, commitTime, "relationship");
+	
+	
+	// get the sctid for the given UUID using Specific partition values
+	public static String getSctId(UUID uuid, String partitionId ) {
+		final IdAssignmentImpl idGen = new IdAssignmentImpl(endpointURL, username, password);
+		long conceptId = 0L;
+		try {		
+			conceptId = idGen.getSCTID(uuid);
+		} catch (NullPointerException Ne) {
+			try{
+				conceptId = idGen.createSCTID(uuid, Integer.parseInt(namespaceId) , partitionId, releaseDate, executionId, sctModuleId);
+				logger.info("==newly created conceptId==" + conceptId);				
+			} catch (Exception Ex) {				
+				logger.error("Message : SCTID creation error for UUID :"  + uuid, Ex);
+			}
+		} catch (Exception e) {
+			logger.error("Exception Message : "  + uuid, e);
+		}
+		
+		return String.valueOf(conceptId);
+	}
+	
+	
+	private void transformConcept(TkConceptAttributesRevision attr, UUID ConId, long commitTime)
+	throws IOException{
+		boolean isDefined = attr.isDefined();
+	
+		UUID path = attr.getPathUuid();
+		UUID status = attr.getStatusUuid();
+		UUID author = attr.getAuthorUuid();
+		long effectiveTime = attr.getTime();
+			
+		String wsConId = null;
+		if (ConId.toString().contains("-")){
+			wsConId = getSctId(ConId ,"00" );
+			logger.info("== transformConcept==" + wsConId);
+			addPreceedingValues("attribute", wsConId, effectiveTime, status);
+		}else{
+			addPreceedingValues("attribute", ConId, effectiveTime, status);
+		}
+		
+		addConcept(isDefined, ConId);
+		addSapAndClose(path, author, commitTime, "attribute");
 	}
 
-	private void transformNewConceptAttributes(TkConceptAttributes eAttr, long commitTime) throws IOException {
+	private void transformNewConcept(TkConceptAttributes eAttr, long commitTime) throws IOException, TerminologyException {
 		boolean isDefined = eAttr.isDefined();
-
+	
 		UUID path = eAttr.getPathUuid();
 		UUID status = eAttr.getStatusUuid();
 		UUID author = eAttr.getAuthorUuid();
 		long effectiveTime = eAttr.getTime();
-
-		addPreceedingValues("attribute", eAttr.getPrimordialComponentUuid(), effectiveTime, status);
-		addRf2FileAttributes(isDefined, eAttr.getPrimordialComponentUuid());
-		addSapAndClose(path, author, commitTime, "attribute");
+		
+		UUID uid = eAttr.getPrimordialComponentUuid();
+		String wsConId = null;
+		if (uid.toString().contains("-")){
+			wsConId = getSctId(uid ,"00" );
+			logger.info("== transformNewConcept wsConceptId==" + wsConId);
+			addPreceedingValues("attribute", wsConId, effectiveTime, status);
+		}else{
+			addPreceedingValues("attribute", uid, effectiveTime, status);
+		}
+				
+		addConcept(isDefined, eAttr.getPrimordialComponentUuid());
+		addSapAndClose(path, author, commitTime, "attribute");		
 	}
+		
+	
+	
+	private void transformDescription(TkDescriptionRevision latestRev, UUID descId, UUID conceptId, long commitTime) throws IOException {
+		UUID conId = conceptId;
+		String text = latestRev.getText();
+		text = clearBrackets(text);
+		UUID type = latestRev.getTypeUuid();
+		boolean isCaseSig = latestRev.isInitialCaseSignificant();
+		String lang = latestRev.getLang();
+		
+		UUID path = latestRev.getPathUuid();
+		UUID status = latestRev.getStatusUuid();
+		UUID author = latestRev.getAuthorUuid();
+		long effectiveTime = latestRev.getTime();
+		
+		String wsDescId = null;
+		if (descId.toString().contains("-")){
+			wsDescId = getSctId(descId ,"01" );
+			logger.info("== transformDescription==" + wsDescId);
+			addPreceedingValues("description", wsDescId, effectiveTime, status);
+		}else{
+			addPreceedingValues("description", descId, effectiveTime, status);
+		}
+		
+		addDescription(conId, text, type, isCaseSig, lang, descId);
+		addSapAndClose(path, author, commitTime, "description");
+	}
+	
 
 	private void transformNewDescription(TkDescription ed, long commitTime) throws IOException {
 		UUID conId = ed.getConceptUuid();
@@ -555,22 +672,86 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		UUID type = ed.getTypeUuid();
 		boolean isCaseSig = ed.isInitialCaseSignificant();
 		String lang = ed.getLang();
-
 		UUID path = ed.getPathUuid();
 		UUID status = ed.getStatusUuid();
 		UUID author = ed.getAuthorUuid();
 		long effectiveTime = ed.getTime();
 
-		addPreceedingValues("description", ed.getPrimordialComponentUuid(), effectiveTime, status);
-		addDescription(conId, text, type, isCaseSig, lang, ed.getPrimordialComponentUuid());
+		UUID descId = ed.getPrimordialComponentUuid();		
+		String wsDescId = null;
+		
+		if (descId.toString().contains("-")){
+			wsDescId = getSctId(descId ,"01" );			
+			logger.info("== transformNewDescription==" + wsDescId);
+			addPreceedingValues("description", wsDescId, effectiveTime, status);
+		}else{
+			addPreceedingValues("description", descId, effectiveTime, status);			
+		}
+
+		addDescription(conId, text, type, isCaseSig, lang, descId);
 		addSapAndClose(path, author, commitTime, "description");
 	}
+	
+	
+
+	
+	private void transformNewRelationship(TkRelationship rel, long commitTime) throws IOException {
+		UUID source = rel.getC1Uuid();
+		UUID target = rel.getC2Uuid();
+		UUID type = rel.getTypeUuid();
+		UUID characteristic = rel.getCharacteristicUuid();
+		UUID refinability = rel.getRefinabilityUuid();
+		int roleGroup = rel.getRelGroup();
+
+		UUID path = rel.getPathUuid();
+		UUID status = rel.getStatusUuid();
+		UUID author = rel.getAuthorUuid();
+		long effectiveTime = rel.getTime();
+
+		UUID uid = rel.getPrimordialComponentUuid();
+		String wsRelId = null;
+		if (uid.toString().contains("-")){
+			wsRelId = getSctId(uid ,"02" );
+			logger.info("== transformNewRelationship==" + wsRelId);
+			addPreceedingValues("relationship", wsRelId, effectiveTime, status);
+		}else{
+			addPreceedingValues("relationship", uid, effectiveTime, status);
+		}
+		
+		addRelationship(source, target, type, characteristic, refinability,roleGroup, rel.getPrimordialComponentUuid());
+		addSapAndClose(path, author, commitTime, "relationship");
+	}
+	
+	
+	private void transformRelationship(TkRelationshipRevision latestRev, UUID relId, UUID source,  UUID target, long commitTime) throws IOException {
+	UUID type = latestRev.getTypeUuid();
+	UUID characteristic = latestRev.getCharacteristicUuid();
+	UUID refinability = latestRev.getRefinabilityUuid();
+	int roleGroup = latestRev.getRelGroup();
+	
+	UUID path = latestRev.getPathUuid();
+	UUID status = latestRev.getStatusUuid();
+	UUID author = latestRev.getAuthorUuid();
+	long effectiveTime = latestRev.getTime();
+	
+	String wsRelId = null;
+	if (relId.toString().contains("-")){
+		wsRelId = getSctId(relId ,"02" );
+		logger.info("== transformRelationship==" + wsRelId);
+		addPreceedingValues("relationship", wsRelId, effectiveTime, status);
+	}else{
+		addPreceedingValues("relationship", relId, effectiveTime, status);
+	}
+	
+	
+	addRelationship(source, target, type, characteristic, refinability, roleGroup, relId);
+	addSapAndClose(path, author, commitTime, "relationship");
+	}
+	
 
 	private boolean componentChangedWithChangeSet(long effectiveTime, long commitTime, String conceptStartStr,
-												  boolean conceptStartStringWritten, boolean transformedInCommit,
-												  boolean transformedInChangeset)
-		throws IOException
-	{
+		boolean conceptStartStringWritten, boolean transformedInCommit,
+		boolean transformedInChangeset)	throws IOException	{
 		if (effectiveTime > currentEditCycleTime.getTime() &&
 			commitTime == effectiveTime) {
 			if (!transformedInChangeset && !conceptStartStringWritten) {
@@ -701,65 +882,14 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		}
 	}
 
-	private void transformRelationship(TkRelationship rel, long commitTime) throws IOException {
-		UUID source = rel.getC1Uuid();
-		UUID target = rel.getC2Uuid();
-		UUID type = rel.getTypeUuid();
-		UUID characteristic = rel.getCharacteristicUuid();
-		UUID refinability = rel.getRefinabilityUuid();
-		int roleGroup = rel.getRelGroup();
+		
 
-		UUID path = rel.getPathUuid();
-		UUID status = rel.getStatusUuid();
-		UUID author = rel.getAuthorUuid();
-		long effectiveTime = rel.getTime();
-
-		addPreceedingValues("relationship", rel.getPrimordialComponentUuid(), effectiveTime, status);
-		addRelationship(source, target, type, characteristic, refinability,roleGroup, rel.getPrimordialComponentUuid());
-		addSapAndClose(path, author, commitTime, "relationship");
-	}
-
-	private void transformDescriptionRevision(TkDescriptionRevision latestRev, UUID descId,
-											  UUID conceptId, long commitTime) throws IOException
-	{
-		UUID conId = conceptId;
-		String text = latestRev.getText();
-		text = clearBrackets(text);
-		UUID type = latestRev.getTypeUuid();
-		boolean isCaseSig = latestRev.isInitialCaseSignificant();
-		String lang = latestRev.getLang();
-
-		UUID path = latestRev.getPathUuid();
-		UUID status = latestRev.getStatusUuid();
-		UUID author = latestRev.getAuthorUuid();
-		long effectiveTime = latestRev.getTime();
-
-		addPreceedingValues("description", descId, effectiveTime, status);
-		addDescription(conId, text, type, isCaseSig, lang, descId);
-		addSapAndClose(path, author, commitTime, "description");
-	}
-
-	private void transformAttributes(TkConceptAttributesRevision attr, UUID uid, long commitTime)
-		throws IOException
-	{
-		boolean isDefined = attr.isDefined();
-
-		UUID path = attr.getPathUuid();
-		UUID status = attr.getStatusUuid();
-		UUID author = attr.getAuthorUuid();
-		long effectiveTime = attr.getTime();
-
-		addPreceedingValues("attribute", uid, effectiveTime, status);
-		addRf2FileAttributes(isDefined, uid);
-		addSapAndClose(path, author, commitTime, "attribute");
-	}
-
-	private void addRf2FileAttributes(boolean isDefined, UUID conUuid) throws IOException {
+	private void addConcept(boolean isDefined, UUID conUuid) throws IOException {
 		UUID isDefinedValue;
 		if (isDefined) {
-			isDefinedValue = isFullyDefined;
+			isDefinedValue = Constants.isFullyDefined;
 		} else {
-			isDefinedValue = isPrimitive;
+			isDefinedValue = Constants.isPrimitive;
 		}
 
 		addSctId("isDefined", isDefinedValue);
@@ -770,6 +900,9 @@ public class EConceptXMLTransformer extends AbstractMojo {
 	private String identifyRf2Time(long effectiveTime) {
 		return TimeHelper.getShortFileDateFormat().format(effectiveTime);
 	}
+	
+	
+	
 
 	private String identifyStatus(UUID statusUid) throws IOException {
 		int statusNid = 0;
@@ -786,32 +919,41 @@ public class EConceptXMLTransformer extends AbstractMojo {
 			return "0";
 		}
 	}
+	
+	
+	private void addPreceedingValues(String type, UUID componentId, long effectiveTime, UUID status) throws IOException {
+		writer.append("\t\t\t\t<" + type + ">");
+		writer.newLine();
 
-	private void addRelationship(UUID source, UUID target, UUID type, UUID characteristic,
-								 UUID refinability, int roleGroup, UUID relUid) throws IOException
-	{
-		addSctId("source", source);
-		addSctId("target", target);
-		addString("roleGroup", Integer.toString(roleGroup));
-		addSctId("type", type);
-		addSctId("characteristic", characteristic);
-		addString("modifierId", relModifierId);
+		String stat = identifyStatus(status);
+		String time = identifyRf2Time(effectiveTime);
 
-		addUUID("relationship-uuid", relUid);
-		addUUID("source-uuid", source);
-		addUUID("target-uuid", target);
-		addUUID("type-uuid", type);
-		addUUID("characteristic-uuid", characteristic);
-		// addUUID("refinability-uuid", refinability);
+		addSctId("id", componentId);
+		addString("effectiveTime", time);
+		addString("active", stat);
+	}
+	
+	private void addPreceedingValues(String type, String componentId, long effectiveTime, UUID status) throws IOException {
+		writer.append("\t\t\t\t<" + type + ">");
+		writer.newLine();
+
+		String stat = identifyStatus(status);
+		String time = identifyRf2Time(effectiveTime);
+
+		addString("id", componentId);
+		addString("effectiveTime", time);
+		addString("active", stat);
 	}
 
+	
+
 	private void addDescription(UUID conId, String text, UUID type,
-			boolean isCaseSig, String lang, UUID descUuid) throws IOException {
+		boolean isCaseSig, String lang, UUID descUuid) throws IOException {
 		UUID caseSigUid;
 		if (isCaseSig) {
-			caseSigUid = isCaseSensitive;
+			caseSigUid = Constants.isCaseSensitive;
 		} else {
-			caseSigUid = isNotCaseSensitive;
+			caseSigUid = Constants.isNotCaseSensitive;
 		}
 
 		addSctId("conceptId", conId);
@@ -826,20 +968,27 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		addUUID("isCaseSig-uuid", caseSigUid);
 	}
 
-	private void addPreceedingValues(String type, UUID componentId, long effectiveTime, UUID status) throws IOException {
-		writer.append("\t\t\t\t<" + type + ">");
-		writer.newLine();
-
-		String stat = identifyStatus(status);
-		String time = identifyRf2Time(effectiveTime);
-
-		addSctId("id", componentId);
-		addString("effectiveTime", time);
-		addString("active", stat);
+	private void addRelationship(UUID source, UUID target, UUID type, UUID characteristic,
+		UUID refinability, int roleGroup, UUID relUid) throws IOException {
+			addSctId("source", source);
+			addSctId("target", target);
+			addString("roleGroup", Integer.toString(roleGroup));
+			addSctId("type", type);
+			addSctId("characteristic", characteristic);
+			addString("modifierId", Constants.relModifierId);
+			
+			addUUID("relationship-uuid", relUid);
+			addUUID("source-uuid", source);
+			addUUID("target-uuid", target);
+			addUUID("type-uuid", type);
+			addUUID("characteristic-uuid", characteristic);
+			// addUUID("refinability-uuid", refinability);
 	}
+		
+	
 
 	private void addSapAndClose(UUID path, UUID author, long commitTime, String closeElement) throws IOException {
-		addSctId("author", author);
+		addAuthorId("author", author);
 		addPathUUID("path", path);
 		addString("commitTime", Long.toString(commitTime));
 
@@ -915,9 +1064,30 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 	private void addSctId(String key, UUID uid) throws IOException {
 		writer.append("\t\t\t\t\t<" + key + ">");
-
 		if (!uuidToSctIdMap.containsKey(uid)) {
 			String snomedId = getSnomedId(uid);
+			
+			if(snomedId.equals(0)){
+				if (uid.toString().contains("-")){
+					snomedId = getSctId(uid ,"00" );
+					uuidToSctIdMap.put(uid, snomedId);
+				}
+			}else{
+				uuidToSctIdMap.put(uid, snomedId);
+			}
+		}
+
+		writer.append(uuidToSctIdMap.get(uid));
+		writer.append("</" + key + ">");
+
+		writer.newLine();
+	}
+	
+	private void addAuthorId(String key, UUID uid) throws IOException {
+		writer.append("\t\t\t\t\t<" + key + ">");
+
+		if (!uuidToSctIdMap.containsKey(uid)) {
+			String snomedId = getAuthorId(uid);
 			uuidToSctIdMap.put(uid, snomedId);
 		}
 
@@ -926,7 +1096,34 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 		writer.newLine();
 	}
+	
+	private static String getAuthorId(UUID uid) throws IOException {
+		Long sctId = null;
+		I_Identify identify = Terms.get().getId(uid);
 
+		if (identify != null) {
+			List<? extends I_IdVersion> i_IdentifyList = identify.getIdVersions();
+
+			if (i_IdentifyList.size() > 0) {
+				for (int i = 0; i < i_IdentifyList.size(); i++) {
+					I_IdVersion i_IdVersion = (I_IdVersion) i_IdentifyList.get(i);
+					Object denotion = (Object) i_IdVersion.getDenotation();
+					int snomedIntegerNid = i_IdVersion.getAuthorityNid();
+
+					if (snomedIntegerNid == snomedIdNid) {
+						sctId = (Long) denotion;
+					}
+				}
+			}
+		}
+		
+		if (sctId == null) {
+			return uid.toString();
+		} else {
+			return Long.toString(sctId);
+		}
+	}
+		
 	public long nextCommitTime() throws IOException, ClassNotFoundException {
 		lazyInit();
 		if (nextCommit == null) {
@@ -983,7 +1180,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		}
 		
 		if (sctId == null) {
-			return uid.toString();
+			return "0";
 		} else {
 			return Long.toString(sctId);
 		}
@@ -994,7 +1191,8 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		try {
 			I_GetConceptData con = Terms.get().getConcept(conUid);
 
-//			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
+
+			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.PREFERRED_RF2.getUuids()[0]), prefTerm);
 //			prefTerm = findDesc(con, ArchitectonicAuxiliary.Concept.PREFERRED_DESCRIPTION_TYPE.localize().getNid(), prefTerm);
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf2.SYNONYM_RF2.getUuids()[0]), prefTerm);
 			prefTerm = findDesc(con, Terms.get().uuidToNative(SnomedMetadataRf1.SYNOMYM_DESCRIPTION_TYPE_RF1.getUuids()[0]), prefTerm);
