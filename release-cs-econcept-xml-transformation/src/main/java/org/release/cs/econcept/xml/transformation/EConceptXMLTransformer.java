@@ -1067,7 +1067,7 @@ public class EConceptXMLTransformer extends AbstractMojo {
 		if (!uuidToSctIdMap.containsKey(uid)) {
 			String snomedId = getSnomedId(uid);
 			
-			if(snomedId.equals(0)){
+			if(snomedId.equals("0")){
 				if (uid.toString().contains("-")){
 					snomedId = getSctId(uid ,"00" );
 					uuidToSctIdMap.put(uid, snomedId);
