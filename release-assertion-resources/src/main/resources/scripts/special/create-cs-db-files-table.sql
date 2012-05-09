@@ -7,7 +7,7 @@ drop table if exists cs_referTorefset;
 drop table if exists cs_nonhumanrefset;
 drop table if exists cs_vtmrefset;
 drop table if exists cs_vmprefset;
-drop table if exists cs_icdOrefset;
+drop table if exists cs_icdorefset;
 drop table if exists cs_degreesynonymy;
 
 create table cs_concept(
