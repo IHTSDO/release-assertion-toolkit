@@ -19,3 +19,4 @@
 
 	call  usTerm_procedure(<RUNID>,'<ASSERTIONUUID>','<ASSERTIONTEXT>');
 	drop view v_curr_delta;
+	
