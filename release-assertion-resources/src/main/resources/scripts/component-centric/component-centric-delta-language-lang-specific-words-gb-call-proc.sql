@@ -14,9 +14,9 @@
 		inner join curr_langrefset_s b on a.id = b.referencedComponentId
 		and a.active = '1'
 		and b.active = '1'
-		and b.refsetid = '900000000000508004';		
+		and b.refsetid = '900000000000508004' /* GB English */
+		and a.typeid = '900000000000013009';	/* synonym */	
 
+	call  gbTerm_procedure(<RUNID>,'<ASSERTIONUUID>','<ASSERTIONTEXT>');
 
-	call  gbTerm_procedure();
-
-	drop view v_curr_delta;
+	/* drop view v_curr_delta; */
