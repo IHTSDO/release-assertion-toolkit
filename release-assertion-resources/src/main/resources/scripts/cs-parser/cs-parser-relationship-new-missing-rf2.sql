@@ -7,6 +7,7 @@
 
 ********************************************************************************/
 	
+	
 	drop view if exists v_allid;
 	drop view if exists v_newid;
 	drop view if exists v_maxidtime;
@@ -14,7 +15,8 @@
 	drop table if exists newmaxattribute_tmp;
 	drop table if exists newinactive_tmp;
 	drop table if exists missingrf2new_tmp;
-
+	drop table if exists nonstated_tmp;
+	drop table if exists inactiveconcepts_tmp;
 
 	/* Prep */
 	-- All distinct Ids in CS
@@ -52,20 +54,52 @@
 	/* Analysis */
 	-- Relationships that were created in current release but were then inactivated
 	create table newinactive_tmp as 
-	select * from newmaxattribute_tmp where active = 0;
+	select * from newmaxattribute_tmp 
+	where active = 0;
 
 	-- Relationships that were created in current release but were then inactivated
+	create table nonstated_tmp as 
+	select * from newmaxattribute_tmp 
+	where characteristictypeid != '900000000000010007';
+
+	-- Children of Inactive Concept (362955004)
+	create table inactiveconcepts_tmp as 
+	select * from curr_stated_relationship_s
+	where characteristictypeid = '900000000000010007'
+	and typeid = '116680003'
+	and destinationid = '362955004';
+
+
+	-- Relationships that were created in current release but are missing from rf2
 	create table missingrf2new_tmp as 
 	select a.* from newmaxattribute_tmp a 
 	left join curr_stated_relationship_d b on a.id = b.id 
 	where b.id is null; 
-
+	
+	
+	
+	
+	
+	
 	delete from missingrf2new_tmp
 	where id in (
 		select id from newinactive_tmp
 	);
 	
 	
+	delete from missingrf2new_tmp
+	where id in (
+		select id from nonstated_tmp
+	);
+	
+	
+	delete from missingrf2new_tmp
+	where destinationid in (
+		select sourceid from inactiveconcepts_tmp
+	);
+		
+		
+
 
 
 
