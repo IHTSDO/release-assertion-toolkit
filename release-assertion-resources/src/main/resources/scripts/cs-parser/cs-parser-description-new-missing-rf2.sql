@@ -14,7 +14,13 @@
 	drop table if exists newmaxattribute_tmp;
 	drop table if exists newinactive_tmp;
 	drop table if exists missingrf2new_tmp;
-
+	drop table if exists textdefintion_tmp;
+	drop view if exists v_allconceptid;
+	drop view if exists v_newconceptid;
+	drop view if exists v_maxconceptidtime;
+	drop view if exists v_newconcept;
+	drop table if exists newmaxconceptattribute_tmp;
+	drop table if exists newinactiveconcept_tmp;
 
 	/* Prep */
 	-- All distinct Ids in CS
@@ -54,11 +60,18 @@
 	create table newinactive_tmp as 
 	select * from newmaxattribute_tmp where active = 0;
 
+	-- Text Definitions
+	create table textdefintion_tmp as 
+	select * from newmaxattribute_tmp 
+	where typeid = '900000000000550004';
+
 	-- Descriptions that were created in current release but were then inactivated
 	create table missingrf2new_tmp as 
 	select a.* from newmaxattribute_tmp a 
 	left join curr_description_d b on a.id = b.id 
 	where b.id is null; 
+
+
 
 	delete from missingrf2new_tmp
 	where id in (
@@ -66,8 +79,53 @@
 	);
 	
 	
+	delete from missingrf2new_tmp
+	where id in (
+		select id from textdefintion_tmp
+	);
+	
 
 
+
+	/* Descriptions of new concepts in this release that were inactivated by release time */
+	-- All distinct Ids in CS
+	create view v_allconceptid as
+	select distinct(a.id) from cs_concept a;
+
+
+	-- SCTIDs that new to current release
+	create view v_newconceptid as
+	select a.* from v_allconceptid a
+	left join prev_concept_s b on a.id = b.id
+	where b.id is null;
+
+	-- map all ids to latest committime
+	create view v_maxconceptidtime as
+	select id, max(committime) as committime from cs_concept 
+	group by id; 
+
+	-- all attributes of concepts that are new in current release 
+	create view v_newconcept as 
+	select a.* from cs_concept a, v_newconceptid b 
+	where a.id = b.id;  
+
+	-- Latest timestamp of concepts thast are new in current release
+	create table newmaxconceptattribute_tmp as 
+	select a.* from v_newconcept a, v_maxconceptidtime b
+	where a.id = b.id
+	and a.committime = b.committime;
+
+
+	-- Concepts that were created in current release but were then inactivated
+	create table newinactiveconcept_tmp as 
+	select * from newmaxconceptattribute_tmp where active = 0;
+
+	delete from missingrf2new_tmp
+	where conceptid in (
+		select id from newinactiveconcept_tmp
+	);
+	
+	
 
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
