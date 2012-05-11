@@ -47,7 +47,7 @@
 	-- Missing in RF2 file
 	create table missingrf2existing_tmp as 
 	select a.* from existingmaxattribute_tmp a 
-	left join curr_relationship_d b on a.id = b.id 
+	left join curr_stated_relationship_d b on a.id = b.id 
 	where b.id is null; 
 
 

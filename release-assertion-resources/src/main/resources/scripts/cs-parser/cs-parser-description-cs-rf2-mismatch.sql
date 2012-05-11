@@ -56,7 +56,7 @@
 	from v_maxcs_description a 
 	inner join curr_description_d b on a.id = b.id 
 	where a.active != b.active 
-	or a.conceptid = b.conceptid
+	or a.conceptid != b.conceptid
 	or a.languagecode != b.languagecode
 	or a.typeid != b.typeid
 	or a.term != b.term

@@ -57,7 +57,7 @@
 	-- Relationships that were created in current release but were then inactivated
 	create table missingrf2new_tmp as 
 	select a.* from newmaxattribute_tmp a 
-	left join curr_relationship_d b on a.id = b.id 
+	left join curr_stated_relationship_d b on a.id = b.id 
 	where b.id is null; 
 
 	delete from missingrf2new_tmp

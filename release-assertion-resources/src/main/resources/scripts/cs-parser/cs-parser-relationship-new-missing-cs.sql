@@ -56,7 +56,7 @@
 
 
 	create view v_missingnewcs  as 
-	select a.* from newrf2 a 
+	select a.* from v_newrf2 a 
 	left join newmaxattribute_tmp b on a.id = b.id 
 	where b.id is null;
 	
