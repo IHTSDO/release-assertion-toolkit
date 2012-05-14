@@ -1,12 +1,17 @@
 package org.release.cs.xml.text.transformation;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.UUID;
-
 import org.apache.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -39,7 +44,7 @@ public class CSXmlElementHandler extends DefaultHandler {
 		try {	
 			conWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "concepts.txt")));
 			addConceptHeader();
-			descWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "descriptions.txt")));
+			descWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "descriptions_temp.txt")));
 			addDescHeader();
 			relWriter = new BufferedWriter(new FileWriter(new File(outputPath + File.separator + "relationships.txt")));
 			addRelationshipHeader();
@@ -48,23 +53,46 @@ public class CSXmlElementHandler extends DefaultHandler {
 			e.printStackTrace();
 		}
     }
+	
+	private void clearBrackets() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+		
+		FileInputStream fis = new FileInputStream(outputPath + File.separator + "descriptions_temp.txt");
+		InputStreamReader isr = new InputStreamReader(fis, "UTF-8");				
+		BufferedReader fileReader = new BufferedReader(isr);
+		
+		FileOutputStream fos = new FileOutputStream(outputPath + File.separator + "descriptions.txt");
+		OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF8");
+		BufferedWriter fileWriter = new BufferedWriter(osw);
+		String lineRead = "";
+		
+		while ((lineRead = fileReader.readLine()) != null) {		
+			lineRead =lineRead.replaceAll("START TAG", "<");
+			lineRead =lineRead.replaceAll("END TAG", ">");
+			
+			fileWriter.append(lineRead);
+			fileWriter.write("\r\n");
+			
+		}
+		
+		fileReader.close();
+		fileWriter.close();
+	}
 
 	public void endDocument() throws SAXException {
 		try {
 			conWriter.close();
-	    	descWriter.close();
-	    	relWriter.close();
-	    	
-	    	for (String refsetId : refsetWriters.keySet()) {
-	    		refsetWriters.get(refsetId).close();
-	    	}
-	    	
-	    	logger.info("Parsing Finished Successfully");
-	    	
+			descWriter.close();
+			relWriter.close();
+			clearBrackets();
+		for (String refsetId : refsetWriters.keySet()) {
+			refsetWriters.get(refsetId).close();
+		}
+		
+		logger.info("Parsing Finished Successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     	if (qName.equalsIgnoreCase("description")) {
