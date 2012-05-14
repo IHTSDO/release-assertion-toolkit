@@ -14,31 +14,31 @@
 
 
 	/* Prep */
-	-- All distinct ids in CS
+	-- All distinct ids in CS 
 	create view v_allid as
 	select distinct(a.id) from cs_description a;
 
 
 	-- SCTids that new to current release
 	create view v_newid as
-	select a.* from v_allid a
+	select a.* from v_allid a 
 	left join prev_description_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_description 
 	group by id; 
 
-	
-
-	/* Analysis */
-	-- Descriptions that were created in current release but were then inactivated
-	create view v_maxcs_description as
+	-- Latest attributes of all previously existing Descriptions in current release
+	create view v_maxcs_description as 
 	select a.* from cs_description a, v_maxidtime b
-	where a.id = b.id 
+	where a.id = b.id
 	and a.committime = b.committime;
 
+
+	/* Analysis */
+	-- Descriptions that have different values in CS files compared to RF2
 	create view v_mismatching as 
 	select a.id, a.description_uuid,
 			a.active as cs_active, 

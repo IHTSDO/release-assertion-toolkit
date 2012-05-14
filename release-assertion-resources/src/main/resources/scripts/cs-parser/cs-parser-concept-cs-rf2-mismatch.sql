@@ -25,20 +25,22 @@
 	left join prev_concept_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_concept 
 	group by id; 
 
 	
-
-	/* Analysis */
-	-- Concepts that were created in current release but were then inactivated
+	-- Latest attributes of all concepts in current release
 	create view v_maxcs_concept as
 	select a.* from cs_concept a, v_maxidtime b
 	where a.id = b.id 
 	and a.committime = b.committime;
 
+
+
+	/* Analysis */
+	-- Concepts that have different values in CS files compared to RF2
 	create view v_mismatching as 
 	select a.id, a.concept_uuid,
 			a.active as cs_active, 

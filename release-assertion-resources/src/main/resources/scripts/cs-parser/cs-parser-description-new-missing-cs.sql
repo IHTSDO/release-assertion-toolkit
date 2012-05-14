@@ -26,12 +26,12 @@
 	left join prev_description_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_description 
 	group by id; 
 
-	-- all attributes of descriptions that are new in current release 
+	-- All attributes of descriptions that are new in current release 
 	create view v_newdescription as 
 	select a.* from cs_description a, v_newid b 
 	where a.id = b.id;  
@@ -48,19 +48,18 @@
 	
 
 	/* Analysis */
-	-- Descriptions that were created in current release but were then inactivated
+	-- RF2 Descriptions that were created in current release 
 	create view v_newrf2 as
 	select a.* from curr_description_d a 
 	left join prev_description_s b on a.id = b.id
 	where b.id is null;
 
-
+	-- New Descriptions found in RF2 but are missing from CS File
 	create view v_missingnewcs  as 
 	select a.* from v_newrf2 a 
 	left join newmaxattribute_tmp b on a.id = b.id 
 	where b.id is null;
 	
-
 
 
 

@@ -27,17 +27,17 @@
 	select a.* from v_allid a, prev_stated_relationship_s b
 	where a.id = b.id;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_relationship 
 	group by id; 
 
-	-- all attributes of all previously existing relationships 
+	-- All attributes of all previously existing relationships 
 	create view v_existingrelationship as
 	select a.* from cs_relationship a, v_existingid b
 	where a.id = b.id;
 
-	-- latest attributes of all previously existing relationships in current release
+	-- Latest attributes of all previously existing relationships in current release
 	create table existingmaxattribute_tmp as 
 	select a.* from v_existingrelationship a, v_maxidtime b
 	where a.id = b.id
@@ -46,11 +46,12 @@
 
 
 	/* Analysis */
-	-- Missing in RF2 file
+	-- Existing Relationships in RF2 
 	create view v_existingrf2 as
-	select a.* from curr_relationship_d a
+	select a.* from curr_stated_relationship_d a
 	inner join prev_stated_relationship_s b on a.id = b.id;
 
+	-- Existing Relationships defined in RF2 but are missing in CS File
 	create view v_missingexistingcs  as 
 	select a.* from v_existingrf2 a 
 	left join existingmaxattribute_tmp b on a.id = b.id 

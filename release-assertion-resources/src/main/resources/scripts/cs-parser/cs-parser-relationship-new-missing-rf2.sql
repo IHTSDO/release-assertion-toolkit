@@ -23,19 +23,18 @@
 	create view v_allid as
 	select distinct(a.id) from cs_relationship a;
 
-
 	-- SCTIDs that new to current release
 	create view v_newid as
 	select a.* from v_allid a
 	left join prev_stated_relationship_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_relationship 
 	group by id; 
 
-	-- all attributes of relationships that are new in current release 
+	-- All attributes of relationships that are new in current release 
 	create view v_newrelationship as 
 	select a.* from cs_relationship a, v_newid b 
 	where a.id = b.id;  
@@ -52,17 +51,17 @@
 	
 
 	/* Analysis */
-	-- Relationships that were created in current release but were then inactivated
+	-- CS Relationships that were created in current release but were then inactivated
 	create table newinactive_tmp as 
 	select * from newmaxattribute_tmp 
 	where active = 0;
 
-	-- Relationships that were created in current release but were then inactivated
+	-- CS Relationships that are not stated
 	create table nonstated_tmp as 
 	select * from newmaxattribute_tmp 
 	where characteristictypeid != '900000000000010007';
 
-	-- Children of Inactive Concept (362955004)
+	-- CS Relationships that are stated and define the children of 'Inactive Concept (362955004)'
 	create table inactiveconcepts_tmp as 
 	select * from curr_stated_relationship_s
 	where characteristictypeid = '900000000000010007'
@@ -70,7 +69,7 @@
 	and destinationid = '362955004';
 
 
-	-- Relationships that were created in current release but are missing from rf2
+	-- CS Relationships that were created in current release but are missing from rf2
 	create table missingrf2new_tmp as 
 	select a.* from newmaxattribute_tmp a 
 	left join curr_stated_relationship_d b on a.id = b.id 

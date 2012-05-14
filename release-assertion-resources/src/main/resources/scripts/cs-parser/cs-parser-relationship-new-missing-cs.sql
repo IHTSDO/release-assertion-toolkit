@@ -26,12 +26,12 @@
 	left join prev_stated_relationship_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_relationship 
 	group by id; 
 
-	-- all attributes of relationships that are new in current release 
+	-- All attributes of relationships that are new in current release 
 	create view v_newrelationship as 
 	select a.* from cs_relationship a, v_newid b 
 	where a.id = b.id;  
@@ -48,13 +48,14 @@
 	
 
 	/* Analysis */
-	-- Relationships that were created in current release but were then inactivated
+	-- New Rf2 Relationships that were created in current release 
 	create view v_newrf2 as
-	select a.* from curr_relationship_d a 
+	select a.* from curr_stated_relationship_d a 
 	left join prev_stated_relationship_s b on a.id = b.id
 	where b.id is null;
 
 
+	-- New Rf2 Relationships that were created in current release but are missing from CS File
 	create view v_missingnewcs  as 
 	select a.* from v_newrf2 a 
 	left join newmaxattribute_tmp b on a.id = b.id 

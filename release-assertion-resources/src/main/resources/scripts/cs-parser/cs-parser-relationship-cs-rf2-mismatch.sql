@@ -25,20 +25,21 @@
 	left join prev_stated_relationship_s b on a.id = b.id
 	where b.id is null;
 
-	-- map all ids to latest committime
+	-- Map all ids to latest committime
 	create view v_maxidtime as
 	select id, max(committime) as committime from cs_relationship 
 	group by id; 
 
-	
-
-	/* Analysis */
-	-- Relationships that were created in current release but were then inactivated
+	-- Latest attributes of all previously existing Relationships in current release
 	create view v_maxcs_relationship as
 	select a.* from cs_relationship a, v_maxidtime b
 	where a.id = b.id 
 	and a.committime = b.committime;
 
+
+
+	/* Analysis */
+	-- Relationships found in RF2 that has different values compared to the final version defined in the CS file
 	create view v_mismatching as 
 	select a.id, a.relationship_uuid,
 			a.active as cs_active, 
@@ -54,10 +55,10 @@
 			b.typeid as rf2_typeid,
 			b.characteristictypeid as rf2_characteristictypeid
 	from v_maxcs_relationship a 
-	inner join curr_relationship_d b on a.id = b.id 
+	inner join curr_stated_relationship_d b on a.id = b.id 
 	where a.active != b.active 
-	or a.sourceid = b.sourceid
-	or a.destinationid = b.destinationid
+	or a.sourceid != b.sourceid
+	or a.destinationid != b.destinationid
 	or a.relationshipgroup != b.relationshipgroup
 	or a.typeid != b.typeid
 	or a.characteristictypeid != b.characteristictypeid;
