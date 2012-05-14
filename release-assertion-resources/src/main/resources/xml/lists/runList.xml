@@ -181,6 +181,7 @@
 	<script uuid="cf048100-9ae6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-concept-existing-missing-cs.sql" text="Find existing Concept Ids found is in RF2 but missing in CS_"  />
 	<script uuid="e86d0540-9ae6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-concept-new-missing-cs.sql" text="Find new Concept Ids found is in RF2 but missing in CS_"  />
 	<script uuid="dfd887c0-9aea-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-concept-cs-rf2-mismatch.sql" text="Concept that has different results in change set compared to Rf2"  />
+	<script uuid="8f0024d0-9bb6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-concept-matching-counts.sql" text="Ensure count of cs-to-rf2 matches equals the count of max time cs and the count of rf2"  />
 
 	<script uuid="83d1d8c0-9aed-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-basic-counts.sql" text="Before more complex operations, ensure proper counts exist"  />
 	<script uuid="88e10340-9aed-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-existing-missing-rf2.sql" text="Find existing Ids found is in CS_ but missing in RF2"  />
@@ -188,6 +189,7 @@
 	<script uuid="90e578f0-9aed-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-existing-missing-cs.sql" text="Find existing Description Ids found is in RF2 but missing in CS_"  />
 	<script uuid="94fb4f50-9aed-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-new-missing-cs.sql" text="Find new Description Ids found is in RF2 but missing in CS_"  />
 	<script uuid="99a3a1b0-9aed-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-cs-rf2-mismatch.sql" text="Description that has different results in change set compared to Rf2"  />
+	<script uuid="b2b0cd30-9bb6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-description-matching-counts.sql" text="Ensure count of cs-to-rf2 matches equals the count of max time cs and the count of rf2"  />
 
 	<script uuid="c1b44170-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-basic-counts.sql" text="Before more complex operations, ensure proper counts exist"  />
 	<script uuid="c5712260-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-existing-missing-rf2.sql" text="Find existing Ids found is in CS_ but missing in RF2"  />
@@ -195,6 +197,7 @@
 	<script uuid="cdbd9d90-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-existing-missing-cs.sql" text="Find existing Relationship Ids found is in RF2 but missing in CS_"  />
 	<script uuid="d17b41d0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-new-missing-cs.sql" text="Find new Relationship Ids found is in RF2 but missing in CS_"  />
 	<script uuid="d583d1c0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-cs-rf2-mismatch.sql" text="Relationship that has different results in change set compared to Rf2"  />
+	<script uuid="f6aef5c0-9bb6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-matching-counts.sql" text="Ensure count of cs-to-rf2 matches equals the count of max time cs and the count of rf2"  />
 	<!--
 	<script uuid="" category="release-type-validation" sqlFile="" text="" />
 	-->
