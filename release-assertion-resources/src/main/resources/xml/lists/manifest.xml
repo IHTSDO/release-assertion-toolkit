@@ -359,6 +359,16 @@
 		<script uuid="d17b41d0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-new-missing-cs.sql" text="Find new Relationship Ids found is in RF2 but missing in CS_"  />
 		<script uuid="d583d1c0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-cs-rf2-mismatch.sql" text="Relationship that has different results in change set compared to Rf2"  />
 		<script uuid="f6aef5c0-9bb6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-matching-counts.sql" text="Ensure count of cs-to-rf2 matches equals the count of max time cs and the count of rf2"  />
+		
+		<script uuid="d17b41d0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-new-missing-cs.sql" text="Find new Relationship Ids found is in RF2 but missing in CS."  />
+		<script uuid="d583d1c0-9af0-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-cs-rf2-mismatch.sql" text="Relationship that has different results in change set compared to Rf2"  />
+		<script uuid="f6aef5c0-9bb6-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-relationship-matching-counts.sql" text="Ensure count of cs-to-rf2 matches equals the count of max time cs and the count of rf2"  />
+		<script uuid="ebe39cc7-0de2-4421-95ef-0de3c3dfd819" category="cs-parser" sqlFile="cs-parser-text-def-basic-counts.sql" text="Before more complex operations, ensure proper counts exist."  />
+		<script uuid="fc4ce8a0-1e3e-4e14-aee1-cc88ef34c1d1" category="cs-parser" sqlFile="cs-parser-text-def-cs-rf2-mismatch.sql" text="Textdef that has different results in change set compared to Rf2."  />
+		<script uuid="eca1a0a5-ce96-4277-bb81-58e57331c382" category="cs-parser" sqlFile="cs-parser-text-def-existing-missing-cs.sql" text="TextDef Ids found in RF2 but missing in CS."  />
+		<script uuid="b9e9d0a1-0512-4c99-a93b-7e8ec8d7f1fc" category="cs-parser" sqlFile="cs-parser-text-def-existing-missing-rf2.sql" text="TextDef Ids found in CS_ but missing in RF2."  />
+		<script uuid="0f974b12-eb5b-4b54-8119-6ee82572702d" category="cs-parser" sqlFile="cs-parser-text-def-new-missing-cs.sql" text="New TextDef Ids found in RF2 but missing in CS."  />
+		<script uuid="b84d4406-18d8-4aa4-a5b3-963baaa6face" category="cs-parser" sqlFile="cs-parser-text-def-new-missing-rf2.sql" text="New Textdef Ids found in CS_ but missing in RF2."  />
 
 	<!-- rt added this as a template... 
 		<script uuid="" category="" sqlFile="" text=""  />
