@@ -190,20 +190,20 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
-
+System.out.println("\n\n\nIN");
 			// Get time from string date
 			if(currentEditCycleDate != null){
 				if (df == null) {
-					System.out.println("AAA");
+					System.out.println("\n\n\nAAA");
 					
 					DateFormat dff = new SimpleDateFormat("dd/MM/yyyy");
 					
 					if (dff == null) {
-						System.out.println("BBB");
+						System.out.println("\n\n\nBBB");
 					}
 
 				} else if (currentEditCycleDate == null) {
-					System.out.println("CCC");
+					System.out.println("\n\n\nCCC");
 				}
 				currentEditCycleTime = df.parse(currentEditCycleDate);
 				logger.info("=====currentEditCycleDate=======" + currentEditCycleDate);
