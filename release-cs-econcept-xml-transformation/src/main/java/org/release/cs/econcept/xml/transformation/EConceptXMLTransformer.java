@@ -193,6 +193,18 @@ public class EConceptXMLTransformer extends AbstractMojo {
 
 			// Get time from string date
 			if(currentEditCycleDate != null){
+				if (df == null) {
+					System.out.println("AAA");
+					
+					DateFormat dff = new SimpleDateFormat("dd/MM/yyyy");
+					
+					if (dff == null) {
+						System.out.println("BBB");
+					}
+
+				} else if (currentEditCycleDate == null) {
+					System.out.println("CCC");
+				}
 				currentEditCycleTime = df.parse(currentEditCycleDate);
 				logger.info("=====currentEditCycleDate=======" + currentEditCycleDate);
 				logger.info("=====currentEditCycleTime=======" + currentEditCycleTime);
