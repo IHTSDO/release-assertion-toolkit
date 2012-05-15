@@ -93,7 +93,6 @@
 	
 
 	/* Remove descriptions of new but inactivated concepts */
-	/* Prep */
 	-- All distinct Ids in CS
 	create view v_allconceptid as
 	select distinct(a.id) from cs_concept a;
