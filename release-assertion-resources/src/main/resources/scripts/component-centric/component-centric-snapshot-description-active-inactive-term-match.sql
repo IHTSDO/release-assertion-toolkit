@@ -11,32 +11,60 @@
 			new violations created in the currently prospective release.
 
 	no term of an active description of a concept of which a description was edited 
-	matches that of an inactive description of any active concept in snomed	
+	matches that of an inactive description within the same concept
+
+	Note: NOT case sensitive	
 
 ********************************************************************************/
-/* 	a list of inactive descriptions of active concepts in snomed */	
-	drop temporary table if exists tmp_inactive_desc;
-	create temporary table if not exists tmp_inactive_desc as
+
+/* 	limit to a list of active concepts of which descriptions have been edited 
+	this release 
+*/
+	drop temporary table if exists tmp_edited_con;
+	create temporary table if not exists tmp_edited_con as
 	select distinct a.*
-	from curr_description_s a
-		join curr_concept_s b
-			on a.conceptid = b.id
-	where a.active = 0
-	and b.active = 1;
+	from curr_concept_s a
+		join curr_description_d b
+			on a.id = b.conceptid
+			and a.active = 1;
 	commit;
-	
-/* 	violators are active terms that match inactive terms */
+
+/* list of active description of active concepts edited for this release */
+	drop temporary table if exists tmp_active_desc;
+	create temporary table if not exists tmp_active_desc as	
+	select a.*
+	from curr_description_s a
+		join tmp_edited_con b
+			on a.conceptid = b.id
+			and a.active = 1;
+	commit;
+
+/* list of inactive description of active concepts edited for this release */
+	drop temporary table if exists tmp_inactive_desc;
+	create temporary table if not exists tmp_inactive_desc as	
+	select a.*
+	from curr_description_s a
+		join tmp_edited_con b
+			on a.conceptid = b.id
+			and a.active = 0;
+	commit;
+
+/* 	violators are active descriptions of which the terms are the same as 
+	inactive descriptions for a given concept 
+*/ 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESC: term=',a.id, ':active term matches inactive term of active concept.') 	
-	from curr_description_d a
+		concat('DESC: Id=',a.id, ':active term matches inactive term of same concept.') 	
+	from tmp_active_desc a
 		join tmp_inactive_desc b
-			on a.term = b.term
-			and a.active = 1;
+			on a.conceptid = b.conceptid
+			and a.term = b.term
+			and a.active != b.active;
 	commit;
 
+	drop temporary table if exists tmp_edited_con;
+	drop temporary table if exists tmp_active_desc;
 	drop temporary table if exists tmp_inactive_desc;
-
