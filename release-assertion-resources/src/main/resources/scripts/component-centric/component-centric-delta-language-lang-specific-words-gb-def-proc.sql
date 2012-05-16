@@ -36,4 +36,4 @@
 			from v_curr_delta a 	
 			where locate(gbTerm, a.term) >= 1;
 		end loop LOOP1; 
-	end //
+	end

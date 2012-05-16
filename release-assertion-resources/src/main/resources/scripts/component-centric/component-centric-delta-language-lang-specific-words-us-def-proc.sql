@@ -44,7 +44,7 @@
 
 
 		end loop LOOP1; 
-	end //
+	end
 
 	
 	
