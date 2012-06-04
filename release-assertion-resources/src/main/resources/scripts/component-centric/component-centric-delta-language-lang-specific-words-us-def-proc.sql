@@ -14,7 +14,7 @@
 		declare no_more_rows boolean default false; 
 		declare usTerm VARCHAR(255); 
 		declare term_cursor cursor for 
-			select term from res_usterms; 
+			select term from res_usterm; 
 
 		declare continue handler for not found set no_more_rows := true; 
 

@@ -25,7 +25,7 @@
 	
 	create table t_curr_snapshot_2 as
 	select a.id
-	from  t_curr_snapshot_1 a , res_casesensitiveTerms b
+	from  t_curr_snapshot_1 a , res_casesensitiveTerm b
 	where a.term like b.casesensitiveTerm  ;  
 	
 	

@@ -45,9 +45,9 @@ create table if not exists qa_report (
 */
 
 
-drop table if exists res_navigationconcepts;
+drop table if exists res_navigationconcept;
 
-create table res_navigationconcepts (
+create table res_navigationconcept (
 	 id		varchar(36),
 	 effectiveTime	varchar(255),
 	 active		varchar(255),
@@ -57,38 +57,38 @@ create table res_navigationconcepts (
 	 ordernum	varchar(255),
  	linkedTo	varchar(255)
 );
-create index idx_navconcepts on res_navigationconcepts(referencedComponentId);
+create index idx_navconcepts on res_navigationconcept(referencedComponentId);
 
 
-drop table if exists res_gbterms;
+drop table if exists res_gbterm;
 
-create table res_gbterms (
+create table res_gbterm (
 	term	varchar(255)
 );
-create index idx_gbtermsTerm on res_gbterms(term);
+create index idx_gbtermsTerm on res_gbterm(term);
 
 
-drop table if exists res_usterms;
+drop table if exists res_usterm;
 
-create table res_usterms (
+create table res_usterm (
 	term	varchar(255)
 );
-create index idx_ustermsTerm on res_usterms(term);
+create index idx_ustermsTerm on res_usterm(term);
 
 
-drop table if exists res_semantictags;
+drop table if exists res_semantictag;
 
-create table res_semantictags(
+create table res_semantictag(
    semantictag VARCHAR(255) not null,      
    id VARCHAR(36) not null      
 );
 
 
-drop table if exists res_casesensitiveTerms;
+drop table if exists res_casesensitiveTerm;
 
-create table res_casesensitiveTerms(
+create table res_casesensitiveTerm(
    casesensitiveTerm VARCHAR(255) not null
 );
-create index idx_casesensitiveTerm on res_casesensitiveTerms(casesensitiveTerm);
+create index idx_casesensitiveTerm on res_casesensitiveTerm(casesensitiveTerm);
 
 insert IGNORE into qa_run values('2002-01-01', 1);     
