@@ -340,23 +340,23 @@
 					<queryTimeOut>900</queryTimeOut>
 					<importConfig>
 			 			<LoadFileParameter>
-							<loadDBTableName>res_semantictags</loadDBTableName>
+							<loadDBTableName>res_semantictag</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/semanticTags.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_casesensitiveTerms</loadDBTableName>
+							<loadDBTableName>res_casesensitiveTerm</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/cs_words.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_gbterms</loadDBTableName>
+							<loadDBTableName>res_gbterm</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/gbTerms.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_usterms</loadDBTableName>
+							<loadDBTableName>res_usterm</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/usTerms.txt</loadReleaseFileName>
 						</LoadFileParameter>
 						<LoadFileParameter>
-							<loadDBTableName>res_navigationconcepts</loadDBTableName>
+							<loadDBTableName>res_navigationconcept</loadDBTableName>
 							<loadReleaseFileName>${project.manifest}/datafiles/navigationConcepts.txt</loadReleaseFileName>
 						</LoadFileParameter>
 					</importConfig>
@@ -683,7 +683,7 @@
 									<password>snomed11</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
 									<reportName>Report.txt</reportName>	
-									<excelreportName>Report.xls</excelreportName>
+									<excelreportName>${project.ReleaseQAReportFolder}/Report.xls</excelreportName>
 								</configuration>
 							</execution>
 						</executions>
@@ -1006,5 +1006,97 @@
 				</plugins>
 			</build>
 		</profile>
-	 </profiles>
+
+	 	<profile>
+			<id>run-release-file-qa</id>
+			 <dependencies>
+				<dependency>
+					<groupId>org.ihtsdo</groupId>
+					<artifactId>release-files-repository</artifactId>
+					<version>2012-01-31</version>
+					<type>zip</type>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>daily</classifier>
+				</dependency>
+			</dependencies>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<!-- This should get dependency from svn repository where previous release artifacts are present-->
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo</groupId>
+											<artifactId>release-files-repository</artifactId>
+ 												<version>2012-01-31</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							
+							<!-- This should get dependency from svn repository where previous release artifacts are present-->
+							<execution>
+								<id>extract-dependencies-2</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>1.0-SNAPSHOT</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				
+					<plugin>
+						<groupId>org.ihtsdo.release.assertion</groupId>
+						<artifactId>release-file-qa</artifactId>
+						<version>${project.version}</version>
+						<configuration>
+							<releaseDate>${project.releaseDate}</releaseDate>
+							<releaseName>${project.releaseDate}</releaseName>
+							<currDir>${project.rf2CurrentReleaseFolder}</currDir>
+							<prevDir>${project.rf2PreviousReleaseFolder}</prevDir>
+							<!-- Current and previous directory location should be different to differentiate them -->
+							<reportName>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</reportName>
+						</configuration>
+						<executions>
+							<execution>
+								<id>run-release-file-qa</id>
+								<phase>install</phase>
+								<goals>
+									<goal>release-file-qa</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
