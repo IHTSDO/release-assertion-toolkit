@@ -683,7 +683,7 @@
 									<password>snomed11</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
 									<reportName>Report.txt</reportName>	
-									<excelreportName>${project.ReleaseQAReportFolder}/Report.xls</excelreportName>
+									<excelreportName>Report.xls</excelreportName>
 								</configuration>
 							</execution>
 						</executions>
