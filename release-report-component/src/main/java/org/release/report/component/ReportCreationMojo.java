@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
@@ -99,7 +98,6 @@ public class ReportCreationMojo extends AbstractMojo {
 	
 	private Connection con;
 	private WriteExcel writeExcel = null;
-	private BufferedWriter reportWriter;
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
@@ -163,25 +161,27 @@ public class ReportCreationMojo extends AbstractMojo {
 		return Integer.toString(runId);
 	}
 	
-
 	
 	private BufferedWriter createReport(String runId , String reportLocation, String reportName) throws FileNotFoundException, UnsupportedEncodingException , IOException {
-			/*File report =new File(reportName);
+			File report =new File(reportName);
 		
 		    //if file doesnt exists, then create it
 		    if(!report.exists()){
 		    	report.createNewFile();
-		    }*/
+		    }
 
-			//FileOutputStream fos = new FileOutputStream(report);
-			//OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF8");
-			//BufferedWriter reportWriter = new BufferedWriter(osw);
+			FileOutputStream fos = new FileOutputStream(report);
+			OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF8");
+			BufferedWriter reportWriter = new BufferedWriter(osw);
 		
-			reportWriter = new BufferedWriter(new FileWriter(new File(reportLocation + File.separator + "Report.txt")));
+			
+			
+			
 			writeExcel = new WriteExcel();
 			writeExcel.setOutputFile(getExcelReportName());
 			
 			//create report header info
+			
 			try {
 				logger.info("Opened Report File        :" + getReportName());
 				writeExcel.write();
@@ -193,7 +193,10 @@ public class ReportCreationMojo extends AbstractMojo {
 				logger.info("Cannot create report file :" + getReportName() + " " + e.getMessage());
 				System.exit(1);
 			}
+			
+			//writeExcel.addHeaderRow("Assertionuuid" + "\t" + "Result" + "\t" + "Count" + "\t" + "Assertiontext");
 
+			
 			try {
 				ResultSet rs = con.createStatement().executeQuery("select a.effectivetime," +
 					" b.assertionuuid ," +
@@ -254,4 +257,3 @@ public class ReportCreationMojo extends AbstractMojo {
 	
 
 }
-
