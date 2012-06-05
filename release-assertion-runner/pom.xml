@@ -456,7 +456,7 @@
 									<password>snomed11</password>
 									<createTableScript>${project.manifest}/scripts/special/create-curr-table-index.sql</createTableScript>
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
-									<queryTimeOut>900</queryTimeOut>
+									<queryTimeOut>1800</queryTimeOut>
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>curr_concept_d</loadDBTableName>
