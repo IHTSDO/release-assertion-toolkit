@@ -1,4 +1,4 @@
-package org.ihtsdo.release.fileqa;
+package org.ihtsdo.rf2.fileqa;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,14 +8,14 @@ import java.util.InvalidPropertiesFormatException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import jxl.write.WriteException;
+//import jxl.write.WriteException;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.ihtsdo.release.fileqa.action.QA;
-import org.ihtsdo.release.fileqa.model.Props;
-import org.ihtsdo.release.fileqa.util.DateUtils;
-import org.ihtsdo.release.fileqa.util.WriteExcel;
+import org.ihtsdo.rf2.fileqa.action.QA;
+import org.ihtsdo.rf2.fileqa.model.Props;
+import org.ihtsdo.rf2.fileqa.util.DateUtils;
+import org.ihtsdo.rf2.fileqa.util.WriteExcel;
 import org.xml.sax.SAXException;
 
 public class FileQA {
@@ -35,6 +35,7 @@ public class FileQA {
 			logger.debug(props.getPrevReleaseDir());
 			logger.debug(props.getCurrReleaseDir());
 			logger.debug(props.getReportName());
+			logger.debug(props.getSourceFileDir());
 			logger.debug("");
 		}
 	}
@@ -45,8 +46,8 @@ public class FileQA {
 
 		if (args.length < 5) {
 			System.out.println("Invalid arguments");
-			System.out.println("Usage: java -jar FileQA.jar  <release> <releaseName> <prevReleaseDir> <currentReleaseDir> <reportName>");
-			System.out.println("Usage: java -jar FileQA.jar 20100731 20100731STU c:\\prevDir c:\\currDir Report.xls");
+			System.out.println("Usage: java -jar FileQA.jar  <release> <releaseName> <prevReleaseDir> <currentReleaseDir> <reportName><sourceFileDir>");
+			System.out.println("Usage: java -jar FileQA.jar 20100731 20100731STU c:\\prevDir c:\\currDir Report.xls c\\sourceFiles");
 			System.exit(1);
 		}
 
@@ -94,33 +95,34 @@ public class FileQA {
 				logger.debug("Previous release folder :" + args[2] + " is empty, please provide a valid directory ");
 			System.exit(1);
 		}
-
 		File currDir = null;
+		File sourceDir = null;
 		try {
 			currDir = new File(args[3]);
-			if (!currDir.isDirectory()) {
-				logger.info("Current release folder :" + args[3] + " is not a directory, please provide a valid directory ");
+			sourceDir = new File(args[5]);
+			if (!sourceDir.isDirectory()) {
+				logger.info("Current release folder :" + args[5] + " is not a directory, please provide a valid directory ");
 				if (logger.isDebugEnabled())
-					logger.debug("Current release folder :" + args[3] + " is not a directory, please provide a valid directory ");
+					logger.debug("Current release folder :" + args[5] + " is not a directory, please provide a valid directory ");
 				System.exit(1);
 			}
 		} catch (NullPointerException e) {
-			logger.info("Cannot open current release folder :" + args[3] + " " + e.getMessage());
+			logger.info("Cannot open current release folder :" + args[5] + " " + e.getMessage());
 			if (logger.isDebugEnabled())
-				logger.debug("Cannot open current folder :" + args[3] + " " + e.getMessage());
+				logger.debug("Cannot open current folder :" + args[5] + " " + e.getMessage());
 			System.exit(1);
 		}
 
-		String currFiles[] = currDir.list();
+		String currFiles[] = sourceDir.list();
 
 		if (currFiles.length <= 0) {
-			logger.info("Current release folder :" + args[3] + " is empty, please provide a valid directory ");
+			logger.info("Source folder :" + args[5] + " is empty, please provide a valid directory ");
 			if (logger.isDebugEnabled())
-				logger.debug("Current release folder :" + args[3] + " is empty, please provide a valid directory ");
+				logger.debug("Source folder :" + args[5] + " is empty, please provide a valid directory ");
 			System.exit(1);
 		}
 
-		// look for the end path seperator
+		// look for the end path separator
 		if (!args[2].substring(args[2].length() - 1, args[2].length()).equals(File.separator))
 			args[2] += File.separator;
 
@@ -134,11 +136,13 @@ public class FileQA {
 		props.setPrevReleaseDir(args[2]);
 		props.setCurrReleaseDir(args[3]);
 		props.setReportName(args[4]);
+		props.setSourceFileDir(args[5]);
 
 		logger.info("FileQA PROPERTIES");
 		logger.info("Release Date               :" + props.getCurRelDate());
 		logger.info("Release Name              :" + props.getReleaseName());
 		logger.info("Previous Release Folder   :" + props.getPrevReleaseDir());
+		logger.info("Source files Folder    :" + props.getSourceFileDir());
 		logger.info("Current Release Folder    :" + props.getCurrReleaseDir());
 		logger.info("Report Name              :" + props.getReportName());
 
@@ -149,14 +153,6 @@ public class FileQA {
 
 			QA.execute(props, prevDir, currDir);
 
-		} catch (InvalidPropertiesFormatException e) {
-			logger.error("Message : ", e);
-		} catch (IOException e) {
-			logger.error("Message : ", e);
-		} catch (ParserConfigurationException e) {
-			logger.error("Message : ", e);
-		} catch (SAXException e) {
-			logger.error("Message : ", e);
 		} catch (Exception e) {
 			logger.error("Message : ", e);
 		}

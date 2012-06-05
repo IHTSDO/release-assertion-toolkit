@@ -1,6 +1,7 @@
 package org.ihtsdo.release.fileqa.action;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,10 +22,14 @@ import org.ihtsdo.release.fileqa.tests.ColumnHeaderRuleEnum;
 import org.ihtsdo.release.fileqa.tests.ColumnHeaderTest;
 import org.ihtsdo.release.fileqa.tests.FileNameTest;
 import org.ihtsdo.release.fileqa.tests.FileSizeTest;
+import org.ihtsdo.release.fileqa.util.DOMUtil;
 import org.ihtsdo.release.fileqa.util.DateUtils;
 import org.ihtsdo.release.fileqa.util.JAXBUtil;
 import org.ihtsdo.release.fileqa.util.WriteExcel;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import org.apache.commons.io.FileUtils;
 
 public class QA {
 
@@ -32,7 +37,7 @@ public class QA {
 	private static Metadata metadata;
 	private static WriteExcel writeExcel = null;
 
-	public static void execute(final Props props, final File prevDir, final File currDir) throws ParserConfigurationException, SAXException, IOException, Exception {
+	public static void execute(final Props props, final File prevDir, final File currDir) {
 
 		writeExcel = new WriteExcel();
 		writeExcel.setOutputFile(props.getReportName());
@@ -81,12 +86,24 @@ public class QA {
 
 	public static void processFolders(final Props props, final File prevDir, final File currDir) throws ParserConfigurationException, SAXException, IOException, Exception {
 
+
+		//TODO: JCC- move manifest location to props
+		// read manifest file for filenames
+		String fileName = "./Manifest.xml";
+		ArrayList fileNames = DOMUtil.getElementsByType(fileName, "file", "Name");
+
+		//copy files from source directory to the current directory to be tested
+		String sourceDirName = props.getSourceFileDir();
+		File sourceDir = new File(sourceDirName);
+		copyFilesFromSourceTree(fileNames, sourceDir, currDir);
+
+		// test current files against previous
 		FilenameFilter filter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".txt");
 			}
 		};
-
+		
 		String[] currFiles = currDir.list(filter);
 		String[] prevFiles = prevDir.list(filter);
 		String cS = null;
@@ -111,9 +128,9 @@ public class QA {
 				writeExcel.addRow(MessageType.SUCCESS, " , , ");
 			}
 		}
-
-		// start processing the current release files
-		for (int i = 0; i < currFiles.length; i++) {
+		
+		for (int i = 0; i < currFiles.length; i++) { 
+				
 
 			boolean foundPrevMatch = false;
 			writeExcel.addHeaderRow(currFiles[i]);
@@ -253,6 +270,38 @@ public class QA {
 		}
 	}
 
+
+	private static void copyFilesFromSourceTree(ArrayList fileNames, File sourceTree,
+			File targetDir) {
+
+		if (sourceTree.isDirectory()) {
+			logger.info("Found directory: " + sourceTree.getName());
+			File[] contentFiles = sourceTree.listFiles();
+			
+			for (int i = 0; i < contentFiles.length; i++) {
+				
+				//recursive call to get contents
+				copyFilesFromSourceTree(fileNames, contentFiles[i], targetDir);
+			}
+		} else {
+			// must be a file.
+			logger.debug("Found file: " + sourceTree.getName());
+			
+			if (fileNames.contains(sourceTree.getName())) {
+				try {
+					//copy file to target Directory
+					logger.info("Copying file: " + sourceTree.getName());
+					org.apache.commons.io.FileUtils.copyFileToDirectory(sourceTree, targetDir, true);
+				} catch (IOException io ) 	{
+					logger.error("Failed to copy source file " + sourceTree.getName());
+				}
+			} else {
+				logger.info("File " + sourceTree.getName() + " in source dir, but not included in manifest");
+			}
+		}
+		
+	}
+
 	private static boolean getMetadata(Props props, String metaDataFile) throws IOException {
 
 		boolean success = false;
@@ -262,6 +311,7 @@ public class QA {
 
 		logger.info("");
 		logger.info("Loading  MetaData File :" + metaDataFile);
+		
 
 		metadata = JAXBUtil.getMetadata(metaDataFile, writeExcel);
 

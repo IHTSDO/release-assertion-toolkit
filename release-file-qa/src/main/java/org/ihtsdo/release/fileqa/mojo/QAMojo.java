@@ -62,6 +62,15 @@ public class QAMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String reportName;
+	
+	/**
+	 * source directory is the root directory containing all the released files
+	 * This will be different for RF1 and RF2.
+	 * 
+	 * @parameter expression="${project.source.directory}"
+	 * @required
+	 */
+	private String sourceDirectory;
 
 	/**
 	 * Location of the build directory.
@@ -120,30 +129,30 @@ public class QAMojo extends AbstractMojo {
 				throw new MojoExecutionException("Previous release folder :" + getPrevdir() + " is empty, please provide a valid directory ");
 			}
 
-			File currDir = null;
+			File sourceDir = null;
 			try {
-				currDir = new File(getCurrDir());
-				if (!currDir.isDirectory()) {
-					logger.info("Current release folder :" + getCurrDir() + " is not a directory, please provide a valid directory ");
+				sourceDir = new File(getSourceDir());
+				if (!sourceDir.isDirectory()) {
+					logger.info("Source folder :" + getSourceDir() + " is not a directory, please provide a valid directory ");
 					if (logger.isDebugEnabled())
-						logger.debug("Current release folder :" + getCurrDir() + " is not a directory, please provide a valid directory ");
-					throw new MojoExecutionException("Current release folder :" + getCurrDir() + " is not a directory, please provide a valid directory ");
+						logger.debug("Source folder :" + getSourceDir() + " is not a directory, please provide a valid directory ");
+					throw new MojoExecutionException("Source folder :" + getSourceDir() + " is not a directory, please provide a valid directory ");
 				}
 			} catch (NullPointerException e) {
-				logger.info("Cannot open current release folder :" + getCurrDir() + " " + e.getMessage());
+				logger.info("Cannot open source folder :" + getSourceDir() + " " + e.getMessage());
 				if (logger.isDebugEnabled())
-					logger.debug("Cannot open current folder :" + getCurrDir() + " " + e.getMessage());
-				throw new MojoExecutionException("Cannot open current folder :" + getCurrDir() + " " + e.getMessage());
+					logger.debug("Cannot open source folder :" + getSourceDir() + " " + e.getMessage());
+				throw new MojoExecutionException("Cannot open source folder :" + getCurrDir() + " " + e.getMessage());
 			}
 
-			String currFiles[] = currDir.list();
+			String sourceFiles[] = sourceDirectory.list();
 
-			if (currFiles.length <= 0) {
-				logger.info("Current release folder :" + getCurrDir() + " is empty, please provide a valid directory ");
+			if (sourceFiles.length <= 0) {
+				logger.info("Source folder :" + getSourceDir() + " is empty, please provide a valid directory ");
 				if (logger.isDebugEnabled())
-					logger.debug("Current release folder :" + getCurrDir() + " is empty, please provide a valid directory ");
-				logger.debug("Current release folder :" + getCurrDir() + " is empty, please provide a valid directory ");
-				throw new MojoExecutionException("Current release folder :" + getCurrDir() + " is empty, please provide a valid directory ");
+					logger.debug("Source folder :" + getSourceDir() + " is empty, please provide a valid directory ");
+				logger.debug("Source folder :" + getSourceDir() + " is empty, please provide a valid directory ");
+				throw new MojoExecutionException("Source folder :" + getSourceDir() + " is empty, please provide a valid directory ");
 			}
 
 			// look for the end path seperator
@@ -159,14 +168,17 @@ public class QAMojo extends AbstractMojo {
 			props.setReleaseName(getReleaseName());
 			props.setPrevReleaseDir(getPrevdir());
 			props.setCurrReleaseDir(getCurrDir());
+			props.setSourceFileDir(getSourceDir());
 			props.setReportName(getReportName());
+			
 
 			logger.info("FileQA PROPERTIES");
 			logger.info("Release Date               :" + props.getCurRelDate());
-			logger.info("Release Name              :" + props.getReleaseName());
-			logger.info("Previous Release Folder   :" + props.getPrevReleaseDir());
-			logger.info("Current Release Folder    :" + props.getCurrReleaseDir());
-			logger.info("Report Name              :" + props.getReportName());
+			logger.info("Release Name              	:" + props.getReleaseName());
+			logger.info("Previous Release Folder   	:" + props.getPrevReleaseDir());
+			logger.info("Current Release Folder    	:" + props.getCurrReleaseDir());
+			logger.info("Source Files Folder		:" + props.getSourceFileDir());
+			logger.info("Report Name              	:" + props.getReportName());
 
 			QA.execute(props, prevDir, currDir);
 
@@ -224,6 +236,14 @@ public class QAMojo extends AbstractMojo {
 
 	public void setCurrDir(String currDir) {
 		this.currDir = currDir;
+	}
+	
+	public String getSourceDir() {
+		return sourceDirectory;
+	}
+
+	public void setSourceDir(String sourceDir) {
+		this.sourceDirectory = sourceDir;
 	}
 
 	public String getReportName() {

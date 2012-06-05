@@ -6,6 +6,7 @@ public class Props {
 	private String releaseName;
 	private String prevReleaseDir;
 	private String currReleaseDir;
+	private String sourceFileDir;
 	private String reportName;
 
 	public String getCurRelDate() {
@@ -24,6 +25,10 @@ public class Props {
 		return currReleaseDir;
 	}
 
+	public String getSourceFileDir() {
+		return sourceFileDir;
+	}
+	
 	public String getReportName() {
 		return reportName;
 	}
@@ -43,6 +48,11 @@ public class Props {
 	public void setCurrReleaseDir(String currReleaseDir) {
 		this.currReleaseDir = currReleaseDir;
 	}
+
+	public void setSourceFileDir(String sourceFileDir) {
+		this.sourceFileDir = sourceFileDir;
+	}
+
 
 	public void setReportName(String reportName) {
 		this.reportName = reportName;
