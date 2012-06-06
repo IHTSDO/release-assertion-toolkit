@@ -128,6 +128,15 @@ public class QAMojo extends AbstractMojo {
 					logger.debug("Previous release folder :" + getPrevdir() + " is empty, please provide a valid directory ");
 				throw new MojoExecutionException("Previous release folder :" + getPrevdir() + " is empty, please provide a valid directory ");
 			}
+			
+			File currDir = null;
+
+			try {
+				currDir = new File(getCurrDir());
+			} catch (Exception e ) {
+				logger.error("CurrFile " + getCurrDir() + " cannot be created for use as a destination of the source files to be tested");
+			}
+
 
 			File sourceDir = null;
 			try {
@@ -145,7 +154,7 @@ public class QAMojo extends AbstractMojo {
 				throw new MojoExecutionException("Cannot open source folder :" + getCurrDir() + " " + e.getMessage());
 			}
 
-			String sourceFiles[] = sourceDirectory.list();
+			String sourceFiles[] = sourceDir.list();
 
 			if (sourceFiles.length <= 0) {
 				logger.info("Source folder :" + getSourceDir() + " is empty, please provide a valid directory ");
