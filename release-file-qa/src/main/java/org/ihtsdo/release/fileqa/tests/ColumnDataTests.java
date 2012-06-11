@@ -15,7 +15,6 @@ import java.util.regex.PatternSyntaxException;
 import org.apache.log4j.Logger;
 import org.ihtsdo.release.fileqa.model.MessageType;
 import org.ihtsdo.release.fileqa.model.Metadata;
-import org.ihtsdo.release.fileqa.model.Props;
 import org.ihtsdo.release.fileqa.model.TestError;
 import org.ihtsdo.release.fileqa.util.WriteExcel;
 
