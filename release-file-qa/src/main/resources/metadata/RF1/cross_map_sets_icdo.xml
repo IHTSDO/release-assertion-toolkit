@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
+  <file>
+    <description>Testing the artifact "CROSS_MAP_SETS_ICDO".</description>
+    <regex>
+      <test>FileNameTest</test>
+      <expression>der1_CrossMapSets_ICDO_INT</expression>
+      <description>the file name matches the expression</description>
+      <successMessage>The file name matches the expression</successMessage>
+      <failureMessage>The file name does not match the expression</failureMessage>
+    </regex>
+    <delimiter>\t</delimiter>
+    <newline>\r\n</newline>
+    <encoding>UTF-8</encoding>
+    <carryForward>N</carryForward>
+    <column header="MAPSETID">			
+			<header>MAPSETID</header>
+			<position>1</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>^\d+$</expression> <!-- NUMBER -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{6,18}$</expression>
+				<description>Values are between 6 and 18 characters long</description>
+				<successMessage>Values are between 6 and 18 characters long</successMessage>
+				<failureMessage>Values are not between 6 and 18 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>^\d+$</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETNAME">			
+			<header>MAPSETNAME</header>
+			<position>2</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,255}$</expression>
+				<description>Values are between 1 and 255 characters long</description>
+				<successMessage>Values are between 1 and 255 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 255 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETTYPE">			
+			<header>MAPSETTYPE</header>
+			<position>3</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>^\d+$</expression> <!-- NUMBER -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,2}$</expression>
+				<description>Values are between 1 and 2 characters long</description>
+				<successMessage>Values are between 1 and 2 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 2 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>0|1|2|3|4</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETSCHEMEID">			
+			<header>MAPSETSCHEMEID</header>
+			<position>4</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,64}$</expression>
+				<description>Values are between 1 and 64 characters long</description>
+				<successMessage>Values are between 1 and 64 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 64 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETSCHEMENAME">			
+			<header>MAPSETSCHEMENAME</header>
+			<position>5</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,255}$</expression>
+				<description>Values are between 1 and 255 characters long</description>
+				<successMessage>Values are between 1 and 255 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 255 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETSCHEMEVERSION">			
+			<header>MAPSETSCHEMEVERSION</header>
+			<position>6</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,12}$</expression>
+				<description>Values are between 1 and 12 characters long</description>
+				<successMessage>Values are between 1 and 12 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 12 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETREALMID">			
+			<header>MAPSETREALMID</header>
+			<position>7</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{0,24}$</expression>
+				<description>Values are between 0 and 24 characters long</description>
+				<successMessage>Values are between 0 and 24 characters long</successMessage>
+				<failureMessage>Values are not between 0 and 24 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETSEPARATOR">			
+			<header>MAPSETSEPARATOR</header>
+			<position>8</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>.*</expression> <!-- STRING -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{1,1}$</expression>
+				<description>Values are between 1 and 1 characters long</description>
+				<successMessage>Values are between 1 and 1 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 1 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>.*</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+    <column header="MAPSETRULETYPE">			
+			<header>MAPSETRULETYPE</header>
+			<position>9</position>
+			
+			<regex>
+				<test>ColumnNullTest</test>
+				<expression>.*</expression> <!-- NULLABLE -->
+				<description>Column is null or not as specified</description>
+				<successMessage>Column is not nullable</successMessage>
+				<failureMessage>Column is nullable</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnTypeTest</test>
+				<expression>^\d+$</expression> <!-- NUMBER -->
+				<description>Column type is valid for column</description>
+				<successMessage>Data type is valid for column</successMessage>
+				<failureMessage>Data type is not valid for column</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnWidthTest</test>
+				<expression>^.{0,1}$</expression>
+				<description>Values are between 0 and 1 characters long</description>
+				<successMessage>Values are between 0 and 1 characters long</successMessage>
+				<failureMessage>Values are not between 0 and 1 characters long</failureMessage>
+			</regex>
+			
+			<regex>
+				<test>ColumnValidTest</test>
+				<expression>0|1|2|3|4|5|6|7|8|9</expression>
+				<description>Values in the column are valid</description>
+				<successMessage>Column contains valid values</successMessage>
+				<failureMessage>Column contains invalid values</failureMessage>
+			</regex>
+		</column>
+  </file>
+</metadata>
