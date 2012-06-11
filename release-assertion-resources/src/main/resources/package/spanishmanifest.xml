@@ -1,0 +1,100 @@
+<listing>
+<!-- Template: Copyright, ZZEE, 2001-2005. All rights reserved. -->
+
+<folder Name="SnomedCT_es_INT_20120430">
+	
+	<folder Name="Documentation"  >    
+		<folder Name="Current"  >
+			<file Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.pdf" />	
+			<file Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.zip" />	
+			<file Name="doc_ScopeMemo_Current-es_INT_20120430.pdf" />	
+			<file Name="doc_UserGuide_Current-es_INT_20120131.pdf" />	
+		</folder>
+	</folder>	
+
+	<folder Name="RF1Release">
+		<folder Name="Terminology" >
+				<folder Name="Content" >
+					<file Name="sct1_Concepts_Core_INT_20120131.txt"/>
+					<file Name="sct1_Descriptions_es_INT_20120430.txt"/>
+					<file Name="sct1_Relationships_Core_INT_20120131.txt"/>
+				</folder>
+		</folder>
+		<folder Name="Subsets" >
+			<folder Name="Language-es" >
+				<file Name="der1_SubsetMembers_es_INT_20120430.txt"/>	
+				<file Name="der1_Subsets_es_INT_20120430.txt"/>	
+			</folder>
+		</folder>
+	</folder> <!-- RF1 Release -->
+
+	<folder Name="RF2PreviewRelease">
+		<folder Name="Full">
+			<folder Name="Extension">
+				<file Name="xsct2_Concept_SpanishExtensionFull_INT_20120430.txt"/>
+				<file Name="xsct2_Description_SpanishExtensionFull-es_INT_20120430.txt"/>
+				<file Name="xsct2_Relationship_SpanishExtensionFull_INT_20120430.txt"/>
+				<file Name="xsct2_StatedRelationship_SpanishExtensionFull_INT_20120430.txt"/>
+				<file Name="xder2_cRefset_Language-SpanishExtensionFull-es_INT_20120430.txt"/>
+			</folder>
+			
+			<folder Name="Terminology">
+				<file Name="sct2_Concept_Full_INT_20120131.txt"/>
+				<file Name="xsct2_Description_Full-es_INT_20120430.txt"/>
+				<file Name="sct2_Relationship_Full_INT_20120131.txt"/>
+				<file Name="sct2_StatedRelationship_Full_INT_20120131.txt"/>
+				<file Name="sct2_Identifier_Full_INT_20120131.txt"/>
+				<file Name="xsct2_TextDefinition_Full-es_INT_20120430.txt"/>
+			</folder>
+			<folder Name="Refset">
+				<folder Name="Content">
+					<file Name="xder2_cRefset_AttributeValueFull_INT_20120430.txt"/>
+				</folder>
+				<folder Name="Language">
+					<file Name="xder2_cRefset_LanguageFull-es_INT_20120430.txt"/>	
+				</folder>
+				<folder Name="Metadata">
+					<file Name="xder2_cciRefset_RefsetDescriptorFull_INT_20120430.txt"/>
+					<file Name="xder2_ssRefset_ModuleDependencyFull_INT_20120430.txt"/>
+					<file Name="der2_ciRefset_DescriptionTypeFull_INT_20120131.txt"/>
+				</folder>
+			</folder>
+		</folder> <!-- Full -->
+		<folder Name="Snapshot">
+			
+			<folder Name="Extension">
+				<file Name="xsct2_Concept_SpanishExtensionSnapshot_INT_20120430.txt"/>
+				<file Name="xsct2_Description_SpanishExtensionSnapshot-es_INT_20120430.txt"/>
+				<file Name="xsct2_Relationship_SpanishExtensionSnapshot_INT_20120430.txt"/>
+				<file Name="xsct2_StatedRelationship_SpanishExtensionSnapshot_INT_20120430.txt"/>
+				<file Name="xder2_cRefset_Language-SpanishExtensionSnapshot-es_INT_20120430.txt"/>
+			</folder>
+						
+			<folder Name="Terminology">
+				<file Name="sct2_Concept_Snapshot_INT_20120131.txt"/>
+				<file Name="xsct2_Description_Snapshot-es_INT_20120430.txt"/>
+				<file Name="sct2_Relationship_Snapshot_INT_20120131.txt"/>
+				<file Name="sct2_StatedRelationship_Snapshot_INT_20120131.txt"/>
+				<file Name="sct2_Identifier_Snapshot_INT_20120131.txt"/>
+				<file Name="xsct2_TextDefinition_Snapshot-es_INT_20120430.txt"/>
+			</folder>
+			<folder Name="Refset">
+				<folder Name="Content">
+					<file Name="xder2_cRefset_AttributeValueSnapshot_INT_20120430.txt"/>
+				</folder>
+				<folder Name="Language">
+					<file Name="xder2_cRefset_LanguageSnapshot-es_INT_20120430.txt"/>	
+				</folder>
+				<folder Name="Metadata">
+					<file Name="xder2_cciRefset_RefsetDescriptorSnapshot_INT_20120430.txt"/>
+					<file Name="xder2_ssRefset_ModuleDependencySnapshot_INT_20120430.txt"/>
+					<file Name="der2_ciRefset_DescriptionTypeSnapshot_INT_20120131.txt"/>
+				</folder>
+			</folder>
+		</folder> <!-- Snapshot -->
+	</folder> <!-- RF2 Release -->
+
+
+
+</folder>
+</listing>

@@ -1,0 +1,33 @@
+<listing>
+	<file Name="Readme_en_20120131.txt"/>
+	<file Name="Readme_MemberResources_en_20120131.html"/>
+	<folder Name="SnomedCT_MemberResources_INT_20120131" Type="Folder">    
+		<folder Name="MSWord_Documents" Type="Folder">
+			<file Name="SNOMED_CT_Canonical_Table_Guide_20120131.docx"/>
+			<file Name="SNOMED_CT_Developer_Toolkit_Guide_20120131.docx"/>
+			<file Name="SNOMED_CT_January_2012_Scope_Memo.docx"/>
+			<file Name="SNOMED_CT_Namespace_Identifier_Registry_20120131.docx"/>
+			<file Name="SNOMED_CT_Non-Human_Refset_Guide_20120131.docx"/>
+		</folder>
+		<folder Name="en-GB_Documents" Type="Folder">
+			<file Name="doc_TechnicalImplementationGuide_Current-en-GB_INT_20120131.pdf"/>
+			<file Name="doc_TechnicalImplementationGuide_Current-en-GB_INT_20120131.zip"/>
+			<file Name="doc_UserGuide_Current-en-GB_INT_20120131.pdf"/>
+			<file Name="doc_UserGuide_Current-en-GB_INT_20120131.zip"/>
+			<file Name="doc_EditorialGuide_Current-en-GB_INT_20120131.pdf"/>
+			<file Name="doc_EditorialGuide_Current-en-GB_INT_20120131.zip"/>
+		</folder>
+
+		<folder Name="DITA_Delta_Documents" Type="Folder">
+			<file Name="doc_TechnicalImplementationGuide_Current-en-GB_INT_20120131_rev.pdf"/>
+			<file Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131_rev.pdf"/>
+			<file Name="doc_UserGuide_Current-en-GB_INT_20120131_rev.pdf"/>
+			<file Name="doc_UserGuide_Current-en-US_INT_20120131_rev.pdf"/>
+			<file Name="doc_EditorialGuide_Current-en-GB_INT_20120131_rev.pdf"/>
+			<file Name="doc_EditorialGuide_Current-en-US_INT_20120131_rev.pdf"/>			
+			
+		</folder>
+
+	</folder>
+</listing>
+		

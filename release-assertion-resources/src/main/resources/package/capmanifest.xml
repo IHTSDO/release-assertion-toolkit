@@ -1,0 +1,120 @@
+<listing>
+<!-- Template: Copyright, ZZEE, 2001-2005. All rights reserved. -->
+
+    
+<folder Name="SNOMED CT CAP Release" Type="Folder">
+
+<folder Name="SNOMED CT AP Subset" Type="Folder" Size="" Date="7/9/2008" >
+    <file Name="der1_SubsetMembers_AnatomicPathology_1000043_20120131.txt" Type="Text Document" Size="211,238" Date="1/22/2008"/>
+	
+    <file Name="der1_Subsets_AnatomicPathology_1000043_20120131.txt" Type="Text Document" Size="160" Date="1/22/2008"/>
+	
+    <file Name="doc1_AnatomicPathologySubsetGuide_Current-en-US_1000043_20120131.pdf" Type="Adobe Acrobat Document" Size="112,231" Date="1/28/2008"/>
+	
+</folder>
+    
+<folder Name="SNOMED CT CLUE Browser US" Type="Folder" Size=""  >
+     <file Name="CliniClueXplore_setup_20110826.exe" Type="Application"/>	
+     <file Name="SctIntl_20120131.zip" />	
+</folder>
+ 
+<folder Name="SnomedCT_Release_US_20120131" Type="Folder">
+
+	<folder Name="CrossMaps" Type="Folder">
+		<folder Name="ICD9" Type="Folder">
+			<file Name="der1_CrossMaps_ICD9_INT_20120131.txt" />	
+			<file Name="der1_CrossMapSets_ICD9_INT_20120131.txt" />	
+			<file Name="der1_CrossMapTargets_ICD9_INT_20120131.txt" />	
+		</folder> 
+		<folder Name="ICDO" Type="Folder">
+			<file Name="der1_CrossMaps_ICDO_INT_20120131.txt" />	
+			<file Name="der1_CrossMapSets_ICDO_INT_20120131.txt" />	
+			<file Name="der1_CrossMapTargets_ICDO_INT_20120131.txt" />	
+		</folder>  	
+	</folder>    
+
+	<folder Name="Documentation" Type="Folder">
+		<file Name="doc_EditorialGuide_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_EditorialGuide_Current-en-US_INT_20120131.zip" />
+		<file Name="doc_NamespaceIdentifierRegistry_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_NonHumanRefsetGuide_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_ScopeMemo_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.zip" />
+		<file Name="doc_UserGuide_Current-en-US_INT_20120131.pdf" />
+		<file Name="doc_UserGuide_Current-en-US_INT_20120131.zip" />
+	</folder>    
+
+	<folder Name="OtherResources" Type="Folder">
+		<folder Name="BridgeFiles" Type="Folder">
+			<file Name="zres_BridgeFile_Snomed2ToSnomedRT_INT_20020131.zip" />
+			<file Name="zres_BridgeFile_Snomed35ToSnomedRT_INT_20020131.zip" />
+		</folder> 
+		
+		<folder Name="Canonical Table" Type="Folder">
+			<file Name="doc1_CanonicalTableGuide_Current-en-US_INT_20120131.pdf" />
+			<file Name="res1_Canonical_Core_INT_20120131.txt" />
+		</folder>
+		<folder Name="DeveloperToolkit" Type="Folder">
+			<folder Name="Indexes" Type="Folder">
+				<file Name="res_DualKeyIndex_Concepts-en-US_INT_20120131.txt" />
+				<file Name="res_DualKeyIndex_Descriptions-en-US_INT_20120131.txt" />
+				<file Name="res_WordKeyIndex_Concepts-en-US_INT_20120131.txt" />
+				<file Name="res_WordKeyIndex_Descriptions-en-US_INT_20120131.txt" />
+				<file Name="tls1_Index_Generator_INT_20100731.zip" />
+				<file Name="zres_ExcludedWords_en-US_INT_20070731.txt" />
+			</folder>
+			<folder Name="Subsets" Type="Folder">
+				<folder Name="DuplicateTerms" Type="Folder">
+					<file Name="der1_SubsetMembers_DuplicateTerms_INT_20110731.txt" />
+					<file Name="der1_Subsets_DuplicateTerms_INT_20110731.txt" />
+				</folder>
+				<folder Name="Navigation" Type="Folder">
+					<file Name="zder1_SubsetMembers_Navigation_INT_20030731.txt" />
+					<file Name="zder1_Subsets_Navigation_INT_20030731.txt" />
+				</folder>
+			</folder>
+			<file Name="doc_DeveloperToolkitGuide_Current-en-US_INT_20120131.pdf" />
+		</folder>
+		<folder Name="LOINCIntegration" Type="Folder">
+			<file Name="zder1_Integration_LOINC_INT_20050731.txt" />
+		</folder>
+		<folder Name="StatedRelationships" Type="Folder">
+			<file Name="res1_StatedRelationships_Core_INT_20120131.txt" />
+		</folder>
+		<folder Name="TextDefinitions" Type="Folder">
+			<file Name="sct1_TextDefinitions_en-US_INT_20120131.txt" />
+		</folder>
+	</folder>  
+
+	<folder Name="Subsets" Type="Folder">
+		<folder Name="Language-en-US" Type="Folder">
+			<file Name="der1_SubsetMembers_en-US_INT_20120131.txt" />
+			<file Name="der1_Subsets_en-US_INT_20120131.txt" />
+		</folder>
+		<folder Name="NonHumanSubset" Type="Folder">
+			<file Name="der1_SubsetMembers_NonHuman_INT_20120131.txt" />
+			<file Name="der1_Subsets_NonHuman_INT_20120131.txt" />
+		</folder>
+		<folder Name="VTMVMP" Type="Folder">
+			<file Name="der1_SubsetMembers_VTMVMP_INT_20120131.txt" />
+			<file Name="der1_Subsets_VTMVMP_INT_20120131.txt" />
+		</folder>
+	</folder> 
+
+	<folder Name="Terminology" Type="Folder">
+		<folder Name="Content" Type="Folder">
+			<file Name="sct1_Concepts_Core_INT_20120131.txt" />
+			<file Name="sct1_Descriptions_en_INT_20120131.txt" />
+			<file Name="sct1_Relationships_Core_INT_20120131.txt" />
+		</folder>
+		<folder Name="History" Type="Folder">
+			<file Name="sct1_ComponentHistory_Core_INT_20120131.txt" />
+			<file Name="sct1_References_Core_INT_20120131.txt" />
+		</folder>
+	</folder>  
+	<file Name="Readme.txt" />
+</folder>    
+
+</folder>
+</listing>

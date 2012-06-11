@@ -1,0 +1,17 @@
+<listing>
+<!-- Template: Copyright, ZZEE, 2001-2005. All rights reserved. -->
+<folder Name="SNOMED_CT_CrossMap_CPT">    
+    <folder Name="Cross Maps" Type="Folder"> 
+	    <file Name="sct_crossmaps_cpt_20120331.txt" />
+	    <file Name="sct_crossmaptargets_cpt_20120331.txt" />
+	    <file Name="sct_crossmapsets_cpt_20120331.txt" />
+	</folder>
+	<folder Name="Change Files"> 
+	    <file Name="sct_crossmaps_cpt_change_20120331.txt" />
+	    <file Name="sct_crossmaptargets_cpt_change_20120331.txt" />   
+	</folder>
+	<folder Name="Documentation">
+		<file Name="SNOMED_CT_CPT_Map_Technical_Guide_20120331.doc" />
+	</folder>
+</folder>
+</listing>
