@@ -23,7 +23,7 @@ public class ColumnDataTests {
 
 	private static ArrayList<TestError> errors = new ArrayList<TestError>();
 
-	public static boolean execute(Props props, final Metadata qa,
+	public static boolean execute(String currentReleaseDate, final Metadata qa,
 			final File currFile, final Logger logger,
 			final WriteExcel writeExcel) throws IOException {
 
@@ -212,7 +212,7 @@ public class ColumnDataTests {
 							// Get Date the passed release date
 							Date d1 = null;
 							try {
-								d1 = df.parse(props.getCurRelDate());
+								d1 = df.parse(currentReleaseDate);
 							} catch (ParseException e) {
 								// look if this type of error happened before
 								boolean found = findError("EffectiveTimeTest",
@@ -228,7 +228,7 @@ public class ColumnDataTests {
 									error.setRegex("ParseException");
 									error.setMessage(e.getMessage());
 									error.setLineCount(lineCount);
-									error.setColumnData(props.getCurRelDate());
+									error.setColumnData(currentReleaseDate);
 									error.setCount(1);
 
 									errors.add(error);
@@ -239,7 +239,7 @@ public class ColumnDataTests {
 								 * ",Current,Failed,Line No. " + lineCount +
 								 * " : Column :" + qa.getColumn().get(column)
 								 * .getHeader() + " : " + "Release date :" +
-								 * props.getCurRelDate() + ", Column date: " +
+								 * currentReleaseDate + ", Column date: " +
 								 * columnData + e.getMessage());
 								 **/
 								if (logger.isDebugEnabled()) {
@@ -250,7 +250,7 @@ public class ColumnDataTests {
 											+ qa.getColumn().get(column)
 													.getHeader() + " : "
 											+ "Release date :"
-											+ props.getCurRelDate()
+											+ currentReleaseDate
 											+ ", Column date: " + columnData
 											+ e.getMessage());
 								}
@@ -285,7 +285,7 @@ public class ColumnDataTests {
 								 * ",Current,Failed,Line No. " + lineCount +
 								 * " : Column :" + qa.getColumn().get(column)
 								 * .getHeader() + " : " + "Release date :" +
-								 * props.getCurRelDate() + ", Column date: " +
+								 * currentReleaseDate + ", Column date: " +
 								 * columnData + e1.getMessage());
 								 **/
 								if (logger.isDebugEnabled()) {
@@ -296,7 +296,7 @@ public class ColumnDataTests {
 											+ qa.getColumn().get(column)
 													.getHeader() + " : "
 											+ "Release date :"
-											+ props.getCurRelDate()
+											+ currentReleaseDate
 											+ ", Column date: " + columnData
 											+ e1.getMessage());
 								}
@@ -319,7 +319,7 @@ public class ColumnDataTests {
 												.setRegex("ColumnDateAfterCurrentReleaseDate");
 										error
 												.setMessage(" Column date is after Current Release date :"
-														+ props.getCurRelDate());
+														+ currentReleaseDate);
 										error.setLineCount(lineCount);
 										error.setColumnData(columnData);
 										error.setCount(1);
@@ -336,7 +336,7 @@ public class ColumnDataTests {
 									 * column).getHeader() + " : " +
 									 * " Column date: " + columnData +
 									 * " is after Release date :" +
-									 * props.getCurRelDate());
+									 * currentReleaseDate);
 									 ***/
 									if (logger.isDebugEnabled()) {
 										logger.debug("EffectiveTimeTest"
@@ -347,7 +347,7 @@ public class ColumnDataTests {
 														.getHeader() + " : "
 												+ " Column date: " + columnData
 												+ " is after Release date :"
-												+ props.getCurRelDate());
+												+ currentReleaseDate);
 									}
 								} else if (d1.equals(d2))
 									releaseDatePresent = true;
@@ -451,7 +451,7 @@ public class ColumnDataTests {
 				if (!releaseDatePresent) {
 					writeExcel.addRow(MessageType.FAILURE,
 							"ReleaseDateRowPresentTest,Current,Failed,Release date :"
-									+ props.getCurRelDate()
+									+ currentReleaseDate
 									+ " no corresponding row present,"
 									+ currFile.getAbsoluteFile());
 				}
