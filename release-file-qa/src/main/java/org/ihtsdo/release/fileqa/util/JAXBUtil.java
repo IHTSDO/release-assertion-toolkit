@@ -1,5 +1,6 @@
 package org.ihtsdo.release.fileqa.util;
 
+import java.io.File;
 import java.io.InputStream;
 
 import javax.xml.bind.JAXBContext;
@@ -18,10 +19,8 @@ public class JAXBUtil {
 
 			JAXBContext context = JAXBContext.newInstance(Metadata.class);
 			Unmarshaller u = context.createUnmarshaller();
-
-			InputStream is = JAXBUtil.class.getResourceAsStream(metaDataFile);
-
-			qa = (Metadata) u.unmarshal(is);
+    
+			qa = (Metadata) u.unmarshal( new File( metaDataFile ) );
 
 		} catch (JAXBException e) {
 			writeExcel.addRow(MessageType.FAILURE,

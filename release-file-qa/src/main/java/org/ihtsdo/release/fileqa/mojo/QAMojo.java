@@ -7,11 +7,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import jxl.write.WriteException;
-
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -41,11 +41,13 @@ import org.xml.sax.SAXException;
 public class QAMojo extends AbstractMojo {
 
 	private static Logger logger = Logger.getLogger(QAMojo.class.getName());
-	private static Metadata metadata;
+	private static Metadata fileTestMetadata = new Metadata();
 	private static WriteExcel writeExcel = null;
-
+	private static HashMap <String, String> fileMetadataMap = null;
+	
+	
 	/**
-	 * release date.
+	 * release date for the current release.
 	 * 
 	 * @parameter
 	 * @required
@@ -53,27 +55,30 @@ public class QAMojo extends AbstractMojo {
 	private String releaseDate;
 
 	/**
-	 * release date.
-	 * 
-	 * @parameter
-	 */
-	private String releaseName;
-
-	/**
-	 * release date.
+	 * Date of the previous release.
 	 * 
 	 * @parameter
 	 * @required
 	 */
-	private String prevDir;
+	private String previousReleaseDate;
 
 	/**
-	 * release date.
+	 * previous release working directory where the files  are copied
+	 * to be compared against current
 	 * 
-	 * @parameter
+	 * @parameter 
 	 * @required
 	 */
-	private String currDir;
+	private String previousWorkingDirectory;
+
+	/**
+	 * current release working directory where the files  are copied
+	 * to be tested and eventually packaged
+	 * 
+	 * @parameter 
+	 * @required
+	 */
+	private String currentWorkingDirectory;
 
 	/**
 	 * release date.
@@ -85,29 +90,31 @@ public class QAMojo extends AbstractMojo {
 	
 	/**
 	 * source directory is the root directory containing all the released files
-	 * This will be different for RF1 and RF2.
-	 * 
-	 * @parameter expression="${project.source.directory}"
+	 *  
+	 * @parameter 
 	 * @required
 	 */
 	private String sourceDirectory;
 	
 	/**
-	 * manifest file is an xml file listing all the files and ditrectory structure for
+	 * manifest file is an xml file listing all the files and directory structure for
 	 * packaging the release.
 	 * 
-	 * @parameter expression="${project.source.manifestFileName}"
+	 * @parameter 
 	 * @required
 	 */
 	private String manifestFileName;
 
 	/**
-	 * Location of the build directory.
+	 * metadataPath is the location of all the metadata files that specify the fileQA tests
 	 * 
-	 * @parameter expression="${project.build.targetDirectory}"
+	 * @parameter 
 	 * @required
 	 */
-	private String targetDirectory;
+	private static String metadataPath;
+
+
+
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
@@ -127,52 +134,37 @@ public class QAMojo extends AbstractMojo {
 
 			// test the various directories for use in performing file QA
 
-			// previous files directory must contain files from a previous release
-			if (!testValidDirectory(prevDir, true)) {
-				throw new MojoExecutionException("Previous files directory :" + prevDir + " is invalid or empty, please provide a valid directory ");
+			// source directory must contain files from releases to be tested
+			if (!testValidDirectory(sourceDirectory, true)) {
+				throw new MojoExecutionException("Release files directory :" + sourceDirectory + " is invalid or empty, please provide a valid directory ");
 			}
 			
-			// current files directory must contain files from the current release
-			if (!testValidDirectory(currDir, true)) {
-				throw new MojoExecutionException("Current files directory :" + currDir + " is invalid or empty, please provide a valid directory ");
+
+			// target working directory for current release MAY contain files but must be accessible for copying current files for testing
+			if (!testValidDirectory(currentWorkingDirectory, false)) {
+				throw new MojoExecutionException("Working directory :" + currentWorkingDirectory + " is invalid, please provide a valid directory ");
 			}
 	
 
-			// target directory MAY contain files but must be accessible for copying current files for testing
-			if (!testValidDirectory(targetDirectory, false)) {
-				throw new MojoExecutionException("Target directory :" + targetDirectory + " is invalid, please provide a valid directory ");
+			// target working directory for previous release MAY contain files but must be accessible for copying previous files for testing
+			if (!testValidDirectory(currentWorkingDirectory, false)) {
+				throw new MojoExecutionException("Working directory :" + previousWorkingDirectory + " is invalid, please provide a valid directory ");
 			}
 
-//			QA.execute(props, prevDir, currDir);
+			// prepare test report
 			writeExcel = new WriteExcel();
 			writeExcel.setOutputFile(reportName);
 
 			try {
-				writeExcel.write();
-			} catch (WriteException e) {
-				logger.info("Cannot create report file :" + reportName + " " + e.getMessage());
-			} catch (IOException e) {
-				logger.info("Cannot create report file :" + reportName + " " + e.getMessage());
-				System.exit(1);
-			} catch (NullPointerException e) {
+				writeExcel.write();			
+			} catch (Exception e) {
 				logger.info("Cannot create report file :" + reportName + " " + e.getMessage());
 				System.exit(1);
 			}
 
 			logger.info("");
-			logger.info("Opened Report File        :" + reportName);
-			
+			logger.info("Opened Report File        :" + reportName);			
 			logger.info("");
-
-
-			Date eDate = new Date();
-
-			logger.info("");
-			logger.info("FileQA Started         :" + sdf.format(sDate));
-			if (logger.isDebugEnabled()) {
-				logger.debug("FileQA Started  :" + sdf.format(sDate));
-				logger.debug("");
-			}
 			
 			// now start the real testing of the release...
 			try {
@@ -183,19 +175,14 @@ public class QAMojo extends AbstractMojo {
 			} finally {
 				try {
 					writeExcel.close();
-				} catch (WriteException e) {
-					logger.error("Message : ", e);
-				} catch (IOException e) {
+				} catch (Exception e) {
 					logger.error("Message : ", e);
 				}
 			}
 
+			Date eDate = new Date();
 
 			logger.info("FileQA Ended           :" + sdf.format(eDate));
-			if (logger.isDebugEnabled()) {
-				logger.debug("FileQA Ended    :" + sdf.format(eDate));
-				logger.debug("");
-			}
 			logger.info("");
 
 			logger.info(DateUtils.elapsedTime("Total elapsed          :", sDate, eDate));
@@ -248,28 +235,91 @@ public class QAMojo extends AbstractMojo {
 	}
 	
 	/**
-	 *  processfolders is where all the work is done to test the contents of the release folder
+	 *  processfolders() is where all the work is done to test the contents of the release folder
 	 */
 	private void processFolders() throws ParserConfigurationException, SAXException, IOException, Exception {
-
-		ArrayList fileNames = DOMUtil.getElementsByType(manifestFileName, "file", "Name");
-
-		//copy files from current directory to the target directory to be tested
-		File sourceDir = new File(currDir);
-		File targetDir = new File(targetDirectory);
-		copyFilesFromSourceTree(fileNames, sourceDir, targetDir);
-
-		// test current files against previous
-		File prevyDir = new File(prevDir);
-		FilenameFilter filter = new FilenameFilter() {
+		
+		// filter for testing text files only
+		FilenameFilter textFileFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".txt");
 			}
 		};
+
+		// get names of files to be released
+		ArrayList<String> fileNames = DOMUtil.getElementsByType(manifestFileName, "file", "Name");
 		
-		String[] currFiles = targetDir.list(filter);
-		String[] prevFiles = prevyDir.list(filter);
-		String cS = null;
+		// get filenames and corresponding matadata files from manifest
+		if (fileMetadataMap == null ) {			
+			// build a map of all the filenames and corresponding metadata files from the manifest
+			fileMetadataMap = DOMUtil.getAttributePairsByType (manifestFileName, "file", "Name", "Metadata") ;			
+		}
+		
+		//copy files from current directory to the target directory to be tested
+		File sourceDir = new File(sourceDirectory);
+		File targetDir = new File(currentWorkingDirectory);
+		
+		//in case it exists, delete it with all contents
+		if (targetDir.isDirectory()) {
+			FileUtils.deleteQuietly(targetDir);
+		}
+		logger.info("Copying current release files to target folder : " + currentWorkingDirectory );
+		
+		copyFilesFromSourceTree(fileNames, sourceDir, targetDir);
+		
+		//list all files in target directory
+		String [] currFiles = targetDir.list(textFileFilter);
+		
+		//look thru all the files from the manifest list
+		for(int i=0; i < fileNames.size(); i++) {
+			boolean fileFound = false;
+			// test for all files present in current release as specified by manifest 
+			String name = fileNames.get(i);
+			
+			for (int j = 0; j < currFiles.length; j++) {
+				if (name.equals((String)currFiles[j])) {
+					//set flag
+					fileFound = true;
+					//quit looping thru currfiles
+					break;
+				}
+			} // end looping thru files in target directory
+			
+			//check if file exists
+			if (!fileFound) {
+				// log missing file
+				logger.error("File missing from target directory: " + fileNames.get(i));	
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + fileNames.get(i));
+				
+			} else {
+			
+				// convert name to the corresponding name from the previous release
+				name = name.substring(0, name.length() - 12) + previousReleaseDate + ".txt";
+				
+				//fix filenames if  beta release
+				name = stripX(name);
+				fileNames.set(i, name);
+				if (logger.isDebugEnabled()) {
+					logger.debug("Corresponding previous file name : " + name);
+				}
+			}
+
+				
+		} // end looping thru file Names from manifest
+		
+
+		// get previous file out of the previous directory structure
+		sourceDir = new File(sourceDirectory);
+		targetDir = new File(previousWorkingDirectory);
+		
+		if (targetDir.isDirectory()) {
+			FileUtils.deleteQuietly(targetDir);
+		}
+		
+		copyFilesFromSourceTree(fileNames, sourceDir, targetDir );
+		
+		String[] prevFiles = targetDir.list(textFileFilter);
+		logger.info("Total number of matching previous files found : " + prevFiles.length);
 
 		// write an empty line for the report
 		writeExcel.addRow(MessageType.SUCCESS, " , , ");
@@ -278,162 +328,177 @@ public class QAMojo extends AbstractMojo {
 		for (int i = 0; i < prevFiles.length; i++) {
 			boolean foundCurrMatch = false;
 			String currMatch = prevFiles[i].substring(0, prevFiles[i].length() - 12);
+			
 			for (int j = 0; j < currFiles.length && !foundCurrMatch; j++) {
-				if ((prevFiles[i].substring(0, prevFiles[i].length() - 12)).contains(currFiles[j].substring(0, currFiles[j].length() - 12))) {
+				if ((currFiles[j].substring(0, currFiles[j].length() - 12)).contains(prevFiles[i].substring(0, prevFiles[i].length() - 12))) {
 					currMatch = currFiles[j].substring(0, currFiles[j].length() - 12);
 					foundCurrMatch = true;
 				}
 			}
 
 			if (!foundCurrMatch) {
-				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + currDir + currMatch + "YYYYMMDD.txt");
-				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Previous,Passed, ," + prevDir + prevFiles[i]);
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + currMatch + "YYYYMMDD.txt");
+				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Previous,Passed, ," + previousWorkingDirectory + prevFiles[i]);
 				writeExcel.addRow(MessageType.SUCCESS, " , , ");
 			}
-		}
+		} // end looping thru previous files
 		
-		for (int i = 0; i < currFiles.length; i++) { 
-				
+		String cS = null;
+		
+		//now start testing all the current files in the target directory
+		for (int i = 0; i < currFiles.length; i++) { 	
+
+			cS = currFiles[i];
+			Date sDate = new Date();
 
 			boolean foundPrevMatch = false;
-			writeExcel.addHeaderRow(currFiles[i]);
+			writeExcel.addHeaderRow(cS);
 
-			for (int j = 0; j < prevFiles.length && !foundPrevMatch; j++) {
-				if (logger.isDebugEnabled()) {
-					logger.debug("Current File :" + currFiles[i]);
-					logger.debug("Previous File :" + prevFiles[j]);
-				}
-
+			int j;
+			for (j = 0; j < prevFiles.length && !foundPrevMatch; j++) {
+				
 				// stripping the date portion and the extension
-				// eg. _20101007.txt
-				cS = currFiles[i].substring(0, currFiles[i].length() - 12);
+				// eg. "20101007.txt"			
 				String pS = prevFiles[j].substring(0, prevFiles[j].length() - 12);
 
 				if (cS.contains(pS)) {
-
-					Date sDate = new Date();
-					foundPrevMatch = true;
-
-					// look for a metadata file matching the file name
-					// excluding the date and the extension
-					// eg. exclude 20101007.txt
-					if (getMetadata("/metadata/" + cS + "Metadata.xml")) {
-						if (logger.isDebugEnabled())
-							dumpMetadata();
-
-						File currFile = new File(targetDir + File.separator + currFiles[i]);
-						File prevFile = new File(prevDir + File.separator + prevFiles[j]);
-
-						logger.info("Processing  ...        :" + currFile.getAbsoluteFile());
-
-						// start the rule tests
-
-						if (logger.isDebugEnabled()) {
-							logger.debug("");
-							logger.debug(" ========== " + "Start: File Name Match Rule " + " ========== ");
-						}
-						FileNameTest.execute(metadata, currFile, prevFile, logger, writeExcel);
-						if (logger.isDebugEnabled()) {
-							logger.debug(" ========== " + "End:   File Name Match Rule " + " ========== ");
-						}
-
-						if (logger.isDebugEnabled()) {
-							logger.debug("");
-							logger.debug(" ========== " + "Start: File Size Match Rule " + " ========== ");
-						}
-
-						FileSizeTest.execute(metadata, currFile, prevFile, logger, writeExcel);
-
-						if (logger.isDebugEnabled()) {
-							logger.debug(" ========== " + "End:  File Size Match Rule " + " ========== ");
-						}
-
-						if (logger.isDebugEnabled()) {
-							logger.debug("");
-							logger.debug(" ========== " + "Start: Column Header Empty Rule " + " ========== ");
-						}
-						boolean passed = ColumnHeaderTest.execute(metadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.EMPTY);
-
-						if (logger.isDebugEnabled()) {
-							logger.debug(" ========== " + "End: Column Header EMPTY Rule " + " ========== ");
-						}
-
-						// we only do other Column Header Tests
-						// if the Column Header is NOT empty
-						if (passed) {
-
-							if (logger.isDebugEnabled()) {
-								logger.debug("");
-								logger.debug(" ========== " + "Start: Column Header Seperator Rule " + " ========== ");
-							}
-							ColumnHeaderTest.execute(metadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.DELIMITER_CHECK);
-
-							if (logger.isDebugEnabled()) {
-								logger.debug(" ========== " + "End: Column Header Seperator Rule " + " ========== ");
-							}
-
-							if (logger.isDebugEnabled()) {
-								logger.debug("");
-								logger.debug(" ========== " + "Start: Column Header Count Rule " + " ========== ");
-							}
-							ColumnHeaderTest.execute(metadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.COLUMN_COUNT_CHECK);
-							if (logger.isDebugEnabled()) {
-								logger.debug(" ========== " + "End: Column Header Count Rule " + " ========== ");
-								logger.debug("");
-							}
-
-							if (logger.isDebugEnabled()) {
-								logger.debug("");
-								logger.debug(" ========== " + "Start: Column Header Present Rule " + " ========== ");
-							}
-							ColumnHeaderTest.execute(metadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.PRESENT_RULE);
-
-							if (logger.isDebugEnabled()) {
-								logger.debug(" ========== " + "End: Column Header Present Rule " + " ========== ");
-							}
-
-							if (logger.isDebugEnabled()) {
-								logger.debug("");
-								logger.debug(" ========== " + "Start: Column Header Spell Check Rule " + " ========== ");
-							}
-							ColumnHeaderTest.execute(metadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.SPELL_CHECK_RULE);
-							if (logger.isDebugEnabled()) {
-								logger.debug(" ========== " + "End: Column Header Spell Check Rule " + " ========== ");
-								logger.debug("");
-							}
-
-						}
-
-						if (logger.isDebugEnabled()) {
-							logger.debug("");
-							logger.debug(" ========== " + "Start: Column Data Rules " + " ========== ");
-						}
-						ColumnDataTests.execute(releaseDate, metadata, currFile, logger, writeExcel);
-						if (logger.isDebugEnabled()) {
-							logger.debug(" ========== " + "End: Column Data Rules " + " ========== ");
-							logger.debug("");
-						}
-						logger.info("Finished               :" + currFile.getAbsoluteFile());
-						Date eDate = new Date();
-						logger.info(DateUtils.elapsedTime("Elapsed                :", sDate, eDate));
-						if (logger.isDebugEnabled())
-							logger.debug("Finished          :" + currFile.getAbsoluteFile());
-					}
+					foundPrevMatch = true;	
+					break;
+				} // end if cs contains ps
+				
+			}// end looping thru previous files for match
+							
+			// look for a metadata file specified in the manifest for the release file
+			if (getMetadata(cS, manifestFileName)) {
+				if (logger.isDebugEnabled()) {
+					dumpMetadata();
 				}
-			}
-			if (!foundPrevMatch) {
-				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Current,Passed, ," + targetDir + currFiles[i]);
+				File currFile = new File(currentWorkingDirectory + File.separator + currFiles[i]);
+				logger.info("Processing  ...        :" + currFile.getAbsoluteFile());
+				
+				if (foundPrevMatch) {
+					if (logger.isDebugEnabled()) {
+						logger.debug("Matching file found for current File :" + currFiles[i]);
+						logger.debug("\tPrevious File :" + prevFiles[j]);
+					}
+					File prevFile = new File(previousWorkingDirectory + File.separator + prevFiles[j]);
 
-				writeExcel.addRow(MessageType.FAILURE, "FileTest,Previous,Failed,File is missing in folder :" + prevDir + cS + "YYYYMMDD.txt");
+					// start the rule tests
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: File Name Match Rule " + " ========== ");
+					}
+					FileNameTest.execute(fileTestMetadata, currFile, prevFile, logger, writeExcel);
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End:   File Name Match Rule " + " ========== ");
+					}
+
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: File Size Match Rule " + " ========== ");
+					}
+
+					FileSizeTest.execute(fileTestMetadata, currFile, prevFile, logger, writeExcel);
+
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End:  File Size Match Rule " + " ========== ");
+					}
+				} // end foundPrevMatch 
+				
+				if (logger.isDebugEnabled()) {
+					logger.debug("");
+					logger.debug(" ========== " + "Start: Column Header Empty Rule " + " ========== ");
+				}
+				boolean passed = ColumnHeaderTest.execute(fileTestMetadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.EMPTY);
+
+				if (logger.isDebugEnabled()) {
+					logger.debug(" ========== " + "End: Column Header EMPTY Rule " + " ========== ");
+				}
+
+				// we only do other Column Header Tests
+				// if the Column Header is NOT empty
+				if (passed) {
+
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: Column Header Seperator Rule " + " ========== ");
+					}
+					ColumnHeaderTest.execute(fileTestMetadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.DELIMITER_CHECK);
+
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End: Column Header Seperator Rule " + " ========== ");
+					}
+
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: Column Header Count Rule " + " ========== ");
+					}
+					ColumnHeaderTest.execute(fileTestMetadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.COLUMN_COUNT_CHECK);
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End: Column Header Count Rule " + " ========== ");
+						logger.debug("");
+					}
+
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: Column Header Present Rule " + " ========== ");
+					}
+					ColumnHeaderTest.execute(fileTestMetadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.PRESENT_RULE);
+
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End: Column Header Present Rule " + " ========== ");
+					}
+
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: Column Header Spell Check Rule " + " ========== ");
+					}
+					ColumnHeaderTest.execute(fileTestMetadata, currFile, logger, writeExcel, ColumnHeaderRuleEnum.SPELL_CHECK_RULE);
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End: Column Header Spell Check Rule " + " ========== ");
+						logger.debug("");
+					}
+
+				}
+
+				if (logger.isDebugEnabled()) {
+					logger.debug("");
+					logger.debug(" ========== " + "Start: Column Data Rules " + " ========== ");
+				}
+				ColumnDataTests.execute(releaseDate, fileTestMetadata, currFile, logger, writeExcel);
+				if (logger.isDebugEnabled()) {
+					logger.debug(" ========== " + "End: Column Data Rules " + " ========== ");
+					logger.debug("");
+				}
+				logger.info("Finished               :" + currFile.getAbsoluteFile());
+				Date eDate = new Date();
+				logger.info(DateUtils.elapsedTime("Elapsed                :", sDate, eDate));
+			} else {
+				// no metadata found
+				writeExcel.addRow(MessageType.FAILURE, "Tests not performed, no metadata found for " + currentWorkingDirectory + currFiles[i]);
 			}
+
+			if (!foundPrevMatch) {
+				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Current,Passed, ," + currentWorkingDirectory + currFiles[i]);
+
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Previous,Failed,File is missing in folder :" + previousWorkingDirectory + cS + "YYYYMMDD.txt");
+			}
+
 			// end all tests
 			writeExcel.addRow(MessageType.SUCCESS, " , , ");
-		}
-	}
+			
+		} // end looping thru all current files for testing
+	
+	} // end proc
 		
-
-	private static void copyFilesFromSourceTree(ArrayList fileNames, File sourceTree,
-			File targetDir) {
+	/**
+	 * This method flattens out the directory structure, copying all files in the source tree to a single directory
+	 * 
+	 * @param fileNames - list of files to be copied. if null, then ALL files are copied
+	 * @param sourceTree - root directory where  the target files are located
+	 * @param targetDir - directory where  the target files should be copied to
+	 */
+	private static void copyFilesFromSourceTree(ArrayList <String> fileNames, File sourceTree, File targetDir) {
 
 		if (sourceTree.isDirectory()) {
 			logger.info("Found directory: " + sourceTree.getName());
@@ -448,52 +513,88 @@ public class QAMojo extends AbstractMojo {
 			// must be a file.
 			logger.debug("Found file: " + sourceTree.getName());
 			
-			if (fileNames.contains(sourceTree.getName())) {
+			if (fileNames == null || fileNames.contains(sourceTree.getName())) {
 				try {
-					//copy file to target Directory
-					logger.info("Copying file: " + sourceTree.getName());
-					org.apache.commons.io.FileUtils.copyFileToDirectory(sourceTree, targetDir, true);
+					//check if file already in target directory
+					File testFile = new File (sourceTree.getName());
+					if (testFile.isFile())
+					{
+						logger.error("File " + testFile.getName() + " is a duplicate, there are two or more file with the same name in the release.");
+						writeExcel.addRow(MessageType.FAILURE, "CopyFilesFromSourceTree,,Failed,File is a duplicate :" + testFile.getName());
+					} else {
+						//copy file to target Directory
+						logger.info("Copying file: " + sourceTree.getName());
+						org.apache.commons.io.FileUtils.copyFileToDirectory(sourceTree, targetDir, true);
+					}
+					
 				} catch (IOException io ) 	{
 					logger.error("Failed to copy source file " + sourceTree.getName());
+					
 				}
 			} else {
-				logger.info("File " + sourceTree.getName() + " in source dir, but not included in manifest");
+				if (logger.isDebugEnabled()) {
+					logger.debug("File " + sourceTree.getName() + " in source dir, but not included in manifest");
+				}
 			}
 		}
 		
 	}
 
-	private static boolean getMetadata(String metaDataFile) throws IOException {
+	/**
+	 * this method gets the metadata.xml file that describes the tests to be performed
+	 * @param sourceFileName
+	 * @return
+	 * @throws IOException
+	 */
+	private static boolean getMetadata(String sourceFileName, String manifestFileName) throws IOException {
 
 		boolean success = false;
-
-		if (metadata != null)
-			metadata.init();
-
+		String metaDataFileName;
+		
+		try {
+			
+			//  find correct metadata file by reading attribute from manifest 
+			metaDataFileName = fileMetadataMap.get(sourceFileName);
+		} catch (Exception e) {
+			logger.error("Problem getting metadata File Name " + e.getMessage());
+			return false;
+		}
+		// use helper method to look in the folder and all subfolders to find the correct metadata file
+		File metadataDirectory = new File (metadataPath);
+		String metadataFilePath = getFileFromSourceFolder(metadataDirectory, metaDataFileName);
+		
 		logger.info("");
-		logger.info("Loading  MetaData File :" + metaDataFile);
+		logger.info("Loading  MetaData File :" + metadataFilePath );
 		
 
-		metadata = JAXBUtil.getMetadata(metaDataFile, writeExcel);
+		if (fileTestMetadata != null) {
+				fileTestMetadata.init();
+		}
+
+		fileTestMetadata = JAXBUtil.getMetadata(metadataFilePath, writeExcel);
 
 		// check if there was an error and the metadata xml
-		// was not marshalled properly
-		if (metadata != null) {
+		// was not unmarshalled properly
+		if (fileTestMetadata != null && fileTestMetadata.getColumn() != null) {
+			
 			success = true;
-			// sort the list of columns based on thier position
-			ArrayList<Column> columns = metadata.getColumn();
+			// sort the list of columns based on their positions
+			ArrayList<Column> columns = fileTestMetadata.getColumn();
 			Collections.sort(columns);
-			metadata.setColumn(columns);
+			fileTestMetadata.setColumn(columns);
 		} else
-			logger.info("Not processing file not found");
+			logger.error("Not processing metadata not valid or file not found at : " + metadataFilePath);
+			if (logger.isDebugEnabled()) {
+				dumpMetadata();
+			}
 
 		return success;
 	}
 
 	private static void dumpMetadata() {
 
-		org.ihtsdo.release.fileqa.model.File file = metadata.getFile();
-		ArrayList<Column> columns = metadata.getColumn();
+		org.ihtsdo.release.fileqa.model.File file = fileTestMetadata.getFile();
+		ArrayList<Column> columns = fileTestMetadata.getColumn();
 
 		if (file != null) {
 			logger.debug("METADATA Loaded into the File object");
@@ -504,7 +605,7 @@ public class QAMojo extends AbstractMojo {
 		} else
 			logger.debug("File Object is null");
 
-		columns = metadata.getColumn();
+		columns = fileTestMetadata.getColumn();
 
 		if (columns != null) {
 			logger.debug("Column object");
@@ -520,4 +621,54 @@ public class QAMojo extends AbstractMojo {
 
 		logger.debug("");
 	}
+	
+	/**
+	 * Used to fixup filenames from beta release for comparison with previous release filenames
+	 * 
+	 * @param fileName
+	 * @return
+	 */
+	private static String stripX (String fileName) {
+		
+		if (fileName.startsWith("x")) {
+			return fileName.substring(1); 
+		} else {
+			return fileName;
+		}
+	}
+	
+	private static String getFileFromSourceFolder(File searchDirectory, String fileName) {
+		
+		String matchFileName = "";
+		
+		if (searchDirectory.isDirectory())  {
+			File[] files = searchDirectory.listFiles();
+			int i = 0;
+						
+			if (logger.isDebugEnabled()) {
+				logger.debug("Searching directory "
+						+ searchDirectory.getAbsolutePath());
+			}
+			while (matchFileName.equals("") &&  i < files.length) {
+				matchFileName = getFileFromSourceFolder(files[i], fileName);				
+				i++;
+			}
+		} else {
+			if (logger.isDebugEnabled()) {
+				// not a directory, it's a file, check for match
+				logger.debug("File compared: "
+						+ searchDirectory.getAbsolutePath());
+			}
+			if (searchDirectory.getName().equals(fileName)) {
+				if (logger.isDebugEnabled()) {
+					logger.debug("found matching file : " + searchDirectory);
+				}
+				matchFileName = searchDirectory.getAbsolutePath();
+			}
+
+			
+		}
+		return matchFileName;		
+
+	} // end proc getFileFromSourceFolder()
 }
