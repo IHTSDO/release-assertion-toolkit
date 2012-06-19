@@ -11,7 +11,7 @@
 		</regex>
 		<delimiter>\t</delimiter>
 		<encoding>UTF-8</encoding>
-		<carryForward>true</carryForward>
+		<carryForward>false</carryForward>
 	</file>
 	<column>
 		<header>id</header>

@@ -12,7 +12,8 @@
     <delimiter>\t</delimiter>
     <newline>\r\n</newline>
     <encoding>UTF-8</encoding>
-    <carryForward>N</carryForward>
+    <carryForward>false</carryForward>
+	</file>
     <column header="MAPSETID">			
 			<header>MAPSETID</header>
 			<position>1</position>
@@ -337,5 +338,5 @@
 				<failureMessage>Column contains invalid values</failureMessage>
 			</regex>
 		</column>
-  </file>
+  
 </metadata>

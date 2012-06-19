@@ -12,6 +12,7 @@
     <delimiter>\t</delimiter>
     <newline>\r\n</newline>
     <encoding>UTF-8</encoding>
-    <carryForward>Y</carryForward>
-  </file>
+    <carryForward>true</carryForward>
+	</file>
+  
 </metadata>
