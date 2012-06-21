@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
   <file>
     <description>Testing the artifact "CROSS_MAP_TARGETS_EQ".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>crossmaptargets_icd9</expression>
+      <expression>(x|y)cross_map_targets_eq.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>

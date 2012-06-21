@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
 	<file>
 		<description>Relationship snapshot release export</description>
 		<regex>
 			<test>FileNameTest</test>
-			<expression>[sct2]{4}_[Relationship_Snapshot]{21}_[INT]{3}_\d{8}.[txt]{3}</expression>
+			<expression>(x|y)der2_cRefset_RefinabilitySnapshot_INT.*_20\d{6}\.txt</expression>
 			<description>the file name should match the expression EXACTLY</description>
 			<successMessage>The file name does match</successMessage>
 			<failureMessage>The file name does NOT match</failureMessage>

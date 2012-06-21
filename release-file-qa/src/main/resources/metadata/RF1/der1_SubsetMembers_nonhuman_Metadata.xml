@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fileqa_metadata.xsd">
   <file>
     <description>Testing the artifact "SUBSETMEMBERS_NONHUMAN".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>der1_SubsetMembers_NonHuman_INT</expression>
+      <expression>(x|y)der1_SubsetMembers_nonhuman.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>
