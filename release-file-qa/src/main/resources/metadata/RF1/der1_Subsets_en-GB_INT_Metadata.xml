@@ -3,7 +3,7 @@
     <description>Testing the artifact "SUBSETS_UK_DIALECT".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|y)der1_Subsets_en-GB_INT.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?der1_Subsets_en-GB_INT.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>

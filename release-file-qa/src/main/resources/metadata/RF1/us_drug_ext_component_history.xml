@@ -3,7 +3,7 @@
     <description>Testing the artifact "US_DRUG_EXT_COMPONENT_HISTORY".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|y)us_drug_ext_component_history.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?us_drug_ext_component_history.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>

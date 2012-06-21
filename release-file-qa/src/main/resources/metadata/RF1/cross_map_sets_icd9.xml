@@ -3,7 +3,7 @@
     <description>Testing the artifact "CROSS_MAP_SETS_ICD9".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|y)cross_map_sets_icd9.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?cross_map_sets_icd9.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>

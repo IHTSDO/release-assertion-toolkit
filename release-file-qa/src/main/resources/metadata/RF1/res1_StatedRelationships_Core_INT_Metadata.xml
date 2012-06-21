@@ -3,7 +3,7 @@
     <description>Testing the artifact "RELATIONSHIPS_STATED".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|y)res1_StatedRelationships_Core_INT.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?res1_StatedRelationships_Core_INT.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>
