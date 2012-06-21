@@ -39,6 +39,9 @@ public class ColumnDataTests {
 		int headerSize = 0;
 		int lineCount = 0;
 		String headerData = null;
+		
+		//RF1 files do not have effectiveTime column
+		boolean effectiveTimeColumnExpected = false;
 
 		BufferedReader br = null;
 		try {
@@ -77,6 +80,7 @@ public class ColumnDataTests {
 
 					String columnData = lineScanner.next();
 					boolean loop = true;
+					
 
 					if ( column < qa.getColumn().size()) {
 					// column or row trailing spaces test
@@ -105,107 +109,112 @@ public class ColumnDataTests {
 							errors.add(error);
 						}
 					} else {
-						for (int regexCount = 0; regexCount < qa.getColumn()
-								.get(column).getRegex().size()
-								&& loop; regexCount++) {
-
-							boolean match = false;
-							try {
-								match = columnData.matches(qa.getColumn().get(
-										column).getRegex().get(regexCount)
-										.getExpression());
-							} catch (PatternSyntaxException e) {
-								writeExcel.addRow(MessageType.FAILURE, qa
-										.getColumn().get(column).getRegex()
-										.get(regexCount).getTest()
-										+ ",Current,Failed,Line No. "
-										+ lineCount
-										+ " : Column :"
-										+ qa.getColumn().get(column)
-												.getHeader()
-										+ " Data: "
-										+ columnData + " :" + e.getMessage());
-							}
-
-							if (!columnData.equals(""))
-								rowEmpty = false;
-
-							if (logger.isDebugEnabled()) {
-								logger.debug("Column :"
-										+ qa.getColumn().get(column)
-												.getHeader()
-										+ " Data :"
-										+ columnData
-										+ " :"
-										+ qa.getColumn().get(column).getRegex()
-												.get(regexCount)
-												.getExpression());
-							}
-
-							if (match) {
-								if (logger.isDebugEnabled()) {
-									logger.debug("Message :"
-											+ qa.getColumn().get(column)
-													.getRegex().get(regexCount)
-													.getSuccessMessage());
-									passed = true;
-								}
-							} else {
-
-								// look if this type of error happened before
-								boolean found = findError(qa.getColumn().get(
-										column).getRegex().get(regexCount)
-										.getTest(), qa.getColumn().get(column)
-										.getHeader(), qa.getColumn()
-										.get(column).getRegex().get(regexCount)
-										.getExpression());
-
-								if (!found) {
-									TestError error = new TestError();
-
-									error.setTest(qa.getColumn().get(column)
-											.getRegex().get(regexCount)
-											.getTest());
-									error.setColumnHeader(qa.getColumn().get(
-											column).getHeader());
-									error.setRegex(qa.getColumn().get(column)
-											.getRegex().get(regexCount)
+						// test the column data using regex expressions
+						if (qa.getColumn().get(column).getRegex() != null) {
+							//loop across the regex tests	
+							for (int regexCount = 0; regexCount < qa.getColumn()
+									.get(column).getRegex().size()
+									&& loop; regexCount++) {
+	
+								boolean match = false;
+								try {
+									match = columnData.matches(qa.getColumn().get(
+											column).getRegex().get(regexCount)
 											.getExpression());
-									error.setMessage(qa.getColumn().get(column)
-											.getRegex().get(regexCount)
-											.getFailureMessage());
-									error.setLineCount(lineCount);
-									error.setColumnData(columnData);
-									error.setCount(1);
-
-									errors.add(error);
-								}
-								loop = false;
-								if (logger.isDebugEnabled()) {
-									logger.debug("Message :"
+								} catch (PatternSyntaxException e) {
+									writeExcel.addRow(MessageType.FAILURE, qa
+											.getColumn().get(column).getRegex()
+											.get(regexCount).getTest()
+											+ ",Current,Failed,Line No. "
+											+ lineCount
+											+ " : Column :"
 											+ qa.getColumn().get(column)
-													.getRegex().get(regexCount)
-													.getFailureMessage());
+													.getHeader()
+											+ " Data: "
+											+ columnData + " :" + e.getMessage());
 								}
-
-								/**
-								 * FIXME writeExcel.addRow(MessageType.FAILURE,
-								 * qa .getColumnsList().get(column)
-								 * .getRegex().get(regexCount).getTest() +
-								 * ",Current,Failed,Line No. " + lineCount +
-								 * " : Column :" + qa.getColumn().get(column)
-								 * .getHeader() + " : " +
-								 * qa.getColumn().get(column)
-								 * .getRegex().get(regexCount)
-								 * .getFailureMessage() + " Data: " +
-								 * columnData);
-								 **/
-							}
-						}
+	
+								if (!columnData.equals(""))
+									rowEmpty = false;
+	
+								if (logger.isDebugEnabled()) {
+									logger.debug("Column :"
+											+ qa.getColumn().get(column)
+													.getHeader()
+											+ " Data :"
+											+ columnData
+											+ " :"
+											+ qa.getColumn().get(column).getRegex()
+													.get(regexCount)
+													.getExpression());
+								}
+	
+								if (match) {
+									if (logger.isDebugEnabled()) {
+										logger.debug("Message :"
+												+ qa.getColumn().get(column)
+														.getRegex().get(regexCount)
+														.getSuccessMessage());
+										passed = true;
+									}
+								} else {
+	
+									// look if this type of error happened before
+									boolean found = findError(qa.getColumn().get(
+											column).getRegex().get(regexCount)
+											.getTest(), qa.getColumn().get(column)
+											.getHeader(), qa.getColumn()
+											.get(column).getRegex().get(regexCount)
+											.getExpression());
+	
+									if (!found) {
+										TestError error = new TestError();
+	
+										error.setTest(qa.getColumn().get(column)
+												.getRegex().get(regexCount)
+												.getTest());
+										error.setColumnHeader(qa.getColumn().get(
+												column).getHeader());
+										error.setRegex(qa.getColumn().get(column)
+												.getRegex().get(regexCount)
+												.getExpression());
+										error.setMessage(qa.getColumn().get(column)
+												.getRegex().get(regexCount)
+												.getFailureMessage());
+										error.setLineCount(lineCount);
+										error.setColumnData(columnData);
+										error.setCount(1);
+	
+										errors.add(error);
+									}
+									loop = false;
+									if (logger.isDebugEnabled()) {
+										logger.debug("Message :"
+												+ qa.getColumn().get(column)
+														.getRegex().get(regexCount)
+														.getFailureMessage());
+									}
+	
+									/**
+									 * FIXME writeExcel.addRow(MessageType.FAILURE,
+									 * qa .getColumnsList().get(column)
+									 * .getRegex().get(regexCount).getTest() +
+									 * ",Current,Failed,Line No. " + lineCount +
+									 * " : Column :" + qa.getColumn().get(column)
+									 * .getHeader() + " : " +
+									 * qa.getColumn().get(column)
+									 * .getRegex().get(regexCount)
+									 * .getFailureMessage() + " Data: " +
+									 * columnData);
+									 **/
+								}
+							} // end looping thru regex tests
+						} // end if regex not null
 
 						if (qa.getColumn().get(column).getHeader()
 								.toLowerCase().equals("effectivetime")) {
-
+							// metadata includes the effectiveTime column
+							effectiveTimeColumnExpected = true;
 							DateFormat df = new SimpleDateFormat("yyyyMMdd");
 
 							// Get Date the passed release date
@@ -301,6 +310,8 @@ public class ColumnDataTests {
 								}
 							}
 							if (d1 != null && d2 != null) {
+								releaseDatePresent = true;
+							
 								if (d2.after(d1)) {
 
 									boolean found = findError(
@@ -348,12 +359,11 @@ public class ColumnDataTests {
 												+ " is after Release date :"
 												+ currentReleaseDate);
 									}
-								} else if (d1.equals(d2))
-									releaseDatePresent = true;
-							}
-						}
-					}
-					column++;
+								} // end if d2>d1  
+							} // end if dates d1 and d2 not null
+						} // end if column "effectiveTime"
+						column++;
+					} // end looping thru columns
 					} else { // delimiter is not correct
 						boolean found = findError("ColumnSeparatorTest", "Header Mismatch",
 								"ColumnSeparatorNotRight");
@@ -400,7 +410,7 @@ public class ColumnDataTests {
 					 * " is empty");
 					 **/
 				}
-			}
+			} // end while loop for reading files
 
 			// file read done here
 			// write all the errors
@@ -447,7 +457,8 @@ public class ColumnDataTests {
 		} finally {
 			// scanner.close();
 			try {
-				if (!releaseDatePresent) {
+				
+				if (!releaseDatePresent && effectiveTimeColumnExpected) {
 					writeExcel.addRow(MessageType.FAILURE,
 							"ReleaseDateRowPresentTest,Current,Failed,Release date :"
 									+ currentReleaseDate
