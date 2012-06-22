@@ -1,211 +1,212 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><listing>
-	<folder Name="SnomedCT_Release_INT_20120131">
-		<file Metadata="Readme_en_Metadata.xml" Name="Readme_en_20120131.txt"/>
+	<folder Name="SnomedCT_Release_INT_20120731">
+		<file Metadata="Readme_en_Metadata.xml" Name="Readme_en_20120731.txt"/>
 			<folder Name="Documentation">
-				<file Metadata="doc_NamespaceIdentifierRegistry_Current-en-US_INT_Metadata.xml" Name="doc_NamespaceIdentifierRegistry_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="doc_ScopeMemo_Current-en-US_INT_Metadata.xml" Name="doc_ScopeMemo_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="doc_EditorialGuide_Current-en-US_INT_Metadata.xml" Name="doc_EditorialGuide_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="doc_EditorialGuide_Current-en-US_INT_Metadata.xml" Name="doc_EditorialGuide_Current-en-US_INT_20120131.zip"/>
-				<file Metadata="doc_UserGuide_Current-en-US_INT_Metadata.xml" Name="doc_UserGuide_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="doc_UserGuide_Current-en-US_INT_Metadata.xml" Name="doc_UserGuide_Current-en-US_INT_20120131.zip"/>
-				<file Metadata="doc_TechnicalImplementationGuide_Current-en-US_INT_Metadata.xml" Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="doc_TechnicalImplementationGuide_Current-en-US_INT_Metadata.xml" Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120131.zip"/>
-				<file Metadata="doc_NonHumanRefsetGuide_Current-en-US_INT_Metadata.xml" Name="doc_NonHumanRefsetGuide_Current-en-US_INT_20120131.pdf"/>
-				<file Metadata="Readme_Documentation_en_2Metadata.xml" Name="Readme_Documentation_en_20120131.html"/>
+				<file Author="IHTSDO Office" Metadata="doc_NamespaceIdentifierRegistry_Current-en-US_INT_Metadata.xml" Name="doc_NamespaceIdentifierRegistry_Current-en-US_INT_20120731.pdf"/>
+				<file Author="Kent Spackman" Metadata="doc_UserGuide_Current-en-US_INT_Metadata.xml" Name="doc_UserGuide_Current-en-US_INT_20120731.pdf"/>
+				<file Author="Kent Spackman" Metadata="doc_UserGuide_Current-en-US_INT_Metadata.xml" Name="doc_UserGuide_Current-en-US_INT_20120731.zip"/>
+			
+				<file Author="Kent Spackman" Metadata="doc_EditorialGuide_Current-en-US_INT_Metadata.xml" Name="doc_EditorialGuide_Current-en-US_INT_20120731.pdf"/>
+				<file Author="Kent Spackman" Metadata="doc_EditorialGuide_Current-en-US_INT_Metadata.xml" Name="doc_EditorialGuide_Current-en-US_INT_20120731.zip"/>
+				<file Author="Kent Spackman" Metadata="doc_NonHumanRefsetGuide_Current-en-US_INT_Metadata.xml" Name="doc_NonHumanRefsetGuide_Current-en-US_INT_20120731.pdf"/>
+				<file Author="Steven Castanien" Metadata="doc_ScopeMemo_Current-en-US_INT_Metadata.xml" Name="doc_ScopeMemo_Current-en-US_INT_20120731.pdf"/>
+				<file Author="David Markwell" Metadata="doc_TechnicalImplementationGuide_Current-en-US_INT_Metadata.xml" Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120731.pdf"/>
+				<file Author="David Markwell" Metadata="doc_TechnicalImplementationGuide_Current-en-US_INT_Metadata.xml" Name="doc_TechnicalImplementationGuide_Current-en-US_INT_20120731.zip"/>
+				<file Author="David Markwell" Metadata="Readme_Documentation_en_2Metadata.xml" Name="Readme_Documentation_en_20120731.html"/>
 		</folder>
 		
-		<folder Name="Resources" Type="Folder">
-			<folder Name="StatedRelationshipsToOwlKRSS" Type="Folder">
-				<file Metadata="tls2_StatedRelationshipsToOwlKRSS_INTMetadata.xml" Name="tls2_StatedRelationshipsToOwlKRSS_INT_20120131.pl"/>
+		<folder Name="Resources">
+			<folder Name="StatedRelationshipsToOwlKRSS">
+				<file Metadata="tls2_StatedRelationshipsToOwlKRSS_INTMetadata.xml" Name="tls2_StatedRelationshipsToOwlKRSS_INT_20120731.pl"/>
 			</folder>
 			
-			<folder Name="OrderedTypeReferenceSetExemplar" Type="Folder">
-				<file Metadata="res2_icRefset_OrderedTypeFull_INT_Metadata.xml" Name="res2_icRefset_OrderedTypeFull_INT_20110731.txt"/>
-				<file Metadata="res2_icRefset_OrderedTypeSnapshot_INT_Metadata.xml" Name="res2_icRefset_OrderedTypeSnapshot_INT_20110731.txt"/>
+			<folder Name="OrderedTypeReferenceSetExemplar">
+				<file Metadata="res2_icRefset_OrderedTypeFull_INT_Metadata.xml" Name="zres2_icRefset_OrderedTypeFull_INT_20110731.txt"/>
+				<file Metadata="res2_icRefset_OrderedTypeSnapshot_INT_Metadata.xml" Name="zres2_icRefset_OrderedTypeSnapshot_INT_20110731.txt"/>
 			</folder>				
 		</folder>		
 
 		<folder Name="RF2Release">
 			<folder Name="Full">
 				<folder Name="Terminology">
-					<file Metadata="sct2_Concept_Full_INT_Metadata.xml" Name="sct2_Concept_Full_INT_20120131.txt"/>
-					<file Metadata="sct2_Description_Full-en_INT_Metadata.xml" Name="sct2_Description_Full-en_INT_20120131.txt"/>
-					<file Metadata="sct2_Relationship_Full_INT_Metadata.xml" Name="sct2_Relationship_Full_INT_20120131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Full_INT_Metadata.xml" Name="sct2_StatedRelationship_Full_INT_20120131.txt"/>
-					<file Metadata="sct2_Identifier_Full_INT_Metadata.xml" Name="sct2_Identifier_Full_INT_20120131.txt"/>
-					<file Metadata="sct2_TextDefinition_Full-en_INT_Metadata.xml" Name="sct2_TextDefinition_Full-en_INT_20120131.txt"/>
+					<file Metadata="sct2_Concept_Full_INT_Metadata.xml" Name="sct2_Concept_Full_INT_20120731.txt"/>
+					<file Metadata="sct2_Description_Full-en_INT_Metadata.xml" Name="sct2_Description_Full-en_INT_20120731.txt"/>
+					<file Metadata="sct2_Relationship_Full_INT_Metadata.xml" Name="sct2_Relationship_Full_INT_20120731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Full_INT_Metadata.xml" Name="sct2_StatedRelationship_Full_INT_20120731.txt"/>
+					<file Metadata="sct2_Identifier_Full_INT_Metadata.xml" Name="sct2_Identifier_Full_INT_20120731.txt"/>
+					<file Metadata="sct2_TextDefinition_Full-en_INT_Metadata.xml" Name="sct2_TextDefinition_Full-en_INT_20120731.txt"/>
 				</folder>
 				<folder Name="Refset">
 					<folder Name="Content">
-						<file Metadata="der2_cRefset_AssociationReferenceFull_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceFull_INT_20120131.txt"/>
-						<file Metadata="der2_cRefset_AttributeValueFull_INT_Metadata.xml" Name="der2_cRefset_AttributeValueFull_INT_20120131.txt"/>
-						<file Metadata="der2_Refset_SimpleFull_INT_Metadata.xml" Name="der2_Refset_SimpleFull_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceFull_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceFull_INT_20120731.txt"/>
+						<file Metadata="der2_cRefset_AttributeValueFull_INT_Metadata.xml" Name="der2_cRefset_AttributeValueFull_INT_20120731.txt"/>
+						<file Metadata="der2_Refset_SimpleFull_INT_Metadata.xml" Name="der2_Refset_SimpleFull_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Crossmap">
-						<file Metadata="der2_sRefset_SimpleMapFull_INT_Metadata.xml" Name="der2_sRefset_SimpleMapFull_INT_20120131.txt"/>
-						<file Metadata="der2_iissscRefset_ComplexMapFull_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapFull_INT_20120131.txt"/>
+						<file Metadata="der2_sRefset_SimpleMapFull_INT_Metadata.xml" Name="der2_sRefset_SimpleMapFull_INT_20120731.txt"/>
+						<file Metadata="der2_iissscRefset_ComplexMapFull_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapFull_INT_20120731.txt"/>
 					</folder>
 					<folder Name="Language">
-						<file Metadata="der2_cRefset_LanguageFull-en_INT_Metadata.xml" Name="der2_cRefset_LanguageFull-en_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageFull-en_INT_Metadata.xml" Name="der2_cRefset_LanguageFull-en_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Metadata">
-						<file Metadata="der2_cciRefset_RefsetDescriptorFull_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorFull_INT_20120131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencyFull_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyFull_INT_20120131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeFull_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeFull_INT_20120131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorFull_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorFull_INT_20120731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencyFull_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyFull_INT_20120731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeFull_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeFull_INT_20120731.txt"/>
 					</folder>
 				</folder>
 			</folder> <!-- Full -->
 			<folder Name="Snapshot">
 				<folder Name="Terminology">
-					<file Metadata="sct2_Concept_Snapshot_INT_Metadata.xml" Name="sct2_Concept_Snapshot_INT_20120131.txt"/>
-					<file Metadata="sct2_Description_Snapshot-en_INT_Metadata.xml" Name="sct2_Description_Snapshot-en_INT_20120131.txt"/>
-					<file Metadata="sct2_Relationship_Snapshot_INT_Metadata.xml" Name="sct2_Relationship_Snapshot_INT_20120131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Snapshot_INT_Metadata.xml" Name="sct2_StatedRelationship_Snapshot_INT_20120131.txt"/>
-					<file Metadata="sct2_Identifier_Snapshot_INT_Metadata.xml" Name="sct2_Identifier_Snapshot_INT_20120131.txt"/>
-					<file Metadata="sct2_TextDefinition_Snapshot-en_INT_Metadata.xml" Name="sct2_TextDefinition_Snapshot-en_INT_20120131.txt"/>
+					<file Metadata="sct2_Concept_Snapshot_INT_Metadata.xml" Name="sct2_Concept_Snapshot_INT_20120731.txt"/>
+					<file Metadata="sct2_Description_Snapshot-en_INT_Metadata.xml" Name="sct2_Description_Snapshot-en_INT_20120731.txt"/>
+					<file Metadata="sct2_Relationship_Snapshot_INT_Metadata.xml" Name="sct2_Relationship_Snapshot_INT_20120731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Snapshot_INT_Metadata.xml" Name="sct2_StatedRelationship_Snapshot_INT_20120731.txt"/>
+					<file Metadata="sct2_Identifier_Snapshot_INT_Metadata.xml" Name="sct2_Identifier_Snapshot_INT_20120731.txt"/>
+					<file Metadata="sct2_TextDefinition_Snapshot-en_INT_Metadata.xml" Name="sct2_TextDefinition_Snapshot-en_INT_20120731.txt"/>
 				</folder>
 				<folder Name="Refset">
 					<folder Name="Content">
-						<file Metadata="der2_cRefset_AssociationReferenceSnapshot_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceSnapshot_INT_20120131.txt"/>
-						<file Metadata="der2_cRefset_AttributeValueSnapshot_INT_Metadata.xml" Name="der2_cRefset_AttributeValueSnapshot_INT_20120131.txt"/>
-						<file Metadata="der2_Refset_SimpleSnapshot_INT_Metadata.xml" Name="der2_Refset_SimpleSnapshot_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceSnapshot_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceSnapshot_INT_20120731.txt"/>
+						<file Metadata="der2_cRefset_AttributeValueSnapshot_INT_Metadata.xml" Name="der2_cRefset_AttributeValueSnapshot_INT_20120731.txt"/>
+						<file Metadata="der2_Refset_SimpleSnapshot_INT_Metadata.xml" Name="der2_Refset_SimpleSnapshot_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Crossmap">
-						<file Metadata="der2_sRefset_SimpleMapSnapshot_INT_Metadata.xml" Name="der2_sRefset_SimpleMapSnapshot_INT_20120131.txt"/>
-						<file Metadata="der2_iissscRefset_ComplexMapSnapshot_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapSnapshot_INT_20120131.txt"/>
+						<file Metadata="der2_sRefset_SimpleMapSnapshot_INT_Metadata.xml" Name="der2_sRefset_SimpleMapSnapshot_INT_20120731.txt"/>
+						<file Metadata="der2_iissscRefset_ComplexMapSnapshot_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapSnapshot_INT_20120731.txt"/>
 					</folder>
 					<folder Name="Language">
-						<file Metadata="der2_cRefset_LanguageSnapshot-en_INT_Metadata.xml" Name="der2_cRefset_LanguageSnapshot-en_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageSnapshot-en_INT_Metadata.xml" Name="der2_cRefset_LanguageSnapshot-en_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Metadata">
-						<file Metadata="der2_cciRefset_RefsetDescriptorSnapshot_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorSnapshot_INT_20120131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencySnapshot_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencySnapshot_INT_20120131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeSnapshot_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeSnapshot_INT_20120131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorSnapshot_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorSnapshot_INT_20120731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencySnapshot_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencySnapshot_INT_20120731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeSnapshot_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeSnapshot_INT_20120731.txt"/>
 					</folder>
 				</folder>				
 			</folder> <!-- Snapshot -->
 			
 			<folder Name="Delta">
 				<folder Name="Terminology">
-					<file Metadata="sct2_Concept_Delta_INT_Metadata.xml" Name="sct2_Concept_Delta_INT_20120131.txt"/>						
-					<file Metadata="sct2_Description_Delta-en_INT_Metadata.xml" Name="sct2_Description_Delta-en_INT_20120131.txt"/>
-					<file Metadata="sct2_Relationship_Delta_INT_Metadata.xml" Name="sct2_Relationship_Delta_INT_20120131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Delta_INT_Metadata.xml" Name="sct2_StatedRelationship_Delta_INT_20120131.txt"/>
-					<file Metadata="sct2_Identifier_Delta_INT_Metadata.xml" Name="sct2_Identifier_Delta_INT_20120131.txt"/>
-					<file Metadata="sct2_TextDefinition_Delta-en_INT_Metadata.xml" Name="sct2_TextDefinition_Delta-en_INT_20120131.txt"/>
+					<file Metadata="sct2_Concept_Delta_INT_Metadata.xml" Name="sct2_Concept_Delta_INT_20120731.txt"/>						
+					<file Metadata="sct2_Description_Delta-en_INT_Metadata.xml" Name="sct2_Description_Delta-en_INT_20120731.txt"/>
+					<file Metadata="sct2_Relationship_Delta_INT_Metadata.xml" Name="sct2_Relationship_Delta_INT_20120731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Delta_INT_Metadata.xml" Name="sct2_StatedRelationship_Delta_INT_20120731.txt"/>
+					<file Metadata="sct2_Identifier_Delta_INT_Metadata.xml" Name="sct2_Identifier_Delta_INT_20120731.txt"/>
+					<file Metadata="sct2_TextDefinition_Delta-en_INT_Metadata.xml" Name="sct2_TextDefinition_Delta-en_INT_20120731.txt"/>
 				</folder>
 				<folder Name="Refset">
 					<folder Name="Content">
-						<file Metadata="der2_cRefset_AssociationReferenceDelta_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceDelta_INT_20120131.txt"/> 
-						<file Metadata="der2_cRefset_AttributeValueDelta_INT_Metadata.xml" Name="der2_cRefset_AttributeValueDelta_INT_20120131.txt"/>
-						<file Metadata="der2_Refset_SimpleDelta_INT_Metadata.xml" Name="der2_Refset_SimpleDelta_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceDelta_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceDelta_INT_20120731.txt"/> 
+						<file Metadata="der2_cRefset_AttributeValueDelta_INT_Metadata.xml" Name="der2_cRefset_AttributeValueDelta_INT_20120731.txt"/>
+						<file Metadata="der2_Refset_SimpleDelta_INT_Metadata.xml" Name="der2_Refset_SimpleDelta_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Crossmap">
-						<file Metadata="der2_sRefset_SimpleMapDelta_INT_Metadata.xml" Name="der2_sRefset_SimpleMapDelta_INT_20120131.txt"/>
-						<file Metadata="der2_iissscRefset_ComplexMapDelta_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapDelta_INT_20120131.txt"/>
+						<file Metadata="der2_sRefset_SimpleMapDelta_INT_Metadata.xml" Name="der2_sRefset_SimpleMapDelta_INT_20120731.txt"/>
+						<file Metadata="der2_iissscRefset_ComplexMapDelta_INT_Metadata.xml" Name="der2_iissscRefset_ComplexMapDelta_INT_20120731.txt"/>
 					</folder>
 					<folder Name="Language">
-						<file Metadata="der2_cRefset_LanguageDelta-en_INT_Metadata.xml" Name="der2_cRefset_LanguageDelta-en_INT_20120131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageDelta-en_INT_Metadata.xml" Name="der2_cRefset_LanguageDelta-en_INT_20120731.txt"/>	
 					</folder>
 					<folder Name="Metadata">
-						<file Metadata="der2_cciRefset_RefsetDescriptorDelta_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorDelta_INT_20120131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencyDelta_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyDelta_INT_20120131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeDelta_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeDelta_INT_20120131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorDelta_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorDelta_INT_20120731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencyDelta_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyDelta_INT_20120731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeDelta_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeDelta_INT_20120731.txt"/>
 					</folder>
 				</folder>
 			</folder> <!-- Delta -->
 		</folder> <!-- RF2Release -->	
 
 		<folder Name="RF1Release">
-			<folder Name="CrossMaps" Type="Folder">
-				<folder Name="ICD9" Type="Folder">
-					<file Metadata="der1_CrossMapSets_ICD9_INT_Metadata.xml" Name="der1_CrossMapSets_ICD9_INT_20120131.txt"/>
-					<file Metadata="der1_CrossMaps_ICD9_INT_Metadata.xml" Name="der1_CrossMaps_ICD9_INT_20120131.txt"/>
-					<file Metadata="der1_CrossMapTargets_ICD9_INT_Metadata.xml" Name="der1_CrossMapTargets_ICD9_INT_20120131.txt"/>
+			<folder Name="CrossMaps">
+				<folder Name="ICD9">
+					<file Metadata="der1_CrossMapSets_ICD9_INT_Metadata.xml" Name="der1_CrossMapSets_ICD9_INT_20120731.txt"/>
+					<file Metadata="der1_CrossMaps_ICD9_INT_Metadata.xml" Name="der1_CrossMaps_ICD9_INT_20120731.txt"/>
+					<file Metadata="der1_CrossMapTargets_ICD9_INT_Metadata.xml" Name="der1_CrossMapTargets_ICD9_INT_20120731.txt"/>
 				</folder>
 				
-				<folder Name="ICDO" Type="Folder">
-					<file Metadata="der1_CrossMapSets_ICDO_INT_Metadata.xml" Name="der1_CrossMapSets_ICDO_INT_20120131.txt"/>
-					<file Metadata="der1_CrossMaps_ICDO_INT_Metadata.xml" Name="der1_CrossMaps_ICDO_INT_20120131.txt"/>
-					<file Metadata="der1_CrossMapTargets_ICDO_INT_Metadata.xml" Name="der1_CrossMapTargets_ICDO_INT_20120131.txt"/>
+				<folder Name="ICDO">
+					<file Metadata="der1_CrossMapSets_ICDO_INT_Metadata.xml" Name="der1_CrossMapSets_ICDO_INT_20120731.txt"/>
+					<file Metadata="der1_CrossMaps_ICDO_INT_Metadata.xml" Name="der1_CrossMaps_ICDO_INT_20120731.txt"/>
+					<file Metadata="der1_CrossMapTargets_ICDO_INT_Metadata.xml" Name="der1_CrossMapTargets_ICDO_INT_20120731.txt"/>
 				</folder>
 			</folder>	
 			<folder Name="Terminology">
 				<folder Name="Content">
-					<file Metadata="sct1_Concepts_Core_INT_Metadata.xml" Name="sct1_Concepts_Core_INT_20120131.txt"/>
-					<file Metadata="sct1_Descriptions_en_INT_Metadata.xml" Name="sct1_Descriptions_en_INT_20120131.txt"/>
-					<file Metadata="sct1_Relationships_Core_INT_Metadata.xml" Name="sct1_Relationships_Core_INT_20120131.txt"/>
+					<file Metadata="sct1_Concepts_Core_INT_Metadata.xml" Name="sct1_Concepts_Core_INT_20120731.txt"/>
+					<file Metadata="sct1_Descriptions_en_INT_Metadata.xml" Name="sct1_Descriptions_en_INT_20120731.txt"/>
+					<file Metadata="sct1_Relationships_Core_INT_Metadata.xml" Name="sct1_Relationships_Core_INT_20120731.txt"/>
 				</folder>
 				<folder Name="History">
-					<file Metadata="sct1_ComponentHistory_Core_INT_Metadata.xml" Name="sct1_ComponentHistory_Core_INT_20120131.txt"/>
-					<file Metadata="sct1_References_Core_INT_Metadata.xml" Name="sct1_References_Core_INT_20120131.txt"/>
+					<file Metadata="sct1_ComponentHistory_Core_INT_Metadata.xml" Name="sct1_ComponentHistory_Core_INT_20120731.txt"/>
+					<file Metadata="sct1_References_Core_INT_Metadata.xml" Name="sct1_References_Core_INT_20120731.txt"/>
 				</folder>
 			</folder> <!--Terminology-->
 			<folder Name="Subsets">
 				<folder Name="Language-en-GB">
-					<file Metadata="der1_SubsetMembers_en-GB_INT_Metadata.xml" Name="der1_SubsetMembers_en-GB_INT_20120131.txt"/>
-					<file Metadata="der1_Subsets_en-GB_INT_Metadata.xml" Name="der1_Subsets_en-GB_INT_20120131.txt"/>
+					<file Metadata="der1_SubsetMembers_en-GB_INT_Metadata.xml" Name="der1_SubsetMembers_en-GB_INT_20120731.txt"/>
+					<file Metadata="der1_Subsets_en-GB_INT_Metadata.xml" Name="der1_Subsets_en-GB_INT_20120731.txt"/>
 				</folder>
 				<folder Name="Language-en-US">
-					<file Metadata="der1_SubsetMembers_en-US_INT_Metadata.xml" Name="der1_SubsetMembers_en-US_INT_20120131.txt"/>
-					<file Metadata="der1_Subsets_en-US_INT_Metadata.xml" Name="der1_Subsets_en-US_INT_20120131.txt"/>
+					<file Metadata="der1_SubsetMembers_en-US_INT_Metadata.xml" Name="der1_SubsetMembers_en-US_INT_20120731.txt"/>
+					<file Metadata="der1_Subsets_en-US_INT_Metadata.xml" Name="der1_Subsets_en-US_INT_20120731.txt"/>
 				</folder>
 
-				<folder Name="NonHumanSubset" Type="Folder">
-					<file Metadata="der1_SubsetMembers_NonHuman_INT_Metadata.xml" Name="der1_SubsetMembers_NonHuman_INT_20120131.txt" Type="Text Document"/>
-					<file Metadata="der1_Subsets_NonHuman_INT_Metadata.xml" Name="der1_Subsets_NonHuman_INT_20120131.txt" Type="Text Document"/>
+				<folder Name="NonHumanSubset">
+					<file Metadata="der1_SubsetMembers_NonHuman_INT_Metadata.xml" Name="der1_SubsetMembers_NonHuman_INT_20120731.txt"/>
+					<file Metadata="der1_Subsets_NonHuman_INT_Metadata.xml" Name="der1_Subsets_NonHuman_INT_20120731.txt"/>
 				</folder>
 
-				<folder Name="VTMVMP" Type="Folder">
-					<file Metadata="der1_SubsetMembers_VTMVMP_INT_Metadata.xml" Name="der1_SubsetMembers_VTMVMP_INT_20120131.txt"/>
-					<file Metadata="der1_Subsets_VTMVMP_INT_Metadata.xml" Name="der1_Subsets_VTMVMP_INT_20120131.txt"/>
+				<folder Name="VTMVMP">
+					<file Metadata="der1_SubsetMembers_VTMVMP_INT_Metadata.xml" Name="der1_SubsetMembers_VTMVMP_INT_20120731.txt"/>
+					<file Metadata="der1_Subsets_VTMVMP_INT_Metadata.xml" Name="der1_Subsets_VTMVMP_INT_20120731.txt"/>
 				</folder>
 			</folder> <!--Subsets-->
 		
-			<folder Name="OtherResources" Type="Folder">
-				<folder Name="BridgeFiles" Type="Folder">
-					<file Metadata="res_BridgeFile_Snomed2ToSnomedRT_INT_Metadata.xml" Name="zres_BridgeFile_Snomed2ToSnomedRT_INT_20020131.zip" Type="WinZip File"/>
-					<file Metadata="res_BridgeFile_Snomed35ToSnomedRT_INT_Metadata.xml" Name="zres_BridgeFile_Snomed35ToSnomedRT_INT_20020131.zip" Type="WinZip File"/>
+			<folder Name="OtherResources">
+				<folder Name="BridgeFiles">
+					<file Metadata="res_BridgeFile_Snomed2ToSnomedRT_INT_Metadata.xml" Name="zres_BridgeFile_Snomed2ToSnomedRT_INT_20020131.zip"/>
+					<file Metadata="res_BridgeFile_Snomed35ToSnomedRT_INT_Metadata.xml" Name="zres_BridgeFile_Snomed35ToSnomedRT_INT_20020131.zip"/>
 				</folder>
 				
-				<folder Name="Canonical Table" Type="Folder">
-					<file Metadata="doc1_CanonicalTableGuide_Current-en-US_INT_Metadata.xml" Name="doc1_CanonicalTableGuide_Current-en-US_INT_20120131.pdf"/>
-					<file Metadata="res1_Canonical_Core_INT_Metadata.xml" Name="res1_Canonical_Core_INT_20120131.txt"/>
+				<folder Name="Canonical Table">
+					<file Author="Steven Castanien" Metadata="doc1_CanonicalTableGuide_Current-en-US_INT_Metadata.xml" Name="doc1_CanonicalTableGuide_Current-en-US_INT_20120731.pdf"/>
+					<file Metadata="res1_Canonical_Core_INT_Metadata.xml" Name="res1_Canonical_Core_INT_20120731.txt"/>
 				</folder>
 				
 				
-				<folder Name="LOINCIntegration" Type="Folder">
+				<folder Name="LOINCIntegration">
 					<file Metadata="der1_Integration_LOINC_INT_Metadata.xml" Name="zder1_Integration_LOINC_INT_20050731.txt"/>
 				</folder>
 				
-				<folder Name="StatedRelationships" Type="Folder">
-					<file Metadata="res1_StatedRelationships_Core_INT_Metadata.xml" Name="res1_StatedRelationships_Core_INT_20120131.txt"/>
+				<folder Name="StatedRelationships">
+					<file Metadata="res1_StatedRelationships_Core_INT_Metadata.xml" Name="res1_StatedRelationships_Core_INT_20120731.txt"/>
 					<!--<file Name="tls1_StatedRelationshipsToOwlKRSS_INT_20110731.zip" />-->
 				</folder>
 			
-				<folder Name="TextDefinitions" Type="Folder">
-					<file Metadata="sct1_TextDefinitions_en-US_INT_Metadata.xml" Name="sct1_TextDefinitions_en-US_INT_20120131.txt"/>
+				<folder Name="TextDefinitions">
+					<file Metadata="sct1_TextDefinitions_en-US_INT_Metadata.xml" Name="sct1_TextDefinitions_en-US_INT_20120731.txt"/>
 				</folder>
 								
-				<folder Name="DeveloperToolkit" Type="Folder">
-					<file Metadata="doc_DeveloperToolkitGuide_Current-en-US_INT_Metadata.xml" Name="doc_DeveloperToolkitGuide_Current-en-US_INT_20120131.pdf"/>
+				<folder Name="DeveloperToolkit">
+					<file Author="Steven Castanien" Metadata="doc_DeveloperToolkitGuide_Current-en-US_INT_Metadata.xml" Name="doc_DeveloperToolkitGuide_Current-en-US_INT_20120731.pdf"/>
 					<file Metadata="res_WordEquivalents_en-US_INT_Metadata.xml" Name="zres_WordEquivalents_en-US_INT_20020731.txt"/>
 				
-					<folder Name="Indexes" Type="Folder">
-						<file Metadata="res_DualKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Concepts-en-US_INT_20120131.txt"/>
-						<file Metadata="res_DualKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Descriptions-en-US_INT_20120131.txt"/>
-						<file Metadata="res_WordKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Concepts-en-US_INT_20120131.txt"/>
-						<file Metadata="res_WordKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Descriptions-en-US_INT_20120131.txt"/>
-						<file Metadata="tls1_Index_Generator_INT_Metadata.xml" Name="tls1_Index_Generator_INT_20100731.zip" Type="WinZip File"/>
+					<folder Name="Indexes">
+						<file Metadata="res_DualKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Concepts-en-US_INT_20120731.txt"/>
+						<file Metadata="res_DualKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
+						<file Metadata="res_WordKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Concepts-en-US_INT_20120731.txt"/>
+						<file Metadata="res_WordKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
+						<file Metadata="tls1_Index_Generator_INT_Metadata.xml" Name="tls1_Index_Generator_INT_20100731.zip"/>
 						<file Metadata="res_ExcludedWords_en-US_INT_Metadata.xml" Name="zres_ExcludedWords_en-US_INT_20070731.txt"/>
 					</folder> <!--Indexes-->
 				
-					<folder Name="Subsets" Type="Folder">
-						<folder Name="DuplicateTerms" Type="Folder">
+					<folder Name="Subsets">
+						<folder Name="DuplicateTerms">
 							<file Metadata="der1_SubsetMembers_DuplicateTerms_INT_Metadata.xml" Name="der1_SubsetMembers_DuplicateTerms_INT_20110731.txt"/>
 							<file Metadata="der1_Subsets_DuplicateTerms_INT_Metadata.xml" Name="der1_Subsets_DuplicateTerms_INT_20110731.txt"/>
 						</folder>
-						<folder Name="Navigation" Type="Folder">
+						<folder Name="Navigation">
 							<file Metadata="der1_SubsetMembers_Navigation_INT_Metadata.xml" Name="zder1_SubsetMembers_Navigation_INT_20030731.txt"/>
 							<file Metadata="der1_Subsets_Navigation_INT_Metadata.xml" Name="zder1_Subsets_Navigation_INT_20030731.txt"/>
 						</folder>
@@ -217,5 +218,5 @@
 			
 		</folder> <!--RF1Release-->
 
-	</folder> <!-- SnomedCT_Release_INT_20120131 -->
+	</folder> <!-- SnomedCT_Release_INT_20120731 -->
 </listing>
