@@ -269,6 +269,10 @@ public class QAMojo extends AbstractMojo {
 		
 		//list all files in target directory
 		String [] currFiles = targetDir.list(textFileFilter);
+		if (currFiles == null || currFiles.length < 1) {
+			logger.error("No files in current directory, no testing performed");
+			return;
+		}
 		
 		//look thru all the files from the manifest list
 		for(int i=0; i < fileNames.size(); i++) {
@@ -286,18 +290,20 @@ public class QAMojo extends AbstractMojo {
 			} // end looping thru files in target directory
 			
 			//check if file exists
-			if (!fileFound) {
+			if (!fileFound && fileNames.get(i).endsWith(".txt")) {
 				// log missing file
 				logger.error("File missing from target directory: " + fileNames.get(i));	
-				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + fileNames.get(i));
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + File.pathSeparator + fileNames.get(i));
 				
 			} else {
 			
-				// convert name to the corresponding name from the previous release
-				name = name.substring(0, name.length() - 12) + previousReleaseDate + ".txt";
-				
+				// convert name to the corresponding name from the previous release 
+				//TODO: fix this- some previous files use a different date than the date of the previous release
+				if (name.length() > 12) {
+					name = name.substring(0, name.length() - 12) + previousReleaseDate + ".txt";
+				}
 				//fix filenames if  beta release
-				name = stripX(name);
+				name = stripXZ(name);
 				fileNames.set(i, name);
 				if (logger.isDebugEnabled()) {
 					logger.debug("Corresponding previous file name : " + name);
@@ -305,7 +311,7 @@ public class QAMojo extends AbstractMojo {
 			}
 
 				
-		} // end looping thru file Names from manifest
+		} // end looping thru current file Names from manifest
 		
 
 		// get previous file out of the previous directory structure
@@ -337,8 +343,8 @@ public class QAMojo extends AbstractMojo {
 			}
 
 			if (!foundCurrMatch) {
-				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + currMatch + "YYYYMMDD.txt");
-				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Previous,Passed, ," + previousWorkingDirectory + prevFiles[i]);
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Current,Failed,File is missing in folder :" + sourceDirectory + File.pathSeparator + currMatch);
+				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Previous,Passed, ," + previousWorkingDirectory + File.separator + prevFiles[i]);
 				writeExcel.addRow(MessageType.SUCCESS, " , , ");
 			}
 		} // end looping thru previous files
@@ -460,28 +466,31 @@ public class QAMojo extends AbstractMojo {
 					}
 
 				}
-
-				if (logger.isDebugEnabled()) {
-					logger.debug("");
-					logger.debug(" ========== " + "Start: Column Data Rules " + " ========== ");
-				}
-				ColumnDataTests.execute(releaseDate, fileTestMetadata, currFile, logger, writeExcel);
-				if (logger.isDebugEnabled()) {
-					logger.debug(" ========== " + "End: Column Data Rules " + " ========== ");
-					logger.debug("");
+				if (fileTestMetadata.getColumn().size() > 0)
+				{
+					// only perform columnDataTests for metadata files that contain columns
+					if (logger.isDebugEnabled()) {
+						logger.debug("");
+						logger.debug(" ========== " + "Start: Column Data Rules " + " ========== ");
+					}
+					ColumnDataTests.execute(releaseDate, fileTestMetadata, currFile, logger, writeExcel);
+					if (logger.isDebugEnabled()) {
+						logger.debug(" ========== " + "End: Column Data Rules " + " ========== ");
+						logger.debug("");
+					}
 				}
 				logger.info("Finished               :" + currFile.getAbsoluteFile());
 				Date eDate = new Date();
 				logger.info(DateUtils.elapsedTime("Elapsed                :", sDate, eDate));
 			} else {
 				// no metadata found
-				writeExcel.addRow(MessageType.FAILURE, "Tests not performed, no metadata found for " + currentWorkingDirectory + currFiles[i]);
+				writeExcel.addRow(MessageType.FAILURE, "Tests not performed, no metadata found for " + currentWorkingDirectory + File.pathSeparator + currFiles[i]);
 			}
 
 			if (!foundPrevMatch) {
-				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Current,Passed, ," + currentWorkingDirectory + currFiles[i]);
+				writeExcel.addRow(MessageType.SUCCESS, "FileTest,Current,Passed, ," + currentWorkingDirectory + File.separator + currFiles[i]);
 
-				writeExcel.addRow(MessageType.FAILURE, "FileTest,Previous,Failed,File is missing in folder :" + previousWorkingDirectory + cS + "YYYYMMDD.txt");
+				writeExcel.addRow(MessageType.FAILURE, "FileTest,Previous,Failed,File is missing in folder :" + previousWorkingDirectory + File.pathSeparator + cS );
 			}
 
 			// end all tests
@@ -512,6 +521,7 @@ public class QAMojo extends AbstractMojo {
 		} else {
 			// must be a file.
 			logger.debug("Found file: " + sourceTree.getName());
+			
 			
 			if (fileNames == null || fileNames.contains(sourceTree.getName())) {
 				try {
@@ -564,7 +574,12 @@ public class QAMojo extends AbstractMojo {
 		String metadataFilePath = getFileFromSourceFolder(metadataDirectory, metaDataFileName);
 		
 		logger.info("");
-		logger.info("Loading  MetaData File :" + metadataFilePath );
+		
+		if (metadataFilePath == null || metadataFilePath.length() < 1) {
+			logger.error("No metadata file found for source file " + sourceFileName);
+			return false;
+		}
+		logger.info("Loading  MetaData File :" + metadataFilePath + " for file name " + sourceFileName);
 		
 
 		if (fileTestMetadata != null) {
@@ -575,21 +590,28 @@ public class QAMojo extends AbstractMojo {
 
 		// check if there was an error and the metadata xml
 		// was not unmarshalled properly
-		if (fileTestMetadata != null && fileTestMetadata.getColumn() != null) {
+		if (fileTestMetadata != null ) {
 			
 			success = true;
-			// sort the list of columns based on their positions
-			ArrayList<Column> columns = fileTestMetadata.getColumn();
-			Collections.sort(columns);
-			fileTestMetadata.setColumn(columns);
-		} else
-			logger.error("Not processing metadata not valid or file not found at : " + metadataFilePath);
-			if (logger.isDebugEnabled()) {
-				dumpMetadata();
+			
+			if ( fileTestMetadata.getColumn() != null) {
+
+				// sort the list of columns based on their positions
+				ArrayList<Column> columns = fileTestMetadata.getColumn();
+				Collections.sort(columns);
+				fileTestMetadata.setColumn(columns);
+			} else {
+				// no columns in metadata, test using an empty set of columns
+				logger.info("Not processing any columns for metadata file found at : " + metadataFilePath);
+				fileTestMetadata.setColumn(new ArrayList <Column> () );
 			}
+		} else {
+			logger.error("Not processing metadata , no file or invalid file found for : " + sourceFileName);
+		}
 
 		return success;
-	}
+	} // end proc getMetadata
+	
 
 	private static void dumpMetadata() {
 
@@ -628,9 +650,9 @@ public class QAMojo extends AbstractMojo {
 	 * @param fileName
 	 * @return
 	 */
-	private static String stripX (String fileName) {
+	private static String stripXZ (String fileName) {
 		
-		if (fileName.startsWith("x")) {
+		if (fileName.startsWith("x") || fileName.startsWith("z")) {
 			return fileName.substring(1); 
 		} else {
 			return fileName;
@@ -654,19 +676,18 @@ public class QAMojo extends AbstractMojo {
 				i++;
 			}
 		} else {
+			// not a directory, it's a file, check for match
 			if (logger.isDebugEnabled()) {
-				// not a directory, it's a file, check for match
 				logger.debug("File compared: "
 						+ searchDirectory.getAbsolutePath());
 			}
-			if (searchDirectory.getName().equals(fileName)) {
+			if (searchDirectory.getName().contains(fileName)) {
+				//found  match
+				matchFileName = searchDirectory.getAbsolutePath();
 				if (logger.isDebugEnabled()) {
 					logger.debug("found matching file : " + searchDirectory);
-				}
-				matchFileName = searchDirectory.getAbsolutePath();
+				}	
 			}
-
-			
 		}
 		return matchFileName;		
 
