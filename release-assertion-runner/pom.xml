@@ -1157,7 +1157,7 @@
 							<sourceDirectory>${project.build.directory}/generated-sources</sourceDirectory>
 							<currentWorkingDirectory>${project.build.directory}/currentWorkingDirectory</currentWorkingDirectory>
 							<previousWorkingDirectory>${project.build.directory}/previousWorkingDirectory</previousWorkingDirectory>
-							<manifestFileName>${project.manifest}/package/betamanifest.xml</manifestFileName>
+							<manifestFileName>${project.manifest}/package/internationalmanifest.xml</manifestFileName>
 							<metadataPath>${project.build.directory}/metadata</metadataPath>
 						</configuration>
 						<executions>
