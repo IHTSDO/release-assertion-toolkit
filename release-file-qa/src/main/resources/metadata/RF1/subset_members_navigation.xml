@@ -3,7 +3,7 @@
     <description>Testing the artifact "SUBSET_MEMBERS_NAVIGATION".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|z)?subset_members_navigation.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?der1_subset_members_navigation.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>

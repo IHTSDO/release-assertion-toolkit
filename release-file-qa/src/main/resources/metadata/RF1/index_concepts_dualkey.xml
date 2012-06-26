@@ -3,7 +3,7 @@
     <description>Testing the artifact "INDEX_CONCEPTS_DUALKEY".</description>
     <regex>
       <test>FileNameTest</test>
-      <expression>(x|z)?index_concepts_dualkey.*_20\d{6}\.txt</expression>
+      <expression>(x|z)?res_DualKeyIndex_Concepts.*_20\d{6}\.txt</expression>
       <description>the file name matches the expression</description>
       <successMessage>The file name matches the expression</successMessage>
       <failureMessage>The file name does not match the expression</failureMessage>
