@@ -94,10 +94,10 @@ public class ColumnDataTests {
 						if (!found) {
 							TestError error = new TestError();
 
-							error.setTest("ColumnTrailingSpaces");
+							error.setTest("ColumnTrailingSpacesTest");
 							error.setColumnHeader(qa.getColumn().get(column)
 									.getHeader());
-							error.setRegex("ColumnTrailingSpaces");
+							error.setRegex("ColumnTrailingSpacesTest");
 							if (column != qa.getColumn().size())
 								error.setMessage("Column has trailing spaces");
 							else
@@ -485,7 +485,8 @@ public class ColumnDataTests {
 
 			if (testName.equals(testError.getTest())
 					&& header.equals(testError.getColumnHeader())
-					&& regex.equals(testError.getRegex())) {
+					&& regex.equals(testError.getRegex())
+					) {
 				found = true;
 
 				int count = testError.getCount();
