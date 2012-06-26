@@ -120,15 +120,15 @@
 		<folder Name="RF1Release">
 			<folder Name="CrossMaps">
 				<folder Name="ICD9">
-					<file Metadata="der1_CrossMapSets_ICD9_INT_Metadata.xml" Name="der1_CrossMapSets_ICD9_INT_20120731.txt"/>
-					<file Metadata="der1_CrossMaps_ICD9_INT_Metadata.xml" Name="der1_CrossMaps_ICD9_INT_20120731.txt"/>
-					<file Metadata="der1_CrossMapTargets_ICD9_INT_Metadata.xml" Name="der1_CrossMapTargets_ICD9_INT_20120731.txt"/>
+					<file Metadata="cross_map_sets_icd9.xml" Name="der1_CrossMapSets_ICD9_INT_20120731.txt"/>
+					<file Metadata="cross_maps_icd9.xml" Name="der1_CrossMaps_ICD9_INT_20120731.txt"/>
+					<file Metadata="cross_map_targets_icd9.xml" Name="der1_CrossMapTargets_ICD9_INT_20120731.txt"/>
 				</folder>
 				
 				<folder Name="ICDO">
-					<file Metadata="der1_CrossMapSets_ICDO_INT_Metadata.xml" Name="der1_CrossMapSets_ICDO_INT_20120731.txt"/>
-					<file Metadata="der1_CrossMaps_ICDO_INT_Metadata.xml" Name="der1_CrossMaps_ICDO_INT_20120731.txt"/>
-					<file Metadata="der1_CrossMapTargets_ICDO_INT_Metadata.xml" Name="der1_CrossMapTargets_ICDO_INT_20120731.txt"/>
+					<file Metadata="cross_map_sets_icdo.xml" Name="der1_CrossMapSets_ICDO_INT_20120731.txt"/>
+					<file Metadata="cross_maps_icdo.xml" Name="der1_CrossMaps_ICDO_INT_20120731.txt"/>
+					<file Metadata="cross_map_targets_icdo.xml" Name="der1_CrossMapTargets_ICDO_INT_20120731.txt"/>
 				</folder>
 			</folder>	
 			<folder Name="Terminology">
@@ -153,13 +153,13 @@
 				</folder>
 
 				<folder Name="NonHumanSubset">
-					<file Metadata="der1_SubsetMembers_NonHuman_INT_Metadata.xml" Name="der1_SubsetMembers_NonHuman_INT_20120731.txt"/>
-					<file Metadata="der1_Subsets_NonHuman_INT_Metadata.xml" Name="der1_Subsets_NonHuman_INT_20120731.txt"/>
+					<file Metadata="der1_SubsetMembers_nonhuman_Metadata.xml" Name="der1_SubsetMembers_NonHuman_INT_20120731.txt"/>
+					<file Metadata="der1_Subsets_nonhuman_Metadata.xml" Name="der1_Subsets_NonHuman_INT_20120731.txt"/>
 				</folder>
 
 				<folder Name="VTMVMP">
-					<file Metadata="der1_SubsetMembers_VTMVMP_INT_Metadata.xml" Name="der1_SubsetMembers_VTMVMP_INT_20120731.txt"/>
-					<file Metadata="der1_Subsets_VTMVMP_INT_Metadata.xml" Name="der1_Subsets_VTMVMP_INT_20120731.txt"/>
+					<file Metadata="subsetmembers_vtm_vmp.xml" Name="der1_SubsetMembers_VTMVMP_INT_20120731.txt"/>
+					<file Metadata="subsets_vtm_vmp.xml" Name="der1_Subsets_VTMVMP_INT_20120731.txt"/>
 				</folder>
 			</folder> <!--Subsets-->
 		
@@ -171,12 +171,12 @@
 				
 				<folder Name="Canonical Table">
 					<file Author="Steven Castanien" Metadata="doc1_CanonicalTableGuide_Current-en-US_INT_Metadata.xml" Name="doc1_CanonicalTableGuide_Current-en-US_INT_20120731.pdf"/>
-					<file Metadata="res1_Canonical_Core_INT_Metadata.xml" Name="res1_Canonical_Core_INT_20120731.txt"/>
+					<file Metadata="canonical.xml" Name="res1_Canonical_Core_INT_20120731.txt"/>
 				</folder>
 				
 				
 				<folder Name="LOINCIntegration">
-					<file Metadata="der1_Integration_LOINC_INT_Metadata.xml" Name="zder1_Integration_LOINC_INT_20050731.txt"/>
+					<file Metadata="loinc_integration.xml" Name="zder1_Integration_LOINC_INT_20050731.txt"/>
 				</folder>
 				
 				<folder Name="StatedRelationships">
@@ -193,22 +193,22 @@
 					<file Metadata="res_WordEquivalents_en-US_INT_Metadata.xml" Name="zres_WordEquivalents_en-US_INT_20020731.txt"/>
 				
 					<folder Name="Indexes">
-						<file Metadata="res_DualKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Concepts-en-US_INT_20120731.txt"/>
-						<file Metadata="res_DualKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_DualKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
-						<file Metadata="res_WordKeyIndex_Concepts-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Concepts-en-US_INT_20120731.txt"/>
-						<file Metadata="res_WordKeyIndex_Descriptions-en-US_INT_Metadata.xml" Name="res_WordKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
+						<file Metadata="index_concepts_dualkey.xml" Name="res_DualKeyIndex_Concepts-en-US_INT_20120731.txt"/>
+						<file Metadata="index_descriptions_dualkey.xml" Name="res_DualKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
+						<file Metadata="index_concepts_wordkey.xml" Name="res_WordKeyIndex_Concepts-en-US_INT_20120731.txt"/>
+						<file Metadata="index_descriptions_wordkey.xml" Name="res_WordKeyIndex_Descriptions-en-US_INT_20120731.txt"/>
 						<file Metadata="tls1_Index_Generator_INT_Metadata.xml" Name="tls1_Index_Generator_INT_20100731.zip"/>
-						<file Metadata="res_ExcludedWords_en-US_INT_Metadata.xml" Name="zres_ExcludedWords_en-US_INT_20070731.txt"/>
+						<file Metadata="excluded_words.xml" Name="zres_ExcludedWords_en-US_INT_20070731.txt"/>
 					</folder> <!--Indexes-->
 				
 					<folder Name="Subsets">
 						<folder Name="DuplicateTerms">
-							<file Metadata="der1_SubsetMembers_DuplicateTerms_INT_Metadata.xml" Name="der1_SubsetMembers_DuplicateTerms_INT_20110731.txt"/>
-							<file Metadata="der1_Subsets_DuplicateTerms_INT_Metadata.xml" Name="der1_Subsets_DuplicateTerms_INT_20110731.txt"/>
+							<file Metadata="subsetmembers_duplicateterms.xml" Name="der1_SubsetMembers_DuplicateTerms_INT_20110731.txt"/>
+							<file Metadata="subsets_duplicateterms.xml" Name="der1_Subsets_DuplicateTerms_INT_20110731.txt"/>
 						</folder>
 						<folder Name="Navigation">
-							<file Metadata="der1_SubsetMembers_Navigation_INT_Metadata.xml" Name="zder1_SubsetMembers_Navigation_INT_20030731.txt"/>
-							<file Metadata="der1_Subsets_Navigation_INT_Metadata.xml" Name="zder1_Subsets_Navigation_INT_20030731.txt"/>
+							<file Metadata="subset_members_navigation.xml" Name="zder1_SubsetMembers_Navigation_INT_20030731.txt"/>
+							<file Metadata="subsets_navigation.xml" Name="zder1_Subsets_Navigation_INT_20030731.txt"/>
 						</folder>
 					</folder> <!--Subsets-->
 					
