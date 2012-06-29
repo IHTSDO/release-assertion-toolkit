@@ -152,10 +152,10 @@
 		</regex>
 		<regex>
 			<test>ColumnWidthTest</test>
-			<expression>\d{18}</expression>
-			<description>containing 18 in length only digits</description>
-			<successMessage>Column is 18 digits</successMessage>
-			<failureMessage>Column is NOT 18 digits</failureMessage>
+			<expression>\d{9}</expression>
+			<description>containing 9 in length only digits</description>
+			<successMessage>Column is 9 digits</successMessage>
+			<failureMessage>Column is NOT 9 digits</failureMessage>
 		</regex>
 		<regex>
 			<test>ColumnValuesTest</test>
@@ -281,18 +281,18 @@
 		</regex>	
 		<regex>
 			<test>ColumnTypeTest</test>
-			<expression>\d*</expression>
-			<description>Column type is int</description>
-			<successMessage>Column type is int</successMessage>
-			<failureMessage>Column type is NOT int</failureMessage>
+			<expression>.*</expression> <!-- STRING -->
+			<description>Column type is valid for column</description>
+			<successMessage>Data type is valid for column</successMessage>
+			<failureMessage>Data type is not valid for column</failureMessage>
 		</regex>
 		<regex>
 			<test>ColumnWidthTest</test>
-			<expression>\.{1,255}</expression>
-			<description>containing between 3 and 7 digits</description>
+			<expression>\d{6,18}</expression>
+			<description>containing between 6 and 18 digits</description>
 			<successMessage>Column between 6 and 18 digits</successMessage>
 			<failureMessage>Column NOT between 6 and 18 digits</failureMessage>
-		</regex>	
+		</regex>
 	</column>
 	<column>
 		<header>correlationId</header>
@@ -303,7 +303,7 @@
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
-		</regex>	
+		</regex>
 		<regex>
 			<test>ColumnTypeTest</test>
 			<expression>\d*</expression>
@@ -313,11 +313,11 @@
 		</regex>
 		<regex>
 			<test>ColumnWidthTest</test>
-			<expression>\.{1,255}</expression>
-			<description>containing between 3 and 7 digits</description>
+			<expression>\d{6,18}</expression>
+			<description>containing between 6 and 18 digits</description>
 			<successMessage>Column between 6 and 18 digits</successMessage>
 			<failureMessage>Column NOT between 6 and 18 digits</failureMessage>
-		</regex>	
+		</regex>
 		<regex>
 			<test>ColumnValuesTest</test>
 			<expression>(447558009|447557004|447556008)</expression>
@@ -326,5 +326,4 @@
 			<failureMessage>Column is NOT valid value 447558009 or 447557004 or 447556008</failureMessage>
 		</regex>
 	</column>
-	
 </metadata>

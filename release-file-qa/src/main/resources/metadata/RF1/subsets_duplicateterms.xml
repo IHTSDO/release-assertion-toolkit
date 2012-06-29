@@ -223,7 +223,7 @@
 			
 			<regex>
 				<test>ColumnValidTest</test>
-				<expression>^(en-GB|en-US|en)$</expression>
+				<expression>^(en-GB|en-US|en|0)$</expression>
 				<description>Values in the column are valid</description>
 				<successMessage>Column contains valid values</successMessage>
 				<failureMessage>Column contains invalid values</failureMessage>
@@ -251,10 +251,10 @@
 			
 			<regex>
 				<test>ColumnWidthTest</test>
-				<expression>^.{4,24}$</expression>
-				<description>Values are between 4 and 24 characters long</description>
-				<successMessage>Values are between 4 and 24 characters long</successMessage>
-				<failureMessage>Values are not between 4 and 24 characters long</failureMessage>
+				<expression>^.{1,24}$</expression>
+				<description>Values are between 1 and 24 characters long</description>
+				<successMessage>Values are between 1 and 24 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 24 characters long</failureMessage>
 			</regex>
 			
 			<regex>

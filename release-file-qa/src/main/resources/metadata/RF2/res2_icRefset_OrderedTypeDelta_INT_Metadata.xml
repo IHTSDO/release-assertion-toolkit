@@ -152,10 +152,10 @@
 		</regex>
 		<regex>
 			<test>ColumnWidthTest</test>
-			<expression>\d{18}</expression>
-			<description>containing 18 in length only digits</description>
-			<successMessage>Column is 18 digits</successMessage>
-			<failureMessage>Column is NOT 18 digits</failureMessage>
+			<expression>\d{9}</expression>
+			<description>containing 9 in length only digits</description>
+			<successMessage>Column is 9 digits</successMessage>
+			<failureMessage>Column is NOT 9 digits</failureMessage>
 		</regex>
 		<regex>
 			<test>ColumnValuesTest</test>
@@ -210,10 +210,10 @@
 		</regex>
 		<regex>
 			<test>ColumnWidthTest</test>
-			<expression>\d{2}</expression>
-			<description>containing only 2 digit</description>
-			<successMessage>Column with 2 digit</successMessage>
-			<failureMessage>Column NOT 2 digit</failureMessage>
+			<expression>\d{1,3}</expression>
+			<description>containing between 1 and 3 digit</description>
+			<successMessage>Column between 1 and 3 digit</successMessage>
+			<failureMessage>Column between 1 and 3 digit</failureMessage>
 		</regex>
 	</column>
 	<column>

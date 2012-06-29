@@ -143,10 +143,10 @@
 			
 			<regex>
 				<test>ColumnWidthTest</test>
-				<expression>^.{1,255}$</expression>
-				<description>Values are between 1 and 255 characters long</description>
-				<successMessage>Values are between 1 and 255 characters long</successMessage>
-				<failureMessage>Values are not between 1 and 255 characters long</failureMessage>
+				<expression>^.{1,500}$</expression>
+				<description>Values are between 1 and 500 characters long</description>
+				<successMessage>Values are between 1 and 500 characters long</successMessage>
+				<failureMessage>Values are not between 1 and 500 characters long</failureMessage>
 			</regex>
 			
 			<regex>
