@@ -221,7 +221,6 @@
 										<loadDBTableName>prev_simplerefset_d</loadDBTableName>
 										<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_Refset_SimpleDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>
-									
 									<LoadFileParameter>
 										<loadDBTableName>prev_attributevaluerefset_f</loadDBTableName>
 										<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_AttributeValueFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
@@ -382,7 +381,21 @@
 					<artifactId>wb-release-process</artifactId>
 					<version>1.0-SNAPSHOT</version>
 					<type>zip</type>
-					<classifier>daily</classifier>
+					<classifier>delta</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>full</classifier>
 				</dependency>
 			</dependencies>
 			
@@ -393,9 +406,9 @@
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
 							
-							<!-- This should get dependency from svn repository where previous release artifacts are present-->
+							<!-- This should get dependency from archiva where daily release artifacts are present-->
 							<execution>
-								<id>extract-dependencies-2</id>
+								<id>extract-dependencies-delta</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -407,12 +420,50 @@
 											<artifactId>wb-release-process</artifactId>
 											<version>1.0-SNAPSHOT</version>
 											<type>zip</type>
+											<classifier>delta</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
 								</configuration>
 							</execution>
-							
+							<execution>
+								<id>extract-dependencies-snapshot</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>1.0-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-full</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>1.0-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
 							<execution>
 								<id>extract-manifest-2</id>
 								<phase>generate-sources</phase>
@@ -421,16 +472,16 @@
 								</goals>
 								<configuration>
 						 			<artifactItems>
-							  			<artifactItem>
-							   				<groupId>org.ihtsdo.release.assertion</groupId>
-							   				<artifactId>release-assertion-resources</artifactId>
-							   				<version>0.0.1-SNAPSHOT</version>
-							  				<type>zip</type>
-							  			</artifactItem>
-						 			</artifactItems>
-						 		<outputDirectory>${project.manifest}</outputDirectory>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+								<outputDirectory>${project.manifest}</outputDirectory>
 							</configuration>
-					   	  </execution>
+							</execution>
 						</executions>
 					</plugin>
 						
@@ -467,12 +518,10 @@
 											<loadDBTableName>curr_concept_s</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Snapshot/sct2_Concept_Snapshot_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
 											<loadDBTableName>curr_description_d</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Delta/sct2_Description_Delta-en_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
-										
 										<LoadFileParameter>
 											<loadDBTableName>curr_description_f</loadDBTableName>
 											<loadReleaseFileName>${project.rf2CurrentReleaseFolder}/destination/Full/sct2_Description_Full-en_INT_${project.releaseDate}.txt</loadReleaseFileName>
@@ -787,7 +836,7 @@
 				<configuration>
 					<vodbDirectory>${project.build.directory}/generated-resources/berkeley-db</vodbDirectory>
 				</configuration>
-				</execution>       
+				</execution>
 				
 				<execution>
 					<id>bcs-read-all0</id>
@@ -799,7 +848,6 @@
 						<changeSetDir>${project.build.directory}/generated-resources/profiles</changeSetDir>
 					</configuration>
 				</execution>
-				
 				<execution>
 					<id>vodb-commit-csi0</id>
 					<phase>generate-sources</phase>
@@ -807,7 +855,6 @@
 						<goal>vodb-commit</goal>
 					</goals>
 				</execution>
-		       
 				<execution>
 					<id>vodb-set-default-config</id>
 					<phase>generate-sources</phase>
@@ -815,7 +862,6 @@
 						<goal>vodb-set-default-config</goal>
 					</goals>
 				</execution>
-		     
 				<execution>
 					<id>vodb-set-view-point</id>
 					<phase>generate-sources</phase>
@@ -830,7 +876,6 @@
 					<time>${project.releaseTimeInDatabase}</time>
 					</configuration>
 				</execution>
-				
 				<execution>
 					<id>vodb-set-edit-path</id>
 					<phase>generate-sources</phase>
@@ -846,7 +891,6 @@
 					</editPaths>
 					</configuration>
 				</execution>
-			
 				<execution>
 					<id>vodb-close0</id>
 					<phase>generate-sources</phase>
@@ -856,21 +900,20 @@
 					<configuration>
 						<vodbDirectory>${project.build.directory}/generated-resources/berkeley-db</vodbDirectory>
 					</configuration>
-				</execution>  
+				</execution>
 				</executions>
 				</plugin>
-
-	 		<plugin>
-			<groupId>org.ihtsdo.release.assertion</groupId>
-			<artifactId>release-cs-econcept-xml-transformation</artifactId>
-			<version>${project.version}</version>
-		 	<executions>
+				<plugin>
+				<groupId>org.ihtsdo.release.assertion</groupId>
+				<artifactId>release-cs-econcept-xml-transformation</artifactId>
+				<version>${project.version}</version>
+				<executions>
 				<execution>
-			 		<id>export-xml-builder</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>export-xml-builder</goal>
-						</goals>
+					<id>export-xml-builder</id>
+					<phase>generate-sources</phase>
+					<goals>
+						<goal>export-xml-builder</goal>
+					</goals>
 					<configuration>
 						<changeSetDir>${project.build.directory}/generated-resources/profiles</changeSetDir>
 						<outputFileName>${project.changesetTransformation}/changeset.xml</outputFileName>
@@ -884,8 +927,8 @@
 						<namespaceId>${project.ws.namespaceId}</namespaceId>
 						<currentEditCycleDate>23/01/2012</currentEditCycleDate>
 					</configuration>
-			 	</execution>
-			 </executions>
+				</execution>
+			</executions>
 			</plugin>
 			
 			<plugin>
@@ -974,40 +1017,37 @@
 			  <target>1.6</target>
 			</configuration>
 			</plugin>
-		   </plugins>      
-		  </build>
-	  </profile>
-		<profile>
-			<id>archive-results</id>
-			  <build>
-				<plugins>
-					<plugin>
-		                <groupId>org.apache.maven.plugins</groupId>
-		                <artifactId>maven-assembly-plugin</artifactId>
-		                <executions>
-		                    <execution>
-		                        <id>assembly-zip</id>
-		                        <phase>package</phase>
-		                        <goals>
-		                            <goal>single</goal>
-		                        </goals>
-		                        <configuration>
-		                            <descriptors>
-		                                <descriptor>src/main/assembly/archive-zip.xml</descriptor>
-		                            </descriptors>
-		                            <ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
-		                        </configuration>
-		                    </execution>
-		                </executions>
-		            </plugin>
-				</plugins>
-			</build>
-		</profile>
-		
-		
-		
-		
-		
+			</plugins>
+		</build>
+	</profile>
+	
+	<profile>
+		<id>archive-results</id>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<executions>
+						<execution>
+						<id>assembly-zip</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+						<descriptors>
+							<descriptor>src/main/assembly/archive-zip.xml</descriptor>
+						</descriptors>
+						<ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+						</configuration>
+					</execution>
+				</executions>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+
 		<profile>
 			<id>run-release-file-qa</id>
 			 <dependencies>
@@ -1016,7 +1056,21 @@
 					<artifactId>wb-release-process</artifactId>
 					<version>1.0-SNAPSHOT</version>
 					<type>zip</type>
-					<classifier>daily</classifier>
+					<classifier>delta</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<type>zip</type>
+					<classifier>full</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo</groupId>
@@ -1038,9 +1092,9 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
-							<!-- This should get dependency from archiva as automated daily release process-->
+							<!-- This should get dependency from archiva where daily release artifacts are present-->
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-delta</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1052,15 +1106,54 @@
 											<artifactId>wb-release-process</artifactId>
 											<version>1.0-SNAPSHOT</version>
 											<type>zip</type>
+											<classifier>delta</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
 								</configuration>
 							</execution>
-							
+							<execution>
+								<id>extract-dependencies-snapshot</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>1.0-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-full</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>1.0-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+
 							<!-- This should get dependency from svn repository where current release artifacts are present-->
 							<execution>
-								<id>extract-dependencies-2</id>
+								<id>extract-dependencies-current-release</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1080,7 +1173,7 @@
 							
 							<!-- This should get dependency from svn repository where previous release artifacts are present-->
 							<execution>
-								<id>extract-dependencies-3</id>
+								<id>extract-dependencies-previous-release</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1100,7 +1193,7 @@
 							
 							<!-- This should get manifest xml file from svn repository-->
 							<execution>
-								<id>extract-manifest-4</id>
+								<id>extract-manifest-package-xml</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1119,7 +1212,7 @@
 						</execution>
 						<!-- This should get metadata xml files from svn repository -->
 							<execution>
-								<id>extract-metadata-5</id>
+								<id>extract-metadata-metadata</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1138,6 +1231,7 @@
 					   	  </execution>
 					</executions>
 					</plugin>
+					
 					<plugin>
 						<groupId>org.ihtsdo.release.assertion</groupId>
 						<artifactId>release-file-qa</artifactId>
