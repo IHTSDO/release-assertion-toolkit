@@ -4,7 +4,6 @@
 	<script uuid="84f5edda-1249-4d79-87da-e248e61f06a6" category="release-type-validation" sqlFile="release-type-full-validation-concept.sql" text="The current Concept full file contains all previously published data unchanged."></script>
 	<script uuid="492bacf0-7d88-45ba-ab26-974150ed9541" category="release-type-validation" sqlFile="release-type-full-validation-description.sql" text="The current Description full file contains all previously published data unchanged."></script>
 	<script uuid="fd8ed390-94e9-4fd9-9e20-902a24273dca" category="release-type-validation" sqlFile="release-type-full-validation-stated-relationship.sql" text="The current Stated Relationship full file contains all previously published data unchanged."></script>
-	<script uuid="b46ec8df-1bfd-4825-be49-f09ed8a0076b" category="release-type-validation" sqlFile="release-type-full-validation-inferred-relationship.sql" text="The current Inferred Relationship full file contains all previously published data unchanged."></script>
 	<script uuid="433adc93-fdd5-462a-b1fa-11fb4045a9ec" category="release-type-validation" sqlFile="release-type-full-validation-definition.sql" text="The current Definition full file contains all previously published data unchanged."></script>
 	<script uuid="653ce147-780e-4b3d-8afe-bd8d116c8c17" category="release-type-validation" sqlFile="release-type-full-validation-association-refset.sql" text="The current Association refset full file contains all previously published data unchanged."></script>
 	<script uuid="1f6b5876-7714-4362-a065-3906d059a122" category="release-type-validation" sqlFile="release-type-full-validation-attributevalue-refset.sql" text="The current AttributeValue refset full file contains all previously published data unchanged."></script>
@@ -32,23 +31,40 @@
 	<script uuid="659e5e7e-c84f-4c63-b95f-e5d4f26705b5" category="release-type-validation" sqlFile="release-type-delta-validation-simplemap-refset.sql" text="The current simple map refset delta file is an accurate derivative of the current full file"></script>
 	<script uuid="4789c1f0-1776-448e-9ddf-8d1b9986a5cc" category="release-type-validation" sqlFile="release-type-delta-validation-simple-refset.sql" text="The current simple refset delta file is an accurate derivative of the current full file"></script>
 	<script uuid="bbfbeae4-4b58-465a-9c16-1e8c4454384c" category="release-type-validation" sqlFile="release-type-full-delta-validation-concept.sql" text="The current full concept file consists of the previously published full file and the changes for the current release"></script>
+	
+	<!--Commented as per RT request
 	<script uuid="7c4165b0-bff2-4b62-b70c-f68d5a147053" category="release-type-validation" sqlFile="release-type-full-delta-validation-description.sql" text="The current full description file consists of the previously published full file and the changes for the current release"></script>
-	<script uuid="b0ce145b-323b-484c-9cdc-25ea021e179d" category="release-type-validation" sqlFile="release-type-full-delta-validation-definition.sql" text="The current full text definition file consists of the previously published full file and the changes for the current release"></script>
 	<script uuid="b1d75e1c-ea12-4567-a8b9-f69923a57cdf" category="release-type-validation" sqlFile="release-type-full-delta-validation-stated-relationship.sql" text="The current full stated relationship file consists of the previously published full file and the changes for the current release"></script>
+	<script uuid="28c3a31d-7a9d-48f6-8eb9-18c25b6306fb" category="release-type-validation" sqlFile="release-type-full-delta-validation-language-refset.sql" text="The current full language refset file consists of the previously published full file and the changes for the current release"></script>
+	<script uuid="f41f178e-0fe9-42c8-91f2-581c5ad09a5b" category="release-type-validation" sqlFile="release-type-full-delta-validation-attributevalue-refset.sql" text="The current full attribute value refset file consists of the previously published full file and the changes for the current release"></script>
+	<script uuid="13363e71-60ab-4d1b-975c-f38f7d87d106" category="release-type-validation" sqlFile="release-type-full-delta-validation-simplemap-refset.sql" text="The current full simple map refset file consists of the previously published full file and the changes for the current release"></script>
+	<script uuid="79582950-bf7a-4f63-92cf-7809a29b5dc3" category="release-type-validation" sqlFile="release-type-snapshot-validation-inferred-relationship.sql" text="The current inferred relationship snapshot file is an accurate derivative of the current full file"></script>
+	<script uuid="91e26b70-ea15-4057-8c31-a1bf91614654" category="release-type-validation" sqlFile="release-type-snapshot-validation-language-refset.sql" text="The current language refset snapshot file is an accurate derivative of the current full file"></script>
+	<script uuid="b46ec8df-1bfd-4825-be49-f09ed8a0076b" category="release-type-validation" sqlFile="release-type-full-validation-inferred-relationship.sql" text="The current Inferred Relationship full file contains all previously published data unchanged."></script>
+	<script uuid="c3249e80-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-us-call-proc.sql" text="Calling procedure testing that terms that contain EN-US language-specific words are in the same US language refset." />
+	<script uuid="cc9c5340-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-gb-call-proc.sql" text="Calling procedure testing that terms that contain EN-GB language-specific words are in the same GB language refset." />	
+	<script uuid="0a4bba70-85b7-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-navigation.sql" text="targetComponentId does not refer to navigation concepts." />	
+	<script uuid="5c0186f3-0b72-4685-8aad-eff15a7f8880" category="component-centric-validation" sqlFile="component-centric-snapshot-description-consistent-semantic-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
+	<script uuid="f14d521f-2472-4871-9c4e-356f0f075a3a" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-code-unique.sql" text="CTV3 codes are unique in the CTV3 simple map refset"  />
+	<script uuid="5e80ea3e-c4dd-4ae3-8b75-f0567e42b962" category="component-centric-validation" sqlFile="component-centric-snapshot-snomed-rt-code-unique.sql" text="SNOMED RT codes are unique in the SNOMED RT simple map refset"  />
+	-->
+	
+	<script uuid="b0ce145b-323b-484c-9cdc-25ea021e179d" category="release-type-validation" sqlFile="release-type-full-delta-validation-definition.sql" text="The current full text definition file consists of the previously published full file and the changes for the current release"></script>
+	
 	<!--
 	<script uuid="5c37bee7-62ad-41f9-93e3-12eb4803e626" category="release-type-validation" sqlFile="release-type-full-delta-validation-inferred-relationship.sql" text="The current full inferred relationship file consists of the previously published full file and the changes for the current release"></script>
 	-->
-	<script uuid="28c3a31d-7a9d-48f6-8eb9-18c25b6306fb" category="release-type-validation" sqlFile="release-type-full-delta-validation-language-refset.sql" text="The current full language refset file consists of the previously published full file and the changes for the current release"></script>
+	
 	<script uuid="5491a181-02b0-48a8-bb17-f65c347e9b91" category="release-type-validation" sqlFile="release-type-full-delta-validation-association-refset.sql" text="The current full association refset file consists of the previously published full file and the changes for the current release"></script>
-	<script uuid="f41f178e-0fe9-42c8-91f2-581c5ad09a5b" category="release-type-validation" sqlFile="release-type-full-delta-validation-attributevalue-refset.sql" text="The current full attribute value refset file consists of the previously published full file and the changes for the current release"></script>
-	<script uuid="13363e71-60ab-4d1b-975c-f38f7d87d106" category="release-type-validation" sqlFile="release-type-full-delta-validation-simplemap-refset.sql" text="The current full simple map refset file consists of the previously published full file and the changes for the current release"></script>
+	
+	
 	<script uuid="b6926fdf-e24a-49ae-a50a-c7c972944804" category="release-type-validation" sqlFile="release-type-full-delta-validation-simple-refset.sql" text="The current full simple refset file consists of the previously published full file and the changes for the current release"></script>
 	<script uuid="645e3292-18d6-41df-b42a-58ba4d7240d5" category="release-type-validation" sqlFile="release-type-snapshot-validation-concept.sql" text="The current snapshot file is an accurate derivative of the current full file"></script>
 	<script uuid="13985234-923e-4d91-911b-b3262e353cfa" category="release-type-validation" sqlFile="release-type-snapshot-validation-definition.sql" text="The current text definition snapshot file is an accurate derivative of the current full file"></script>
 	<script uuid="8f2a12df-6088-433a-85a5-866410314fe6" category="release-type-validation" sqlFile="release-type-snapshot-validation-description.sql" text="The current description snapshot file is an accurate derivative of the current full file"></script>
 	<script uuid="23f18cc4-d2d7-4759-96e3-c7d0f0b30a3a" category="release-type-validation" sqlFile="release-type-snapshot-validation-stated-relationship.sql" text="The current stated relationship snapshot file is an accurate derivative of the current full file"></script>
-	<script uuid="79582950-bf7a-4f63-92cf-7809a29b5dc3" category="release-type-validation" sqlFile="release-type-snapshot-validation-inferred-relationship.sql" text="The current inferred relationship snapshot file is an accurate derivative of the current full file"></script>
-	<script uuid="91e26b70-ea15-4057-8c31-a1bf91614654" category="release-type-validation" sqlFile="release-type-snapshot-validation-language-refset.sql" text="The current language refset snapshot file is an accurate derivative of the current full file"></script>
+	
+	
 	<script uuid="b7597328-a11d-4910-b677-91aef3bd3aea" category="release-type-validation" sqlFile="release-type-snapshot-validation-association-refset.sql" text="The current association refset snapshot file is an accurate derivative of the current full file"></script>
 	<script uuid="f4f24394-cb3e-48b2-8cd0-7ec6c8671947" category="release-type-validation" sqlFile="release-type-snapshot-validation-attributevalue-refset.sql" text="The current attribute-value refset snapshot file is an accurate derivative of the current full file"></script>
 	<script uuid="1d38106d-495e-4d86-8936-33c7e5a12a8f" category="release-type-validation" sqlFile="release-type-snapshot-validation-simplemap-refset.sql" text="The current simple map refset snapshot file is an accurate derivative of the current full file"></script>
@@ -167,13 +183,13 @@
 	<script uuid="c9c9cab6-cef8-4249-8358-35716eaf07ab" category="report" sqlFile="report-qa.sql" text="Final Report Creation." />
 	
 	<script uuid="ba8918f0-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-us-def-proc.sql" text="Defines procedure that tests that terms that contain EN-US language-specific words are in the same US language refset." />
-	<script uuid="c3249e80-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-us-call-proc.sql" text="Calling procedure testing that terms that contain EN-US language-specific words are in the same US language refset." />
+	
 	<script uuid="c81ee170-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-gb-def-proc.sql" text="Defines procedure that tests that terms that contain EN-GB language-specific words are in the same GB language refset." />
-	<script uuid="cc9c5340-84f0-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-delta-language-lang-specific-words-gb-call-proc.sql" text="Calling procedure testing that terms that contain EN-GB language-specific words are in the same GB language refset." />
-	<script uuid="0a4bba70-85b7-11e1-b0c4-0800200c9a66" category="component-centric-validation" sqlFile="component-centric-snapshot-historical-association-navigation.sql" text="targetComponentId does not refer to navigation concepts." />
-	<script uuid="5c0186f3-0b72-4685-8aad-eff15a7f8880" category="component-centric-validation" sqlFile="component-centric-snapshot-description-consistent-semantic-tag.sql" text="All active FSNs for a given concept have the same semantic tag." />
-	<script uuid="f14d521f-2472-4871-9c4e-356f0f075a3a" category="component-centric-validation" sqlFile="component-centric-snapshot-ctv3-code-unique.sql" text="CTV3 codes are unique in the CTV3 simple map refset"  />
-	<script uuid="5e80ea3e-c4dd-4ae3-8b75-f0567e42b962" category="component-centric-validation" sqlFile="component-centric-snapshot-snomed-rt-code-unique.sql" text="SNOMED RT codes are unique in the SNOMED RT simple map refset"  />
+	
+	
+	
+	
+	
 	
 	<!--
 	<script uuid="f3c799e0-9add-11e1-a8b0-0800200c9a66" category="cs-parser" sqlFile="cs-parser-concept-basic-counts.sql" text="Before more complex operations, ensure proper counts exist"  />
