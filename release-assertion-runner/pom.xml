@@ -24,12 +24,18 @@
 		<drools.version>5.2.0.Final</drools.version>
 		<project.releaseDate>20130131</project.releaseDate>
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
-		<project.previousVersion>2012-07-31</project.previousVersion>		
+		<project.previousVersion>2012-07-31</project.previousVersion>
+		<project.currentVersion>2013-01-31</project.currentVersion>
+		<project.wbReleaseProcessVersion>1.3-SNAPSHOT</project.wbReleaseProcessVersion>			
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
+		<project.rf1PreviousReleaseFolder>${project.build.directory}/generated-sources/rf1Prev</project.rf1PreviousReleaseFolder>
+		<project.rf1CurrentReleaseFolder>${project.build.directory}/generated-sources/rf1Curr</project.rf1CurrentReleaseFolder>
 		<project.PreviousReleaseFolder>${project.build.directory}/generated-sources/Prev</project.PreviousReleaseFolder>
 		<project.CurrentReleaseFolder>${project.build.directory}/generated-sources/Curr</project.CurrentReleaseFolder>
+		
+
 		<project.manifest>${project.build.directory}/generated-sources/manifest</project.manifest>
 		<project.executedScripts>${project.build.directory}/generated-sources</project.executedScripts>
 		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>
@@ -379,22 +385,22 @@
 			 <dependencies>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
-					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<artifactId>wb-release-process</artifactId>					
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>delta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>snapshot</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>full</classifier>
 				</dependency>
@@ -419,7 +425,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>delta</classifier>
 										</artifactItem>
@@ -438,7 +444,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>snapshot</classifier>
 										</artifactItem>
@@ -457,7 +463,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>full</classifier>
 										</artifactItem>
@@ -1055,34 +1061,34 @@
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>delta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>snapshot</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<version>${project.wbReleaseProcessVersion}</version>
 					<type>zip</type>
 					<classifier>full</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo</groupId>
 					<artifactId>release-files-repository</artifactId>
-					<version>2012-01-31</version>
+					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo</groupId>
 					<artifactId>release-files-repository</artifactId>
-					<version>2012-07-31</version>
+					<version>${project.currentVersion}</version>
 					<type>zip</type>
 				</dependency>
 			</dependencies>
@@ -1105,7 +1111,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>delta</classifier>
 										</artifactItem>
@@ -1124,7 +1130,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>snapshot</classifier>
 										</artifactItem>
@@ -1143,7 +1149,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo.intl.release.process</groupId>
 											<artifactId>wb-release-process</artifactId>
-											<version>1.0-SNAPSHOT</version>
+											<version>${project.wbReleaseProcessVersion}</version>
 											<type>zip</type>
 											<classifier>full</classifier>
 										</artifactItem>
@@ -1164,7 +1170,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo</groupId>
 											<artifactId>release-files-repository</artifactId>
- 											<version>2012-07-31</version>
+ 											<version>${project.currentVersion}</version>
 											<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1184,7 +1190,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo</groupId>
 											<artifactId>release-files-repository</artifactId>
- 											<version>2012-01-31</version>
+ 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1261,6 +1267,467 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<profile>
+			<id>load-previous-rf1-release</id>			
+			<!-- Below dependency is used to load previous release tables (currently limited to RF2)-->
+			 <dependencies>
+				<dependency>
+					<groupId>org.ihtsdo</groupId>
+					<artifactId>release-files-repository</artifactId>
+					<version>2012-07-31</version>
+					<type>zip</type>
+				</dependency>
+			</dependencies>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<!-- This should get dependency from svn repository where previous release artifacts are present-->
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo</groupId>
+											<artifactId>release-files-repository</artifactId>
+ 											<version>2012-01-31</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							
+							<execution>
+								<id>extract-manifest-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+						 			<artifactItems>
+							  			<artifactItem>
+							   				<groupId>org.ihtsdo.release.assertion</groupId>
+							   				<artifactId>release-assertion-resources</artifactId>
+							   				<version>0.0.1-SNAPSHOT</version>
+							  				<type>zip</type>
+							  			</artifactItem>
+						 			</artifactItems>
+						 		<outputDirectory>${project.manifest}</outputDirectory>
+							</configuration>
+					   	  </execution>
+						</executions>
+					</plugin>
+						
+					<plugin>
+						<groupId>org.ihtsdo.release.assertion</groupId>
+						<artifactId>release-database-setup</artifactId>
+					 	<version>${project.version}</version>
+						<executions>
+						<execution>
+							<id>import-prev-rf1-releasefiles-to-database</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>import-releasefile-to-database</goal>
+							</goals>
+							<configuration>
+								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+								<username>root</username>
+								<password>snomed11</password>
+								<createTableScript>${project.manifest}/scriptsRF1/special/create-prev-rf1-table-index.sql</createTableScript>
+								<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
+								<queryTimeOut>900</queryTimeOut>
+								<importConfig>
+									<LoadFileParameter>
+										<loadDBTableName>prev_concept</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Concepts_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_description</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Descriptions_en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_relationship</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Relationships_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_stated_relationship</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_textdefinition</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_canonical</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/OtherResources/Canonical Table/res1_Canonical_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_references</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_References_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_componenthistory</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_ComponentHistory_Core_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsetmembers_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsets_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsetmembers_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsets_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsetmembers_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_SubsetMembers_NonHuman_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsets_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_Subsets_NonHuman_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsetmembers_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_SubsetMembers_VTMVMP_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_subsets_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_Subsets_VTMVMP_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmaptargets_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMapTargets_ICD9_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmapsets_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMapSets_ICD9_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmaps_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMaps_ICD9_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmaptargets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmapsets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>prev_crossmaps_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1PreviousReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>													
+								</importConfig>
+							</configuration>
+						</execution>
+					</executions>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	
+		
+		
+		
+		
+		
+		
+		
+		<profile>
+			<id>load-current-rf1-release</id>			
+			<!-- Below dependency is used to load previous release tables (currently limited to RF2)-->
+			 <dependencies>
+				<dependency>
+					<groupId>org.ihtsdo</groupId>
+					<artifactId>release-files-repository</artifactId>
+					<version>2012-07-31</version>
+					<type>zip</type>
+				</dependency>
+			</dependencies>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<!-- This should get dependency from svn repository where current release artifacts are present-->
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo</groupId>
+											<artifactId>release-files-repository</artifactId>
+ 											<version>2012-07-31</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							
+							<execution>
+								<id>extract-manifest-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+						 			<artifactItems>
+							  			<artifactItem>
+							   				<groupId>org.ihtsdo.release.assertion</groupId>
+							   				<artifactId>release-assertion-resources</artifactId>
+							   				<version>0.0.1-SNAPSHOT</version>
+							  				<type>zip</type>
+							  			</artifactItem>
+						 			</artifactItems>
+						 		<outputDirectory>${project.manifest}</outputDirectory>
+							</configuration>
+					   	  </execution>
+						</executions>
+					</plugin>
+						
+					<plugin>
+						<groupId>org.ihtsdo.release.assertion</groupId>
+						<artifactId>release-database-setup</artifactId>
+					 	<version>${project.version}</version>
+						<executions>
+						<execution>
+							<id>import-curr-rf1-releasefiles-to-database</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>import-releasefile-to-database</goal>
+							</goals>
+							<configuration>
+								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+								<username>root</username>
+								<password>snomed11</password>
+								<createTableScript>${project.manifest}/scriptsRF1/special/create-curr-rf1-table-index.sql</createTableScript>
+								<executedSqlDirectory>${project.executedScripts}/executedScripts/build-resources</executedSqlDirectory>
+								<queryTimeOut>900</queryTimeOut>
+								<importConfig>
+									<LoadFileParameter>
+										<loadDBTableName>curr_concept</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Concepts_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_description</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Descriptions_en_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_relationship</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Relationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_stated_relationship</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_textdefinition</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_canonical</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/Canonical Table/res1_Canonical_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_references</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_References_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_componenthistory</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_ComponentHistory_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_SubsetMembers_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_Subsets_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_SubsetMembers_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_Subsets_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaptargets_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMapTargets_ICD9_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmapsets_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMapSets_ICD9_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaps_icd9</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMaps_ICD9_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaptargets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmapsets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaps_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>													
+								</importConfig>
+							</configuration>
+						</execution>
+					</executions>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<profile>
+			<id>execute-scripts-rf1</id>
+			  <build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>extract-manifest</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.manifest}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+ 					<plugin>
+						<groupId>org.ihtsdo.release.assertion</groupId>
+						<artifactId>release-assertion-manifest</artifactId>
+					 	<version>${project.version}</version>
+						<executions>
+							<execution>
+								<id>execute-sql-rf1</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>execute-sql</goal>
+								</goals>
+								<configuration>
+									<runlistFile>${project.manifest}/xml/lists/runListRF1.xml</runlistFile>
+									<execProperties>${project.manifest}/xml/properties/exec-properties.xml</execProperties>
+									<sqlDirectory>${project.manifest}/scriptsRF1</sqlDirectory>
+									<executedSqlDirectory>${project.executedScripts}/executedScriptsRF1/execute-scripts</executedSqlDirectory>
+									<queryTimeOut>900</queryTimeOut>
+									<url>jdbc:mysql://localhost:3306/localpostqatest</url>
+									<username>root</username>
+									<password>snomed11</password>
+									<breakOnFailure>false</breakOnFailure>
+									<databaseName>postqa</databaseName>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		
+		
+		
 		
 		
 	</profiles>
