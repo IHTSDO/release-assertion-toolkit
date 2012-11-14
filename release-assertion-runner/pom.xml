@@ -24,6 +24,7 @@
 		<drools.version>5.2.0.Final</drools.version>
 		<project.releaseDate>20130131</project.releaseDate>
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
+		<project.previousVersion>2012-07-31</project.previousVersion>		
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
@@ -77,8 +78,8 @@
 			 <dependencies>
 				<dependency>
 					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
-					<version>2012-01-31</version>
+					<artifactId>release-files-repository</artifactId>					
+					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
 			</dependencies>
@@ -101,7 +102,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo</groupId>
 											<artifactId>release-files-repository</artifactId>
- 											<version>2012-01-31</version>
+ 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
 									</artifactItems>
