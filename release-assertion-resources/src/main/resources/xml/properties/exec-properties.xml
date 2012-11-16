@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <exec-properties>
-	<property variable="CURRENT-RELEASE-DATE" value="20120731"/>
-	<property variable="PREVIOUS-RELEASE-DATE" value="20120131"/>
+	<property variable="CURRENT-RELEASE-DATE" value="20130131"/>
+	<property variable="PREVIOUS-RELEASE-DATE" value="20120731"/>
 </exec-properties>
