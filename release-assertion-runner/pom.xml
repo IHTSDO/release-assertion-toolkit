@@ -26,7 +26,7 @@
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
 		<project.previousVersion>2012-07-31</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.3-SNAPSHOT</project.wbReleaseProcessVersion>			
+		<project.wbReleaseProcessVersion>1.0-SNAPSHOT</project.wbReleaseProcessVersion>			
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
@@ -335,7 +335,7 @@
 						<goal>import-releasefile-to-database</goal>
 				    </goals>
 			   		<configuration>
-					<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+					<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 					<username>root</username>
 					<password>snomed11</password>
 					<createTableScript>${project.manifest}/scripts/special/create-resource-tables.sql</createTableScript>
@@ -506,7 +506,7 @@
 									<goal>import-releasefile-to-database</goal>
 								</goals>
 								<configuration>
-									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 									<username>root</username>
 									<password>snomed11</password>
 									<createTableScript>${project.manifest}/scripts/special/create-curr-table-index.sql</createTableScript>
@@ -699,7 +699,7 @@
 									<executedSqlDirectory>${project.executedScripts}/executedScripts/execute-scripts</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
 									<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>-->
-									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>false</breakOnFailure>
@@ -1350,7 +1350,7 @@
 								<goal>import-releasefile-to-database</goal>
 							</goals>
 							<configuration>
-								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>  
 								<username>root</username>
 								<password>snomed11</password>
 								<createTableScript>${project.manifest}/scriptsRF1/special/create-prev-rf1-table-index.sql</createTableScript>
@@ -1480,6 +1480,11 @@
 					<version>2012-07-31</version>
 					<type>zip</type>
 				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+				 	<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>1.1.6</version>
+ 				</dependency>
 			</dependencies>
 			
 			<build>
@@ -1541,7 +1546,7 @@
 								<goal>import-releasefile-to-database</goal>
 							</goals>
 							<configuration>
-								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>  
 								<username>root</username>
 								<password>snomed11</password>
 								<createTableScript>${project.manifest}/scriptsRF1/special/create-curr-rf1-table-index.sql</createTableScript>
@@ -1712,7 +1717,7 @@
 									<sqlDirectory>${project.manifest}/scriptsRF1</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScriptsRF1/execute-scripts</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
-									<url>jdbc:mysql://localhost:3306/localpostqatest</url>
+									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>false</breakOnFailure>
