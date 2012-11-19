@@ -19,6 +19,10 @@
       <directory>src/main/resources/package</directory>
       <outputDirectory>package</outputDirectory>
     </fileSet>
+    <fileSet>
+      <directory>src/main/resources/scriptsRF1</directory>
+      <outputDirectory>scriptsRF1</outputDirectory>
+    </fileSet>
   </fileSets>
   <includeBaseDirectory>false</includeBaseDirectory>
 </assembly>
