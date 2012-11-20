@@ -79,7 +79,7 @@
 			
 			<regex>
 				<test>ColumnValidTest</test>
-				<expression>^20\d\d(01|07)(30|31)$</expression>
+				<expression>^\d\d\d\d(01|07)(30|31)$</expression>
 				<description>Values in the column are valid</description>
 				<successMessage>Column contains valid values</successMessage>
 				<failureMessage>Column contains invalid values</failureMessage>

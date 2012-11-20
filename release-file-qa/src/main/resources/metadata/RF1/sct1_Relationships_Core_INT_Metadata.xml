@@ -140,7 +140,7 @@
 				<successMessage>Data type is valid for column</successMessage>
 				<failureMessage>Data type is not valid for column</failureMessage>
 			</regex>
-			
+			<!-- not working
 			<regex>
 				<test>ColumnWidthTest</test>
 				<expression>^.{6,18}$</expression>
@@ -148,7 +148,7 @@
 				<successMessage>Values are between 6 and 18 characters long</successMessage>
 				<failureMessage>Values are not between 6 and 18 characters long</failureMessage>
 			</regex>
-			
+			 -->
 			<regex>
 				<test>ColumnValidTest</test>
 				<expression>^\d+$</expression>
