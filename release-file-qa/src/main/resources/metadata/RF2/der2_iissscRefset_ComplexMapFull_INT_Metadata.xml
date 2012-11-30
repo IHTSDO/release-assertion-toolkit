@@ -17,7 +17,7 @@
 		<position>1</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -49,7 +49,7 @@
 		<position>2</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -74,7 +74,7 @@
 		<position>3</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -99,7 +99,7 @@
 		<position>4</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -131,7 +131,7 @@
 		<position>5</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -163,7 +163,7 @@
 		<position>6</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -189,7 +189,7 @@
 		<position>7</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -216,7 +216,7 @@
 		<position>8</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -241,7 +241,7 @@
 		<position>9</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -252,7 +252,7 @@
 		<position>10</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -263,7 +263,7 @@
 		<position>11</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>
@@ -288,7 +288,7 @@
 		<position>12</position>
 		<regex>
 			<test>ColumnNullTest</test>
-			<expression>.*</expression>
+			<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 			<description>Column is NOT null</description>
 			<successMessage>Column is NOT null</successMessage>
 			<failureMessage>Column is null</failureMessage>

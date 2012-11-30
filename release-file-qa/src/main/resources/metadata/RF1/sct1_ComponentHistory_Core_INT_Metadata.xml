@@ -19,7 +19,7 @@
 			
 			<regex>
 				<test>ColumnNullTest</test>
-				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 				<description>Column is null or not as specified</description>
 				<successMessage>Column is not nullable</successMessage>
 				<failureMessage>Column is nullable</failureMessage>
@@ -55,7 +55,7 @@
 			
 			<regex>
 				<test>ColumnNullTest</test>
-				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 				<description>Column is null or not as specified</description>
 				<successMessage>Column is not nullable</successMessage>
 				<failureMessage>Column is nullable</failureMessage>
@@ -78,8 +78,8 @@
 			</regex>
 			
 			<regex>
-				<test>ColumnValidTest</test>
-				<expression>^\d\d\d\d(01|07)(30|31)$</expression>
+				<test>ColumnValidTest</test>				
+				<expression>^(19|20)\d\d(01|07|11|06)(30|31|29|16|17|01)$</expression>
 				<description>Values in the column are valid</description>
 				<successMessage>Column contains valid values</successMessage>
 				<failureMessage>Column contains invalid values</failureMessage>
@@ -91,7 +91,7 @@
 			
 			<regex>
 				<test>ColumnNullTest</test>
-				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 				<description>Column is null or not as specified</description>
 				<successMessage>Column is not nullable</successMessage>
 				<failureMessage>Column is nullable</failureMessage>
@@ -127,7 +127,7 @@
 			
 			<regex>
 				<test>ColumnNullTest</test>
-				<expression>.*</expression> <!-- NOT NULLABLE -->
+				<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
 				<description>Column is null or not as specified</description>
 				<successMessage>Column is not nullable</successMessage>
 				<failureMessage>Column is nullable</failureMessage>
