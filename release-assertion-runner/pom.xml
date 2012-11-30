@@ -26,7 +26,7 @@
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
 		<project.previousVersion>2012-07-31</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.0-SNAPSHOT</project.wbReleaseProcessVersion>			
+		<project.wbReleaseProcessVersion>1.0</project.wbReleaseProcessVersion>			
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
@@ -932,7 +932,7 @@
 						<executionId>${project.ws.executionId}</executionId>
 						<sctModuleId>${project.ws.sctModuleId}</sctModuleId>
 						<namespaceId>${project.ws.namespaceId}</namespaceId>
-						<currentEditCycleDate>23/01/2012</currentEditCycleDate>
+						<currentEditCycleDate>23/07/2012</currentEditCycleDate>
 					</configuration>
 				</execution>
 			</executions>
@@ -1086,10 +1086,10 @@
 					<type>zip</type>
 				</dependency>
 				<dependency>
-					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
-					<version>${project.currentVersion}</version>
-					<type>zip</type>
+					<groupId>org.ihtsdo.intl</groupId>
+				 	<artifactId>rf2-rf1-conversion-mojo</artifactId>
+				 	<version>1.1.7</version>
+				 	<type>zip</type>
 				</dependency>
 			</dependencies>
 			
@@ -1158,7 +1158,7 @@
 								</configuration>
 							</execution>
 
-							<!-- This should get dependency from svn repository where current release artifacts are present-->
+							<!-- This should get dependency from svn repository where current release artifacts are present
 							<execution>
 								<id>extract-dependencies-current-release</id>
 								<phase>generate-sources</phase>
@@ -1172,6 +1172,26 @@
 											<artifactId>release-files-repository</artifactId>
  											<version>${project.currentVersion}</version>
 											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							-->
+							<!-- This should get rf1 files from archiva-->
+							<execution>
+								<id>extract-dependencies-current-release</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>										
+											<groupId>org.ihtsdo.intl</groupId>
+				 							<artifactId>rf2-rf1-conversion-mojo</artifactId>
+				 							<version>1.1.7</version>
+				 							<type>zip</type>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.CurrentReleaseFolder}</outputDirectory>
@@ -1251,7 +1271,7 @@
 							<sourceDirectory>${project.build.directory}/generated-sources</sourceDirectory>
 							<currentWorkingDirectory>${project.build.directory}/currentWorkingDirectory</currentWorkingDirectory>
 							<previousWorkingDirectory>${project.build.directory}/previousWorkingDirectory</previousWorkingDirectory>
-							<manifestFileName>${project.manifest}/package/internationalmanifest.xml</manifestFileName>
+							<manifestFileName>${project.manifest}/package/betamanifest.xml</manifestFileName>
 							<metadataPath>${project.build.directory}/metadata</metadataPath>
 						</configuration>
 						<executions>
@@ -1285,8 +1305,8 @@
 			 <dependencies>
 				<dependency>
 					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
-					<version>2012-07-31</version>
+					<artifactId>release-files-repository</artifactId>					
+					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
 			</dependencies>
@@ -1309,7 +1329,7 @@
 										<artifactItem>
 											<groupId>org.ihtsdo</groupId>
 											<artifactId>release-files-repository</artifactId>
- 											<version>2012-01-31</version>
+ 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1475,15 +1495,10 @@
 			<!-- Below dependency is used to load previous release tables (currently limited to RF2)-->
 			 <dependencies>
 				<dependency>
-					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
-					<version>2012-07-31</version>
-					<type>zip</type>
-				</dependency>
-				<dependency>
 					<groupId>org.ihtsdo.intl</groupId>
 				 	<artifactId>rf2-rf1-conversion-mojo</artifactId>
-					<version>1.1.6</version>
+					<version>1.1.7</version>
+					<type>zip</type>
  				</dependency>
 			</dependencies>
 			
@@ -1493,7 +1508,7 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
 						<executions>
-							<!-- This should get dependency from svn repository where current release artifacts are present-->
+								<!-- This should get rf1 files from archiva-->
 							<execution>
 								<id>extract-dependencies-1</id>
 								<phase>generate-sources</phase>
@@ -1502,11 +1517,11 @@
 								</goals>
 								<configuration>
 									<artifactItems>
-										<artifactItem>
-											<groupId>org.ihtsdo</groupId>
-											<artifactId>release-files-repository</artifactId>
- 											<version>2012-07-31</version>
-											<type>zip</type>
+										<artifactItem>										
+											<groupId>org.ihtsdo.intl</groupId>
+				 							<artifactId>rf2-rf1-conversion-mojo</artifactId>
+				 							<version>1.1.7</version>
+				 							<type>zip</type>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
@@ -1555,61 +1570,77 @@
 								<importConfig>
 									<LoadFileParameter>
 										<loadDBTableName>curr_concept</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Concepts_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Concepts_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>
 									<LoadFileParameter>
 										<loadDBTableName>curr_description</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Descriptions_en_INT_${project.releaseDate}.txt</loadReleaseFileName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Descriptions_en_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>									
 									<LoadFileParameter>
 										<loadDBTableName>curr_relationship</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/Content/sct1_Relationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Relationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>
 									<LoadFileParameter>
 										<loadDBTableName>curr_stated_relationship</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>
 									<LoadFileParameter>
 										<loadDBTableName>curr_textdefinition</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>																									
+									<LoadFileParameter>
+										<loadDBTableName>curr_references</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/History/sct1_References_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+							
+									<LoadFileParameter>
+										<loadDBTableName>curr_componenthistory</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/History/sct1_ComponentHistory_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_us</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_gb</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaptargets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmapsets_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_crossmaps_icdo</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>	
+									 	 
+									<!-- how to automate canonical load process
 									<LoadFileParameter>
 										<loadDBTableName>curr_canonical</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/Canonical Table/res1_Canonical_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_references</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_References_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									<LoadFileParameter>
-										<loadDBTableName>curr_componenthistory</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Terminology/History/sct1_ComponentHistory_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsetmembers_us</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsets_us</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsetmembers_gb</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsets_gb</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									
+									Name issue and folder not present
 									<LoadFileParameter>
 										<loadDBTableName>curr_subsetmembers_nonhuman</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_SubsetMembers_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>									
 									<LoadFileParameter>
 										<loadDBTableName>curr_subsets_nonhuman</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/NonHumanSubset/der1_Subsets_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									merge issue
 									<LoadFileParameter>
 										<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_SubsetMembers_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
@@ -1617,7 +1648,7 @@
 									<LoadFileParameter>
 										<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_Subsets_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
+									</LoadFileParameter>									
 									
 									<LoadFileParameter>
 										<loadDBTableName>curr_crossmaptargets_icd9</loadDBTableName>
@@ -1630,19 +1661,8 @@
 									<LoadFileParameter>
 										<loadDBTableName>curr_crossmaps_icd9</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMaps_ICD9_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_crossmaptargets_icdo</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_crossmapsets_icdo</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									<LoadFileParameter>
-										<loadDBTableName>curr_crossmaps_icdo</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>													
+									</LoadFileParameter>	
+									-->																
 								</importConfig>
 							</configuration>
 						</execution>
