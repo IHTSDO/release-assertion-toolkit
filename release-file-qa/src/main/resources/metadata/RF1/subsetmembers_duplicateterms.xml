@@ -127,7 +127,7 @@
 			
 			<regex>
 				<test>ColumnNullTest</test>
-				<expression>.*\S.*</expression> <!-- NOT NULLABLE -->
+				<expression>.*</expression> <!-- NOT NULLABLE -->
 				<description>Column is null or not as specified</description>
 				<successMessage>Column is not nullable</successMessage>
 				<failureMessage>Column is nullable</failureMessage>

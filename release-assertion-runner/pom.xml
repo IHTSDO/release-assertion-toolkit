@@ -26,7 +26,8 @@
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
 		<project.previousVersion>2012-07-31</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.4</project.wbReleaseProcessVersion>			
+		<project.wbReleaseProcessVersion>1.4</project.wbReleaseProcessVersion>	
+		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>				 									
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
@@ -1088,7 +1089,7 @@
 				<dependency>
 					<groupId>org.ihtsdo.intl</groupId>
 				 	<artifactId>rf2-rf1-conversion-mojo</artifactId>
-				 	<version>1.1.10</version>
+				 	<version>${project.rf2rf1conversionmojoVersion}</version>
 				 	<type>zip</type>
 				</dependency>
 			</dependencies>
@@ -1190,7 +1191,7 @@
 										<artifactItem>										
 											<groupId>org.ihtsdo.intl</groupId>
 				 							<artifactId>rf2-rf1-conversion-mojo</artifactId>
-				 							<version>1.1.10</version>
+				 							<version>${project.rf2rf1conversionmojoVersion}</version>
 				 							<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1497,7 +1498,7 @@
 				<dependency>
 					<groupId>org.ihtsdo.intl</groupId>
 				 	<artifactId>rf2-rf1-conversion-mojo</artifactId>
-					<version>1.1.7</version>
+					<version>${project.rf2rf1conversionmojoVersion}</version>
 					<type>zip</type>
  				</dependency>
 			</dependencies>
@@ -1520,7 +1521,7 @@
 										<artifactItem>										
 											<groupId>org.ihtsdo.intl</groupId>
 				 							<artifactId>rf2-rf1-conversion-mojo</artifactId>
-				 							<version>1.1.7</version>
+				 							<version>${project.rf2rf1conversionmojoVersion}</version>
 				 							<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1561,7 +1562,8 @@
 								<goal>import-releasefile-to-database</goal>
 							</goals>
 							<configuration>
-								<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>  
+								<!--<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>-->
+								<url>jdbc:mysql://localhost:3306/localpostqatest</url> 
 								<username>root</username>
 								<password>snomed11</password>
 								<createTableScript>${project.manifest}/scriptsRF1/special/create-curr-rf1-table-index.sql</createTableScript>
@@ -1625,31 +1627,37 @@
 										<loadDBTableName>curr_crossmaps_icdo</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>	
-									 	 
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>									
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_nonhuman</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_vmp_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_vtm_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_vmp_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									<LoadFileParameter>
+										<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
+										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_vtm_${project.releaseDate}.txt</loadReleaseFileName>
+									</LoadFileParameter>
+									
 									<!-- how to automate canonical load process
 									<LoadFileParameter>
 										<loadDBTableName>curr_canonical</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/OtherResources/Canonical Table/res1_Canonical_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 									</LoadFileParameter>									
-									Name issue and folder not present
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsetmembers_nonhuman</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsets_nonhuman</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_NonHuman_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>
-									merge issue
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_SubsetMembers_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									<LoadFileParameter>
-										<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
-										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/Subsets/VTMVMP/der1_Subsets_VTMVMP_INT_${project.releaseDate}.txt</loadReleaseFileName>
-									</LoadFileParameter>									
-									
+									Name issue and folder not present (non-human) - merge issue (VTMVMP)
 									<LoadFileParameter>
 										<loadDBTableName>curr_crossmaptargets_icd9</loadDBTableName>
 										<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/org/ihtsdo/rf1/CrossMaps/ICD9/der1_CrossMapTargets_ICD9_INT_${project.releaseDate}.txt</loadReleaseFileName>
@@ -1737,11 +1745,12 @@
 									<sqlDirectory>${project.manifest}/scriptsRF1</sqlDirectory>
 									<executedSqlDirectory>${project.executedScripts}/executedScriptsRF1/execute-scripts</executedSqlDirectory>
 									<queryTimeOut>900</queryTimeOut>
-									<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> 
+									<!--<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>-->
+									<url>jdbc:mysql://localhost:3306/localpostqatest</url>  
 									<username>root</username>
 									<password>snomed11</password>
 									<breakOnFailure>false</breakOnFailure>
-									<databaseName>postqa</databaseName>
+									<databaseName>localpostqatest</databaseName>
 								</configuration>
 							</execution>
 						</executions>

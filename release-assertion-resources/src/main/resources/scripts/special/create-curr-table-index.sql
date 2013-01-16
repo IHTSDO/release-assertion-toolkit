@@ -665,3 +665,55 @@ create index idx_refsetid on curr_simplerefset_s(refsetid);
 create index idx_referencedcomponentid on curr_simplerefset_s(referencedcomponentid);
 
 
+
+create table ct_2013jan_intl.curr_complexmap_s (	
+    id varchar2(36) not null enable, 
+	effectivetime varchar2(8), 
+	active char(1), 
+	moduleid varchar2(18), 
+	refsetid varchar2(18), 
+	referencedcomponentid varchar2(18), 
+	mapgroup number, 
+	mappriority number(10,0), 
+	maprule varchar2(255), 
+	mapadvice varchar2(255), 
+	maptarget varchar2(255), 
+	correlationid varchar2(18)
+   ) ;
+alter table ct_2013jan_intl.curr_complexmap_s add unique (id) enable;
+ 
+ 
+create table ct_2013jan_intl.curr_complexmap_d (	
+    id varchar2(36) not null enable, 
+	effectivetime varchar2(8), 
+	active char(1), 
+	moduleid varchar2(18), 
+	refsetid varchar2(18), 
+	referencedcomponentid varchar2(18), 
+	mapgroup number, 
+	mappriority number(10,0), 
+	maprule varchar2(255), 
+	mapadvice varchar2(255), 
+	maptarget varchar2(255), 
+	correlationid varchar2(18)
+   ) ;
+alter table ct_2013jan_intl.curr_complexmap_d add unique (id) enable;
+ 
+ 
+create table ct_2013jan_intl.curr_complexmap_f (	
+    id varchar2(36) not null enable, 
+	effectivetime varchar2(8), 
+	active char(1), 
+	moduleid varchar2(18), 
+	refsetid varchar2(18), 
+	referencedcomponentid varchar2(18), 
+	mapgroup number, 
+	mappriority number(10,0), 
+	maprule varchar2(255), 
+	mapadvice varchar2(255), 
+	maptarget varchar2(255), 
+	correlationid varchar2(18)
+   );
+   
+commit;
+
