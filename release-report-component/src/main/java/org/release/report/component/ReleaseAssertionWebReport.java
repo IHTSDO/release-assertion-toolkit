@@ -12,7 +12,6 @@ import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.sink.SinkEventAttributeSet;
 import org.apache.maven.doxia.sink.SinkEventAttributes;
 import org.apache.maven.doxia.siterenderer.Renderer;
-import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
@@ -20,8 +19,12 @@ import org.apache.maven.reporting.MavenReportException;
 import com.mysql.jdbc.Connection;
 
 /**
- * Hello world!
+ * The <codebatchQACheck</code> class iterates through the concepts from a
+ * viewpoint and preforms QA
  * 
+ * @author termmed
+ * @goal assertion-report
+ * @phase site
  */
 public class ReleaseAssertionWebReport extends AbstractMavenReport {
 	/**
