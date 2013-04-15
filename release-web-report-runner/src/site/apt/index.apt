@@ -1,11 +1,10 @@
  -----
- The Batch QA Results Site
+Release Assertion Result Site
  -----
- QA Team
+Assertion Team
  -----
 
-Batch QA Results Site
+Release Assertion Result Site
 
- This site is used to browse the batch QA results from last executions. 
- Select the Quality Assurance report from the 'Project reports' section in the menu on the left.
- In the 'Project Information' section you will find different reports about the QA runner project configuration.
+ This site is used to browse the release assertion results from last executions. 
+
