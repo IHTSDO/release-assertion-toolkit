@@ -1,0 +1,105 @@
+p {
+    margin: 0 auto 1.6em;
+    width: 800px;
+}
+ul.fdtablePaginater {
+    display: table;
+    height: 2em;
+    list-style: none outside none;
+    margin: 0 auto 2em;
+    padding: 0;
+    text-align: center;
+    width: auto;
+}
+ul.fdtablePaginater li {
+    -moz-user-select: none;
+    color: #666666;
+    display: table-cell;
+    list-style: none outside none;
+    padding-right: 4px;
+}
+ul.fdtablePaginater li a.currentPage {
+    border-color: #A84444 !important;
+    color: #000000;
+}
+ul.fdtablePaginater li a:active {
+    border-color: #222222 !important;
+    color: #222222;
+}
+ul.fdtablePaginater li a, ul.fdtablePaginater li div {
+    border: 1px solid #CCCCCC;
+    color: #666666;
+    display: block;
+    font-family: georgia,serif;
+    font-size: 1em;
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    text-decoration: none;
+    width: 2em;
+}
+ul.fdtablePaginater li div {
+    opacity: 0.5;
+}
+ul.fdtablePaginater li a span, ul.fdtablePaginater li div span {
+    background: url("../media/gradient.gif") repeat-x scroll 0 -20px #FFFFFF;
+    border: 1px solid #FFFFFF;
+    display: block;
+    line-height: 2em;
+}
+ul.fdtablePaginater li a {
+    cursor: pointer;
+}
+ul.fdtablePaginater li a:focus {
+    border-color: #AAAAAA;
+    color: #333333;
+    text-decoration: none;
+}
+.fdtablePaginaterWrap {
+    clear: both;
+    text-align: center;
+    text-decoration: none;
+}
+ul.fdtablePaginater li .next-page span, ul.fdtablePaginater li .previous-page span, ul.fdtablePaginater li .first-page span, ul.fdtablePaginater li .last-page span {
+    font-weight: bold !important;
+}
+td.sized1 {
+    text-align: left;
+    width: 16em;
+}
+td.sized2 {
+    text-align: left;
+    width: 10em;
+}
+td.sized3 {
+    text-align: left;
+    width: 7em;
+}
+tfoot td {
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: right;
+    text-transform: uppercase;
+}
+#visibleTotal {
+    text-align: center;
+}
+* html ul.fdtablePaginater li div span, * html ul.fdtablePaginater li div span {
+    background: none repeat scroll 0 0 #EEEEEE;
+}
+tr.invisibleRow {
+    display: none;
+    visibility: hidden;
+}
+p.paginationText {
+    font-style: oblique;
+}
+
+.findings{
+	visibility: visible;
+}
+
+#results-fdtablePaginaterWrapTop{
+	visibility: hidden;
+	height: 0px;
+}
