@@ -1,0 +1,11 @@
+ -----
+ The Batch QA Results Site
+ -----
+ QA Team
+ -----
+
+Batch QA Results Site
+
+ This site is used to browse the batch QA results from last executions. 
+ Select the Quality Assurance report from the 'Project reports' section in the menu on the left.
+ In the 'Project Information' section you will find different reports about the QA runner project configuration.

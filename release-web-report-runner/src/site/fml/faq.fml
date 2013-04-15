@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<faqs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/FML/1.0"
+  xsi:schemaLocation="http://maven.apache.org/FML/1.0 http://maven.apache.org/xsd/fml-1.0.xsd"
+  id="General FAQ">
+  <part id="General">
+    <faq id="how">
+      <question>How do I see the QA results?</question>
+      <answer>
+        <p>
+          You need to select "Project reports" on the left menu, then
+          select "Quality Assurance Report".
+          
+          The report displays details about the execution, the list of
+          rules with the number of findings. Clicking on the rule name
+          or on the number of cases will display the rule details and
+          list of concepts with violations, in the lower part of the
+          screen.
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>
