@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<scm>
+		<connection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-web-report</connection>
+		<developerConnection>scm:svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-web-report</developerConnection>
+		<url>https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/trunk/release-assertion-web-report</url>
+	</scm>
+	<artifactId>release-assertion-web-report</artifactId>
+	<packaging>jar</packaging>
+
+	<name>release-assertion-web-report</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repos/qa-reports-site/prod-id-july2013-ext</site.deploy.url>
+		<doxia.version>1.2</doxia.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.13</version>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<site>
+			<id>release-assertion-web-report</id>
+			<name>release-assertion-web-report</name>
+			<url>${site.deploy.url}</url>
+		</site>
+	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>ramdisk</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<directory>/Volumes/ramdisk/maven-targets/org.ihtsdo.release.assertion.release-assertion-web-runner</directory>
+			</build>
+		</profile>
+		<profile>
+			<id>run-web-report</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-site-plugin</artifactId>
+						<version>3.1</version>
+						<dependencies>
+							<dependency>
+								<groupId>org.ihtsdo.release.assertion</groupId>
+								<artifactId>release-report-component</artifactId>
+								<version>0.0.1-SNAPSHOT</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<reportPlugins>
+								<plugin>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-project-info-reports-plugin</artifactId>
+									<version>2.2</version>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>index</report>
+												<report>summary</report>
+												<report>dependencies</report>
+												<report>scm</report>
+												<report>plugins</report>
+												<report>plugin-management</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
+								<plugin>
+									<groupId>org.ihtsdo.release.assertion</groupId>
+									<artifactId>release-report-component</artifactId>
+									<configuration>
+										<!--<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url> -->
+										<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+										<username>root</username>
+										<password>snomed11</password>
+									</configuration>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>assertion-report.properties</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
+							</reportPlugins>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
