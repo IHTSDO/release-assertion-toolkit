@@ -18,7 +18,6 @@
 	<artifactId>release-assertion-runner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>release-assertion-runner</name>
-	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
