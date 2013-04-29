@@ -35,7 +35,7 @@
 		<project.rf1CurrentReleaseFolder>${project.build.directory}/generated-sources/rf1Curr</project.rf1CurrentReleaseFolder>
 		<project.PreviousReleaseFolder>${project.build.directory}/generated-sources/Prev</project.PreviousReleaseFolder>
 		<project.CurrentReleaseFolder>${project.build.directory}/generated-sources/Curr</project.CurrentReleaseFolder>
-
+		<project.report.excel.name>Report.xls</project.report.excel.name>
 
 		<project.manifest>${project.build.directory}/generated-sources/manifest</project.manifest>
 		<project.executedScripts>${project.build.directory}/generated-sources</project.executedScripts>
@@ -735,8 +735,8 @@
 									<username>root</username>
 									<password>snomed11</password>
 									<reportLocation>${project.ReleaseQAReportFolder}/report</reportLocation>
-									<reportName>Report.txt</reportName>
-									<excelreportName>Report.xls</excelreportName>
+									<reportName>${project.report.excel.name}</reportName>
+									<excelreportName>${project.report.excel.name}</excelreportName>
 								</configuration>
 							</execution>
 						</executions>
@@ -1679,18 +1679,6 @@
 				</plugins>
 			</build>
 		</profile>
-
-
-
-
-
-
-
-
-
-
-
-
 		<profile>
 			<id>execute-scripts-rf1</id>
 			<build>
@@ -1759,5 +1747,49 @@
 			</build>
 		</profile>
 
+		<profile>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-installers</id>
+								<goals>
+									<goal>attach-artifact</goal>
+								</goals>
+								<configuration>
+									<artifacts>
+										<artifact>
+											<file>${project.ReleaseQAReportFolder}/report/${project.report.excel.name}</file>
+											<type>xls</type>
+											<classifier>report</classifier>
+										</artifact>
+									</artifacts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.maestrodev</groupId>
+						<artifactId>collabnet-maven-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<project>projects.ihtsdo_migration_project</project>
+							<teamForgeUrl>https://csfe.aceworkspace.net/</teamForgeUrl>
+						</configuration>
+						<executions>
+							<execution>
+								<id>deploy</id>
+								<goals>
+									<goal>deploy-to-releases</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
