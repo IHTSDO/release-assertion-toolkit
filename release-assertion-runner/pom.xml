@@ -70,6 +70,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.collabnet</groupId>
+			<artifactId>sf_soap50_sdk</artifactId>
+			<version>5.0</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 
@@ -1777,7 +1783,9 @@
 						<artifactId>collabnet-maven-plugin</artifactId>
 						<version>1.1</version>
 						<configuration>
-							<project>projects.ihtsdo_migration_project</project>
+							<project>
+								projects.ihtsdo_migration_project
+							</project>
 							<teamForgeUrl>https://csfe.aceworkspace.net/</teamForgeUrl>
 						</configuration>
 						<executions>
