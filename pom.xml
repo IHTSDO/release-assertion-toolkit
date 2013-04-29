@@ -38,6 +38,14 @@
 		<svnusername>${relusername}</svnusername>
 		<svnpassword>${relpassword}</svnpassword>
 	</properties>
+	<distributionManagement>
+		<site>
+			<id>release-assertion-web-report</id>
+			<name>release-assertion-web-report</name>
+			<url>${site.deploy.url}</url>
+		</site>
+	</distributionManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
