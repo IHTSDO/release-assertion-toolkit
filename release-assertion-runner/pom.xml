@@ -24,6 +24,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<drools.version>5.2.0.Final</drools.version>
 		<project.releaseDate>20130131</project.releaseDate>
+		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/site-report</site.deploy.url>
 		<project.previousReleaseDate>20120731</project.previousReleaseDate>
 		<project.previousVersion>2012-07-31</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
@@ -56,6 +57,23 @@
 		<project.endpointURL>http://mgr.servers.aceworkspace.net:50042/axis2/services/id_generator</project.endpointURL>
 	</properties>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>maestro_cap.cap-snapshots</id>
+			<name>CAP Workbench Snapshots Repository</name>
+			<url> http://mgr.servers.aceworkspace.net/apps/maestro_cap/archiva/repository/cap-snapshots//</url>
+		</snapshotRepository>
+		<repository>
+			<id>maestro_cap.cap-releases</id>
+			<name>CAP Workbench Releases Repository</name>
+			<url>http://mgr.servers.aceworkspace.net/apps/maestro_cap/archiva/repository/cap-releases/</url>
+		</repository>
+		<site>
+			<id>release-assertion-web-report</id>
+			<name>release-assertion-web-report</name>
+			<url>${site.deploy.url}</url>
+		</site>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>

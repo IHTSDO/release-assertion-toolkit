@@ -34,27 +34,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repos/release-assertion-toolkit/site-report</site.deploy.url>
 		<svnusername>${relusername}</svnusername>
 		<svnpassword>${relpassword}</svnpassword>
 	</properties>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>maestro_cap.cap-snapshots</id>
-			<name>CAP Workbench Snapshots Repository</name>
-			<url> http://mgr.servers.aceworkspace.net/apps/maestro_cap/archiva/repository/cap-snapshots//</url>
-		</snapshotRepository>
-		<repository>
-			<id>maestro_cap.cap-releases</id>
-			<name>CAP Workbench Releases Repository</name>
-			<url>http://mgr.servers.aceworkspace.net/apps/maestro_cap/archiva/repository/cap-releases/</url>
-		</repository>
-		<site>
-			<id>release-assertion-web-report</id>
-			<name>release-assertion-web-report</name>
-			<url>${site.deploy.url}</url>
-		</site>
-	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
