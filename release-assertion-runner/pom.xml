@@ -56,6 +56,14 @@
 		<project.endpointURL>http://mgr.servers.aceworkspace.net:50042/axis2/services/id_generator</project.endpointURL>
 	</properties>
 
+	<distributionManagement>
+		<site>
+			<id>release-assertion-web-report</id>
+			<name>release-assertion-web-report</name>
+			<url>${site.deploy.url}</url>
+		</site>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
