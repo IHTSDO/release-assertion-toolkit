@@ -1753,6 +1753,52 @@
 			</build>
 		</profile>
 
-		
+		<profile>
+			<id>deploy-report-file</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-installers</id>
+								<goals>
+									<goal>attach-artifact</goal>
+								</goals>
+								<configuration>
+									<artifacts>
+										<artifact>
+											<file>${project.ReleaseQAReportFolder}/report/${project.report.excel.name}</file>
+											<type>xls</type>
+											<classifier>report</classifier>
+										</artifact>
+									</artifacts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.maestrodev</groupId>
+						<artifactId>collabnet-maven-plugin</artifactId>
+						<version>1.1</version>
+						<configuration>
+							<project>
+								projects.ihtsdo_migration_project
+							</project>
+							<teamForgeUrl>https://csfe.aceworkspace.net/</teamForgeUrl>
+						</configuration>
+						<executions>
+							<execution>
+								<id>deploy</id>
+								<goals>
+									<goal>deploy-to-releases</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
