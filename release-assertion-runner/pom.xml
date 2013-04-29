@@ -1748,6 +1748,7 @@
 		</profile>
 
 		<profile>
+			<id>deploy-report-file</id>
 			<build>
 				<plugins>
 					<plugin>
