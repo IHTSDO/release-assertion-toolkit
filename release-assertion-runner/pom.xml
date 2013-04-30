@@ -1785,9 +1785,6 @@
 										<reportSet>
 											<reports>
 												<report>index</report>
-												<report>summary</report>
-												<report>dependencies</report>
-												<report>scm</report>
 												<report>plugins</report>
 												<report>plugin-management</report>
 											</reports>
