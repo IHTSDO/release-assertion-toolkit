@@ -24,9 +24,9 @@
 		<drools.version>5.2.0.Final</drools.version>
 		<project.releaseDate>20130731</project.releaseDate>
 		<project.previousReleaseDate>20130131</project.previousReleaseDate>
-		<project.previousVersion>2013-01-31</project.previousVersion>
+		<project.previousVersion>1.4</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.4</project.wbReleaseProcessVersion>
+		<project.wbReleaseProcessVersion>1.5-SNAPSHOT</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
@@ -86,8 +86,8 @@
 				limited to RF2) -->
 			<dependencies>
 				<dependency>
-					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
@@ -110,8 +110,8 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.ihtsdo</groupId>
-											<artifactId>release-files-repository</artifactId>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
@@ -755,7 +755,7 @@
 							<target>1.6</target>
 						</configuration>
 					</plugin>
-					
+
 				</plugins>
 			</build>
 		</profile>
@@ -1093,8 +1093,9 @@
 					<classifier>full</classifier>
 				</dependency>
 				<dependency>
-					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
+
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
@@ -1210,8 +1211,8 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.ihtsdo</groupId>
-											<artifactId>release-files-repository</artifactId>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
@@ -1308,8 +1309,8 @@
 				limited to RF2) -->
 			<dependencies>
 				<dependency>
-					<groupId>org.ihtsdo</groupId>
-					<artifactId>release-files-repository</artifactId>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
 				</dependency>
@@ -1332,8 +1333,8 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.ihtsdo</groupId>
-											<artifactId>release-files-repository</artifactId>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
 										</artifactItem>
@@ -1819,7 +1820,7 @@
 			<id>deploy-report-file</id>
 			<build>
 				<plugins>
-					
+
 				</plugins>
 			</build>
 		</profile>
