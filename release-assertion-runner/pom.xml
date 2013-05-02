@@ -90,6 +90,21 @@
 					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
+					<classifier>full</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>delta</classifier>
 				</dependency>
 			</dependencies>
 
@@ -114,6 +129,45 @@
 											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf2PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf2PreviousReleaseFolder}</outputDirectory>
@@ -162,123 +216,123 @@
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>prev_concept_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Concept_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/sct2_Concept_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_concept_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Concept_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/sct2_Concept_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_concept_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Concept_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/sct2_Concept_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_description_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Description_Full-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/sct2_Description_Full-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_description_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Description_Snapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/sct2_Description_Snapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_description_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Description_Delta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/sct2_Description_Delta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_textdefinition_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_TextDefinition_Full-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/sct2_TextDefinition_Full-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_textdefinition_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_TextDefinition_Snapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/sct2_TextDefinition_Snapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_textdefinition_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_TextDefinition_Delta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/sct2_TextDefinition_Delta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_relationship_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_Relationship_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/sct2_Relationship_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_relationship_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_Relationship_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/sct2_Relationship_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_relationship_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_Relationship_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/sct2_Relationship_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_stated_relationship_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/sct2_StatedRelationship_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/sct2_StatedRelationship_Full_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_stated_relationship_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/sct2_StatedRelationship_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/sct2_StatedRelationship_Snapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_stated_relationship_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/sct2_StatedRelationship_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/sct2_StatedRelationship_Delta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplerefset_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_Refset_SimpleFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/der2_Refset_SimpleFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplerefset_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_Refset_SimpleSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/der2_Refset_SimpleSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplerefset_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_Refset_SimpleDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/der2_Refset_SimpleDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_attributevaluerefset_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_AttributeValueFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/der2_cRefset_AttributeValueFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_attributevaluerefset_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_AttributeValueSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/der2_cRefset_AttributeValueSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_attributevaluerefset_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_AttributeValueDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/der2_cRefset_AttributeValueDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_associationrefset_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_AssociationReferenceFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/der2_cRefset_AssociationReferenceFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_associationrefset_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_AssociationReferenceSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/der2_cRefset_AssociationReferenceSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_associationrefset_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_AssociationReferenceDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/der2_cRefset_AssociationReferenceDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplemaprefset_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_sRefset_SimpleMapFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/der2_sRefset_SimpleMapFull_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplemaprefset_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_sRefset_SimpleMapSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/der2_sRefset_SimpleMapSnapshot_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_simplemaprefset_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_sRefset_SimpleMapDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/der2_sRefset_SimpleMapDelta_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_langrefset_f</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/full/der2_cRefset_LanguageFull-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/full/der2_cRefset_LanguageFull-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_langrefset_s</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/snapshot/der2_cRefset_LanguageSnapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/snapshot/der2_cRefset_LanguageSnapshot-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>prev_langrefset_d</loadDBTableName>
-											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/org/ihtsdo/rf2/delta/der2_cRefset_LanguageDelta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf2PreviousReleaseFolder}/destination/delta/der2_cRefset_LanguageDelta-en_INT_${project.previousReleaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 									</importConfig>
 								</configuration>
