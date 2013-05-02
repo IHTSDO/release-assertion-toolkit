@@ -117,7 +117,7 @@
 							<!-- This should get dependency from svn repository where previous 
 								release artifacts are present -->
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-1-full</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -136,7 +136,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-1-delta</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -155,7 +155,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-1-snapshot</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
