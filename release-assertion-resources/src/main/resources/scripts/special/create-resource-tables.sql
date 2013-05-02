@@ -9,8 +9,7 @@ create table if not exists qa_run (
 	effectivetime DATETIME,
 	runid BIGINT not null auto_increment,
 	primary key (runid)
-);
-
+)engine=myisam default charset=utf8;
 
 
 create table if not exists qa_result (
@@ -18,7 +17,7 @@ create table if not exists qa_result (
 	assertionuuid CHAR(36),
 	assertiontext VARCHAR(255),
 	details VARCHAR(255)
-);
+)engine=myisam default charset=utf8;
 
 
 create table if not exists qa_report (
@@ -27,7 +26,7 @@ create table if not exists qa_report (
 	assertiontext VARCHAR(255),
 	result CHAR(1),
 	count BIGINT
-);
+)engine=myisam default charset=utf8;
 
 
 
@@ -46,17 +45,16 @@ create table if not exists qa_report (
 
 
 drop table if exists res_navigationconcept;
-
 create table res_navigationconcept (
-	 id		varchar(36),
-	 effectiveTime	varchar(255),
-	 active		varchar(255),
-	 moduleId	varchar(255),
-	 refsetId	varchar(255),
-	 referencedComponentId	varchar(255),
-	 ordernum	varchar(255),
- 	linkedTo	varchar(255)
-);
+	 id		char(36),
+	 effectiveTime	char(8),
+	 active		char(1),
+	 moduleId	bigint,
+	 refsetId	bigint,
+	 referencedComponentId	bigint,
+	 ordernum	int,
+ 	linkedTo	bigint
+)engine=myisam default charset=utf8;
 create index idx_navconcepts on res_navigationconcept(referencedComponentId);
 
 
