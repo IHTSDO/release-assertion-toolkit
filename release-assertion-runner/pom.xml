@@ -22,9 +22,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<drools.version>5.2.0.Final</drools.version>
-		<project.releaseDate>20130131</project.releaseDate>
-		<project.previousReleaseDate>20120731</project.previousReleaseDate>
-		<project.previousVersion>2012-07-31</project.previousVersion>
+		<project.releaseDate>20130731</project.releaseDate>
+		<project.previousReleaseDate>20130131</project.previousReleaseDate>
+		<project.previousVersion>2013-01-31</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
 		<project.wbReleaseProcessVersion>1.4</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>
