@@ -1,7 +1,3 @@
-drop database if exists postqa;
-create database if not exists postqa;
-use postqa;
-
 drop table if exists prev_concept_f;
 create table prev_concept_f(
 id bigint not null,
