@@ -34,7 +34,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<site.deploy.url>scm:svn:https://csfe.aceworkspace.net/svn/repos/qa-reports-site/release-assertion-toolkit</site.deploy.url>
+		<site.deploy.url>https://csfe.aceworkspace.net/svn/repos/qa-reports-site/release-assertion-toolkit</site.deploy.url>
 		<svnusername>${relusername}</svnusername>
 		<svnpassword>${relpassword}</svnpassword>
 	</properties>
