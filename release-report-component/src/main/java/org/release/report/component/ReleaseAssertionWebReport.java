@@ -3,6 +3,10 @@ package org.release.report.component;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -142,15 +146,37 @@ public class ReleaseAssertionWebReport extends AbstractMavenReport {
 			sink.head_();
 
 			sink.body();
-			sink.section1();
 
+			ResultSet rs = con.createStatement().executeQuery("select a.effectivetime," + " b.assertionuuid ," + " b.assertiontext , b.result , b.count " + " from qa_run a , qa_report b " + " where a.runid = b.runid " + " and a.runid = " + runId);
+
+			List<String> lista = new ArrayList<String>();
+			while (rs.next()) {
+				// String effectivetime = rs.getString(1);
+				String assertionuuid = rs.getString(2);
+				String assertiontext = rs.getString(3);
+				String result = rs.getString(4);
+				String count = rs.getString(5);
+
+				String row = assertionuuid + "," + result + "," + count + "," + assertiontext;
+				lista.add(row);
+			}
+
+			sink.section1();
+			// [5/6/13 3:30:29 PM] Alejandro Lopez Osornio: Last execution:
+			// 2013-05-06 03:10:32
+			// [5/6/13 3:31:00 PM] Alejandro Lopez Osornio: Result: 32 findings.
 			sink.sectionTitle1();
 			sink.text("QA run and report");
 			sink.sectionTitle1_();
 
 			sink.lineBreak();
-
-			ResultSet rs = con.createStatement().executeQuery("select a.effectivetime," + " b.assertionuuid ," + " b.assertiontext , b.result , b.count " + " from qa_run a , qa_report b " + " where a.runid = b.runid " + " and a.runid = " + runId);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			sink.definitionList();
+			sink.definitionListItem();
+			sink.text("Last execution: " + sdf.format(new Date()));
+			sink.definitionListItem_();
+			sink.definitionList_();
+			sink.lineBreak();
 
 			SinkEventAttributes tableAttr = new SinkEventAttributeSet();
 			tableAttr.addAttribute(SinkEventAttributes.ID, "results");
@@ -169,16 +195,9 @@ public class ReleaseAssertionWebReport extends AbstractMavenReport {
 			}
 			sink.tableRow_();
 
-			while (rs.next()) {
-				// String effectivetime = rs.getString(1);
-				String assertionuuid = rs.getString(2);
-				String assertiontext = rs.getString(3);
-				String result = rs.getString(4);
-				String count = rs.getString(5);
-
-				String row = assertionuuid + "," + result + "," + count + "," + assertiontext;
+			for (String string : lista) {
 				sink.tableRow();
-				String[] splited = row.split(",");
+				String[] splited = string.split(",");
 				for (int i = 0; i < splited.length; i++) {
 					sink.tableCell();
 					sink.text(splited[i]);
