@@ -1,36 +1,42 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>release-assertion-toolkit</artifactId>
-    <groupId>org.ihtsdo.release.assertion</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <packaging>maven-plugin</packaging>
-  <groupId>org.ihtsdo.release.assertion</groupId>
-  <artifactId>release-cs-xml-text-transformation</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>release-cs-xml-text-transformation</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-		<version>1.2.14</version>
-	</dependency>
-  </dependencies>
-  
-  <build>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>release-assertion-toolkit</artifactId>
+		<groupId>org.ihtsdo.release.assertion</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<packaging>maven-plugin</packaging>
+	<groupId>org.ihtsdo.release.assertion</groupId>
+	<artifactId>release-cs-xml-text-transformation</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>release-cs-xml-text-transformation</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.wagon-svn</groupId>
+			<artifactId>wagon-svn</artifactId>
+			<version>1.12</version>
+		</dependency>
+	</dependencies>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -42,5 +48,5 @@
 			</plugin>
 		</plugins>
 	</build>
-    
+
 </project>

@@ -1,34 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-  <parent> 
-  	<groupId>org.ihtsdo.release.assertion</groupId>
-  	<artifactId>release-assertion-toolkit</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-	
-  <modelVersion>4.0.0</modelVersion>  
- 
-  <artifactId>release-assertion-manifest</artifactId>
- 
-  <name>release-assertion-manifest</name> 
-  <description>Release QA Process SQL Library</description>
-  <url>http://maven.apache.org</url>
-	
-  <packaging>maven-plugin</packaging>
-  <dependencies>
-   	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.13</version>
-	</dependency>
-   	<dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-		<version>1.2.14</version>
-	</dependency>
-</dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <build>
+	<parent>
+		<groupId>org.ihtsdo.release.assertion</groupId>
+		<artifactId>release-assertion-toolkit</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>release-assertion-manifest</artifactId>
+
+	<name>release-assertion-manifest</name>
+	<description>Release QA Process SQL Library</description>
+	<url>http://maven.apache.org</url>
+
+	<packaging>maven-plugin</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.13</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.wagon-svn</groupId>
+			<artifactId>wagon-svn</artifactId>
+			<version>1.12</version>
+		</dependency>
+	</dependencies>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -40,5 +46,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
