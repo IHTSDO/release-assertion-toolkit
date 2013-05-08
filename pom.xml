@@ -74,4 +74,38 @@
 		<module>release-cs-econcept-xml-transformation</module>
 		<module>release-file-qa</module>
 	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.jvnet.wagon-svn</groupId>
+						<artifactId>wagon-svn</artifactId>
+						<version>1.12</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.2</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>index</report>
+										<report>plugins</report>
+										<report>plugin-management</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+					</reportPlugins>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
