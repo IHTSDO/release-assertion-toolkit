@@ -50,11 +50,6 @@
 			<artifactId>jxl</artifactId>
 			<version>2.6.10</version>
 		</dependency>
-		<dependency>
-			<groupId>org.jvnet.wagon-svn</groupId>
-			<artifactId>wagon-svn</artifactId>
-			<version>1.12</version>
-		</dependency>
 	</dependencies>
 
 	<build>

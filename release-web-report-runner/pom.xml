@@ -30,11 +30,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.13</version>
 		</dependency>
-		<dependency>
-			<groupId>org.jvnet.wagon-svn</groupId>
-			<artifactId>wagon-svn</artifactId>
-			<version>1.12</version>
-		</dependency>
 	</dependencies>
 
 	<distributionManagement>

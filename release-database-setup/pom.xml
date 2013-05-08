@@ -39,11 +39,6 @@
 			<artifactId>release-assertion-manifest</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.jvnet.wagon-svn</groupId>
-			<artifactId>wagon-svn</artifactId>
-			<version>1.12</version>
-		</dependency>
 	</dependencies>
 
 	<build>

@@ -15,20 +15,6 @@
 	<name>release-assertion-resources</name>
 	<description>Release QA Process Resources (SQL Script)</description>
 	<url>http://maven.apache.org</url>
-	<dependencies>
-		<dependency>
-			<groupId>org.jvnet.wagon-svn</groupId>
-			<artifactId>wagon-svn</artifactId>
-			<version>1.12</version>
-		</dependency>
-	</dependencies>
-	<distributionManagement>
-		<site>
-			<id>release-assertion-web-report</id>
-			<name>release-assertion-web-report</name>
-			<url>${site.deploy.url}</url>
-		</site>
-	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -48,36 +34,6 @@
 						<phase>package</phase>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>2.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.jvnet.wagon-svn</groupId>
-						<artifactId>wagon-svn</artifactId>
-						<version>1.12</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<reportPlugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>2.2</version>
-							<reportSets>
-								<reportSet>
-									<reports>
-										<report>index</report>
-										<report>plugins</report>
-										<report>plugin-management</report>
-									</reports>
-								</reportSet>
-							</reportSets>
-						</plugin>
-					</reportPlugins>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
