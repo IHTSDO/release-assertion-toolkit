@@ -34,7 +34,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESCRIPTION: id=',a.id, ': Description is active but has no active members in language refset.') 
+		a.id
 	
 	from curr_description_s a
 	inner join curr_concept_s c on a.conceptid = c.id

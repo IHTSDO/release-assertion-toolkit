@@ -12,11 +12,12 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('MEMBER: SNOMED RT code=',a.maptarget, ': SNOMED RT code is not unique.')
+		a.maptarget
 	from curr_simplemaprefset_s a
 	inner join curr_concept_s b 
 		on a.referencedcomponentid = b.id
 	where 1=1
+	and a.maptarget is not null
 	and a.refsetid = '900000000000498005'
 	group by binary a.maptarget
 	having count(*) > 1

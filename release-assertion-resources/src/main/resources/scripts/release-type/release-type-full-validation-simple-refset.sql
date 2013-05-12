@@ -19,20 +19,19 @@
 ********************************************************************************/
 	
 
-	create or replace view curr as
-		select *
-		from curr_simplerefset_f
-		where cast(effectivetime as datetime) <
-			(select max(cast(effectivetime as datetime)) 
-			 from curr_simplerefset_f);
+	create temporary table if not exists tmp_priorfullfromcurrent as
+	select *
+	from prev_simplerefset_f
+	where effectivetime != '<CURRENT-RELEASE-DATE>';
 
+/*  rows that are among the prior rows of the current simplerefset full file, that are not in the published prior refset*/
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-    concat('SIMPLE-REFSET: id=',a.id, ': refset member is in current release file, but not in prior release file.') 	        
-	from curr a
+    a.id
+	from tmp_priorfullfromcurrent a
 	left join prev_simplerefset_f b
 	on a.id = b.id
 	and a.effectivetime = b.effectivetime
@@ -46,15 +45,16 @@
     or b.moduleid is null
     or b.refsetid is null
     or b.referencedcomponentid is null;
-    
+
+/* rows that were published in the prior simple refset file, that are not among teh prior rows of the current file */    
     insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-    concat('SIMPLE-REFSET: id=',a.id, ': refset member is in prior release file, but not in current release file.') 	        
+    a.id
 	from prev_simplerefset_f a
-	left join curr b
+	left join tmp_priorfullfromcurrent b
 		on a.id = b.id
 		and a.effectivetime = b.effectivetime
 		and a.active = b.active
@@ -68,4 +68,4 @@
 	or b.refsetid is null
 	or b.referencedcomponentid is null;
 	
-	drop view curr;
+	drop table if exists tmp_priorfullfromcurrent;

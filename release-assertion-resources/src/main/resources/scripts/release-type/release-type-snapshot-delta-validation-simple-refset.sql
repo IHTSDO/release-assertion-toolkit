@@ -19,7 +19,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('SIMPLE REFSET: id=',a.id, ': Member in snapshot file, but not in delta file.') 	
+		a.id
 	from vw a
 	left join curr_simplerefset_d b
 		on a.id = b.id
@@ -38,7 +38,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('SIMPLE REFSET: id=',a.id, ': Member in delta but not in snapshot file.') 	
+		a.id
 	from curr_simplerefset_d a
 	left join vw b
 		on a.id = b.id

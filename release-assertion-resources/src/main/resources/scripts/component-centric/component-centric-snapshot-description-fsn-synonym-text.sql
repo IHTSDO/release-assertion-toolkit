@@ -40,7 +40,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESC: id=',a.id, ':Active FSN without correponding Synonyms.') 	
+		a.conceptid
 	from v_curr_snapshot_3 a;
 
 

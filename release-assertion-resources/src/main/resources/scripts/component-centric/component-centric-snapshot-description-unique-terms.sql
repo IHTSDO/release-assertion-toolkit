@@ -36,7 +36,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('DESC: id=',a.id, ':Term is not unique within hierarchy.') 
+		a.term
 	from tmp_description a
 	group by binary a.term, a.semantictag
 	having count(a.term) > 1
