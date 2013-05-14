@@ -3,7 +3,7 @@
 
 		<folder Name="Documentation" executeFileQA="true">
 			<folder Name="Current" executeFileQA="true">
-				<file Metadata="doc_BetaReleaseGuide_Current-en-US_INT_Metadata.xml" Name="doc_BetaReleaseGuide_Current-en-US_INT_20130131.pdf"/>
+				<file Metadata="doc_BetaReleaseGuide_Current-en-US_INT_Metadata.xml" Name="doc_BetaReleaseGuide_Current-en-US_INT_20130731.pdf"/>
 			</folder>
 		</folder>
 
@@ -11,85 +11,85 @@
 		<folder Name="RF2Release" executeFileQA="true">
 			<folder Name="Full" executeFileQA="true">
 				<folder Name="Terminology" executeFileQA="true">
-					<file Metadata="sct2_Concept_Full_INT_Metadata.xml" Name="sct2_Concept_Full_INT_20130131.txt"/>
-					<file Metadata="sct2_Description_Full-en_INT_Metadata.xml" Name="sct2_Description_Full-en_INT_20130131.txt"/>
-					<file Metadata="sct2_Relationship_Full_INT_Metadata.xml" Name="sct2_Relationship_Full_INT_20130131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Full_INT_Metadata.xml" Name="sct2_StatedRelationship_Full_INT_20130131.txt"/>
-					<file Metadata="sct2_Identifier_Full_INT_Metadata.xml" Name="sct2_Identifier_Full_INT_20130131.txt"/>
-					<file Metadata="sct2_TextDefinition_Full-en_INT_Metadata.xml" Name="sct2_TextDefinition_Full-en_INT_20130131.txt"/>
+					<file Metadata="sct2_Concept_Full_INT_Metadata.xml" Name="sct2_Concept_Full_INT_20130731.txt"/>
+					<file Metadata="sct2_Description_Full-en_INT_Metadata.xml" Name="sct2_Description_Full-en_INT_20130731.txt"/>
+					<file Metadata="sct2_Relationship_Full_INT_Metadata.xml" Name="sct2_Relationship_Full_INT_20130731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Full_INT_Metadata.xml" Name="sct2_StatedRelationship_Full_INT_20130731.txt"/>
+					<file Metadata="sct2_Identifier_Full_INT_Metadata.xml" Name="sct2_Identifier_Full_INT_20130731.txt"/>
+					<file Metadata="sct2_TextDefinition_Full-en_INT_Metadata.xml" Name="sct2_TextDefinition_Full-en_INT_20130731.txt"/>
 				</folder>
 				<folder Name="Refset" executeFileQA="true">
 					<folder Name="Content" executeFileQA="true">
-						<file Metadata="der2_cRefset_AssociationReferenceFull_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceFull_INT_20130131.txt"/>
-						<file Metadata="der2_cRefset_AttributeValueFull_INT_Metadata.xml" Name="der2_cRefset_AttributeValueFull_INT_20130131.txt"/>
-						<file Metadata="der2_Refset_SimpleFull_INT_Metadata.xml" Name="der2_Refset_SimpleFull_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceFull_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceFull_INT_20130731.txt"/>
+						<file Metadata="der2_cRefset_AttributeValueFull_INT_Metadata.xml" Name="der2_cRefset_AttributeValueFull_INT_20130731.txt"/>
+						<file Metadata="der2_Refset_SimpleFull_INT_Metadata.xml" Name="der2_Refset_SimpleFull_INT_20130731.txt"/>	
 					</folder>
-					<folder Name="Crossmap" executeFileQA="true">
-						<file Metadata="der2_sRefset_SimpleMapFull_INT_Metadata.xml" Name="der2_sRefset_SimpleMapFull_INT_20130131.txt"/>
+					<folder Name="Map" executeFileQA="true">
+						<file Metadata="der2_sRefset_SimpleMapFull_INT_Metadata.xml" Name="der2_sRefset_SimpleMapFull_INT_20130731.txt"/>
 					</folder>
 					<folder Name="Language" executeFileQA="true">
-						<file Metadata="der2_cRefset_LanguageFull-en_INT_Metadata.xml" Name="der2_cRefset_LanguageFull-en_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageFull-en_INT_Metadata.xml" Name="der2_cRefset_LanguageFull-en_INT_20130731.txt"/>	
 					</folder>
 					<folder Name="Metadata" executeFileQA="true">
-						<file Metadata="der2_cciRefset_RefsetDescriptorFull_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorFull_INT_20130131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencyFull_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyFull_INT_20130131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeFull_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeFull_INT_20130131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorFull_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorFull_INT_20130731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencyFull_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyFull_INT_20130731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeFull_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeFull_INT_20130731.txt"/>
 					</folder>
 				</folder>
 			</folder>
 			<folder Name="Snapshot" executeFileQA="true">
 				<folder Name="Terminology" executeFileQA="true">
-					<file Metadata="sct2_Concept_Snapshot_INT_Metadata.xml" Name="sct2_Concept_Snapshot_INT_20130131.txt"/>
-					<file Metadata="sct2_Description_Snapshot-en_INT_Metadata.xml" Name="sct2_Description_Snapshot-en_INT_20130131.txt"/>
-					<file Metadata="sct2_Relationship_Snapshot_INT_Metadata.xml" Name="sct2_Relationship_Snapshot_INT_20130131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Snapshot_INT_Metadata.xml" Name="sct2_StatedRelationship_Snapshot_INT_20130131.txt"/>
-					<file Metadata="sct2_Identifier_Snapshot_INT_Metadata.xml" Name="sct2_Identifier_Snapshot_INT_20130131.txt"/>
-					<file Metadata="sct2_TextDefinition_Snapshot-en_INT_Metadata.xml" Name="sct2_TextDefinition_Snapshot-en_INT_20130131.txt"/>
+					<file Metadata="sct2_Concept_Snapshot_INT_Metadata.xml" Name="sct2_Concept_Snapshot_INT_20130731.txt"/>
+					<file Metadata="sct2_Description_Snapshot-en_INT_Metadata.xml" Name="sct2_Description_Snapshot-en_INT_20130731.txt"/>
+					<file Metadata="sct2_Relationship_Snapshot_INT_Metadata.xml" Name="sct2_Relationship_Snapshot_INT_20130731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Snapshot_INT_Metadata.xml" Name="sct2_StatedRelationship_Snapshot_INT_20130731.txt"/>
+					<file Metadata="sct2_Identifier_Snapshot_INT_Metadata.xml" Name="sct2_Identifier_Snapshot_INT_20130731.txt"/>
+					<file Metadata="sct2_TextDefinition_Snapshot-en_INT_Metadata.xml" Name="sct2_TextDefinition_Snapshot-en_INT_20130731.txt"/>
 				</folder>
 				<folder Name="Refset" executeFileQA="true">
 					<folder Name="Content" executeFileQA="true">
-						<file Metadata="der2_cRefset_AssociationReferenceSnapshot_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceSnapshot_INT_20130131.txt"/>
-						<file Metadata="der2_cRefset_AttributeValueSnapshot_INT_Metadata.xml" Name="der2_cRefset_AttributeValueSnapshot_INT_20130131.txt"/>
-						<file Metadata="der2_Refset_SimpleSnapshot_INT_Metadata.xml" Name="der2_Refset_SimpleSnapshot_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceSnapshot_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceSnapshot_INT_20130731.txt"/>
+						<file Metadata="der2_cRefset_AttributeValueSnapshot_INT_Metadata.xml" Name="der2_cRefset_AttributeValueSnapshot_INT_20130731.txt"/>
+						<file Metadata="der2_Refset_SimpleSnapshot_INT_Metadata.xml" Name="der2_Refset_SimpleSnapshot_INT_20130731.txt"/>	
 					</folder>
-					<folder Name="Crossmap" executeFileQA="true">
-						<file Metadata="der2_sRefset_SimpleMapSnapshot_INT_Metadata.xml" Name="der2_sRefset_SimpleMapSnapshot_INT_20130131.txt"/>
+					<folder Name="Map" executeFileQA="true">
+						<file Metadata="der2_sRefset_SimpleMapSnapshot_INT_Metadata.xml" Name="der2_sRefset_SimpleMapSnapshot_INT_20130731.txt"/>
 					</folder>
 					<folder Name="Language" executeFileQA="true">
-						<file Metadata="der2_cRefset_LanguageSnapshot-en_INT_Metadata.xml" Name="der2_cRefset_LanguageSnapshot-en_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageSnapshot-en_INT_Metadata.xml" Name="der2_cRefset_LanguageSnapshot-en_INT_20130731.txt"/>	
 					</folder>
 					<folder Name="Metadata" executeFileQA="true">
-						<file Metadata="der2_cciRefset_RefsetDescriptorSnapshot_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorSnapshot_INT_20130131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencySnapshot_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencySnapshot_INT_20130131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeSnapshot_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeSnapshot_INT_20130131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorSnapshot_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorSnapshot_INT_20130731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencySnapshot_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencySnapshot_INT_20130731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeSnapshot_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeSnapshot_INT_20130731.txt"/>
 					</folder>
 				</folder>
 			</folder>
 			<folder Name="Delta" executeFileQA="true">
 				<folder Name="Terminology" executeFileQA="true">
-					<file Metadata="sct2_Concept_Delta_INT_Metadata.xml" Name="sct2_Concept_Delta_INT_20130131.txt"/>						
-					<file Metadata="sct2_Description_Delta-en_INT_Metadata.xml" Name="sct2_Description_Delta-en_INT_20130131.txt"/>
-					<file Metadata="sct2_Relationship_Delta_INT_Metadata.xml" Name="sct2_Relationship_Delta_INT_20130131.txt"/>
-					<file Metadata="sct2_StatedRelationship_Delta_INT_Metadata.xml" Name="sct2_StatedRelationship_Delta_INT_20130131.txt"/>
-					<file Metadata="sct2_Identifier_Delta_INT_Metadata.xml" Name="sct2_Identifier_Delta_INT_20130131.txt"/>
-					<file Metadata="sct2_TextDefinition_Delta-en_INT_Metadata.xml" Name="sct2_TextDefinition_Delta-en_INT_20130131.txt"/>
+					<file Metadata="sct2_Concept_Delta_INT_Metadata.xml" Name="sct2_Concept_Delta_INT_20130731.txt"/>						
+					<file Metadata="sct2_Description_Delta-en_INT_Metadata.xml" Name="sct2_Description_Delta-en_INT_20130731.txt"/>
+					<file Metadata="sct2_Relationship_Delta_INT_Metadata.xml" Name="sct2_Relationship_Delta_INT_20130731.txt"/>
+					<file Metadata="sct2_StatedRelationship_Delta_INT_Metadata.xml" Name="sct2_StatedRelationship_Delta_INT_20130731.txt"/>
+					<file Metadata="sct2_Identifier_Delta_INT_Metadata.xml" Name="sct2_Identifier_Delta_INT_20130731.txt"/>
+					<file Metadata="sct2_TextDefinition_Delta-en_INT_Metadata.xml" Name="sct2_TextDefinition_Delta-en_INT_20130731.txt"/>
 				</folder>
 				<folder Name="Refset" executeFileQA="true">
 					<folder Name="Content" executeFileQA="true">
-						<file Metadata="der2_cRefset_AssociationReferenceDelta_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceDelta_INT_20130131.txt"/> 
-						<file Metadata="der2_cRefset_AttributeValueDelta_INT_Metadata.xml" Name="der2_cRefset_AttributeValueDelta_INT_20130131.txt"/>
-						<file Metadata="der2_Refset_SimpleDelta_INT_Metadata.xml" Name="der2_Refset_SimpleDelta_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_AssociationReferenceDelta_INT_Metadata.xml" Name="der2_cRefset_AssociationReferenceDelta_INT_20130731.txt"/> 
+						<file Metadata="der2_cRefset_AttributeValueDelta_INT_Metadata.xml" Name="der2_cRefset_AttributeValueDelta_INT_20130731.txt"/>
+						<file Metadata="der2_Refset_SimpleDelta_INT_Metadata.xml" Name="der2_Refset_SimpleDelta_INT_20130731.txt"/>	
 					</folder>
-					<folder Name="Crossmap" executeFileQA="true">
-						<file Metadata="der2_sRefset_SimpleMapDelta_INT_Metadata.xml" Name="der2_sRefset_SimpleMapDelta_INT_20130131.txt"/>
+					<folder Name="Map" executeFileQA="true">
+						<file Metadata="der2_sRefset_SimpleMapDelta_INT_Metadata.xml" Name="der2_sRefset_SimpleMapDelta_INT_20130731.txt"/>
 					</folder>
 					<folder Name="Language" executeFileQA="true">
-						<file Metadata="der2_cRefset_LanguageDelta-en_INT_Metadata.xml" Name="der2_cRefset_LanguageDelta-en_INT_20130131.txt"/>	
+						<file Metadata="der2_cRefset_LanguageDelta-en_INT_Metadata.xml" Name="der2_cRefset_LanguageDelta-en_INT_20130731.txt"/>	
 					</folder>
 					<folder Name="Metadata" executeFileQA="true">
-						<file Metadata="der2_cciRefset_RefsetDescriptorDelta_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorDelta_INT_20130131.txt"/>
-						<file Metadata="der2_ssRefset_ModuleDependencyDelta_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyDelta_INT_20130131.txt"/>
-						<file Metadata="der2_ciRefset_DescriptionTypeDelta_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeDelta_INT_20130131.txt"/>
+						<file Metadata="der2_cciRefset_RefsetDescriptorDelta_INT_Metadata.xml" Name="der2_cciRefset_RefsetDescriptorDelta_INT_20130731.txt"/>
+						<file Metadata="der2_ssRefset_ModuleDependencyDelta_INT_Metadata.xml" Name="der2_ssRefset_ModuleDependencyDelta_INT_20130731.txt"/>
+						<file Metadata="der2_ciRefset_DescriptionTypeDelta_INT_Metadata.xml" Name="der2_ciRefset_DescriptionTypeDelta_INT_20130731.txt"/>
 					</folder>
 				</folder>
 			</folder>
@@ -98,28 +98,28 @@
 		<folder Name="RF1Release" executeFileQA="true">
 			<folder Name="Subsets" executeFileQA="true">
 				<folder Name="Language-en-GB" executeFileQA="true">
-					<file Metadata="der1_SubsetMembers_en-GB_INT_Metadata.xml" Name="der1_SubsetMembers_en-GB_INT_20130131.txt"/>
-					<file Metadata="der1_Subsets_en-GB_INT_Metadata.xml" Name="der1_Subsets_en-GB_INT_20130131.txt"/>
+					<file Metadata="der1_SubsetMembers_en-GB_INT_Metadata.xml" Name="der1_SubsetMembers_en-GB_INT_20130731.txt"/>
+					<file Metadata="der1_Subsets_en-GB_INT_Metadata.xml" Name="der1_Subsets_en-GB_INT_20130731.txt"/>
 				</folder>
 				<folder Name="Language-en-US" executeFileQA="true">
-					<file Metadata="der1_SubsetMembers_en-US_INT_Metadata.xml" Name="der1_SubsetMembers_en-US_INT_20130131.txt"/>
-					<file Metadata="der1_Subsets_en-US_INT_Metadata.xml" Name="der1_Subsets_en-US_INT_20130131.txt"/>
+					<file Metadata="der1_SubsetMembers_en-US_INT_Metadata.xml" Name="der1_SubsetMembers_en-US_INT_20130731.txt"/>
+					<file Metadata="der1_Subsets_en-US_INT_Metadata.xml" Name="der1_Subsets_en-US_INT_20130731.txt"/>
 				</folder>
 			</folder>
 
 			<folder Name="Terminology" executeFileQA="true">
 				<folder Name="Content" executeFileQA="true">
-					<file Metadata="sct1_Concepts_Core_INT_Metadata.xml" Name="sct1_Concepts_Core_INT_20130131.txt"/>
-					<file Metadata="sct1_Descriptions_en_INT_Metadata.xml" Name="sct1_Descriptions_en_INT_20130131.txt"/>
-					<file Metadata="sct1_Relationships_Core_INT_Metadata.xml" Name="sct1_Relationships_Core_INT_20130131.txt"/>
+					<file Metadata="sct1_Concepts_Core_INT_Metadata.xml" Name="sct1_Concepts_Core_INT_20130731.txt"/>
+					<file Metadata="sct1_Descriptions_en_INT_Metadata.xml" Name="sct1_Descriptions_en_INT_20130731.txt"/>
+					<file Metadata="sct1_Relationships_Core_INT_Metadata.xml" Name="sct1_Relationships_Core_INT_20130731.txt"/>
 				</folder>
 				<folder Name="History" executeFileQA="true">
-					<file Metadata="sct1_ComponentHistory_Core_INT_Metadata.xml" Name="sct1_ComponentHistory_Core_INT_20130131.txt"/>
-					<file Metadata="sct1_References_Core_INT_Metadata.xml" Name="sct1_References_Core_INT_20130131.txt"/>
+					<file Metadata="sct1_ComponentHistory_Core_INT_Metadata.xml" Name="sct1_ComponentHistory_Core_INT_20130731.txt"/>
+					<file Metadata="sct1_References_Core_INT_Metadata.xml" Name="sct1_References_Core_INT_20130731.txt"/>
 				</folder>
 			</folder>
 		</folder>
-			<file Metadata="Readme_en_Metadata.xml" Name="Readme_en_20130131.txt"/>
+			<file Metadata="Readme_en_Metadata.xml" Name="Readme_en_20130731.txt"/>
 	</folder>
 	
 </listing>
