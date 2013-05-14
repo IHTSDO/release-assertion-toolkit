@@ -7,44 +7,67 @@
 
 ********************************************************************************/
 	
-/* 	view of current snapshot made by finding active FSN's and removing tags */
-	create or replace view v_curr_snapshot_1 as
+/* 	active concepts having descriptions edited in the current release cycle */
+	create temporary table if not exists tmp_consedited as
+	select distinct conceptid 
+	from curr_concept_s a
+	join curr_description_d b
+	on a.id = b.conceptid
+	and a.active = 1;
+
+/* 	for edited concepts, list all FSNs, with and without semantic tags */
+	create temporary table if not exists tmp_fsn as
 	select replace(a.term, concat('(',substring_index(a.term, '(', -1)), '') as termwithouttag,
 	a.id , a.conceptid , a.term 
-	from curr_description_d a , curr_concept_s b
-	where a.typeid ='900000000000003001'
+	from curr_description_s a
+	join tmp_consedited b
+	on a.conceptid = b.conceptid
 	and a.active = 1
-	and a.conceptid = b.id
-	and b.active = 1;
-	
-/* 	finding all the active FSN's match with corresponding synonym */	
-	
-	create or replace view v_curr_snapshot_2 as
+	where a.typeid ='900000000000003001';
+
+/* all terms for edited concepts */
+	create temporary table if not exists tmp_allterms as
+	select a.id , a.conceptid , a.term
+	from curr_description_s a 
+	join tmp_consedited b
+	on a.conceptid = b.conceptid
+	and a.active = 1
+	where a.typeid !='900000000000003001';
+
+/* select the concepts that have synonyms that match the FSNs without semantic tags */
+	create temporary table if not exists tmp_termsmatch as
 	select a.* 
-	from v_curr_snapshot_1 a ,  curr_description_d b
-	where b.typeid ='900000000000013009'
-	and a.conceptid = b.conceptid
+	from tmp_fsn a
+	join tmp_allterms b
+	on a.conceptid = b.conceptid
 	and a.termwithouttag = b.term;
-	
-/* 	finding the active FSN's doesn't have corresponding synonym */		
-	create or replace view v_curr_snapshot_3 as
-	select a.*  
-	from v_curr_snapshot_1 a 
-	left join v_curr_snapshot_2 b
-	on a.id = b.id
-	where b.id is null;
-	
+
+	select a.* 
+	from tmp_fsn a
+	left join tmp_termsmatch b
+	on a.conceptid = b.conceptid
+	and a.termwithouttag = b.termwithouttag
+	where b.conceptid is null
+	and b.termwithouttag is null;
+
 /* 	inserting exceptions in the result table */
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		a.conceptid
-	from v_curr_snapshot_3 a;
+		concat(a.conceptid, ' |', a.term, '|')
+	from tmp_fsn a
+	left join tmp_termsmatch b
+	on a.conceptid = b.conceptid
+	and a.termwithouttag = b.termwithouttag
+	where b.conceptid is null
+	and b.termwithouttag is null;
 
 
-	drop view v_curr_snapshot_1;
-	drop view v_curr_snapshot_2;
-	drop view v_curr_snapshot_3;
+/* 	clean up */
+	drop temporary table if exists tmp_consedited;
+	drop temporary table if exists tmp_allterms;
+	drop temporary table if exists tmp_fsn;
+	drop temporary table if exists tmp_termsmatch;
 	

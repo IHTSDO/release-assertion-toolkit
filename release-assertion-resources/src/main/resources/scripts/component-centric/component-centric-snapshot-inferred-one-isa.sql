@@ -11,7 +11,8 @@
 	select sourceid
 		from curr_relationship_s
 		where active = '1'
-		and typeid = '116680003';
+		and typeid = 116680003
+		and sourceid != 138875005;
 
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)

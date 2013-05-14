@@ -20,8 +20,8 @@
 	from curr_concept_s a
 		join curr_description_d b
 			on a.id = b.conceptid
-			and a.active = b.active
-	where a.active = 1;
+			and a.active = 1 
+			and b.active = 1;
 	commit;
 
 /* 	view of current snapshot made by finding all the casesitive term for the 

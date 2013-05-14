@@ -5,10 +5,16 @@
 	Assertion:
 	Every concept's FSN exists exactly once in each language refset.
 
+
+	rtu (20130513) todo...
+	- revered reverted to the old 'test' terminology - progress this.
+	- should be 1 script per assertion
+	
+
 ********************************************************************************/
 	
 	
-	/* TEST: Concept has FSN that is defined 2+ times for a given refset */
+	/* TEST: Concept has FSN that is defined 2+ times for a given refset 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
 		<RUNID>,
@@ -24,10 +30,33 @@
 	and a.active = '1'
 	and a.typeid = '900000000000003001'
 	GROUP BY b.referencedcomponentid, b.refsetid
-	having count(b.referencedcomponentid) > 1;
+	having count(b.referencedcomponentid) > 1
+	and count(refsetid) > 1;
+	*/
 	
-	
-	
+/* for active concepts edited for the prospective release, active descriptions appear not more than once as active members of each language refset */ 
+	create temporary table if not exists tmp_descsedited as
+	select a.id 
+	from curr_description_d a
+	join curr_concept_s b
+	on a.conceptid = b.id
+	and b.active = 1;
+
+	insert into qa_result (runid, assertionuuid, assertiontext, details)
+	select 
+		<RUNID>,
+		'<ASSERTIONUUID>',
+		'<ASSERTIONTEXT>',
+		b.conceptid
+	from curr_langrefset_s a
+	join tmp_descsedited b
+	on a.referencedcomponentid = b.id
+	and a.active = 1
+	group by refsetid, referencedcomponentid
+	having count(refsetid) > 1 
+	and count(referencedcomponentid) > 1;
+
+	drop temporary table if exists  tmp_descsedited;
 	
 	
 	

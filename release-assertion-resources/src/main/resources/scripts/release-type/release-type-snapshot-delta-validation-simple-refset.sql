@@ -10,9 +10,7 @@
 	create or replace view vw as
 	select * 
 	from curr_simplerefset_s
-	where cast(effectivetime as datetime)= 
-		(select max(cast(effectivetime as datetime))
-		 from curr_simplerefset_s);
+	where effectivetime = '<CURRENT-RELEASE-DATE>';
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
 	select 
