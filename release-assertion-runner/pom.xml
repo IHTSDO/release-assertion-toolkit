@@ -1276,7 +1276,7 @@
 							<!-- This should get dependency from svn repository where previous 
 								release artifacts are present -->
 							<execution>
-								<id>extract-dependencies-previous-release</id>
+								<id>extract-dependencies-previous-release-delta</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1288,13 +1288,14 @@
 											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
+											<classifier>delta</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.PreviousReleaseFolder}</outputDirectory>
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-previous-release</id>
+								<id>extract-dependencies-previous-release-full</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1313,7 +1314,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-previous-release</id>
+								<id>extract-dependencies-previous-release-snapshot</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
