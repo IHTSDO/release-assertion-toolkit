@@ -77,10 +77,10 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-								<groupId>org.jvnet.wagon-svn</groupId>
-								<artifactId>wagon-svn</artifactId>
-								<version>1.12</version>
-							</dependency>
+			<groupId>org.jvnet.wagon-svn</groupId>
+			<artifactId>wagon-svn</artifactId>
+			<version>1.12</version>
+		</dependency>
 	</dependencies>
 
 
@@ -1152,11 +1152,25 @@
 					<classifier>full</classifier>
 				</dependency>
 				<dependency>
-
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
+					<classifier>full</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>delta</classifier>
 				</dependency>
 				<dependency>
 					<groupId>org.ihtsdo.intl</groupId>
@@ -1279,6 +1293,44 @@
 									<outputDirectory>${project.PreviousReleaseFolder}</outputDirectory>
 								</configuration>
 							</execution>
+							<execution>
+								<id>extract-dependencies-previous-release</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-previous-release</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
 
 							<!-- This should get manifest xml file from svn repository -->
 							<execution>
@@ -1294,6 +1346,7 @@
 											<artifactId>release-assertion-resources</artifactId>
 											<version>${project.version}</version>
 											<type>zip</type>
+											<classifier>delta</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.manifest}</outputDirectory>
