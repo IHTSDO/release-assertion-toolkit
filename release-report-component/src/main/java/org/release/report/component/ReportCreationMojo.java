@@ -163,7 +163,7 @@ public class ReportCreationMojo extends AbstractMojo {
 	
 	
 	private BufferedWriter createReport(String runId , String reportLocation, String reportName) throws FileNotFoundException, UnsupportedEncodingException , IOException {
-			File report =new File(reportName);
+			File report =new File(reportLocation,reportName);
 		
 		    //if file doesnt exists, then create it
 		    if(!report.exists()){
