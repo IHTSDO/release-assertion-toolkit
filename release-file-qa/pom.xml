@@ -15,6 +15,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<doxia.version>1.2</doxia.version>
 	</properties>
 
 	<dependencies>
