@@ -11,8 +11,8 @@
 	select sourceid
 		from curr_stated_relationship_s
 		where active = '1'
-		and typeid = 116680003
-		and sourceid != 138875005;
+		and typeid = 116680003;
+		
 
 
 	insert into qa_result (runid, assertionuuid, assertiontext, details)
@@ -25,6 +25,7 @@
 	from curr_concept_s a
 	left join v_act_stated_isa b on a.id = b.sourceid
 	where a.active = '1'
-	and b.sourceid is null;
+	and b.sourceid is null
+	and a.id != 138875005;
 
 	drop view v_act_stated_isa;
