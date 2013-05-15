@@ -8,9 +8,7 @@
 		<groupId>org.ihtsdo.release.assertion</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.ihtsdo.release.assertion</groupId>
 	<artifactId>release-file-qa</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>release-file-qa</name>
 	<url>http://maven.apache.org</url>
