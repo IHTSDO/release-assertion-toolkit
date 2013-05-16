@@ -28,6 +28,7 @@
 		<project.currentVersion>2013-01-31</project.currentVersion>
 		<project.wbReleaseProcessVersion>1.5-SNAPSHOT</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>
+		<project.rf2rf1conversionmojoCurrentVersion>1.1.13-SNAPSHOT</project.rf2rf1conversionmojoCurrentVersion>
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
 		<project.rf2CurrentReleaseFolder>${project.build.directory}/generated-sources/rf2Curr</project.rf2CurrentReleaseFolder>
 		<project.rf2PreviousReleaseFolder>${project.build.directory}/generated-sources/rf2Prev</project.rf2PreviousReleaseFolder>
@@ -1200,6 +1201,12 @@
 					<version>${project.rf2rf1conversionmojoVersion}</version>
 					<type>zip</type>
 				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+					<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>${project.rf2rf1conversionmojoCurrentVersion}</version>
+					<type>zip</type>
+				</dependency>
 			</dependencies>
 
 			<build>
@@ -1268,16 +1275,8 @@
 								</configuration>
 							</execution>
 
-							<!-- This should get dependency from svn repository where current 
-								release artifacts are present <execution> <id>extract-dependencies-current-release</id> 
-								<phase>generate-sources</phase> <goals> <goal>unpack</goal> </goals> <configuration> 
-								<artifactItems> <artifactItem> <groupId>org.ihtsdo</groupId> <artifactId>release-files-repository</artifactId> 
-								<version>${project.currentVersion}</version> <type>zip</type> </artifactItem> 
-								</artifactItems> <outputDirectory>${project.CurrentReleaseFolder}</outputDirectory> 
-								</configuration> </execution> -->
-							<!-- This should get rf1 files from archiva -->
 							<execution>
-								<id>extract-dependencies-current-release</id>
+								<id>extract-dependencies-1</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1288,6 +1287,33 @@
 											<groupId>org.ihtsdo.intl</groupId>
 											<artifactId>rf2-rf1-conversion-mojo</artifactId>
 											<version>${project.rf2rf1conversionmojoVersion}</version>
+											<type>zip</type>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+
+							<!-- This should get dependency from svn repository where current 
+								release artifacts are present <execution> <id>extract-dependencies-current-release</id> 
+								<phase>generate-sources</phase> <goals> <goal>unpack</goal> </goals> <configuration> 
+								<artifactItems> <artifactItem> <groupId>org.ihtsdo</groupId> <artifactId>release-files-repository</artifactId> 
+								<version>${project.currentVersion}</version> <type>zip</type> </artifactItem> 
+								</artifactItems> <outputDirectory>${project.CurrentReleaseFolder}</outputDirectory> 
+								</configuration> </execution> -->
+							<!-- This should get rf1 files from archiva -->
+							<execution>
+								<id>extract-dependencies-current-release1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl</groupId>
+											<artifactId>rf2-rf1-conversion-mojo</artifactId>
+											<version>${project.rf2rf1conversionmojoCurrentVersion}</version>
 											<type>zip</type>
 										</artifactItem>
 									</artifactItems>
@@ -1970,6 +1996,20 @@
 										<reportSet>
 											<reports>
 												<report>assertion-report</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
+								<plugin>
+									<groupId>org.ihtsdo.release.assertion</groupId>
+									<artifactId>release-file-qa</artifactId>
+									<configuration>
+										<excelFileLocation>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</excelFileLocation>
+									</configuration>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>assertion-file-qa-report</report>
 											</reports>
 										</reportSet>
 									</reportSets>
