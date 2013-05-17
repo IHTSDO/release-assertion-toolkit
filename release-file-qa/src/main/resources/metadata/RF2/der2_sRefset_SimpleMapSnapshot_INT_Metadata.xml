@@ -202,7 +202,7 @@
 		</regex>
 		<regex>
 			<test>ColumnTypeTest</test>
-			<expression>[A-Za-z0-9\-]*</expression>
+			<expression>[A-Za-z0-9\\\.]*</expression>
 			<description>Column type is string with allowed characters A-Za-z0-9 . -</description>
 			<successMessage>Column type is string with allowed characters A-Za-z0-9 . -</successMessage>
 			<failureMessage>Column type is NOT string with allowed characters A-Za-z0-9 . -</failureMessage>
