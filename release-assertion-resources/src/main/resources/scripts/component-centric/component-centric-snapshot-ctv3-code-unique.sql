@@ -12,7 +12,7 @@
 		<RUNID>,
 		'<ASSERTIONUUID>',
 		'<ASSERTIONTEXT>',
-		concat('MEMBER: CTV3 code=',a.maptarget, ': CTV3 code is not unique.')
+		a.maptarget
 	from curr_simplemaprefset_s a
 	inner join curr_concept_s b 
 		on a.referencedcomponentid = b.id
