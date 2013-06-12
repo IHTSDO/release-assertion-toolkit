@@ -26,7 +26,7 @@
 		<project.previousReleaseDate>20130131</project.previousReleaseDate>
 		<project.previousVersion>1.4</project.previousVersion>
 		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.5</project.wbReleaseProcessVersion>
+		<project.wbReleaseProcessVersion>1.6</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>
 		<project.rf2rf1conversionmojoCurrentVersion>1.1.14</project.rf2rf1conversionmojoCurrentVersion>
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
