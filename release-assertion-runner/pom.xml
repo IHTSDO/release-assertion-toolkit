@@ -22,11 +22,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<drools.version>5.2.0.Final</drools.version>
-		<project.releaseDate>20130731</project.releaseDate>
-		<project.previousReleaseDate>20130131</project.previousReleaseDate>
-		<project.previousVersion>1.4</project.previousVersion>
-		<project.currentVersion>2013-01-31</project.currentVersion>
-		<project.wbReleaseProcessVersion>1.7</project.wbReleaseProcessVersion>
+		<project.releaseDate>20140131</project.releaseDate>
+		<project.previousReleaseDate>20130731</project.previousReleaseDate>
+		<project.previousVersion>1.7</project.previousVersion>
+		<project.currentVersion>2013-07-31</project.currentVersion>
+		<project.wbReleaseProcessVersion>1.8-SNAPSHOT</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.10</project.rf2rf1conversionmojoVersion>
 		<project.rf2rf1conversionmojoCurrentVersion>1.1.17</project.rf2rf1conversionmojoCurrentVersion>
 		<project.exportFolder>${project.build.directory}/export</project.exportFolder>
@@ -852,9 +852,9 @@
 					<scope>test</scope>
 				</dependency>
 				<dependency>
-					<groupId>org.ihtsdo.sct</groupId>
+					<groupId>org.ihtsdo</groupId>
 					<artifactId>project-bdb</artifactId>
-					<version>1.1</version>
+					<version>1.2-SNAPSHOT</version>
 					<type>zip</type>
 					<exclusions>
 						<exclusion>
@@ -864,9 +864,9 @@
 					</exclusions>
 				</dependency>
 				<dependency>
-					<groupId>org.ihtsdo.sct</groupId>
+					<groupId>org.ihtsdo</groupId>
 					<artifactId>profiles</artifactId>
-					<version>1.1</version>
+					<version>1.2-SNAPSHOT</version>
 					<type>zip</type>
 				</dependency>
 			</dependencies>
@@ -886,16 +886,16 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>org.ihtsdo.sct</groupId>
+											<groupId>org.ihtsdo</groupId>
 											<artifactId>profiles</artifactId>
-											<version>1.1</version>
+											<version>1.2-SNAPSHOT</version>
 											<outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
 											<type>zip</type>
 										</artifactItem>
 										<artifactItem>
-											<groupId>org.ihtsdo.sct</groupId>
+											<groupId>org.ihtsdo</groupId>
 											<artifactId>project-bdb</artifactId>
-											<version>1.1</version>
+											<version>1.2-SNAPSHOT</version>
 											<outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
 											<type>zip</type>
 										</artifactItem>
@@ -1761,84 +1761,84 @@
 									<importConfig>
 										<LoadFileParameter>
 											<loadDBTableName>curr_concept</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Concepts_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Terminology/Content/sct1_Concepts_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_description</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Descriptions_en_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Terminology/Content/sct1_Descriptions_en_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_relationship</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/Content/sct1_Relationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Terminology/Content/sct1_Relationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_stated_relationship</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/OtherResources/StatedRelationships/res1_StatedRelationships_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_textdefinition</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/OtherResources/TextDefinitions/sct1_TextDefinitions_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_references</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/History/sct1_References_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Terminology/History/sct1_References_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 
 										<LoadFileParameter>
 											<loadDBTableName>curr_componenthistory</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Terminology/History/sct1_ComponentHistory_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Terminology/History/sct1_ComponentHistory_Core_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsetmembers_us</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/Language-en-US/der1_SubsetMembers_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsets_us</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/Language-en-US/der1_Subsets_en-US_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsetmembers_gb</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/Language-en-GB/der1_SubsetMembers_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsets_gb</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/Language-en-GB/der1_Subsets_en-GB_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_crossmaptargets_icdo</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/CrossMaps/ICDO/der1_CrossMapTargets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_crossmapsets_icdo</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/CrossMaps/ICDO/der1_CrossMapSets_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_crossmaps_icdo</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/CrossMaps/ICDO/der1_CrossMaps_ICDO_INT_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsetmembers_nonhuman</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_SubsetMembers_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsets_nonhuman</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_Subsets_nonhuman_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_vmp_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_Subsets_vmp_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsets_vtmvmp</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_Subsets_vtm_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_Subsets_vtm_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_vmp_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_SubsetMembers_vmp_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 										<LoadFileParameter>
 											<loadDBTableName>curr_subsetmembers_vtmvmp</loadDBTableName>
-											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_20130131/Subsets/der1_SubsetMembers_vtm_${project.releaseDate}.txt</loadReleaseFileName>
+											<loadReleaseFileName>${project.rf1CurrentReleaseFolder}/RF1/SnomedCT_RF1Release_INT_${project.releaseDate}/Subsets/der1_SubsetMembers_vtm_${project.releaseDate}.txt</loadReleaseFileName>
 										</LoadFileParameter>
 
 										<!-- how to automate canonical load process <LoadFileParameter> 

@@ -63,15 +63,15 @@
 		</regex>
 		<regex>
 			<test>ColumnValidTest</test>
-			<expression>((19|20)\d\d)(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])</expression>
+			<expression>((19|20)\d\d)(0?[1-9]|1[01234])(0?[1-9]|[1234][0-9]|3[01])</expression>
 			<description>containing date YYYYMMDD</description>
 			<successMessage>Column is valid date YYYYMMDD</successMessage>
 			<failureMessage>Column is NOT valid date YYYYMMDD</failureMessage>
 		</regex>
 		<regex>
 			<test>ColumnValuesTest</test>
-			<expression>(20)(13)(01|07)(31)</expression>
-			<description>containing date value 20130131</description>
+			<expression>(20)(14)(01|07)(31)</expression>
+			<description>containing date value 20140131</description>
 			<successMessage>Column is valid date value</successMessage>
 			<failureMessage>Column is NOT valid date value</failureMessage>
 		</regex>
