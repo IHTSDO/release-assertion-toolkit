@@ -2009,7 +2009,7 @@
 									<reportSets>
 										<reportSet>
 											<reports>
-												<report>assertion-file-qa-report</report>
+												<report>fileqa-process-report</report>
 											</reports>
 										</reportSet>
 									</reportSets>
