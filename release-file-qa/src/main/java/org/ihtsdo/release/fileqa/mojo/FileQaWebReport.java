@@ -56,7 +56,14 @@ public class FileQaWebReport extends AbstractMavenReport {
 	 * @required
 	 */
 	private String outputDirectory;
-	
+	/**
+	 * Property File
+	 * 
+	 * @parameter Report File
+	 * 
+	 * @required
+	 */
+	public String reportFilePath;
 	/**
 	 * dbConnection JDBC password
 	 * 
@@ -136,6 +143,14 @@ public class FileQaWebReport extends AbstractMavenReport {
 		return ResourceBundle.getBundle("assertion-file-qa-report");
 	}
 
+	public String getReportFilePath() {
+		return reportFilePath;
+	}
+
+	public void setReportFilePath(String reportFilePath) {
+		this.reportFilePath = reportFilePath;
+	}
+	
 	@Override
 	public String getDescription(Locale locale) {
 		return getBundle(locale).getString("report.name");
