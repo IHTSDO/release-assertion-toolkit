@@ -52,7 +52,13 @@
 			<version>${doxia.version}</version>
 		</dependency>
 	</dependencies>
-
+	<distributionManagement>
+		<site>
+			<id>release-file-qa-report</id>
+			<name>release-file-qa-report</name>
+			<url>${site.deploy.url}</url>
+		</site>
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>

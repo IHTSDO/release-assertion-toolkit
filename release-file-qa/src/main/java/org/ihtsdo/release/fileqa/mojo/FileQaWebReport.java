@@ -140,7 +140,7 @@ public class FileQaWebReport extends AbstractMavenReport {
 	}
 
 	private ResourceBundle getBundle(Locale locale) {
-		return ResourceBundle.getBundle("assertion-file-qa-report");
+		return ResourceBundle.getBundle("release-file-qa-report");
 	}
 
 	public String getReportFilePath() {
@@ -150,7 +150,7 @@ public class FileQaWebReport extends AbstractMavenReport {
 	public void setReportFilePath(String reportFilePath) {
 		this.reportFilePath = reportFilePath;
 	}
-	
+
 	@Override
 	public String getDescription(Locale locale) {
 		return getBundle(locale).getString("report.name");
