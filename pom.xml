@@ -27,7 +27,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repos/qa-reports-site/release-assertion-toolkit</site.deploy.url>
+<!-- 		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repos/qa-reports-site/release-assertion-toolkit</site.deploy.url> -->
+		<site.deploy.url>svn:https://csfe.aceworkspace.net/svn/repository-internal/ihtsdo_migration_project-publishing</site.deploy.url>
 		<svnusername>${relusername}</svnusername>
 		<svnpassword>${relpassword}</svnpassword>
 	</properties>
