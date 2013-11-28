@@ -1951,6 +1951,32 @@
 			<build>
 				<plugins>
 					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.6</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<!-- here the phase you need -->
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.ReleaseQAReportFolder}</directory>
+											<filtering>false</filtering>
+											<includes>
+												<include>**/*.xls</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-site-plugin</artifactId>
 						<version>3.1</version>
@@ -1988,7 +2014,7 @@
 									<version>${project.version}</version>
 									<configuration>
 										<excelFileLocation>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</excelFileLocation>
-										<reportFilePath>${project.reporting.outputDirectory}</reportFilePath>
+										<reportFilePath>${project.ReleaseQAReportFolder}</reportFilePath>
 									</configuration>
 									<reportSets>
 										<reportSet>
