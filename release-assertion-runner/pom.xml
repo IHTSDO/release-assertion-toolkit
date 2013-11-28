@@ -1942,7 +1942,7 @@
 				<site>
 					<id>release-assertion-web-report</id>
 					<name>release-assertion-web-report</name>
-					<url>${site.deploy.url}</url>
+					<url>${site.deploy.url}/file-qa-report</url>
 				</site>
 			</distributionManagement>
 			<activation>
@@ -1982,24 +1982,6 @@
 										</reportSet>
 									</reportSets>
 								</plugin>
-<!-- 								<plugin> -->
-<!-- 									<groupId>org.ihtsdo.release.assertion</groupId> -->
-<!-- 									<artifactId>release-report-component</artifactId> -->
-<!-- 									<configuration> -->
-<!-- 										<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url> -->
-<!-- 										<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> -->
-<!-- 										<username>root</username> -->
-<!-- 										<password>snomed11</password> -->
-<!-- 										<sql.file.location>${project.build.directory}/generated-sources/executedScripts/execute-script/report/report-qa.sql</sql.file.location> -->
-<!-- 									</configuration> -->
-<!-- 									<reportSets> -->
-<!-- 										<reportSet> -->
-<!-- 											<reports> -->
-<!-- 												<report>assertion-report</report> -->
-<!-- 											</reports> -->
-<!-- 										</reportSet> -->
-<!-- 									</reportSets> -->
-<!-- 								</plugin> -->
 								<plugin>
 									<groupId>org.ihtsdo.release.assertion</groupId>
 									<artifactId>release-file-qa</artifactId>
@@ -2012,6 +1994,76 @@
 										<reportSet>
 											<reports>
 												<report>assertion-file-qa-report</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
+							</reportPlugins>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>run-assertion-report</id>
+			<distributionManagement>
+				<site>
+					<id>release-assertion-web-report</id>
+					<name>release-assertion-web-report</name>
+					<url>${site.deploy.url}/release-assertion-report</url>
+				</site>
+			</distributionManagement>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-site-plugin</artifactId>
+						<version>3.1</version>
+						<dependencies>
+							<dependency>
+								<groupId>org.ihtsdo.release.assertion</groupId>
+								<artifactId>release-report-component</artifactId>
+								<version>0.0.1-SNAPSHOT</version>
+							</dependency>
+							<dependency>
+								<groupId>org.jvnet.wagon-svn</groupId>
+								<artifactId>wagon-svn</artifactId>
+								<version>1.12</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<reportPlugins>
+								<plugin>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-project-info-reports-plugin</artifactId>
+									<version>2.2</version>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>index</report>
+												<report>plugins</report>
+												<report>plugin-management</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
+								<plugin>
+									<groupId>org.ihtsdo.release.assertion</groupId>
+									<artifactId>release-report-component</artifactId>
+									<configuration>
+										<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>
+										<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+										<username>root</username>
+										<password>snomed11</password>
+										<sql.file.location>${project.build.directory}/generated-sources/executedScripts/execute-script/report/report-qa.sql</sql.file.location>
+									</configuration>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>assertion-report</report>
 											</reports>
 										</reportSet>
 									</reportSets>
