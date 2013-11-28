@@ -51,7 +51,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>run-web-report</id>
+			<id>run-web-report-web-report-runner</id>
 			<distributionManagement>
 				<site>
 					<id>release-assertion-web-report</id>
