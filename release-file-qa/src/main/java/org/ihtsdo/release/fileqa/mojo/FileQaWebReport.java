@@ -85,6 +85,7 @@ public class FileQaWebReport extends AbstractMavenReport {
 			SinkUtilities.headAndTitle(sink, "Packaging process report");
 			sink.body();
 
+			log.info("Creating File QA Web Report");
 			// COPY MANIFEST FILE TO SITE OUTPUT FOLDER
 			File manifestFile = new File(reportFilePath);
 			FileInputStream sortedFis = new FileInputStream(manifestFile);
@@ -96,6 +97,7 @@ public class FileQaWebReport extends AbstractMavenReport {
 			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 			BufferedWriter bw = new BufferedWriter(osw);
 
+			log.info("Copying File from target to web folder");
 			while (br.ready()) {
 				bw.write(br.readLine());
 				bw.newLine();
@@ -120,6 +122,8 @@ public class FileQaWebReport extends AbstractMavenReport {
 			sink.section2_();
 
 			sink.body_();
+			sink.flush();
+			sink.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
