@@ -1982,24 +1982,24 @@
 										</reportSet>
 									</reportSets>
 								</plugin>
-<!-- 								<plugin> -->
-<!-- 									<groupId>org.ihtsdo.release.assertion</groupId> -->
-<!-- 									<artifactId>release-report-component</artifactId> -->
-<!-- 									<configuration> -->
-<!-- 										<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url> -->
-<!-- 										<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url> -->
-<!-- 										<username>root</username> -->
-<!-- 										<password>snomed11</password> -->
-<!-- 										<sql.file.location>${project.build.directory}/generated-sources/executedScripts/execute-script/report/report-qa.sql</sql.file.location> -->
-<!-- 									</configuration> -->
-<!-- 									<reportSets> -->
-<!-- 										<reportSet> -->
-<!-- 											<reports> -->
-<!-- 												<report>assertion-report</report> -->
-<!-- 											</reports> -->
-<!-- 										</reportSet> -->
-<!-- 									</reportSets> -->
-<!-- 								</plugin> -->
+								<plugin>
+									<groupId>org.ihtsdo.release.assertion</groupId>
+									<artifactId>release-report-component</artifactId>
+									<configuration>
+										<url>jdbc:mysql://mgr.servers.aceworkspace.net:50015/postqa</url>
+										<url>jdbc:mysql://cu026.servers.aceworkspace.net:3306/postqa</url>
+										<username>root</username>
+										<password>snomed11</password>
+										<sql.file.location>${project.build.directory}/generated-sources/executedScripts/execute-script/report/report-qa.sql</sql.file.location>
+									</configuration>
+									<reportSets>
+										<reportSet>
+											<reports>
+												<report>assertion-report</report>
+											</reports>
+										</reportSet>
+									</reportSets>
+								</plugin>
 								<plugin>
 									<groupId>org.ihtsdo.release.assertion</groupId>
 									<artifactId>release-file-qa</artifactId>
