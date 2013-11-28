@@ -1937,10 +1937,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>run-web-report</id>
+			<id>fqa-rep</id>
 			<distributionManagement>
 				<site>
-					<id>fqar</id>
+					<id>file-qa-web-report</id>
 					<name>file-qa-web-report</name>
 					<url>${site.deploy.url}/file-qa-report</url>
 				</site>
@@ -2005,10 +2005,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>run-assertion-report</id>
+			<id>ra-rep</id>
 			<distributionManagement>
 				<site>
-					<id>rawr</id>
+					<id>release-assertion-web-report</id>
 					<name>release-assertion-web-report</name>
 					<url>${site.deploy.url}/release-assertion-report</url>
 				</site>
