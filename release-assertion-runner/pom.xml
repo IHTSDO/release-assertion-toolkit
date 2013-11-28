@@ -1967,6 +1967,7 @@
 							</dependency>
 						</dependencies>
 						<configuration>
+							<
 							<reportPlugins>
 								<plugin>
 									<groupId>org.apache.maven.plugins</groupId>
@@ -2005,6 +2006,7 @@
 									<artifactId>release-file-qa</artifactId>
 									<configuration>
 										<excelFileLocation>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</excelFileLocation>
+										<reportFilePath> ${project.reporting.outputDirectory}</reportFilePath>
 									</configuration>
 									<reportSets>
 										<reportSet>
