@@ -87,7 +87,7 @@ public class FileQaWebReport extends AbstractMavenReport {
 
 			log.info("Creating File QA Web Report");
 			// COPY MANIFEST FILE TO SITE OUTPUT FOLDER
-			File manifestFile = new File(reportFilePath);
+			File manifestFile = new File(reportFilePath, "release-file-qa-report.xls");
 			FileInputStream sortedFis = new FileInputStream(manifestFile);
 			InputStreamReader sortedIsr = new InputStreamReader(sortedFis, "UTF-8");
 			BufferedReader br = new BufferedReader(sortedIsr);
