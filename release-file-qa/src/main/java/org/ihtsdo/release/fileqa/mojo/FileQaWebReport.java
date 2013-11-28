@@ -87,29 +87,29 @@ public class FileQaWebReport extends AbstractMavenReport {
 
 			log.info("Creating File QA Web Report");
 			// COPY MANIFEST FILE TO SITE OUTPUT FOLDER
-			File manifestFile = new File(excelFileLocation);
-
-			File targetManifestFile = new File(reportFilePath, "release-file-qa-report.xls");
-
-			FileInputStream in = null;
-			FileOutputStream out = null;
-
-			try {
-				in = new FileInputStream(manifestFile);
-				out = new FileOutputStream(targetManifestFile);
-				int c;
-
-				while ((c = in.read()) != -1) {
-					out.write(c);
-				}
-			} finally {
-				if (in != null) {
-					in.close();
-				}
-				if (out != null) {
-					out.close();
-				}
-			}
+//			File manifestFile = new File(excelFileLocation);
+//
+//			File targetManifestFile = new File(reportFilePath, "release-file-qa-report.xls");
+//
+//			FileInputStream in = null;
+//			FileOutputStream out = null;
+//
+//			try {
+//				in = new FileInputStream(manifestFile);
+//				out = new FileOutputStream(targetManifestFile);
+//				int c;
+//
+//				while ((c = in.read()) != -1) {
+//					out.write(c);
+//				}
+//			} finally {
+//				if (in != null) {
+//					in.close();
+//				}
+//				if (out != null) {
+//					out.close();
+//				}
+//			}
 
 			// DONE COPYING MANIFEST FILE TO SITE OUTPUT FOLDER
 
