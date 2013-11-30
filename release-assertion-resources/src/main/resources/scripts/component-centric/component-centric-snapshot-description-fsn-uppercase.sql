@@ -23,5 +23,5 @@
 			and b.active = a.active
 	where a.active = 1
 	and a.casesignificanceid != '900000000000017005'
-	and binary left(a.term,1) not REGEXP '[A-Z]';
+	and binary left(a.term,1) REGEXP '[a-z]';
 	commit;
