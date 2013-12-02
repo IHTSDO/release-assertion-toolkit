@@ -16,6 +16,7 @@
 	<description>Release QA Process Reporting Library</description>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<project.ReleaseQAReportFolder>${project.build.directory}/generated-sources</project.ReleaseQAReportFolder>
 		<doxia.version>1.2</doxia.version>
 	</properties>
 	<dependencies>
@@ -144,8 +145,6 @@
 									<artifactId>release-file-qa</artifactId>
 									<version>${project.version}</version>
 									<configuration>
-										<excelFileLocation>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</excelFileLocation>
-										<reportFilePath>${project.ReleaseQAReportFolder}</reportFilePath>
 									</configuration>
 									<reportSets>
 										<reportSet>
