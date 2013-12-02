@@ -56,13 +56,6 @@
 		<project.endpointURL>http://mgr.servers.aceworkspace.net:50042/axis2/services/id_generator</project.endpointURL>
 	</properties>
 
-	<distributionManagement>
-		<site>
-			<id>release-assertion-web-report</id>
-			<name>release-assertion-web-report</name>
-			<url>${site.deploy.url}</url>
-		</site>
-	</distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -1945,9 +1938,6 @@
 					<url>${site.deploy.url}/file-qa-report</url>
 				</site>
 			</distributionManagement>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -2039,9 +2029,6 @@
 					<url>${site.deploy.url}/release-assertion-report</url>
 				</site>
 			</distributionManagement>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
 			<build>
 				<plugins>
 					<plugin>
