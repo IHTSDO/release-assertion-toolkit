@@ -57,14 +57,6 @@ public class FileQaWebReport extends AbstractMavenReport {
 	 */
 	private String outputDirectory;
 	/**
-	 * Property File
-	 * 
-	 * @parameter Report File
-	 * 
-	 * @required
-	 */
-	public String reportFilePath;
-	/**
 	 * dbConnection JDBC password
 	 * 
 	 * @parameter
