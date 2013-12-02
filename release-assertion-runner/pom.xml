@@ -1956,7 +1956,7 @@
 									<resources>
 										<resource>
 											<directory>${project.ReleaseQAReportFolder}</directory>
-											<filtering>false</filtering>
+											<filtering>true</filtering>
 											<includes>
 												<include>**/*.xls</include>
 											</includes>
