@@ -56,13 +56,6 @@ public class FileQaWebReport extends AbstractMavenReport {
 	 * @required
 	 */
 	private String outputDirectory;
-	/**
-	 * dbConnection JDBC password
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	private String excelFileLocation;
 
 	private static final Logger log = Logger.getLogger(FileQaWebReport.class);
 

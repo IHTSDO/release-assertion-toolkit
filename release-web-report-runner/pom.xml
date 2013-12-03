@@ -118,8 +118,6 @@
 									<groupId>org.ihtsdo.release.assertion</groupId>
 									<artifactId>release-file-qa</artifactId>
 									<configuration>
-										<excelFileLocation>${project.ReleaseQAReportFolder}/release-file-qa-report.xls</excelFileLocation>
-										<reportFilePath>${project.reporting.outputDirectory}</reportFilePath>
 									</configuration>
 									<reportSets>
 										<reportSet>
