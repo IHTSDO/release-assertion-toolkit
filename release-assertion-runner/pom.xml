@@ -774,7 +774,7 @@
 
 
 		<profile>
-			<id>run-report-builder</id>
+			<id>run-rep</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -1144,7 +1144,7 @@
 		</profile>
 
 		<profile>
-			<id>run-release-file-qa</id>
+			<id>run-file-qa</id>
 			<dependencies>
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
@@ -1479,7 +1479,7 @@
 
 
 		<profile>
-			<id>load-previous-rf1-release</id>
+			<id>load-pre-rf1</id>
 			<!-- Below dependency is used to load previous release tables (currently 
 				limited to RF2) -->
 			<dependencies>
@@ -1673,7 +1673,7 @@
 
 
 		<profile>
-			<id>load-current-rf1-release</id>
+			<id>load-curr-rf1</id>
 			<!-- Below dependency is used to load previous release tables (currently 
 				limited to RF2) -->
 			<dependencies>
@@ -1863,7 +1863,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>execute-scripts-rf1</id>
+			<id>exec-scripts-rf1</id>
 			<build>
 				<plugins>
 					<plugin>
