@@ -24,7 +24,7 @@
 		<drools.version>5.2.0.Final</drools.version>
 		<project.releaseDate>20140131</project.releaseDate>
 		<project.previousReleaseDate>20130731</project.previousReleaseDate>
-		<project.previousVersion>1.7</project.previousVersion>
+		<project.previousVersion>1.10-SNAPSHOT</project.previousVersion>
 		<project.currentVersion>2013-07-31</project.currentVersion>
 		<project.wbReleaseProcessVersion>1.10-SNAPSHOT</project.wbReleaseProcessVersion>
 		<project.rf2rf1conversionmojoVersion>1.1.21-SNAPSHOT</project.rf2rf1conversionmojoVersion>
