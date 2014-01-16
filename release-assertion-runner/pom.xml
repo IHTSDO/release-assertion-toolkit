@@ -80,7 +80,7 @@
 
 	<profiles>
 		<profile>
-			<id>load-previous-release</id>
+			<id>load-prev-rel</id>
 			<!-- Below dependency is used to load previous release tables (currently 
 				limited to RF2) -->
 			<dependencies>
@@ -437,7 +437,7 @@
 		</profile>
 
 		<profile>
-			<id>load-current-release</id>
+			<id>load-curr-rel</id>
 			<!-- Below dependency is used to load previous release tables (currently 
 				limited to RF2) -->
 			<dependencies>
