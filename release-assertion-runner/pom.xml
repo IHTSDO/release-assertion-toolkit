@@ -1149,27 +1149,6 @@
 				<dependency>
 					<groupId>org.ihtsdo.intl.release.process</groupId>
 					<artifactId>wb-release-process</artifactId>
-					<version>${project.wbReleaseProcessVersion}</version>
-					<type>zip</type>
-					<classifier>delta</classifier>
-				</dependency>
-				<dependency>
-					<groupId>org.ihtsdo.intl.release.process</groupId>
-					<artifactId>wb-release-process</artifactId>
-					<version>${project.wbReleaseProcessVersion}</version>
-					<type>zip</type>
-					<classifier>snapshot</classifier>
-				</dependency>
-				<dependency>
-					<groupId>org.ihtsdo.intl.release.process</groupId>
-					<artifactId>wb-release-process</artifactId>
-					<version>${project.wbReleaseProcessVersion}</version>
-					<type>zip</type>
-					<classifier>full</classifier>
-				</dependency>
-				<dependency>
-					<groupId>org.ihtsdo.intl.release.process</groupId>
-					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
 					<classifier>full</classifier>
@@ -1187,18 +1166,6 @@
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
 					<classifier>delta</classifier>
-				</dependency>
-				<dependency>
-					<groupId>org.ihtsdo.intl</groupId>
-					<artifactId>rf2-rf1-conversion-mojo</artifactId>
-					<version>${project.rf2rf1conversionmojoVersion}</version>
-					<type>zip</type>
-				</dependency>
-				<dependency>
-					<groupId>org.ihtsdo.intl</groupId>
-					<artifactId>rf2-rf1-conversion-mojo</artifactId>
-					<version>${project.rf2rf1conversionmojoCurrentVersion}</version>
-					<type>zip</type>
 				</dependency>
 			</dependencies>
 
