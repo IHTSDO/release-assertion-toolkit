@@ -1488,6 +1488,22 @@
 					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
+					<classifier>full</classifier>
+
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+										<classifier>delta</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+										<classifier>snapshot</classifier>
 				</dependency>
 			</dependencies>
 
@@ -1512,6 +1528,45 @@
 											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousVersion}</version>
 											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1PreviousReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
+											<version>${project.previousVersion}</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf1PreviousReleaseFolder}</outputDirectory>
@@ -1531,6 +1586,45 @@
 											<artifactId>release-assertion-resources</artifactId>
 											<version>0.0.1-SNAPSHOT</version>
 											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.manifest}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-manifest-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.manifest}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-manifest-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.manifest}</outputDirectory>
@@ -1682,6 +1776,21 @@
 					<artifactId>rf2-rf1-conversion-mojo</artifactId>
 					<version>${project.rf2rf1conversionmojoVersion}</version>
 					<type>zip</type>
+					<classifier>full</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+					<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>${project.rf2rf1conversionmojoVersion}</version>
+					<type>zip</type>
+					<classifier>delta</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+					<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>${project.rf2rf1conversionmojoVersion}</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
 				</dependency>
 			</dependencies>
 
@@ -1705,6 +1814,47 @@
 											<artifactId>rf2-rf1-conversion-mojo</artifactId>
 											<version>${project.rf2rf1conversionmojoVersion}</version>
 											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<!-- This should get rf1 files from archiva -->
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl</groupId>
+											<artifactId>rf2-rf1-conversion-mojo</artifactId>
+											<version>${project.rf2rf1conversionmojoVersion}</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
+								</configuration>
+							</execution>
+							<!-- This should get rf1 files from archiva -->
+							<execution>
+								<id>extract-dependencies-1</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl</groupId>
+											<artifactId>rf2-rf1-conversion-mojo</artifactId>
+											<version>${project.rf2rf1conversionmojoVersion}</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.rf1CurrentReleaseFolder}</outputDirectory>
