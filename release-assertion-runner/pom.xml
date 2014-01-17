@@ -1535,7 +1535,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-2</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1554,7 +1554,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-3</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1593,7 +1593,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-manifest-1</id>
+								<id>extract-manifest-2</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1612,7 +1612,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>extract-manifest-1</id>
+								<id>extract-manifest-3</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1822,7 +1822,7 @@
 							</execution>
 							<!-- This should get rf1 files from archiva -->
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-2</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1842,7 +1842,7 @@
 							</execution>
 							<!-- This should get rf1 files from archiva -->
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-3</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1874,6 +1874,45 @@
 											<artifactId>release-assertion-resources</artifactId>
 											<version>0.0.1-SNAPSHOT</version>
 											<type>zip</type>
+											<classifier>full</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.manifest}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-manifest-3</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${project.manifest}</outputDirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-manifest-2</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.release.assertion</groupId>
+											<artifactId>release-assertion-resources</artifactId>
+											<version>0.0.1-SNAPSHOT</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${project.manifest}</outputDirectory>
