@@ -1167,6 +1167,18 @@
 					<type>zip</type>
 					<classifier>delta</classifier>
 				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+					<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>${project.rf2rf1conversionmojoVersion}</version>
+					<type>zip</type>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl</groupId>
+					<artifactId>rf2-rf1-conversion-mojo</artifactId>
+					<version>${project.rf2rf1conversionmojoCurrentVersion}</version>
+					<type>zip</type>
+				</dependency>
 			</dependencies>
 
 			<build>
