@@ -1455,6 +1455,21 @@
 					<artifactId>wb-release-process</artifactId>
 					<version>${project.previousVersion}</version>
 					<type>zip</type>
+					<classifier>delta</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>snapshot</classifier>
+				</dependency>
+				<dependency>
+					<groupId>org.ihtsdo.intl.release.process</groupId>
+					<artifactId>wb-release-process</artifactId>
+					<version>${project.previousVersion}</version>
+					<type>zip</type>
+					<classifier>full</classifier>
 				</dependency>
 			</dependencies>
 
@@ -1473,15 +1488,54 @@
 									<goal>unpack</goal>
 								</goals>
 								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>org.ihtsdo.intl.release.process</groupId>
-											<artifactId>wb-release-process</artifactId>
-											<version>${project.previousVersion}</version>
+									<artifactitems>
+										<artifactitem>
+											<groupid>org.ihtsdo.intl.release.process</groupid>
+											<artifactid>wb-release-process</artifactid>
+											<version>${project.previousversion}</version>
 											<type>zip</type>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>${project.rf1PreviousReleaseFolder}</outputDirectory>
+											<classifier>full</classifier>
+										</artifactitem>
+									</artifactitems>
+									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-2</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactitems>
+										<artifactitem>
+											<groupid>org.ihtsdo.intl.release.process</groupid>
+											<artifactid>wb-release-process</artifactid>
+											<version>${project.previousversion}</version>
+											<type>zip</type>
+											<classifier>delta</classifier>
+										</artifactitem>
+									</artifactitems>
+									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
+								</configuration>
+							</execution>
+							<execution>
+								<id>extract-dependencies-3</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactitems>
+										<artifactitem>
+											<groupid>org.ihtsdo.intl.release.process</groupid>
+											<artifactid>wb-release-process</artifactid>
+											<version>${project.previousversion}</version>
+											<type>zip</type>
+											<classifier>snapshot</classifier>
+										</artifactitem>
+									</artifactitems>
+									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
 								</configuration>
 							</execution>
 
