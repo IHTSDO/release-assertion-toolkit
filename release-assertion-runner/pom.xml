@@ -1248,7 +1248,7 @@
 							</execution>
 
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-conv-2</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
@@ -1726,7 +1726,7 @@
 						<executions>
 							<!-- This should get rf1 files from archiva -->
 							<execution>
-								<id>extract-dependencies-1</id>
+								<id>extract-dependencies-conversion-previous</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>unpack</goal>
