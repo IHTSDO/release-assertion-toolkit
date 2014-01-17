@@ -1500,15 +1500,15 @@
 									<goal>unpack</goal>
 								</goals>
 								<configuration>
-									<artifactitems>
-										<artifactitem>
-											<groupid>org.ihtsdo.intl.release.process</groupid>
-											<artifactid>wb-release-process</artifactid>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousversion}</version>
 											<type>zip</type>
 											<classifier>full</classifier>
-										</artifactitem>
-									</artifactitems>
+										</artifactItem>
+									</artifactItems>
 									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
 								</configuration>
 							</execution>
@@ -1519,15 +1519,15 @@
 									<goal>unpack</goal>
 								</goals>
 								<configuration>
-									<artifactitems>
-										<artifactitem>
-											<groupid>org.ihtsdo.intl.release.process</groupid>
-											<artifactid>wb-release-process</artifactid>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousversion}</version>
 											<type>zip</type>
-											<classifier>delta</classifier>
-										</artifactitem>
-									</artifactitems>
+											<classifier>snapshot</classifier>
+										</artifactItem>
+									</artifactItems>
 									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
 								</configuration>
 							</execution>
@@ -1538,15 +1538,15 @@
 									<goal>unpack</goal>
 								</goals>
 								<configuration>
-									<artifactitems>
-										<artifactitem>
-											<groupid>org.ihtsdo.intl.release.process</groupid>
-											<artifactid>wb-release-process</artifactid>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.ihtsdo.intl.release.process</groupId>
+											<artifactId>wb-release-process</artifactId>
 											<version>${project.previousversion}</version>
 											<type>zip</type>
-											<classifier>snapshot</classifier>
-										</artifactitem>
-									</artifactitems>
+											<classifier>delta</classifier>
+										</artifactItem>
+									</artifactItems>
 									<outputdirectory>${project.rf1previousreleasefolder}</outputdirectory>
 								</configuration>
 							</execution>
