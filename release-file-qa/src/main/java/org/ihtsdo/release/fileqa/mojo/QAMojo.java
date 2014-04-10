@@ -1,16 +1,5 @@
 package org.ihtsdo.release.fileqa.mojo;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
@@ -19,16 +8,22 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.ihtsdo.release.fileqa.model.Column;
 import org.ihtsdo.release.fileqa.model.MessageType;
 import org.ihtsdo.release.fileqa.model.Metadata;
-import org.ihtsdo.release.fileqa.tests.ColumnDataTests;
-import org.ihtsdo.release.fileqa.tests.ColumnHeaderRuleEnum;
-import org.ihtsdo.release.fileqa.tests.ColumnHeaderTest;
-import org.ihtsdo.release.fileqa.tests.FileNameTest;
-import org.ihtsdo.release.fileqa.tests.FileSizeTest;
+import org.ihtsdo.release.fileqa.tests.*;
 import org.ihtsdo.release.fileqa.util.DOMUtil;
 import org.ihtsdo.release.fileqa.util.DateUtils;
 import org.ihtsdo.release.fileqa.util.JAXBUtil;
 import org.ihtsdo.release.fileqa.util.WriteExcel;
 import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 
 
 /**
@@ -108,13 +103,17 @@ public class QAMojo extends AbstractMojo {
 	/**
 	 * metadataPath is the location of all the metadata files that specify the fileQA tests
 	 * 
-	 * @parameter 
-	 * @required
+//	 * @parameter
+//	 * @required
 	 */
-	private static String metadataPath;
+	private static String metadataPath = "target/metadata";
 
-
-
+	/**
+	 * Not used but 'run-file-qa' profile not happy without it.
+	 *
+	 * @parameter
+	 */
+	private String fileQAMetadataPath;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
