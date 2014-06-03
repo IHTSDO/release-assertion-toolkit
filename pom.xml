@@ -109,4 +109,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<name>IHTSDO Maestro</name>
+			<id>maestro</id>
+			<url>https://mgr.servers.aceworkspace.net/apps/ihtsdo-archiva/repository/all/</url>
+		</repository>
+	</repositories>
+
 </project>
